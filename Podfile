@@ -4,6 +4,6 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'TLog' do
-    pod 'Localytics', '~> 3.5'
+    pod 'Localytics', '~> 3.7'
 end
 

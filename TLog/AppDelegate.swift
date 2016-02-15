@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Localytics.autoIntegrate("32d519b62a1d7a231f5e8e2-3de491f8-d3f7-11e5-09e8-00cef1388a40", launchOptions: launchOptions)
+
         return true
     }
 

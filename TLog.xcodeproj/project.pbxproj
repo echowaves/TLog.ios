@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A5228E01C72248C00D64847 /* TLog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLog-Bridging-Header.h"; sourceTree = "<group>"; };
 		0AC5FAAB1C721C4700ACD363 /* TLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC5FAB01C721C4700ACD363 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 				0AC5FAB51C721C4700ACD363 /* Assets.xcassets */,
 				0AC5FAB71C721C4700ACD363 /* LaunchScreen.storyboard */,
 				0AC5FABA1C721C4700ACD363 /* Info.plist */,
+				0A5228E01C72248C00D64847 /* TLog-Bridging-Header.h */,
 			);
 			path = TLog;
 			sourceTree = "<group>";
@@ -332,6 +334,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.echowaves.TLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TLog/TLog-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -348,6 +351,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.echowaves.TLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TLog/TLog-Bridging-Header.h";
 			};
 			name = Release;
 		};
