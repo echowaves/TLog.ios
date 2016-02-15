@@ -18,14 +18,25 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTextField.becomeFirstResponder()
+    }
+    
     @IBAction func signInButtonClicked(sender: AnyObject) {
         TLUser.signIn(
             emailTextField.text!,
             password: passwordTextField.text!,
             success: { () -> () in
                 print("authenticated")
-            }) { (errorMessage) -> () in
+            }) { (error) -> () in
                 print("failed to authenticate")
+                print(error.description)
         }
     }
+    
+    func validate() {
+        
+    }
+    
 }

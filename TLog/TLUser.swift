@@ -32,7 +32,7 @@ class TLUser: NSObject {
         email: String,
         password: String,
         success:() -> (),
-        failure:(errorMessage:String) -> ()) -> () {
+        failure:(error: NSError) -> ()) -> () {
             
             let parameters = ["email": email,
                 "password": password]
@@ -43,25 +43,27 @@ class TLUser: NSObject {
                     
                     switch response.result {
                     case .Success:
+                        if let JSON = response.result.value {
+                            print("jwtToken:")
+                            print(JSON.valueForKey("token") as! String)
+                            storeJwtLocally(JSON.valueForKey("token") as! String)
+                        }
                         success();
                     case .Failure(let error):
                         print(error)
-                        failure(errorMessage: error.description)
+                        failure(error: error)
                     }
                     
-                    print("request: ")
-                    print(response.request!)  // original URL request
-                    print("response: ")
-                    print(response.response!) // URL response
-                    print("data: ")
-                    print(response.data!)     // server data
-                    print("result: ")
-                    print(response.result)   // result of response serialization
+//                    print("request: ")
+//                    print(response.request!)  // original URL request
+//                    print("response: ")
+//                    print(response.response!) // URL response
+//                    print("data: ")
+//                    print(response.data!)     // server data
+//                    print("result: ")
+//                    print(response.result)   // result of response serialization
                     
 
-                    if let JSON = response.result.value {
-                        print("JSON: \(JSON)")
-                    }
             }
 
             
