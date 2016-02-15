@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E31C722AF300D64847 /* SignInViewController.swift */; };
+		0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E51C7230AF00D64847 /* SignUpViewController.swift */; };
 		0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */; };
 		0AC5FAB11C721C4700ACD363 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB01C721C4700ACD363 /* ViewController.swift */; };
 		0AC5FAB41C721C4700ACD363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB21C721C4700ACD363 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		0A5228E01C72248C00D64847 /* TLog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLog-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A5228E31C722AF300D64847 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		0A5228E51C7230AF00D64847 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0AC5FAAB1C721C4700ACD363 /* TLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC5FAB01C721C4700ACD363 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
+				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				0AC5FAB11C721C4700ACD363 /* ViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
+				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
 				0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
