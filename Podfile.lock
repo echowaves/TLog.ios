@@ -1,12 +1,15 @@
 PODS:
+  - Alamofire (3.2.0)
   - KeychainSwift (3.0.11)
   - Localytics (3.7.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.2.0)
   - KeychainSwift (~> 3.0.11)
   - Localytics (~> 3.7)
 
 SPEC CHECKSUMS:
+  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
   KeychainSwift: 0a4214c910423543a42b0f30f25987d46178b6a5
   Localytics: 87e54851db13da8750f6a82d49b23e843cadf358
 

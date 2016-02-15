@@ -7,6 +7,67 @@
 //
 
 import Foundation
+import KeychainSwift
+import Alamofire
+
+
 
 class TLUser: NSObject {
+    
+    static let JTW_KEY:String = "TTLogJWT";
+    
+    class func storeJwtLocally(jwt:String)  -> () {
+        let keychain = KeychainSwift()
+        keychain.set(jwt, forKey: TLUser.JTW_KEY)
+    }
+
+    class func retreiveJwtFromLocalStorage(jwt:String)  -> (String) {
+        let keychain = KeychainSwift()
+        return keychain.get(TLUser.JTW_KEY)!
+    }
+
+ 
+    
+    class func signIn(
+        email: String,
+        password: String,
+        success:() -> (),
+        failure:(errorMessage:String) -> ()) -> () {
+            
+            let parameters = ["email": email,
+                "password": password]
+            
+            Alamofire.request(.POST, "\(TL_HOST)/auth" , parameters: parameters, encoding: ParameterEncoding.JSON)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    
+                    switch response.result {
+                    case .Success:
+                        success();
+                    case .Failure(let error):
+                        print(error)
+                        failure(errorMessage: error.description)
+                    }
+                    
+                    print("request: ")
+                    print(response.request!)  // original URL request
+                    print("response: ")
+                    print(response.response!) // URL response
+                    print("data: ")
+                    print(response.data!)     // server data
+                    print("result: ")
+                    print(response.result)   // result of response serialization
+                    
+
+                    if let JSON = response.result.value {
+                        print("JSON: \(JSON)")
+                    }
+            }
+
+            
+    }
+    
+
+    
+    
 }

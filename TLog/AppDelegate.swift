@@ -9,6 +9,10 @@
 import UIKit
 
 
+let TL_HOST = "http://localhost:3000"
+//let TL_HOST = "http://tlog.us:3000"
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
