@@ -58,6 +58,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="1q4-GU-2Ou" kind="show" id="Akx-oZ-fzq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,10 +82,81 @@
                             <constraint firstItem="aIb-z6-1IZ" firstAttribute="top" secondItem="evm-vx-lrr" secondAttribute="bottom" constant="8" id="wvj-hJ-pvc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Leh-mx-GXX" id="7Xj-OE-LV4"/>
+                        <outlet property="passwordConfirmTextField" destination="evm-vx-lrr" id="rDn-fj-nqx"/>
+                        <outlet property="passwordTextFied" destination="1Ru-Xf-ogp" id="OWP-H6-znZ"/>
+                        <outlet property="signUpButton" destination="aIb-z6-1IZ" id="eO8-sw-QxH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVk-5b-ifA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1035" y="374"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="Y98-76-2BI">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="1q4-GU-2Ou" customClass="MenuViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JqH-e1-QIM"/>
+                        <viewControllerLayoutGuide type="bottom" id="4FM-Bb-z6S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dsv-eW-ml1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-aA-LxQ">
+                                <rect key="frame" x="20" y="130" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1LV-1J-huO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="iwu-VF-nmD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Reports">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0M-Dy-FHL">
+                                <rect key="frame" x="20" y="72" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WFC-JE-cla"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="sjT-kh-xUW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Employees">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FhZ-aA-LxQ" firstAttribute="top" secondItem="m0M-Dy-FHL" secondAttribute="bottom" constant="8" id="Cet-UW-QNB"/>
+                            <constraint firstItem="FhZ-aA-LxQ" firstAttribute="top" secondItem="m0M-Dy-FHL" secondAttribute="bottom" constant="8" id="OBB-4y-x7t"/>
+                            <constraint firstItem="m0M-Dy-FHL" firstAttribute="leading" secondItem="dsv-eW-ml1" secondAttribute="leadingMargin" id="P8U-Jv-5Op"/>
+                            <constraint firstItem="FhZ-aA-LxQ" firstAttribute="trailing" secondItem="dsv-eW-ml1" secondAttribute="trailingMargin" id="Qnb-8q-bLo"/>
+                            <constraint firstItem="m0M-Dy-FHL" firstAttribute="top" secondItem="JqH-e1-QIM" secondAttribute="bottom" constant="8" id="fNT-dG-6W8"/>
+                            <constraint firstItem="m0M-Dy-FHL" firstAttribute="trailing" secondItem="dsv-eW-ml1" secondAttribute="trailingMargin" id="orH-SL-riz"/>
+                            <constraint firstItem="FhZ-aA-LxQ" firstAttribute="leading" secondItem="dsv-eW-ml1" secondAttribute="leadingMargin" id="vnl-or-Ofe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f3M-Vx-73K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="374"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A7q-o3-ImR">
@@ -144,6 +218,10 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInButtonClicked:" destination="fAH-4O-vGs" eventType="touchUpInside" id="Y8V-zj-pYa"/>
+                                    <segue destination="1q4-GU-2Ou" kind="show" id="GUF-DZ-GlA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sg-fG-E2a">
                                 <rect key="frame" x="20" y="246" width="560" height="50"/>
@@ -177,10 +255,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ysR-le-xQh"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="PFG-qW-A6O" id="rEa-2p-rcB"/>
+                        <outlet property="passwordTextField" destination="3Cl-32-jRU" id="zfT-4W-k8U"/>
+                        <outlet property="signInButton" destination="fXB-WH-9v2" id="4gz-Z1-Ng5"/>
+                        <outlet property="signUpButton" destination="4Sg-fG-E2a" id="t44-zL-Bk5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNE-sA-Mbt" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="310" y="374"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="GUF-DZ-GlA"/>
+    </inferredMetricsTieBreakers>
 </document>
