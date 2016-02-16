@@ -15,4 +15,20 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextFied: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    
+    @IBAction func signUpButtonClicked(sender: AnyObject) {
+        let menuViewController =
+            self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
+        self.showViewController(menuViewController, sender: self)
+    }
+
+    @IBAction func backButtonClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

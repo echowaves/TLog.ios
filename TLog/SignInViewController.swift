@@ -21,7 +21,18 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         TLUser.clearJwtFromLocalStorage()
+    }
+
+
+    @IBAction func signUpButtonClicked(sender: AnyObject) {
+        let signUpViewController =
+            self.storyboard!.instantiateViewControllerWithIdentifier("SignUpViewController")
+        self.showViewController(signUpViewController, sender: self)
     }
     
     @IBAction func signInButtonClicked(sender: AnyObject) {
@@ -33,7 +44,7 @@ class SignInViewController: UIViewController {
                 
                 
                 let menuViewController =
-                self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
+                    self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
                 self.showViewController(menuViewController, sender: self)
 
                 
@@ -47,5 +58,7 @@ class SignInViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
+    }
     
 }
