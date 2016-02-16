@@ -55,26 +55,39 @@ class TLUser: NSObject {
                         }
                         success();
                     case .Failure(let error):
-                        print(error)
+                        NSLog(error.description)
                         failure(error: error)
                     }
-                    
-//                    print("request: ")
-//                    print(response.request!)  // original URL request
-//                    print("response: ")
-//                    print(response.response!) // URL response
-//                    print("data: ")
-//                    print(response.data!)     // server data
-//                    print("result: ")
-//                    print(response.result)   // result of response serialization
-                    
-
             }
-
-            
     }
     
 
+    class func signUp(
+        email: String,
+        password: String,
+        success:() -> (),
+        failure:(error: NSError) -> ()) -> () {
+            
+            let parameters = ["email": email,
+                "password": password]
+            
+            Alamofire.request(.PUT, "\(TL_HOST)/user" , parameters: parameters, encoding: ParameterEncoding.JSON)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    
+                    switch response.result {
+                    case .Success:
+                        success();
+                    case .Failure(let error):
+                        NSLog(error.description)
+                        failure(error: error)
+                    }
+            }
+            
+            
+    }
+
+    
     
     
 }

@@ -22,6 +22,12 @@ class SignUpViewController: UIViewController {
 
     
     @IBAction func signUpButtonClicked(sender: AnyObject) {
+        
+        
+        
+        
+        
+        
         let menuViewController =
             self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
         self.showViewController(menuViewController, sender: self)
