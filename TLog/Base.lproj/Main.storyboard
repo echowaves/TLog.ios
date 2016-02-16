@@ -102,7 +102,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="Leh-mx-GXX" id="7Xj-OE-LV4"/>
                         <outlet property="passwordConfirmTextField" destination="evm-vx-lrr" id="rDn-fj-nqx"/>
-                        <outlet property="passwordTextFied" destination="1Ru-Xf-ogp" id="OWP-H6-znZ"/>
+                        <outlet property="passwordTextField" destination="1Ru-Xf-ogp" id="KLe-Py-VSb"/>
                         <outlet property="signUpButton" destination="aIb-z6-1IZ" id="eO8-sw-QxH"/>
                     </connections>
                 </viewController>

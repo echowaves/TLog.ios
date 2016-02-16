@@ -74,7 +74,6 @@ class TLUser: NSObject {
             Alamofire.request(.PUT, "\(TL_HOST)/user" , parameters: parameters, encoding: ParameterEncoding.JSON)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
-                    
                     switch response.result {
                     case .Success:
                         success();
