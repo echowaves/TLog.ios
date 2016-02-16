@@ -18,5 +18,10 @@ class MenuViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    @IBAction func reportsButtonClicked(sender: AnyObject) {
+        self.performSegueWithIdentifier("unwindToSignInSegue", sender: self)
 
+    }
+
+    
 }

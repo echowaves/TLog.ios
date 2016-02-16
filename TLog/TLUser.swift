@@ -20,18 +20,18 @@ class TLUser: NSObject {
         let keychain = KeychainSwift()
         keychain.set(jwt, forKey: TLUser.JTW_KEY)
     }
-
-    class func retreiveJwtFromLocalStorage(jwt:String)  -> (String) {
+    
+    class func retreiveJwtFromLocalStorage()  -> (String!) {
         let keychain = KeychainSwift()
-        return keychain.get(TLUser.JTW_KEY)!
+        return keychain.get(TLUser.JTW_KEY)
     }
     
     class func clearJwtFromLocalStorage()  -> () {
         let keychain = KeychainSwift()
         keychain.delete(TLUser.JTW_KEY)
     }
-
- 
+    
+    
     
     class func signIn(
         email: String,
@@ -49,8 +49,8 @@ class TLUser: NSObject {
                     switch response.result {
                     case .Success:
                         if let JSON = response.result.value {
-//                            print("jwtToken:")
-//                            print(JSON.valueForKey("token") as! String)
+                            //                            print("jwtToken:")
+                            //                            print(JSON.valueForKey("token") as! String)
                             storeJwtLocally(JSON.valueForKey("token") as! String)
                         }
                         success();
@@ -61,16 +61,14 @@ class TLUser: NSObject {
             }
     }
     
-
+    
     class func signUp(
         email: String,
         password: String,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
-            
             let parameters = ["email": email,
                 "password": password]
-            
             Alamofire.request(.PUT, "\(TL_HOST)/user" , parameters: parameters, encoding: ParameterEncoding.JSON)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
@@ -82,11 +80,5 @@ class TLUser: NSObject {
                         failure(error: error)
                     }
             }
-            
-            
     }
-
-    
-    
-    
 }

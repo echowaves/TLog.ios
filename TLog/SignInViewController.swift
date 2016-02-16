@@ -25,6 +25,7 @@ class SignInViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        //auto sign in
         TLUser.clearJwtFromLocalStorage()
     }
 
@@ -58,6 +59,7 @@ class SignInViewController: UIViewController {
         }
     }
     
+    // this method is the entry point for unwinding to the beginning
     @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
     }
     
