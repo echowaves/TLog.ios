@@ -19,7 +19,4 @@ class MenuViewController: UIViewController {
     }
     
 
-    @IBAction func signOutButtonClicked(sender: AnyObject) {
-        
-    }
 }
