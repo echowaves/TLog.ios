@@ -21,6 +21,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.becomeFirstResponder()
+        TLUser.clearJwtFromLocalStorage()
     }
     
     @IBAction func signInButtonClicked(sender: AnyObject) {
@@ -28,15 +29,23 @@ class SignInViewController: UIViewController {
             emailTextField.text!,
             password: passwordTextField.text!,
             success: { () -> () in
-                print("authenticated")
+                NSLog("authenticated")
+                
+                
+                let menuViewController =
+                self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
+                self.showViewController(menuViewController, sender: self)
+
+                
             }) { (error) -> () in
-                print("failed to authenticate")
-                print(error.description)
+                NSLog("failed to authenticate")
+
+                NSLog(error.description)
+                let alert = UIAlertController(title: nil, message: "Unable to sign in, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)                
         }
     }
     
-    func validate() {
-        
-    }
     
 }

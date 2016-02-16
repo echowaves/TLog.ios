@@ -25,6 +25,11 @@ class TLUser: NSObject {
         let keychain = KeychainSwift()
         return keychain.get(TLUser.JTW_KEY)!
     }
+    
+    class func clearJwtFromLocalStorage()  -> () {
+        let keychain = KeychainSwift()
+        keychain.delete(TLUser.JTW_KEY)
+    }
 
  
     
@@ -44,8 +49,8 @@ class TLUser: NSObject {
                     switch response.result {
                     case .Success:
                         if let JSON = response.result.value {
-                            print("jwtToken:")
-                            print(JSON.valueForKey("token") as! String)
+//                            print("jwtToken:")
+//                            print(JSON.valueForKey("token") as! String)
                             storeJwtLocally(JSON.valueForKey("token") as! String)
                         }
                         success();

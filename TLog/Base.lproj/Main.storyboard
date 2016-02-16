@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVk-5b-ifA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1035" y="374"/>
+            <point key="canvasLocation" x="1047" y="374"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Y98-76-2BI">
@@ -220,7 +220,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInButtonClicked:" destination="fAH-4O-vGs" eventType="touchUpInside" id="Y8V-zj-pYa"/>
-                                    <segue destination="1q4-GU-2Ou" kind="show" id="GUF-DZ-GlA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sg-fG-E2a">
@@ -267,7 +266,4 @@
             <point key="canvasLocation" x="310" y="374"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Akx-oZ-fzq"/>
-    </inferredMetricsTieBreakers>
 </document>
