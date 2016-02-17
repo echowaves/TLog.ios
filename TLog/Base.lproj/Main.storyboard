@@ -104,11 +104,12 @@
                         <outlet property="passwordConfirmTextField" destination="evm-vx-lrr" id="rDn-fj-nqx"/>
                         <outlet property="passwordTextField" destination="1Ru-Xf-ogp" id="KLe-Py-VSb"/>
                         <outlet property="signUpButton" destination="aIb-z6-1IZ" id="eO8-sw-QxH"/>
+                        <segue destination="1q4-GU-2Ou" kind="show" identifier="menuSegue" id="Iql-i7-L29"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVk-5b-ifA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047" y="374"/>
+            <point key="canvasLocation" x="1071" y="-2"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Y98-76-2BI">
@@ -140,9 +141,25 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="reportsButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="221-XO-MrM"/>
+                                    <action selector="reportsButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="vgv-Sc-5ST"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQV-ZA-bIm">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CI7-Nf-D3s"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Pir-Cr-W6x"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="main menu" id="m57-cN-6LR">
+                                        <barButtonItem key="leftBarButtonItem" title="sign out" id="SFC-YP-7Wj">
+                                            <connections>
+                                                <action selector="signOutButtonClicked:" destination="1q4-GU-2Ou" id="fk7-Lh-Fhy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0M-Dy-FHL">
                                 <rect key="frame" x="20" y="72" width="560" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,23 +176,10 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="sPt-ET-ii0"/>
+                                </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQV-ZA-bIm">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="CI7-Nf-D3s"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Pir-Cr-W6x"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="main menu" id="m57-cN-6LR">
-                                        <barButtonItem key="leftBarButtonItem" title="sign out" id="SFC-YP-7Wj">
-                                            <connections>
-                                                <segue destination="Um7-Av-djN" kind="unwind" identifier="unwindToSignInSegue" unwindAction="unwindToSignIn:" id="JL3-lP-hlf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -190,11 +194,16 @@
                             <constraint firstItem="FhZ-aA-LxQ" firstAttribute="leading" secondItem="dsv-eW-ml1" secondAttribute="leadingMargin" id="vnl-or-Ofe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="COU-X0-9AK" kind="show" identifier="employeesSegue" id="nDm-63-Mzw"/>
+                        <segue destination="v4n-p4-k1T" kind="show" identifier="reportsSegue" id="jQr-ts-hbr"/>
+                        <segue destination="Um7-Av-djN" kind="unwind" identifier="unwindToSignInSegue" unwindAction="unwindToSignIn:" id="gPI-9K-zQl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3M-Vx-73K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Um7-Av-djN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="374"/>
+            <point key="canvasLocation" x="1804" y="374"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="OCk-46-Bib">
@@ -241,7 +250,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="signInButtonClicked:" destination="fAH-4O-vGs" eventType="touchUpInside" id="Y8V-zj-pYa"/>
+                                    <action selector="signInButtonClicked:" destination="fAH-4O-vGs" eventType="touchUpInside" id="LYJ-dH-PVH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sg-fG-E2a">
@@ -252,7 +261,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signUpButtonClicked:" destination="fAH-4O-vGs" eventType="touchUpInside" id="cP0-O2-qB2"/>
+                                    <action selector="signUpButtonClicked:" destination="fAH-4O-vGs" eventType="touchUpInside" id="nxd-X6-zCw"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5b-rl-IGv">
@@ -290,13 +299,110 @@
                     <connections>
                         <outlet property="emailTextField" destination="PFG-qW-A6O" id="rEa-2p-rcB"/>
                         <outlet property="passwordTextField" destination="3Cl-32-jRU" id="zfT-4W-k8U"/>
-                        <outlet property="signInButton" destination="fXB-WH-9v2" id="4gz-Z1-Ng5"/>
-                        <outlet property="signUpButton" destination="4Sg-fG-E2a" id="t44-zL-Bk5"/>
+                        <segue destination="PaN-TY-Dqp" kind="show" identifier="signUpSegue" id="cDQ-FW-MOt"/>
+                        <segue destination="1q4-GU-2Ou" kind="show" identifier="menuSegue" id="Fi9-HA-xET"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNE-sA-Mbt" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="310" y="374"/>
         </scene>
+        <!--Employees View Controller-->
+        <scene sceneID="uYq-Ys-M8H">
+            <objects>
+                <viewController storyboardIdentifier="EmployeesViewController" id="COU-X0-9AK" customClass="EmployeesViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P0Y-Od-ZER"/>
+                        <viewControllerLayoutGuide type="bottom" id="bVj-WH-fyj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yXY-9v-A3Y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anL-Ik-Bew">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="U7c-1z-ZXS"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="auN-7T-qeK"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="my employees" id="r05-qb-cZu">
+                                        <barButtonItem key="leftBarButtonItem" title="menu" id="WOb-S7-sOu">
+                                            <connections>
+                                                <action selector="menuButtonClicked:" destination="COU-X0-9AK" id="Voi-IL-tFu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="anL-Ik-Bew" firstAttribute="top" secondItem="P0Y-Od-ZER" secondAttribute="bottom" id="beg-JO-si2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="anL-Ik-Bew" secondAttribute="trailing" constant="-20" id="hWe-Fr-aZi"/>
+                            <constraint firstItem="anL-Ik-Bew" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="xMz-O6-6pH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w9I-zi-GIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2533" y="374"/>
+        </scene>
+        <!--Reports View Controller-->
+        <scene sceneID="bUv-5x-UeZ">
+            <objects>
+                <viewController storyboardIdentifier="ReportsViewController" id="v4n-p4-k1T" customClass="ReportsViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iKs-Fy-W57"/>
+                        <viewControllerLayoutGuide type="bottom" id="c4B-54-1do"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HRj-sB-JcQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Es7-b8-pJC">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="60u-Hg-Fo5"/>
+                                    <constraint firstAttribute="height" constant="44" id="Kfc-GK-fu6"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="my reports" id="ZCz-QE-8ng">
+                                        <barButtonItem key="leftBarButtonItem" title="menu" id="stQ-db-W9e">
+                                            <connections>
+                                                <action selector="menuButtonClicked:" destination="v4n-p4-k1T" id="DEu-70-21G"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under construction, coming soon..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQM-TW-jrQ">
+                                <rect key="frame" x="165" y="289" width="270" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="6Za-BT-KFx"/>
+                                    <constraint firstAttribute="height" constant="21" id="DOH-VO-Db9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PQM-TW-jrQ" firstAttribute="centerY" secondItem="HRj-sB-JcQ" secondAttribute="centerY" id="Qji-CH-Btr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Es7-b8-pJC" secondAttribute="trailing" constant="-20" id="byB-YQ-o1d"/>
+                            <constraint firstItem="Es7-b8-pJC" firstAttribute="leading" secondItem="HRj-sB-JcQ" secondAttribute="leadingMargin" constant="-20" id="hbH-aV-0LI"/>
+                            <constraint firstItem="Es7-b8-pJC" firstAttribute="top" secondItem="iKs-Fy-W57" secondAttribute="bottom" id="jQP-5h-Hfa"/>
+                            <constraint firstItem="PQM-TW-jrQ" firstAttribute="centerX" secondItem="HRj-sB-JcQ" secondAttribute="centerX" id="m0b-DK-w7P"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wj7-Kr-X4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2533" y="1203"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Fi9-HA-xET"/>
+    </inferredMetricsTieBreakers>
 </document>

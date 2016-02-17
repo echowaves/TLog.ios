@@ -50,9 +50,10 @@ class SignUpViewController: UIViewController {
                 emailTextField.text!,
                 password: passwordTextField.text!,
                 success: { () -> () in
-                    let menuViewController =
-                    self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
-                    self.showViewController(menuViewController, sender: self)
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.performSegueWithIdentifier("menuSegue", sender: self)
+                    }
+                    
                 }, failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Unable to sign up, perhaps user with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))

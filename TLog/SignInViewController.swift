@@ -15,8 +15,6 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +24,23 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //auto sign in
-        TLUser.clearJwtFromLocalStorage()
+        if(TLUser.retreiveJwtFromLocalStorage() != nil) {
+            dispatch_async(dispatch_get_main_queue()){
+                self.performSegueWithIdentifier("menuSegue", sender: self)
+            }
+        }
     }
 
 
-    @IBAction func signUpButtonClicked(sender: AnyObject) {
-        let signUpViewController =
-            self.storyboard!.instantiateViewControllerWithIdentifier("SignUpViewController")
-        self.showViewController(signUpViewController, sender: self)
+    @IBAction func signUpButtonClicked(sender: AnyObject) {        
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("signUpSegue", sender: self)
+        }
     }
     
+    
     @IBAction func signInButtonClicked(sender: AnyObject) {
+        
         TLUser.signIn(
             emailTextField.text!,
             password: passwordTextField.text!,
@@ -44,9 +48,9 @@ class SignInViewController: UIViewController {
                 NSLog("authenticated")
                 
                 
-                let menuViewController =
-                    self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
-                self.showViewController(menuViewController, sender: self)
+                dispatch_async(dispatch_get_main_queue()){
+                    self.performSegueWithIdentifier("menuSegue", sender: self)
+                }
 
                 
             }) { (error) -> () in

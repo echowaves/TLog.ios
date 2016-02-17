@@ -18,10 +18,24 @@ class MenuViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    @IBAction func employeesButtonClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("employeesSegue", sender: self)
+        }
+    }
+    
     @IBAction func reportsButtonClicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("unwindToSignInSegue", sender: self)
-
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("reportsSegue", sender: self)
+        }
     }
 
     
+    @IBAction func signOutButtonClicked(sender: AnyObject) {
+        TLUser.clearJwtFromLocalStorage()
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("unwindToSignInSegue", sender: self)
+        }
+
+    }
 }

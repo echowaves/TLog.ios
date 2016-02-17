@@ -12,6 +12,8 @@
 		0A51A3B71C72796400E83052 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A51A3B61C72796400E83052 /* Default-568h@2x.png */; };
 		0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E31C722AF300D64847 /* SignInViewController.swift */; };
 		0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E51C7230AF00D64847 /* SignUpViewController.swift */; };
+		0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */; };
+		0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */; };
 		0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */; };
 		0AC5FAB11C721C4700ACD363 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB01C721C4700ACD363 /* ViewController.swift */; };
 		0AC5FAB41C721C4700ACD363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB21C721C4700ACD363 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		0A5228E01C72248C00D64847 /* TLog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLog-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A5228E31C722AF300D64847 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0A5228E51C7230AF00D64847 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
+		0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		0AC5FAAB1C721C4700ACD363 /* TLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC5FAB01C721C4700ACD363 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
 				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
 				0A51A3B21C72379600E83052 /* MenuViewController.swift */,
+				0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */,
+				0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -91,11 +97,11 @@
 		0AC5FAAD1C721C4700ACD363 /* TLog */ = {
 			isa = PBXGroup;
 			children = (
+				0AC5FAB21C721C4700ACD363 /* Main.storyboard */,
 				0A5228E21C722AC400D64847 /* Controller */,
 				0A5228E11C722ABA00D64847 /* Model */,
 				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0AC5FAB01C721C4700ACD363 /* ViewController.swift */,
-				0AC5FAB21C721C4700ACD363 /* Main.storyboard */,
 				0AC5FAB51C721C4700ACD363 /* Assets.xcassets */,
 				0AC5FAB71C721C4700ACD363 /* LaunchScreen.storyboard */,
 				0AC5FABA1C721C4700ACD363 /* Info.plist */,
@@ -249,6 +255,8 @@
 				0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
+				0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */,
+				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,
 				0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */,
 			);
