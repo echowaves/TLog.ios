@@ -335,18 +335,48 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11S-QU-QB6">
+                                <rect key="frame" x="20" y="542" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="x43-fN-LxP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="add new employee">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="y5x-g1-YnH"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
+                                <rect key="frame" x="0.0" y="64" width="600" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="11S-QU-QB6" firstAttribute="trailing" secondItem="yXY-9v-A3Y" secondAttribute="trailingMargin" id="UvU-dl-S1l"/>
+                            <constraint firstItem="11S-QU-QB6" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" id="Zl5-BK-aGf"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="top" secondItem="P0Y-Od-ZER" secondAttribute="bottom" id="beg-JO-si2"/>
+                            <constraint firstItem="bVj-WH-fyj" firstAttribute="top" secondItem="11S-QU-QB6" secondAttribute="bottom" constant="8" id="bqW-Eh-iyE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="anL-Ik-Bew" secondAttribute="trailing" constant="-20" id="hWe-Fr-aZi"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="xMz-O6-6pH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="lxf-Rd-VB5" kind="show" identifier="employeeDetailsSegue" id="odX-B7-YAH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w9I-zi-GIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2533" y="374"/>
+            <point key="canvasLocation" x="2603" y="374"/>
         </scene>
         <!--Reports View Controller-->
         <scene sceneID="bUv-5x-UeZ">
@@ -400,6 +430,115 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wj7-Kr-X4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2533" y="1203"/>
+        </scene>
+        <!--Employee Details View Controller-->
+        <scene sceneID="pCh-68-1JW">
+            <objects>
+                <viewController storyboardIdentifier="EmployeeDetailsViewController" id="lxf-Rd-VB5" customClass="EmployeeDetailsViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZSW-Ue-ckL"/>
+                        <viewControllerLayoutGuide type="bottom" id="WB7-aX-SvK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GbS-Df-wEj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUE-Yg-fEe">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Byp-cj-Sw6"/>
+                                    <constraint firstAttribute="height" constant="44" id="mqh-fr-jJH"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="employee details" id="K4B-ng-Lut">
+                                        <barButtonItem key="leftBarButtonItem" title="back" id="L5p-sS-cHk">
+                                            <connections>
+                                                <action selector="menuButtonClicked:" destination="lxf-Rd-VB5" id="FuM-M6-WRN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-Sj-Sa3">
+                                <rect key="frame" x="20" y="188" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QV5-lF-fNE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="activate">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="IIe-oP-3Lv"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="wIe-UC-xYN">
+                                <rect key="frame" x="20" y="72" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aFC-X5-Lpb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="6oj-Jn-05b">
+                                <rect key="frame" x="20" y="130" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SAn-hU-4oI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVf-4u-7WD">
+                                <rect key="frame" x="20" y="246" width="560" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lue-uS-Iu0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="delete">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="tBA-cC-d2b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BUE-Yg-fEe" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" constant="-20" id="1Yj-2W-a0w"/>
+                            <constraint firstItem="6oj-Jn-05b" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="5gI-8m-95w"/>
+                            <constraint firstItem="tVf-4u-7WD" firstAttribute="top" secondItem="Mhh-Sj-Sa3" secondAttribute="bottom" constant="8" id="GlQ-xj-nMj"/>
+                            <constraint firstItem="tVf-4u-7WD" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="Gy4-fF-5DS"/>
+                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="Pg2-oo-Jse"/>
+                            <constraint firstItem="wIe-UC-xYN" firstAttribute="top" secondItem="BUE-Yg-fEe" secondAttribute="bottom" constant="8" id="Rrq-Yv-3IC"/>
+                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="8" id="c6G-eS-1Oi"/>
+                            <constraint firstItem="wIe-UC-xYN" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="cmB-cY-hxK"/>
+                            <constraint firstItem="6oj-Jn-05b" firstAttribute="top" secondItem="wIe-UC-xYN" secondAttribute="bottom" constant="8" id="e6x-iA-879"/>
+                            <constraint firstItem="wIe-UC-xYN" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="ihY-Y5-i7X"/>
+                            <constraint firstItem="BUE-Yg-fEe" firstAttribute="top" secondItem="ZSW-Ue-ckL" secondAttribute="bottom" id="msl-fe-ONw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BUE-Yg-fEe" secondAttribute="trailing" constant="-20" id="tgz-Qt-v3N"/>
+                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="uve-Hv-xKV"/>
+                            <constraint firstItem="tVf-4u-7WD" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="wpx-sF-DXG"/>
+                            <constraint firstItem="6oj-Jn-05b" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="znd-18-SKv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wco-Op-cuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3338" y="374"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

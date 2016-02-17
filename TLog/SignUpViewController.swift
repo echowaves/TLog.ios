@@ -37,15 +37,13 @@ class SignUpViewController: UIViewController {
             validationErrors += ["Wrong email format."]
         }
         if( !Validator.minLength(8)(passwordTextField.text!)) {
-            validationErrors += ["Password length must be 8 or more."]
+            validationErrors += ["Password must be 8 or more characters."]
         }
         if( passwordTextField.text! != passwordConfirmTextField.text! ) {
-            validationErrors += ["Password Confirm must match password."]
+            validationErrors += ["Password Confirm must match Password."]
         }
         
         if(validationErrors.count == 0) { // no validation errors, proceed
-            
-            
             TLUser.signUp(
                 emailTextField.text!,
                 password: passwordTextField.text!,
@@ -63,7 +61,7 @@ class SignUpViewController: UIViewController {
         } else { //there are validation errors, let's output them
             var errorString = ""
             for error in validationErrors {
-                errorString += "\(error)\n"
+                errorString += "\(error)\n\n"
             }
             
             let alert = UIAlertController(title: nil, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
