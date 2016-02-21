@@ -10,10 +10,17 @@ import Foundation
 import SwiftValidators
 
 class EmployeeDetailsViewController: UIViewController {
-  
+    var employee:TLEmployee?
+    
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var activateButton: UIButton!
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +29,13 @@ class EmployeeDetailsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if(employee == nil) {
+            activateButton.hidden = true
+            deleteButton.hidden = true
+        } else {
+            activateButton.hidden = false
+            deleteButton.hidden = false
+        }
     }
     
     

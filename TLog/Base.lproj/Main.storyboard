@@ -560,6 +560,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activateButton" destination="Mhh-Sj-Sa3" id="WAX-s5-UiJ"/>
+                        <outlet property="deleteButton" destination="tVf-4u-7WD" id="eRZ-st-GR3"/>
                         <outlet property="emailTextField" destination="6oj-Jn-05b" id="2Fq-hm-u0B"/>
                         <outlet property="nameTextField" destination="wIe-UC-xYN" id="6P9-8y-TET"/>
                     </connections>

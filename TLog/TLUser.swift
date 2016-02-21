@@ -11,7 +11,6 @@ import KeychainSwift
 import Alamofire
 
 
-
 class TLUser: NSObject {
     
     static let JTW_KEY:String = "TTLogJWT";

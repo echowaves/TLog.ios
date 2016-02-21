@@ -12,6 +12,7 @@
 		0A51A3B71C72796400E83052 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A51A3B61C72796400E83052 /* Default-568h@2x.png */; };
 		0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E31C722AF300D64847 /* SignInViewController.swift */; };
 		0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E51C7230AF00D64847 /* SignUpViewController.swift */; };
+		0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8821C7960900050AE57 /* TLEmployee.swift */; };
 		0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */; };
 		0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */; };
 		0AA9EF1F1C741EC600B53281 /* EmployeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */; };
@@ -29,6 +30,7 @@
 		0A5228E01C72248C00D64847 /* TLog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLog-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A5228E31C722AF300D64847 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0A5228E51C7230AF00D64847 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0A79B8821C7960900050AE57 /* TLEmployee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLEmployee.swift; sourceTree = "<group>"; };
 		0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
 		0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				0A51A3B41C72560300E83052 /* TLUser.swift */,
+				0A79B8821C7960900050AE57 /* TLEmployee.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */,
 				0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
