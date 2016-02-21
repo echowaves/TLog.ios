@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftValidators
 
 class EmployeeDetailsViewController: UIViewController {
   
@@ -16,6 +17,7 @@ class EmployeeDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -28,8 +30,56 @@ class EmployeeDetailsViewController: UIViewController {
     }
     
     @IBAction func saveButtonClicked(sender: AnyObject) {
+        var validationErrors:[String] = []
+        if(!Validator.required(emailTextField.text!)) {
+            validationErrors += ["Email is required."]
+        }
+        if(!Validator.required(nameTextField.text!)) {
+            validationErrors += ["Name is required."]
+        }
+        
+        if(!Validator.isEmail(emailTextField.text!)) {
+            validationErrors += ["Wrong email format."]
+        }
+        if( !Validator.maxLength(100)(nameTextField.text!)) {
+            validationErrors += ["Name can't be longer than 100."]
+        }
+        if( !Validator.maxLength(100)(emailTextField.text!)) {
+            validationErrors += ["Email can't be longer than 100."]
+        }
+        
+        if(validationErrors.count == 0) { // no validation errors, proceed
+//            TLUser.signUp(
+//                emailTextField.text!,
+//                password: passwordTextField.text!,
+//                success: { () -> () in
+//                    dispatch_async(dispatch_get_main_queue()){
+//                        self.performSegueWithIdentifier("menuSegue", sender: self)
+//                    }
+//                    
+//                }, failure: { (error) -> () in
+//                    let alert = UIAlertController(title: nil, message: "Unable to sign up, perhaps user with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
+//                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+//                    self.presentViewController(alert, animated: true, completion: nil)
+//            })
+            
+        } else { //there are validation errors, let's output them
+            var errorString = ""
+            for error in validationErrors {
+                errorString += "\(error)\n\n"
+            }
+            
+            let alert = UIAlertController(title: nil, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
+
+    
     @IBAction func activateButtonClicked(sender: AnyObject) {
     }
-    @IBOutlet weak var deleteButtonClicked: UIButton!
+
+    
+    @IBAction func deleteButtonClicked(sender: AnyObject) {
+    }
 }

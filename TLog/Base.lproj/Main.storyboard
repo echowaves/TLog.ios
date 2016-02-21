@@ -532,6 +532,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteButtonClicked:" destination="lxf-Rd-VB5" eventType="touchUpInside" id="ASR-vV-FfK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -557,7 +560,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="deleteButtonClicked" destination="tVf-4u-7WD" id="haR-WY-xhW"/>
                         <outlet property="emailTextField" destination="6oj-Jn-05b" id="2Fq-hm-u0B"/>
                         <outlet property="nameTextField" destination="wIe-UC-xYN" id="6P9-8y-TET"/>
                     </connections>

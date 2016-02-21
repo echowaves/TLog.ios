@@ -42,6 +42,13 @@ class SignUpViewController: UIViewController {
         if( passwordTextField.text! != passwordConfirmTextField.text! ) {
             validationErrors += ["Password Confirm must match Password."]
         }
+        if( !Validator.maxLength(50)(passwordTextField.text!)) {
+            validationErrors += ["Password can't be longer than 50."]
+        }
+        if( !Validator.maxLength(100)(emailTextField.text!)) {
+            validationErrors += ["Email can't be longer than 100."]
+        }
+
         
         if(validationErrors.count == 0) { // no validation errors, proceed
             TLUser.signUp(
@@ -54,7 +61,7 @@ class SignUpViewController: UIViewController {
                     
                 }, failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Unable to sign up, perhaps user with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
             })
             
@@ -65,7 +72,7 @@ class SignUpViewController: UIViewController {
             }
             
             let alert = UIAlertController(title: nil, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
         

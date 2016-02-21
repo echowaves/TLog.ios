@@ -58,7 +58,7 @@ class SignInViewController: UIViewController {
 
                 NSLog(error.description)
                 let alert = UIAlertController(title: nil, message: "Unable to sign in, try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)                
         }
     }
