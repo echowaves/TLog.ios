@@ -22,4 +22,9 @@ class EmployeesViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func addNewEmployeeButtonClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
+        }
+    }
 }

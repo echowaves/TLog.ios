@@ -69,7 +69,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="sign up" id="EOy-3U-uJi">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="Sjp-sL-Egc">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="Sjp-sL-Egc">
                                             <connections>
                                                 <action selector="backButtonClicked:" destination="PaN-TY-Dqp" id="4ry-Mz-PCE"/>
                                             </connections>
@@ -144,22 +144,6 @@
                                     <action selector="reportsButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="vgv-Sc-5ST"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQV-ZA-bIm">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="CI7-Nf-D3s"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Pir-Cr-W6x"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="main menu" id="m57-cN-6LR">
-                                        <barButtonItem key="leftBarButtonItem" title="sign out" id="SFC-YP-7Wj">
-                                            <connections>
-                                                <action selector="signOutButtonClicked:" destination="1q4-GU-2Ou" id="fk7-Lh-Fhy"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0M-Dy-FHL">
                                 <rect key="frame" x="20" y="72" width="560" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,6 +164,22 @@
                                     <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="sPt-ET-ii0"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQV-ZA-bIm">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CI7-Nf-D3s"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Pir-Cr-W6x"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="main menu" id="m57-cN-6LR">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; sign out" id="SFC-YP-7Wj">
+                                            <connections>
+                                                <action selector="signOutButtonClicked:" destination="1q4-GU-2Ou" id="fk7-Lh-Fhy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -327,7 +327,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="my employees" id="r05-qb-cZu">
-                                        <barButtonItem key="leftBarButtonItem" title="menu" id="WOb-S7-sOu">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; menu" id="WOb-S7-sOu">
                                             <connections>
                                                 <action selector="menuButtonClicked:" destination="COU-X0-9AK" id="Voi-IL-tFu"/>
                                             </connections>
@@ -352,7 +352,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="y5x-g1-YnH"/>
+                                    <action selector="addNewEmployeeButtonClicked:" destination="COU-X0-9AK" eventType="touchUpInside" id="rMz-IQ-4bI"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
@@ -398,7 +398,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="my reports" id="ZCz-QE-8ng">
-                                        <barButtonItem key="leftBarButtonItem" title="menu" id="stQ-db-W9e">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; menu" id="stQ-db-W9e">
                                             <connections>
                                                 <action selector="menuButtonClicked:" destination="v4n-p4-k1T" id="DEu-70-21G"/>
                                             </connections>
@@ -451,7 +451,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="employee details" id="K4B-ng-Lut">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="L5p-sS-cHk">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="L5p-sS-cHk">
                                             <connections>
                                                 <action selector="menuButtonClicked:" destination="lxf-Rd-VB5" id="FuM-M6-WRN"/>
                                             </connections>
@@ -460,10 +460,10 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-Sj-Sa3">
-                                <rect key="frame" x="20" y="188" width="560" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="246" width="560" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="QV5-lF-fNE"/>
+                                    <constraint firstAttribute="height" constant="50" id="t7F-Wo-c0l"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="activate">
@@ -476,7 +476,28 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="IIe-oP-3Lv"/>
+                                    <action selector="activateButtonClicked:" destination="lxf-Rd-VB5" eventType="touchUpInside" id="SW5-iJ-Kr5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYg-Ng-dzK">
+                                <rect key="frame" x="20" y="188" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="omO-S0-179"/>
+                                    <constraint firstAttribute="height" constant="50" id="wzK-Mq-3kR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="save">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="lxf-Rd-VB5" eventType="touchUpInside" id="cTd-Cu-j4B"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="wIe-UC-xYN">
@@ -496,10 +517,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVf-4u-7WD">
-                                <rect key="frame" x="20" y="246" width="560" height="50"/>
+                                <rect key="frame" x="20" y="304" width="560" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="lue-uS-Iu0"/>
+                                    <constraint firstAttribute="height" constant="50" id="Lpf-vV-d5A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="delete">
@@ -511,30 +532,35 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="employeesButtonClicked:" destination="1q4-GU-2Ou" eventType="touchUpInside" id="tBA-cC-d2b"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BUE-Yg-fEe" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" constant="-20" id="1Yj-2W-a0w"/>
                             <constraint firstItem="6oj-Jn-05b" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="5gI-8m-95w"/>
-                            <constraint firstItem="tVf-4u-7WD" firstAttribute="top" secondItem="Mhh-Sj-Sa3" secondAttribute="bottom" constant="8" id="GlQ-xj-nMj"/>
-                            <constraint firstItem="tVf-4u-7WD" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="Gy4-fF-5DS"/>
-                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="Pg2-oo-Jse"/>
+                            <constraint firstItem="tVf-4u-7WD" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="69e-VH-J1H"/>
+                            <constraint firstItem="VYg-Ng-dzK" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="BKJ-jQ-tuT"/>
+                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="OpQ-hw-1dL"/>
+                            <constraint firstItem="tVf-4u-7WD" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="PRS-4v-3r1"/>
+                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="QIh-oe-OiF"/>
                             <constraint firstItem="wIe-UC-xYN" firstAttribute="top" secondItem="BUE-Yg-fEe" secondAttribute="bottom" constant="8" id="Rrq-Yv-3IC"/>
-                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="8" id="c6G-eS-1Oi"/>
+                            <constraint firstItem="VYg-Ng-dzK" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="ZDI-wT-Oqu"/>
                             <constraint firstItem="wIe-UC-xYN" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="cmB-cY-hxK"/>
                             <constraint firstItem="6oj-Jn-05b" firstAttribute="top" secondItem="wIe-UC-xYN" secondAttribute="bottom" constant="8" id="e6x-iA-879"/>
                             <constraint firstItem="wIe-UC-xYN" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="ihY-Y5-i7X"/>
+                            <constraint firstItem="tVf-4u-7WD" firstAttribute="top" secondItem="Mhh-Sj-Sa3" secondAttribute="bottom" constant="8" id="lpI-Y8-MrV"/>
                             <constraint firstItem="BUE-Yg-fEe" firstAttribute="top" secondItem="ZSW-Ue-ckL" secondAttribute="bottom" id="msl-fe-ONw"/>
+                            <constraint firstItem="VYg-Ng-dzK" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="8" id="nSk-ty-wwC"/>
+                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="top" secondItem="VYg-Ng-dzK" secondAttribute="bottom" constant="8" id="soQ-0l-dVe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BUE-Yg-fEe" secondAttribute="trailing" constant="-20" id="tgz-Qt-v3N"/>
-                            <constraint firstItem="Mhh-Sj-Sa3" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="uve-Hv-xKV"/>
-                            <constraint firstItem="tVf-4u-7WD" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="wpx-sF-DXG"/>
                             <constraint firstItem="6oj-Jn-05b" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="znd-18-SKv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="deleteButtonClicked" destination="tVf-4u-7WD" id="haR-WY-xhW"/>
+                        <outlet property="emailTextField" destination="6oj-Jn-05b" id="2Fq-hm-u0B"/>
+                        <outlet property="nameTextField" destination="wIe-UC-xYN" id="6P9-8y-TET"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wco-Op-cuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

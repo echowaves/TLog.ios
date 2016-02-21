@@ -9,6 +9,11 @@
 import Foundation
 
 class EmployeeDetailsViewController: UIViewController {
+  
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,4 +27,9 @@ class EmployeeDetailsViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func saveButtonClicked(sender: AnyObject) {
+    }
+    @IBAction func activateButtonClicked(sender: AnyObject) {
+    }
+    @IBOutlet weak var deleteButtonClicked: UIButton!
 }
