@@ -69,7 +69,7 @@ class TLUser: NSObject {
         failure:(error: NSError) -> ()) -> () {
             let parameters = ["email": email,
                 "password": password]
-            Alamofire.request(.PUT, "\(TL_HOST)/user" , parameters: parameters, encoding: ParameterEncoding.JSON)
+            Alamofire.request(.POST, "\(TL_HOST)/users" , parameters: parameters, encoding: ParameterEncoding.JSON)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
