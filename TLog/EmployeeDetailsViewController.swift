@@ -63,19 +63,45 @@ class EmployeeDetailsViewController: UIViewController {
         }
         
         if(validationErrors.count == 0) { // no validation errors, proceed
-//            TLUser.signUp(
-//                emailTextField.text!,
-//                password: passwordTextField.text!,
-//                success: { () -> () in
-//                    dispatch_async(dispatch_get_main_queue()){
-//                        self.performSegueWithIdentifier("menuSegue", sender: self)
-//                    }
-//                    
-//                }, failure: { (error) -> () in
-//                    let alert = UIAlertController(title: nil, message: "Unable to sign up, perhaps user with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-//                    self.presentViewController(alert, animated: true, completion: nil)
-//            })
+            // have to create a new one
+            if(employee == nil) {
+                TLEmployee.create(
+                    nameTextField.text!,
+                    email: emailTextField.text!,
+                    success: { (employeeId: Int) -> () in
+                        self.activateButton.hidden = false
+                        self.deleteButton.hidden = false
+                        
+                        self.employee = TLEmployee(id: employeeId,name: self.nameTextField.text!, email: self.emailTextField.text!)
+                        
+                        let alert = UIAlertController(title: nil, message: "Employee successfully created.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+ 
+                    }, failure: { (error) -> () in
+                        let alert = UIAlertController(title: nil, message: "Unable to create an employee, perhaps an employee with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                })
+                
+            } else { //saving existing employee
+                TLEmployee.update(
+                    (employee?.id)!,
+                    name: nameTextField.text!,
+                    email: emailTextField.text!,
+                    success: { () -> () in
+                        let alert = UIAlertController(title: nil, message: "Employee successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+
+                        
+                    }, failure: { (error) -> () in
+                        let alert = UIAlertController(title: nil, message: "Error, perhaps an employee with the same email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                })
+
+            }
             
         } else { //there are validation errors, let's output them
             var errorString = ""

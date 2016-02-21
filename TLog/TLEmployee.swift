@@ -11,13 +11,21 @@ import Alamofire
 
 class TLEmployee: NSObject {
 
+    init(id: Int, name:String, email:String) {
+        self.id = id
+        self.name = name
+        self.email = email
+    }
+    
+    
+    var id: Int?
     var name:String?
     var email:String?
     
-    class func save(
+    class func create(
         name: String,
         email: String,
-        success:() -> (),
+        success:(employeeId: Int) -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
@@ -29,7 +37,7 @@ class TLEmployee: NSObject {
                 .responseJSON { response in
                     switch response.result {
                     case .Success:
-                        success();
+                        success(employeeId: response.result.value!["id"] as! Int);
                     case .Failure(let error):
                         NSLog(error.description)
                         failure(error: error)
@@ -38,7 +46,7 @@ class TLEmployee: NSObject {
     }
 
     class func update(
-        employee_id: String,
+        employeeId: Int,
         name: String,
         email: String,
         success:() -> (),
@@ -48,7 +56,7 @@ class TLEmployee: NSObject {
                 "Content-Type": "application/json"
             ]
             let parameters = ["name": name, "email": email]
-            Alamofire.request(.PUT, "\(TL_HOST)/employees/\(employee_id)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+            Alamofire.request(.PUT, "\(TL_HOST)/employees/\(employeeId)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
