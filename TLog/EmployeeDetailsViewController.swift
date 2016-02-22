@@ -35,6 +35,11 @@ class EmployeeDetailsViewController: UIViewController {
         } else {
             activateButton.hidden = false
             deleteButton.hidden = false
+            if(employee?.activationCode == nil) {
+                self.activateButton.setTitle("activate", forState: UIControlState.Normal)
+            } else {
+                self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
+            }
         }
     }
     
@@ -117,6 +122,51 @@ class EmployeeDetailsViewController: UIViewController {
 
     
     @IBAction func activateButtonClicked(sender: AnyObject) {
+        if(self.employee?.activationCode == nil) {
+            TLEmployee.activate(
+                (self.employee?.id)!,
+                success: { (activationCode:String) -> () in
+                    let alert = UIAlertController(title: nil, message: "Employee successfuly activated.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                        alert2 in
+                        self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
+                        self.employee?.activationCode = activationCode
+                        NSLog("new activation code: \(activationCode)")
+                        })
+                    self.presentViewController(alert, animated: true, completion: nil)
+                },
+                failure: { (error) -> () in
+                    let alert = UIAlertController(title: nil, message: "Error activating employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+            })
+            
+            
+            self.activateButton.setTitle("activate", forState: UIControlState.Normal)
+        } else {
+            
+            TLEmployee.deactivate(
+                (self.employee?.id)!,
+                success: { () -> () in
+                    let alert = UIAlertController(title: nil, message: "Employee successfuly deactivated.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                        alert2 in
+                        self.activateButton.setTitle("activate", forState: UIControlState.Normal)
+                        self.employee?.activationCode = nil
+                        })
+                    self.presentViewController(alert, animated: true, completion: nil)
+                },
+                failure: { (error) -> () in
+                    let alert = UIAlertController(title: nil, message: "Error deactivating employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+            })
+
+            
+            self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
+        }
     }
 
     
@@ -146,7 +196,7 @@ class EmployeeDetailsViewController: UIViewController {
 
             })
             
-            })
+        })
 
         
         
