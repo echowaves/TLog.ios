@@ -62,12 +62,25 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let employee = self.employees[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCellIdentifier") as? EmployeeTableViewCell!
+        cell!.nameLabel?.text = employee.name
+        cell!.emailLabel?.text = employee.email
+        
+        return cell!
+        
+
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
 
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        self.tableView.contentInset = UIEdgeInsetsMake(0,100,0,0)
+    }
     
 }

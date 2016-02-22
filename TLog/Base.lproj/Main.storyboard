@@ -355,30 +355,30 @@
                                     <action selector="addNewEmployeeButtonClicked:" destination="COU-X0-9AK" eventType="touchUpInside" id="rMz-IQ-4bI"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
                                 <rect key="frame" x="0.0" y="64" width="600" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmployeeTableViewCellIdentifier" id="v2f-b4-ZZ2" customClass="EmployeeTableViewCell" customModule="TLog" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmployeeTableViewCellIdentifier" rowHeight="65" id="v2f-b4-ZZ2" customClass="EmployeeTableViewCell" customModule="TLog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2f-b4-ZZ2" id="oqT-21-SoH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUU-zd-TmQ">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="cnV-Vo-fOf"/>
+                                                        <constraint firstAttribute="height" constant="25" id="FFb-6f-LZP"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtQ-04-6Ss">
-                                                    <rect key="frame" x="8" y="14" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="22" width="584" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="ZNK-w1-zEe"/>
+                                                        <constraint firstAttribute="height" constant="21" id="UzA-bi-FXW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -386,12 +386,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="60Z-f8-hWC"/>
-                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="Bkp-8T-vBZ"/>
-                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="JcY-wf-Iyb"/>
-                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="Tqz-1k-aHg"/>
-                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="-8" id="bNz-f4-fZG"/>
-                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="6" id="gFI-yo-tXX"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="DvC-nc-zoF"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="14" id="NtX-h0-ydy"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="RyR-1m-3HE"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="ar8-Fu-ODe"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="-8" id="iYu-gN-ZSJ"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="nUD-Vl-MVg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
