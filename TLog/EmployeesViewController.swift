@@ -11,9 +11,27 @@ import Foundation
 class EmployeesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var activeInactiveSegmentedControl: UISegmentedControl!
+    @IBAction func activeInactiveChanged(sender: UISegmentedControl) {
+        switch activeInactiveSegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            self.employees = self.activeEmployees
+        case 1:
+            self.employees = self.inactiveEmployees
+        default:
+            break; 
+        }
+        self.tableView.reloadData()
+        self.tableView.reloadInputViews()
+        
+    }
+
     @IBOutlet weak var tableView: UITableView!
     
     var employees:[TLEmployee] = []
+    var activeEmployees:[TLEmployee] = []
+    var inactiveEmployees:[TLEmployee] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +46,10 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func loadEmployees() {
-        TLEmployee.loadAll({ (employees) -> () in
-                self.employees = employees
+        TLEmployee.loadAll({ (activeEmployees, inactiveEmployees) -> () in
+                self.activeEmployees = activeEmployees
+                self.inactiveEmployees = inactiveEmployees
+                self.employees = self.activeEmployees
                 self.tableView.reloadData()
                 self.tableView.reloadInputViews()            
             }) { (error) -> () in
@@ -67,10 +87,6 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCellIdentifier") as? EmployeeTableViewCell!
         cell!.nameLabel?.text = employee.name
         cell!.emailLabel?.text = employee.email
-
-        if (employee.activationCode == nil) {
-            cell!.backgroundColor = .grayColor()
-        }
         
         return cell!
         

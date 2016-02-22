@@ -138,7 +138,7 @@ class TLEmployee: NSObject {
 
     
     class func loadAll(
-        success:(employees: [TLEmployee]) -> (),
+        success:(activeEmployees: [TLEmployee], inactiveEmployees: [TLEmployee]) -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
@@ -152,7 +152,8 @@ class TLEmployee: NSObject {
                         
                         let json = JSON(data: response.data!)["results"]
                         
-                        var employees: [TLEmployee] = [TLEmployee]()
+                        var activeEmployees: [TLEmployee] = [TLEmployee]()
+                        var inactiveEmployees: [TLEmployee] = [TLEmployee]()
                         
                         for (_,jsonEmployee):(String, JSON) in json {
                             let employee =
@@ -162,12 +163,15 @@ class TLEmployee: NSObject {
                                     email: jsonEmployee["email"].stringValue)
                             if(jsonEmployee["activation_code"] != nil) {
                                 employee.activationCode = jsonEmployee["activation_code"].stringValue
+                                activeEmployees.append(employee)
+                            } else {
+                                inactiveEmployees.append(employee)
                             }
                             
-                            employees.append(employee)
+
                         }
                         
-                        success(employees: employees);
+                        success(activeEmployees: activeEmployees, inactiveEmployees: inactiveEmployees);
                     case .Failure(let error):
                         NSLog(error.description)
                         failure(error: error)

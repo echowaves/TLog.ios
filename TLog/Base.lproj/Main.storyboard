@@ -356,7 +356,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
-                                <rect key="frame" x="0.0" y="64" width="600" height="470"/>
+                                <rect key="frame" x="0.0" y="107" width="600" height="427"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmployeeTableViewCellIdentifier" rowHeight="65" id="v2f-b4-ZZ2" customClass="EmployeeTableViewCell" customModule="TLog" customModuleProvider="target">
@@ -401,22 +401,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6cA-jq-7rX">
+                                <rect key="frame" x="239" y="71" width="123" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="U12-dO-APH"/>
+                                    <constraint firstAttribute="width" constant="123" id="zXI-sh-f6k"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="active"/>
+                                    <segment title="inactive"/>
+                                </segments>
+                                <connections>
+                                    <action selector="activeInactiveChanged:" destination="COU-X0-9AK" eventType="valueChanged" id="AkE-f3-ne3"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="QkR-zp-tTj" firstAttribute="top" secondItem="anL-Ik-Bew" secondAttribute="bottom" id="3NJ-0V-ZkD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QkR-zp-tTj" secondAttribute="trailing" constant="-20" id="NeO-BS-GS3"/>
-                            <constraint firstItem="QkR-zp-tTj" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="Nhf-DI-fam"/>
-                            <constraint firstItem="11S-QU-QB6" firstAttribute="top" secondItem="QkR-zp-tTj" secondAttribute="bottom" constant="8" id="OZ1-1w-8Cl"/>
+                            <constraint firstItem="6cA-jq-7rX" firstAttribute="top" secondItem="anL-Ik-Bew" secondAttribute="bottom" constant="7" id="8IC-8O-2tT"/>
+                            <constraint firstItem="QkR-zp-tTj" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="EoP-Jz-5yU"/>
+                            <constraint firstItem="11S-QU-QB6" firstAttribute="top" secondItem="QkR-zp-tTj" secondAttribute="bottom" constant="8" id="Npj-QP-2qY"/>
                             <constraint firstItem="11S-QU-QB6" firstAttribute="trailing" secondItem="yXY-9v-A3Y" secondAttribute="trailingMargin" id="UvU-dl-S1l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QkR-zp-tTj" secondAttribute="trailing" constant="-20" id="YFx-e0-SJW"/>
                             <constraint firstItem="11S-QU-QB6" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" id="Zl5-BK-aGf"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="top" secondItem="P0Y-Od-ZER" secondAttribute="bottom" id="beg-JO-si2"/>
                             <constraint firstItem="bVj-WH-fyj" firstAttribute="top" secondItem="11S-QU-QB6" secondAttribute="bottom" constant="8" id="bqW-Eh-iyE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="anL-Ik-Bew" secondAttribute="trailing" constant="-20" id="hWe-Fr-aZi"/>
+                            <constraint firstItem="QkR-zp-tTj" firstAttribute="top" secondItem="6cA-jq-7rX" secondAttribute="bottom" constant="8" id="iFw-zH-dSd"/>
+                            <constraint firstItem="6cA-jq-7rX" firstAttribute="centerX" secondItem="yXY-9v-A3Y" secondAttribute="centerX" id="koo-s2-rJd"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="xMz-O6-6pH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activeInactiveSegmentedControl" destination="6cA-jq-7rX" id="mym-51-j6b"/>
                         <outlet property="tableView" destination="QkR-zp-tTj" id="htE-Sg-qtA"/>
                         <segue destination="lxf-Rd-VB5" kind="show" identifier="employeeDetailsSegue" id="odX-B7-YAH"/>
                     </connections>
