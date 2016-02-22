@@ -13,6 +13,10 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var activeInactiveSegmentedControl: UISegmentedControl!
     @IBAction func activeInactiveChanged(sender: UISegmentedControl) {
+            self.filterActiveInactive()
+    }
+
+    func filterActiveInactive() {
         switch activeInactiveSegmentedControl.selectedSegmentIndex
         {
         case 0:
@@ -20,18 +24,19 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         case 1:
             self.employees = self.inactiveEmployees
         default:
-            break; 
+            break;
         }
         self.tableView.reloadData()
         self.tableView.reloadInputViews()
-        
     }
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var employees:[TLEmployee] = []
     var activeEmployees:[TLEmployee] = []
     var inactiveEmployees:[TLEmployee] = []
+
+    var selectedEmployee: TLEmployee!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +54,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         TLEmployee.loadAll({ (activeEmployees, inactiveEmployees) -> () in
                 self.activeEmployees = activeEmployees
                 self.inactiveEmployees = inactiveEmployees
-                self.employees = self.activeEmployees
-                self.tableView.reloadData()
-                self.tableView.reloadInputViews()            
+                self.filterActiveInactive()
             }) { (error) -> () in
                 let alert = UIAlertController(title: nil, message: "Error loading employees. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -94,9 +97,26 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedEmployee = self.employees[indexPath.row]
+        
+        
+        // Let's assume that the segue name is called playerSegue
+        // This will perform the segue and pre-load the variable for you to use
+
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
+        }
         
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "employeeDetailsSegue") {
+            let destViewController = segue.destinationViewController as! EmployeeDetailsViewController
+            destViewController.employee = self.selectedEmployee
+            self.selectedEmployee = nil
+        }
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

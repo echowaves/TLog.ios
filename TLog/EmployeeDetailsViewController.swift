@@ -25,6 +25,10 @@ class EmployeeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.becomeFirstResponder()
+        if(self.employee != nil) {
+            self.nameTextField.text = employee?.name
+            self.emailTextField.text = employee?.email
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
