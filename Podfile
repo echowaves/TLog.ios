@@ -8,5 +8,6 @@ target 'TLog' do
     pod 'KeychainSwift', '~> 3.0.11'
     pod 'Alamofire', '~> 3.2.0'
     pod 'SwiftValidators', '~> 2.0.4'
+    pod 'SwiftyJSON', '~> 2.3.2'
 end
 

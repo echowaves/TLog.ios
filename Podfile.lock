@@ -3,17 +3,20 @@ PODS:
   - KeychainSwift (3.0.11)
   - Localytics (3.7.0)
   - SwiftValidators (2.0.4)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.2.0)
   - KeychainSwift (~> 3.0.11)
   - Localytics (~> 3.7)
   - SwiftValidators (~> 2.0.4)
+  - SwiftyJSON (~> 2.3.2)
 
 SPEC CHECKSUMS:
   Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
   KeychainSwift: 0a4214c910423543a42b0f30f25987d46178b6a5
   Localytics: 87e54851db13da8750f6a82d49b23e843cadf358
   SwiftValidators: 674e82936f539f9397e6eded90b0c142b95b14d2
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

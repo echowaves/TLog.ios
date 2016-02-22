@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class TLEmployee: NSObject {
 
-    init(id: Int, name:String, email:String) {
+    init(id: Int, name:String, email:String, activateionCode: String? = nil) {
         self.id = id
         self.name = name
         self.email = email
@@ -128,6 +129,37 @@ class TLEmployee: NSObject {
                     switch response.result {
                     case .Success:
                         success();
+                    case .Failure(let error):
+                        NSLog(error.description)
+                        failure(error: error)
+                    }
+            }
+    }
+
+    
+    class func loadAll(
+        success:(employees: [TLEmployee]) -> (),
+        failure:(error: NSError) -> ()) -> () {
+            let headers = [
+                "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+                "Content-Type": "application/json"
+            ]
+            Alamofire.request(.GET, "\(TL_HOST)/employees" , encoding: ParameterEncoding.JSON, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                    case .Success:
+                        
+                        let json = JSON(data: response.data!)["results"]
+                        
+                        var employees: [TLEmployee] = [TLEmployee]()
+                        
+                        for (_,jsonEmployee):(String, JSON) in json {
+                            let employee = TLEmployee(id: jsonEmployee["id"].intValue, name: jsonEmployee["name"].stringValue, email: jsonEmployee["email"].stringValue, activateionCode: jsonEmployee["activation_code"].stringValue)
+                            employees.append(employee)
+                        }
+                        
+                        success(employees: employees);
                     case .Failure(let error):
                         NSLog(error.description)
                         failure(error: error)

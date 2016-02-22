@@ -355,13 +355,59 @@
                                     <action selector="addNewEmployeeButtonClicked:" destination="COU-X0-9AK" eventType="touchUpInside" id="rMz-IQ-4bI"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-zp-tTj">
                                 <rect key="frame" x="0.0" y="64" width="600" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmployeeTableViewCellIdentifier" id="v2f-b4-ZZ2" customClass="EmployeeTableViewCell" customModule="TLog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2f-b4-ZZ2" id="oqT-21-SoH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUU-zd-TmQ">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="cnV-Vo-fOf"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtQ-04-6Ss">
+                                                    <rect key="frame" x="8" y="14" width="584" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="ZNK-w1-zEe"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="60Z-f8-hWC"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="Bkp-8T-vBZ"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="JcY-wf-Iyb"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="Tqz-1k-aHg"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="-8" id="bNz-f4-fZG"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="6" id="gFI-yo-tXX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="emailLabel" destination="PtQ-04-6Ss" id="Wkc-0i-Bs7"/>
+                                            <outlet property="nameLabel" destination="RUU-zd-TmQ" id="wBu-Dm-LIH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="QkR-zp-tTj" firstAttribute="top" secondItem="anL-Ik-Bew" secondAttribute="bottom" id="3NJ-0V-ZkD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QkR-zp-tTj" secondAttribute="trailing" constant="-20" id="NeO-BS-GS3"/>
+                            <constraint firstItem="QkR-zp-tTj" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="Nhf-DI-fam"/>
+                            <constraint firstItem="11S-QU-QB6" firstAttribute="top" secondItem="QkR-zp-tTj" secondAttribute="bottom" constant="8" id="OZ1-1w-8Cl"/>
                             <constraint firstItem="11S-QU-QB6" firstAttribute="trailing" secondItem="yXY-9v-A3Y" secondAttribute="trailingMargin" id="UvU-dl-S1l"/>
                             <constraint firstItem="11S-QU-QB6" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" id="Zl5-BK-aGf"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="top" secondItem="P0Y-Od-ZER" secondAttribute="bottom" id="beg-JO-si2"/>
@@ -371,6 +417,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="QkR-zp-tTj" id="htE-Sg-qtA"/>
                         <segue destination="lxf-Rd-VB5" kind="show" identifier="employeeDetailsSegue" id="odX-B7-YAH"/>
                     </connections>
                 </viewController>
