@@ -67,6 +67,10 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCellIdentifier") as? EmployeeTableViewCell!
         cell!.nameLabel?.text = employee.name
         cell!.emailLabel?.text = employee.email
+
+        if (employee.activationCode == nil) {
+            cell!.backgroundColor = .grayColor()
+        }
         
         return cell!
         

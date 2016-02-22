@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class TLEmployee: NSObject {
 
-    init(id: Int, name:String, email:String, activateionCode: String? = nil) {
+    init(id: Int, name:String, email:String) {
         self.id = id
         self.name = name
         self.email = email
@@ -155,7 +155,15 @@ class TLEmployee: NSObject {
                         var employees: [TLEmployee] = [TLEmployee]()
                         
                         for (_,jsonEmployee):(String, JSON) in json {
-                            let employee = TLEmployee(id: jsonEmployee["id"].intValue, name: jsonEmployee["name"].stringValue, email: jsonEmployee["email"].stringValue, activateionCode: jsonEmployee["activation_code"].stringValue)
+                            let employee =
+                                TLEmployee(
+                                    id: jsonEmployee["id"].intValue,
+                                    name: jsonEmployee["name"].stringValue,
+                                    email: jsonEmployee["email"].stringValue)
+                            if(jsonEmployee["activation_code"] != nil) {
+                                employee.activationCode = jsonEmployee["activation_code"].stringValue
+                            }
+                            
                             employees.append(employee)
                         }
                         
