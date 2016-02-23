@@ -8,8 +8,9 @@
 
 import Foundation
 import SwiftValidators
+import MessageUI
 
-class EmployeeDetailsViewController: UIViewController {
+class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var employee:TLEmployee?
     
     
@@ -130,20 +131,27 @@ class EmployeeDetailsViewController: UIViewController {
             TLEmployee.activate(
                 (self.employee?.id)!,
                 success: { (activationCode:String) -> () in
-                    let alert = UIAlertController(title: nil, message: "Employee successfuly activated.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-                        alert2 in
-                        self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
-                        self.employee?.activationCode = activationCode
-                        NSLog("new activation code: \(activationCode)")
-                        })
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
+                    self.employee?.activationCode = activationCode
+                    NSLog("new activation code: \(activationCode)")
+                    NSLog("activation link: \(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)")
+                    
+                    // Create email message
+                    let emailController = MFMailComposeViewController()
+                    emailController.mailComposeDelegate = self
+
+                    if MFMailComposeViewController.canSendMail() {
+                        emailController.setToRecipients(["\(self.emailTextField.text!)"])
+                        emailController.setSubject("TLog actvation code")
+                        emailController.setMessageBody("On your mobile device click the following link to be able to access your personal Trade Log: \(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)", isHTML: false) // or true, if you prefer
+                        self.presentViewController(emailController, animated: true, completion: nil)
+                    }
                 },
                 failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Error activating employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
-                    
             })
             
             
@@ -201,10 +209,11 @@ class EmployeeDetailsViewController: UIViewController {
             })
             
         })
-
-        
-        
         self.presentViewController(alert, animated: true, completion: nil)
-        
+    }
+    
+    // MailComposerDelegate requirement
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -442,6 +442,49 @@
             </objects>
             <point key="canvasLocation" x="2603" y="374"/>
         </scene>
+        <!--Employee Home View Controller-->
+        <scene sceneID="xai-A4-nq1">
+            <objects>
+                <viewController storyboardIdentifier="EmployeeHomeViewController" id="hfo-OP-A8X" customClass="EmployeeHomeViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="upu-6y-OOe"/>
+                        <viewControllerLayoutGuide type="bottom" id="4jc-sf-lrS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mVX-Cx-Laf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pO2-Va-pUp">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="boy-B1-dQL"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Employee Name" id="sld-ez-8Sf">
+                                        <barButtonItem key="leftBarButtonItem" id="fA0-ww-H9k">
+                                            <connections>
+                                                <action selector="menuButtonClicked:" destination="v4n-p4-k1T" id="x4p-Li-c9m"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71372549019607845" green="0.84313725490196079" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pO2-Va-pUp" secondAttribute="trailing" constant="-20" id="9xk-sY-gaz"/>
+                            <constraint firstItem="pO2-Va-pUp" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" constant="-20" id="USw-M5-bDt"/>
+                            <constraint firstItem="pO2-Va-pUp" firstAttribute="top" secondItem="upu-6y-OOe" secondAttribute="bottom" id="Zzz-ro-LKD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navBar" destination="pO2-Va-pUp" id="XIZ-9T-GMJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DwG-XK-ImI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757" y="2124"/>
+        </scene>
         <!--Reports View Controller-->
         <scene sceneID="bUv-5x-UeZ">
             <objects>
