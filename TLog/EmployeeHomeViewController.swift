@@ -11,6 +11,11 @@ import Foundation
 class EmployeeHomeViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     
+    @IBAction func signOutButtonClicked(sender: AnyObject) {
+        TLUser.clearActivationCodeFromLocalStorage()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,6 +23,6 @@ class EmployeeHomeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
-        
+    
     
 }

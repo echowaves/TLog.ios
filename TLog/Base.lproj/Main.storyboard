@@ -301,6 +301,7 @@
                         <outlet property="passwordTextField" destination="3Cl-32-jRU" id="zfT-4W-k8U"/>
                         <segue destination="PaN-TY-Dqp" kind="show" identifier="signUpSegue" id="cDQ-FW-MOt"/>
                         <segue destination="1q4-GU-2Ou" kind="show" identifier="menuSegue" id="Fi9-HA-xET"/>
+                        <segue destination="hfo-OP-A8X" kind="show" identifier="employeeHomeSegue" id="s7N-6Y-9No"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNE-sA-Mbt" sceneMemberID="firstResponder"/>
@@ -461,9 +462,9 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Employee Name" id="sld-ez-8Sf">
-                                        <barButtonItem key="leftBarButtonItem" id="fA0-ww-H9k">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; sign out" id="fA0-ww-H9k">
                                             <connections>
-                                                <action selector="menuButtonClicked:" destination="v4n-p4-k1T" id="x4p-Li-c9m"/>
+                                                <action selector="signOutButtonClicked:" destination="hfo-OP-A8X" id="j3k-74-VuQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -483,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DwG-XK-ImI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="2124"/>
+            <point key="canvasLocation" x="310" y="2449"/>
         </scene>
         <!--Reports View Controller-->
         <scene sceneID="bUv-5x-UeZ">
