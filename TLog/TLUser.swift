@@ -14,6 +14,7 @@ import Alamofire
 class TLUser: NSObject {
     
     static let JTW_KEY:String = "TTLogJWT";
+    static let ACTIVATION_CODE_KEY:String = "TTLogActivationCode";
     
     class func storeJwtLocally(jwt:String)  -> () {
         let keychain = KeychainSwift()
@@ -29,7 +30,22 @@ class TLUser: NSObject {
         let keychain = KeychainSwift()
         keychain.delete(TLUser.JTW_KEY)
     }
+
+    class func storeActivationCodeLocally(activationCode:String)  -> () {
+        let keychain = KeychainSwift()
+        keychain.set(activationCode, forKey: TLUser.ACTIVATION_CODE_KEY)
+    }
     
+    class func retreiveActivationCodeFromLocalStorage()  -> (String!) {
+        let keychain = KeychainSwift()
+        return keychain.get(TLUser.ACTIVATION_CODE_KEY)
+    }
+    
+    class func clearActivationCodeFromLocalStorage()  -> () {
+        let keychain = KeychainSwift()
+        keychain.delete(TLUser.ACTIVATION_CODE_KEY)
+    }
+
     
     
     class func signIn(

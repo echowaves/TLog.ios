@@ -49,7 +49,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    //handling deeplinking
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        NSLog("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< url: \(url.description)")
+        
+        //lets parse query string params and extract token
+        let params = NSMutableDictionary()
+        for param in url.query!.componentsSeparatedByString("&") {
+            let elts = param.componentsSeparatedByString("=")
+            if elts.count < 2 {
+                continue
+            }
+            params.setObject(elts[1], forKey: elts[0])
+        }
+        
+        let activation_code = params.valueForKey("activation_code") as! String
+        
+        return true
+    }
 
+    
+    
 }
 
 //http://www.absoluteripple.com/resources/using-ios-storyboard-segues
