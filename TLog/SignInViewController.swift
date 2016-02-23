@@ -29,18 +29,18 @@ class SignInViewController: UIViewController {
             }
             
         } else {
-        
-        //auto sign in
-        if(TLUser.retreiveJwtFromLocalStorage() != nil) {
-            dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("menuSegue", sender: self)
+            
+            //auto sign in
+            if(TLUser.retreiveJwtFromLocalStorage() != nil) {
+                dispatch_async(dispatch_get_main_queue()){
+                    self.performSegueWithIdentifier("menuSegue", sender: self)
+                }
             }
         }
-        }
     }
-
-
-    @IBAction func signUpButtonClicked(sender: AnyObject) {        
+    
+    
+    @IBAction func signUpButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
             self.performSegueWithIdentifier("signUpSegue", sender: self)
         }
@@ -59,15 +59,15 @@ class SignInViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue()){
                     self.performSegueWithIdentifier("menuSegue", sender: self)
                 }
-
+                
                 
             }) { (error) -> () in
                 NSLog("failed to authenticate")
-
+                
                 NSLog(error.description)
                 let alert = UIAlertController(title: nil, message: "Unable to sign in, try again.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)                
+                self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
