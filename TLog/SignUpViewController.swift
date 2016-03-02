@@ -51,10 +51,8 @@ class SignUpViewController: UIViewController {
 
         
         if(validationErrors.count == 0) { // no validation errors, proceed
-            TLUser.signUp(
-                emailTextField.text!,
-                password: passwordTextField.text!,
-                success: { () -> () in
+            TLUser(id: nil, email: emailTextField.text!, password: passwordTextField.text!).signUp(
+                { () -> () in
                     dispatch_async(dispatch_get_main_queue()){
                         self.performSegueWithIdentifier("menuSegue", sender: self)
                     }

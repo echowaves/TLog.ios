@@ -48,11 +48,8 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInButtonClicked(sender: AnyObject) {
-        
-        TLUser.signIn(
-            emailTextField.text!,
-            password: passwordTextField.text!,
-            success: { () -> () in
+        TLUser(id: nil, email: emailTextField.text!, password: passwordTextField.text!).signIn(
+            { () -> () in
                 NSLog("authenticated")
                 
                 

@@ -11,17 +11,17 @@ import Alamofire
 import SwiftyJSON
 
 class TLEmployee: NSObject {
-
+    var id: Int?
+    var name:String?
+    var email:String?
+    var activationCode:String?
+    
     init(id: Int!, name:String!, email:String!) {
         self.id = id
         self.name = name
         self.email = email
     }
     
-    var id: Int?
-    var name:String?
-    var email:String?
-    var activationCode:String?
     
     func create(
         success:(employeeId: Int) -> (),
@@ -44,8 +44,8 @@ class TLEmployee: NSObject {
                     }
             }
     }
-
-     func update(
+    
+    func update(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
@@ -65,8 +65,8 @@ class TLEmployee: NSObject {
                     }
             }
     }
-
-
+    
+    
     func delete(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
@@ -87,7 +87,7 @@ class TLEmployee: NSObject {
                     }
             }
     }
-
+    
     
     func activate(
         success:(activationCode: String) -> (),
@@ -108,7 +108,7 @@ class TLEmployee: NSObject {
                     }
             }
     }
-
+    
     
     func deactivate(
         success:() -> (),
@@ -129,7 +129,7 @@ class TLEmployee: NSObject {
                     }
             }
     }
-
+    
     
     class func loadAll(
         success:(activeEmployees: [TLEmployee], inactiveEmployees: [TLEmployee]) -> (),
@@ -151,10 +151,10 @@ class TLEmployee: NSObject {
                         
                         for (_,jsonEmployee):(String, JSON) in json {
                             let employee =
-                                TLEmployee(
-                                    id: jsonEmployee["id"].intValue,
-                                    name: jsonEmployee["name"].stringValue,
-                                    email: jsonEmployee["email"].stringValue)
+                            TLEmployee(
+                                id: jsonEmployee["id"].intValue,
+                                name: jsonEmployee["name"].stringValue,
+                                email: jsonEmployee["email"].stringValue)
                             if(jsonEmployee["activation_code"] != nil) {
                                 employee.activationCode = jsonEmployee["activation_code"].stringValue
                                 activeEmployees.append(employee)
@@ -162,7 +162,7 @@ class TLEmployee: NSObject {
                                 inactiveEmployees.append(employee)
                             }
                             
-
+                            
                         }
                         
                         success(activeEmployees: activeEmployees, inactiveEmployees: inactiveEmployees);
@@ -172,5 +172,5 @@ class TLEmployee: NSObject {
                     }
             }
     }
-
+    
 }
