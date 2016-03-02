@@ -24,8 +24,6 @@ class TLEmployee: NSObject {
     var activationCode:String?
     
     func create(
-//        name: String,
-//        email: String,
         success:(employeeId: Int) -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
@@ -48,9 +46,6 @@ class TLEmployee: NSObject {
     }
 
      func update(
-//        employeeId: Int,
-//        name: String,
-//        email: String,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
@@ -72,19 +67,19 @@ class TLEmployee: NSObject {
     }
 
 
-    class func delete(
-        employeeId: Int,
+    func delete(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            Alamofire.request(.DELETE, "\(TL_HOST)/employees/\(employeeId)" , encoding: ParameterEncoding.JSON, headers: headers)
+            Alamofire.request(.DELETE, "\(TL_HOST)/employees/\(self.id!)" , encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
                     case .Success:
+                        self.id = nil
                         success();
                     case .Failure(let error):
                         NSLog(error.description)
@@ -94,15 +89,14 @@ class TLEmployee: NSObject {
     }
 
     
-    class func activate(
-        employeeId: Int,
+    func activate(
         success:(activationCode: String) -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            Alamofire.request(.POST, "\(TL_HOST)/employees/\(employeeId)/activation" , encoding: ParameterEncoding.JSON, headers: headers)
+            Alamofire.request(.POST, "\(TL_HOST)/employees/\(self.id!)/activation" , encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -116,15 +110,14 @@ class TLEmployee: NSObject {
     }
 
     
-    class func deactivate(
-        employeeId: Int,
+    func deactivate(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            Alamofire.request(.DELETE, "\(TL_HOST)/employees/\(employeeId)/activation" , encoding: ParameterEncoding.JSON, headers: headers)
+            Alamofire.request(.DELETE, "\(TL_HOST)/employees/\(self.id!)/activation" , encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {

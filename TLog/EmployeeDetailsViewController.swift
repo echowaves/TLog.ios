@@ -131,9 +131,8 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     
     @IBAction func activateButtonClicked(sender: AnyObject) {
         if(self.employee?.activationCode == nil) {
-            TLEmployee.activate(
-                (self.employee?.id)!,
-                success: { (activationCode:String) -> () in
+           self.employee!.activate(
+                { (activationCode:String) -> () in
                     
                     self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
                     self.employee?.activationCode = activationCode
@@ -161,9 +160,8 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             self.activateButton.setTitle("activate", forState: UIControlState.Normal)
         } else {
             
-            TLEmployee.deactivate(
-                (self.employee?.id)!,
-                success: { () -> () in
+            self.employee!.deactivate(
+                { () -> () in
                     let alert = UIAlertController(title: nil, message: "Employee successfuly deactivated.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                         alert2 in
@@ -192,9 +190,8 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             alert1 in
             NSLog("OK Pressed")
             
-            TLEmployee.delete(
-                (self.employee?.id)!,
-                success: { () -> () in
+            self.employee!.delete(
+                { () -> () in
                     let alert = UIAlertController(title: nil, message: "Employee successfuly deleted.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                         alert2 in
