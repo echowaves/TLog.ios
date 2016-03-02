@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class TLEmployee: NSObject {
 
-    init(id: Int, name:String, email:String) {
+    init(id: Int!, name:String!, email:String!) {
         self.id = id
         self.name = name
         self.email = email
@@ -23,21 +23,22 @@ class TLEmployee: NSObject {
     var email:String?
     var activationCode:String?
     
-    class func create(
-        name: String,
-        email: String,
+    func create(
+//        name: String,
+//        email: String,
         success:(employeeId: Int) -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            let parameters = ["name": name, "email": email]
+            let parameters = ["name": self.name!, "email": self.email!]
             Alamofire.request(.POST, "\(TL_HOST)/employees" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
                     case .Success:
+                        self.id = response.result.value!["id"] as? Int
                         success(employeeId: response.result.value!["id"] as! Int);
                     case .Failure(let error):
                         NSLog(error.description)
@@ -46,18 +47,18 @@ class TLEmployee: NSObject {
             }
     }
 
-    class func update(
-        employeeId: Int,
-        name: String,
-        email: String,
+     func update(
+//        employeeId: Int,
+//        name: String,
+//        email: String,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
             let headers = [
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            let parameters = ["name": name, "email": email]
-            Alamofire.request(.PUT, "\(TL_HOST)/employees/\(employeeId)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+            let parameters = ["name": self.name!, "email": self.email!]
+            Alamofire.request(.PUT, "\(TL_HOST)/employees/\(self.id!)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {

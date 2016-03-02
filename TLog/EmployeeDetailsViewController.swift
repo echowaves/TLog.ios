@@ -11,7 +11,7 @@ import SwiftValidators
 import MessageUI
 
 class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControllerDelegate {
-    var employee:TLEmployee?
+    var employee:TLEmployee?// this is used as a parameter to be passed from the other controllers
     
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -26,15 +26,19 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.becomeFirstResponder()
-        if(self.employee != nil) {
+        if(self.employee != nil) { // if employee is passed into this controller
             self.nameTextField.text = employee?.name
             self.emailTextField.text = employee?.email
+        } else {
+            // otherwise create a default one
+            self.employee = TLEmployee(id: nil ,name: self.nameTextField.text!, email: self.emailTextField.text!)
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if(employee == nil) {
+
+        if(employee?.id == nil) {
             activateButton.hidden = true
             deleteButton.hidden = true
         } else {
@@ -74,11 +78,11 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         
         if(validationErrors.count == 0) { // no validation errors, proceed
             // have to create a new one
-            if(employee == nil) {
-                TLEmployee.create(
-                    nameTextField.text!,
-                    email: emailTextField.text!,
-                    success: { (employeeId: Int) -> () in
+            if(employee?.id == nil) {
+                employee?.name = nameTextField.text!
+                employee?.email = emailTextField.text!
+                employee!.create(
+                    { (employeeId: Int) -> () in
                         self.activateButton.hidden = false
                         self.deleteButton.hidden = false
                         
@@ -95,11 +99,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                 })
                 
             } else { //saving existing employee
-                TLEmployee.update(
-                    (employee?.id)!,
-                    name: nameTextField.text!,
-                    email: emailTextField.text!,
-                    success: { () -> () in
+                employee?.name = nameTextField.text!
+                employee?.email = emailTextField.text!
+                employee!.update(
+                    { () -> () in
                         let alert = UIAlertController(title: nil, message: "Employee successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)

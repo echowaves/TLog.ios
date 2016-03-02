@@ -18,6 +18,7 @@ class EmployeeHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBar.topItem?.title = "tet"
     }
     
     override func viewWillAppear(animated: Bool) {

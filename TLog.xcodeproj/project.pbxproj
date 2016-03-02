@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
 		0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51A3B21C72379600E83052 /* MenuViewController.swift */; };
 		0A51A3B51C72560300E83052 /* TLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51A3B41C72560300E83052 /* TLUser.swift */; };
 		0A51A3B71C72796400E83052 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A51A3B61C72796400E83052 /* Default-568h@2x.png */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
 		0A51A3B21C72379600E83052 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0A51A3B41C72560300E83052 /* TLUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLUser.swift; sourceTree = "<group>"; };
 		0A51A3B61C72796400E83052 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				0A51A3B41C72560300E83052 /* TLUser.swift */,
 				0A79B8821C7960900050AE57 /* TLEmployee.swift */,
+				0A5169AC1C87597300186D39 /* TLCheckin.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
 				0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */,
+				0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */,
 				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,
 				0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */,
