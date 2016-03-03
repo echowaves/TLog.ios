@@ -8,7 +8,9 @@
 
 import Foundation
 
-class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EmployeeHomeViewController: UIViewController
+//, UITableViewDelegate, UITableViewDataSource
+{
     @IBOutlet weak var navBar: UINavigationBar!
   
     
@@ -21,7 +23,11 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     var activationCode:String = ""
     
     @IBAction func checkinButtonClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("pickActionCodeSegue", sender: self)
+        }
     }
+    
     @IBAction func signOutButtonClicked(sender: AnyObject) {
         TLUser.clearActivationCodeFromLocalStorage()
         self.dismissViewControllerAnimated(true, completion: nil)

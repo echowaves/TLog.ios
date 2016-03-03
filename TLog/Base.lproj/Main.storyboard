@@ -471,13 +471,13 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL3-dZ-vyA">
-                                <rect key="frame" x="206" y="73" width="188" height="50"/>
+                                <rect key="frame" x="248" y="73" width="104" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="7Y4-gP-DQh"/>
-                                    <constraint firstAttribute="width" constant="188" id="l4N-XA-0OZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="3CK-cY-IAT"/>
+                                    <constraint firstAttribute="width" constant="104" id="mbR-4S-8oq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Check In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -491,21 +491,15 @@
                                     <action selector="checkinButtonClicked:" destination="hfo-OP-A8X" eventType="touchUpInside" id="oil-Sf-FTD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
-                                <rect key="frame" x="409" y="73" width="166" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="pyY-If-z4i"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since:  10/20/16 10:00 am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
+                                <rect key="frame" x="360" y="73" width="240" height="37"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPO-E6-9v3">
-                                <rect key="frame" x="409" y="102" width="166" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Dyj-ya-3tz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 3h 16 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPO-E6-9v3">
+                                <rect key="frame" x="360" y="102" width="240" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -513,7 +507,7 @@
                                 <rect key="frame" x="20" y="131" width="560" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hWo-bn-Ys1" customClass="CheckinsTableViewCell" customModule="TLog" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckinsTableViewCell" id="hWo-bn-Ys1" customClass="CheckinsTableViewCell" customModule="TLog" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWo-bn-Ys1" id="DTh-NN-Tn7">
@@ -573,22 +567,23 @@
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019607845" green="0.84313725490196079" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="RKz-H1-urM" secondAttribute="trailing" constant="-20" id="4s0-UG-IBb"/>
+                            <constraint firstItem="RKz-H1-urM" firstAttribute="leading" secondItem="oL3-dZ-vyA" secondAttribute="trailing" constant="8" id="8lg-9T-3Vh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="-20" id="9Rf-cr-NO1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pO2-Va-pUp" secondAttribute="trailing" constant="-20" id="9xk-sY-gaz"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="centerX" secondItem="mVX-Cx-Laf" secondAttribute="centerX" id="BoK-aH-qcX"/>
-                            <constraint firstItem="KPO-E6-9v3" firstAttribute="leading" secondItem="oL3-dZ-vyA" secondAttribute="trailing" constant="15" id="C6x-pH-U6y"/>
-                            <constraint firstItem="KPO-E6-9v3" firstAttribute="top" secondItem="RKz-H1-urM" secondAttribute="bottom" constant="8" id="FFX-Xv-i7W"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="JGc-up-eaC"/>
+                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="RKz-H1-urM" secondAttribute="bottom" constant="21" id="AcP-jU-t54"/>
+                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="KPO-E6-9v3" secondAttribute="bottom" constant="8" id="C1H-GT-67F"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="centerX" secondItem="mVX-Cx-Laf" secondAttribute="centerX" id="N2o-ix-AF1"/>
                             <constraint firstItem="pO2-Va-pUp" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" constant="-20" id="USw-M5-bDt"/>
                             <constraint firstItem="Pta-nq-wLh" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="XZQ-K3-UVN"/>
                             <constraint firstItem="pO2-Va-pUp" firstAttribute="top" secondItem="upu-6y-OOe" secondAttribute="bottom" id="Zzz-ro-LKD"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="oL3-dZ-vyA" secondAttribute="bottom" constant="8" id="bHS-jg-gIX"/>
                             <constraint firstItem="Pta-nq-wLh" firstAttribute="trailing" secondItem="mVX-Cx-Laf" secondAttribute="trailingMargin" id="cDN-py-zF9"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="KPO-E6-9v3" secondAttribute="bottom" constant="8" id="gBP-RY-fF0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="5" id="gBT-Ic-KXj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RKz-H1-urM" secondAttribute="trailing" constant="5" id="is5-cs-H6I"/>
-                            <constraint firstItem="RKz-H1-urM" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="tnx-Ds-GbQ"/>
+                            <constraint firstItem="KPO-E6-9v3" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="38" id="cJb-ge-Bb5"/>
+                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="oL3-dZ-vyA" secondAttribute="bottom" constant="8" id="ew7-Wu-pol"/>
+                            <constraint firstItem="RKz-H1-urM" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="k9m-cG-RET"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="tSC-PL-EAu"/>
+                            <constraint firstItem="KPO-E6-9v3" firstAttribute="leading" secondItem="oL3-dZ-vyA" secondAttribute="trailing" constant="8" id="vU2-4F-Ow9"/>
                             <constraint firstItem="4jc-sf-lrS" firstAttribute="top" secondItem="Pta-nq-wLh" secondAttribute="bottom" constant="8" id="wAt-62-Gl5"/>
-                            <constraint firstItem="RKz-H1-urM" firstAttribute="leading" secondItem="oL3-dZ-vyA" secondAttribute="trailing" constant="15" id="zOV-BS-sAa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -799,7 +794,7 @@
         <!--Pick Action Code View Controller-->
         <scene sceneID="1ME-dp-Pu9">
             <objects>
-                <viewController storyboardIdentifier="EmployeeHomeViewController" id="xj1-Wh-m00" customClass="PickActionCodeViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickActionCodeViewController" id="xj1-Wh-m00" customClass="PickActionCodeViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kgM-cW-aM3"/>
                         <viewControllerLayoutGuide type="bottom" id="StY-EC-Dp7"/>
@@ -817,7 +812,7 @@
                                     <navigationItem title="pick action code" id="ORi-x0-2qg">
                                         <barButtonItem key="leftBarButtonItem" title="&lt; back" id="vzs-8Y-Cse">
                                             <connections>
-                                                <action selector="signOutButtonClicked:" destination="xj1-Wh-m00" id="GFp-2R-QZu"/>
+                                                <action selector="backButtonClicked:" destination="xj1-Wh-m00" id="C8J-F7-IYb"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -831,9 +826,6 @@
                             <constraint firstItem="tzF-0g-sqM" firstAttribute="top" secondItem="kgM-cW-aM3" secondAttribute="bottom" id="Xll-9P-0uu"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="navBar" destination="tzF-0g-sqM" id="Y2W-Fy-7rl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d21-e7-Dt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

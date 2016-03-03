@@ -21,5 +21,9 @@ class PickActionCodeViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    @IBAction func backButtonClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     
 }
