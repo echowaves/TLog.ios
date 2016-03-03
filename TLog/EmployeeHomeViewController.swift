@@ -8,9 +8,20 @@
 
 import Foundation
 
-class EmployeeHomeViewController: UIViewController {
+class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var navBar: UINavigationBar!
+  
     
+    @IBOutlet weak var checkinButton: UIButton!
+    @IBOutlet weak var sinceLabel: UILabel!
+    @IBOutlet weak var duratonLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var activationCode:String = ""
+    
+    @IBAction func checkinButtonClicked(sender: AnyObject) {
+    }
     @IBAction func signOutButtonClicked(sender: AnyObject) {
         TLUser.clearActivationCodeFromLocalStorage()
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -18,6 +29,7 @@ class EmployeeHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activationCode = TLUser.retreiveActivationCodeFromLocalStorage()!
         navBar.topItem?.title = "tet"
     }
     
