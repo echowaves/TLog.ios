@@ -10,6 +10,7 @@
 		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
 		0A5169AF1C87B3AF00186D39 /* CheckinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinsTableViewCell.swift */; };
 		0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */; };
+		0A5169B31C889BD300186D39 /* CheckinDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */; };
 		0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51A3B21C72379600E83052 /* MenuViewController.swift */; };
 		0A51A3B51C72560300E83052 /* TLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51A3B41C72560300E83052 /* TLUser.swift */; };
 		0A51A3B71C72796400E83052 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A51A3B61C72796400E83052 /* Default-568h@2x.png */; };
@@ -32,6 +33,7 @@
 		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
 		0A5169AE1C87B3AF00186D39 /* CheckinsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinsTableViewCell.swift; sourceTree = "<group>"; };
 		0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickActionCodeViewController.swift; sourceTree = "<group>"; };
+		0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinDetailsViewController.swift; sourceTree = "<group>"; };
 		0A51A3B21C72379600E83052 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0A51A3B41C72560300E83052 /* TLUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLUser.swift; sourceTree = "<group>"; };
 		0A51A3B61C72796400E83052 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */,
 				0A5169AE1C87B3AF00186D39 /* CheckinsTableViewCell.swift */,
 				0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */,
+				0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */,
 			);
 			name = Controller.employee;
 			sourceTree = "<group>";
@@ -123,11 +126,11 @@
 		0AC5FAAD1C721C4700ACD363 /* TLog */ = {
 			isa = PBXGroup;
 			children = (
+				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0AC5FAB21C721C4700ACD363 /* Main.storyboard */,
 				0A5228E21C722AC400D64847 /* Controller.user */,
 				0A79B8861C7BEE980050AE57 /* Controller.employee */,
 				0A5228E11C722ABA00D64847 /* Model */,
-				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0AC5FAB51C721C4700ACD363 /* Assets.xcassets */,
 				0AC5FAB71C721C4700ACD363 /* LaunchScreen.storyboard */,
 				0AC5FABA1C721C4700ACD363 /* Info.plist */,
@@ -281,6 +284,7 @@
 				0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */,
 				0A5169AF1C87B3AF00186D39 /* CheckinsTableViewCell.swift in Sources */,
 				0A79B8881C7BEEDE0050AE57 /* EmployeeHomeViewController.swift in Sources */,
+				0A5169B31C889BD300186D39 /* CheckinDetailsViewController.swift in Sources */,
 				0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */,
 				0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
