@@ -21,65 +21,68 @@ class TLActionCode: NSObject {
         self.code = code
         self.descr = descr
     }
-
+    
     class func autoComplete(
         var searchText: String,
         success:(results:[TLActionCode]) -> (),
         failure:(error: NSError!) -> ()
         ) -> () {
             searchText = searchText.lowercaseString
-            
-
-            Alamofire.request(.GET, "\(TL_HOST)/actioncodes/lookup/\(searchText)" , encoding: ParameterEncoding.JSON)
-                .validate(statusCode: 200..<300)
-                .responseJSON { response in
-                    switch response.result {
-                    case .Success:
-                        
-                        var actionCodes:[TLActionCode] = [TLActionCode]()
-                        
-                        let returnedCodes:NSArray = (response.result.value!["result"])!! as! NSArray
-                        
-                        for returnedCode in returnedCodes {
-                            actionCodes.append(TLActionCode(
-                                id:    returnedCode["id"]! as! Int,
-                                code:  returnedCode["code"]! as! String,
-                                descr: returnedCode["description"]! as! String
+            if(searchText == "") {
+                success(results: [TLActionCode]())
+            } else {
+                
+                Alamofire.request(.GET, "\(TL_HOST)/actioncodes/lookup/\(searchText)" , encoding: ParameterEncoding.JSON)
+                    .validate(statusCode: 200..<300)
+                    .responseJSON { response in
+                        switch response.result {
+                        case .Success:
+                            
+                            var actionCodes:[TLActionCode] = [TLActionCode]()
+                            
+                            let returnedCodes:NSArray = (response.result.value!["result"])!! as! NSArray
+                            
+                            for returnedCode in returnedCodes {
+                                actionCodes.append(TLActionCode(
+                                    id:    returnedCode["id"]! as! Int,
+                                    code:  returnedCode["code"]! as! String,
+                                    descr: returnedCode["description"]! as! String
+                                    )
                                 )
-                            )
+                            }
+                            
+                            success(results: actionCodes)
+                        case .Failure(let error):
+                            NSLog(error.description)
+                            failure(error: error)
                         }
-                        
-                        success(results: actionCodes)
-                    case .Failure(let error):
-                        NSLog(error.description)
-                        failure(error: error)
-                    }
+                }
             }
-     
-        }
-
+            
+    }
     
     
-//        class func getAllCheckins(
-//            activation_code: String,
-//            success:() -> (),
-//            failure:(error: NSError) -> ()) -> () {
-//                let headers = [
-//                    "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
-//                    "Content-Type": "application/json"
-//                ]
-//                let parameters = ["name": name, "email": email]
-//                Alamofire.request(.PUT, "\(TL_HOST)/employees/\(employeeId)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
-//                    .validate(statusCode: 200..<300)
-//                    .responseJSON { response in
-//                        switch response.result {
-//                        case .Success:
-//                            success();
-//                        case .Failure(let error):
-//                            NSLog(error.description)
-//                            failure(error: error)
-//                        }
-//                }
-//        }
+    
+    //        class func getAllCheckins(
+    //            activation_code: String,
+    //            success:() -> (),
+    //            failure:(error: NSError) -> ()) -> () {
+    //                let headers = [
+    //                    "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+    //                    "Content-Type": "application/json"
+    //                ]
+    //                let parameters = ["name": name, "email": email]
+    //                Alamofire.request(.PUT, "\(TL_HOST)/employees/\(employeeId)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+    //                    .validate(statusCode: 200..<300)
+    //                    .responseJSON { response in
+    //                        switch response.result {
+    //                        case .Success:
+    //                            success();
+    //                        case .Failure(let error):
+    //                            NSLog(error.description)
+    //                            failure(error: error)
+    //                        }
+    //                }
+    //        }
     
 }

@@ -18,7 +18,8 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     var completions = [TLActionCode]()
-
+    var selectedActionCode:TLActionCode?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         actionCodeTextField.becomeFirstResponder()
@@ -36,7 +37,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         tableView.hidden        =   true
         tableView.delegate      =   self
         tableView.dataSource    =   self
-
+        nextButton.enabled      =   false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,6 +65,12 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     
     func textFieldTextChanged(sender : AnyObject) {
+        if(nextButton.enabled) {
+            actionCodeTextField.text = ""
+        }
+        nextButton.enabled      =   false
+        selectedActionCode  = nil
+        
         NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
         TLActionCode.autoComplete(actionCodeTextField.text!,
             success: { (results) -> () in
@@ -87,16 +94,19 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
         
         cell.textLabel?.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
-        cell.textLabel?.textColor = UIColor(rgb: 0xff8000)
+        cell.textLabel?.textColor = UIColor(rgb: 0x0033cc)
         
         return cell
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        nextButton.enabled      =   true
+
         tableView.hidden = true
-        NSLog("You selected cell #\(self.completions[indexPath.row])!")
-        actionCodeTextField.text = self.completions[indexPath.row].descr!
+        NSLog("You selected cell #\(self.completions[indexPath.row])")
+        actionCodeTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
+        selectedActionCode = self.completions[indexPath.row]
     }
     
 
