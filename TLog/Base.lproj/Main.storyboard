@@ -816,9 +816,9 @@
                                                 <action selector="backButtonClicked:" destination="xj1-Wh-m00" id="C8J-F7-IYb"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="next &gt;" id="rAR-SL-cdZ">
+                                        <barButtonItem key="rightBarButtonItem" title="checkin &gt;" id="rAR-SL-cdZ">
                                             <connections>
-                                                <action selector="nextButtonClicked:" destination="xj1-Wh-m00" id="8Cz-KE-Iyu"/>
+                                                <action selector="checkinButtonClicked:" destination="xj1-Wh-m00" id="h9z-KR-5jk"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -863,7 +863,7 @@
                     </view>
                     <connections>
                         <outlet property="actionCodeTextField" destination="GRs-07-5jS" id="hcq-9V-q4p"/>
-                        <outlet property="nextButton" destination="rAR-SL-cdZ" id="lWl-so-gBx"/>
+                        <outlet property="checkinButton" destination="rAR-SL-cdZ" id="6eM-YO-Un9"/>
                         <outlet property="tableView" destination="RnF-3T-fjF" id="TDm-3q-uU8"/>
                     </connections>
                 </viewController>

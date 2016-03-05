@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
+
 
 class TLEmployee: NSObject {
     var id: Int?
@@ -21,6 +23,22 @@ class TLEmployee: NSObject {
         self.name = name
         self.email = email
     }
+    
+    class func storeActivationCodeLocally(activationCode:String)  -> () {
+        let keychain = KeychainSwift()
+        keychain.set(activationCode, forKey: TLUser.ACTIVATION_CODE_KEY)
+    }
+    
+    class func retreiveActivationCodeFromLocalStorage()  -> (String!) {
+        let keychain = KeychainSwift()
+        return keychain.get(TLUser.ACTIVATION_CODE_KEY)
+    }
+    
+    class func clearActivationCodeFromLocalStorage()  -> () {
+        let keychain = KeychainSwift()
+        keychain.delete(TLUser.ACTIVATION_CODE_KEY)
+    }
+
     
     
     func create(

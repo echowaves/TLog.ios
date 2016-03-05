@@ -31,8 +31,10 @@ class TLActionCode: NSObject {
             if(searchText == "") {
                 success(results: [TLActionCode]())
             } else {
-                
-                Alamofire.request(.GET, "\(TL_HOST)/actioncodes/lookup/\(searchText)" , encoding: ParameterEncoding.JSON)
+                let headers = [
+                    "Content-Type": "application/json"
+                ]
+                Alamofire.request(.GET, "\(TL_HOST)/actioncodes/lookup/\(searchText)" , encoding: ParameterEncoding.JSON, headers: headers)
                     .validate(statusCode: 200..<300)
                     .responseJSON { response in
                         switch response.result {

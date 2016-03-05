@@ -13,12 +13,13 @@ import Foundation
 class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     
-    @IBOutlet weak var nextButton: UIBarButtonItem!
+    @IBOutlet weak var checkinButton: UIBarButtonItem!
     @IBOutlet weak var actionCodeTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     var completions = [TLActionCode]()
     var selectedActionCode:TLActionCode?
+    var checkinTime = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         tableView.hidden        =   true
         tableView.delegate      =   self
         tableView.dataSource    =   self
-        nextButton.enabled      =   false
+        checkinButton.enabled      =   false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,7 +49,16 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    @IBAction func nextButtonClicked(sender: AnyObject) {
+    @IBAction func checkinButtonClicked(sender: AnyObject) {
+        let checkin = TLCheckin(checkedInAt: checkinTime, actionCodeId: (selectedActionCode?.id)!)
+        checkin.create({ () -> () in
+               self.dismissViewControllerAnimated(true, completion: nil)
+            }) { (error) -> () in
+                let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+        }
+
     }
     
     
@@ -65,10 +75,10 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     
     func textFieldTextChanged(sender : AnyObject) {
-        if(nextButton.enabled) {
+        if(checkinButton.enabled) {
             actionCodeTextField.text = ""
         }
-        nextButton.enabled      =   false
+        checkinButton.enabled      =   false
         selectedActionCode  = nil
         
         NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
@@ -101,7 +111,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        nextButton.enabled      =   true
+        checkinButton.enabled      =   true
 
         tableView.hidden = true
         NSLog("You selected cell #\(self.completions[indexPath.row])")

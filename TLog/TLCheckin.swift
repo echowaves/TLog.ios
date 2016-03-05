@@ -12,6 +12,54 @@ import SwiftyJSON
 
 class TLCheckin: NSObject {
 
+    var id: Int?
+    var email:String?
+    var userId: Int?
+    var checkedInAt: NSDate?
+    var checkedOutAt: NSDate?
+    var actionCodeId: Int?
+
+    init(checkedInAt: NSDate, actionCodeId: Int) {
+        self.checkedInAt = checkedInAt
+        self.actionCodeId = actionCodeId
+
+    }
+
+    
+    func create(
+        success:() -> (),
+        failure:(error: NSError) -> ()) -> () {
+            let headers = [
+                "Content-Type": "application/json"
+            ]
+            let parameters = [
+                "checked_in_at": String(self.checkedInAt!),
+                "action_code_id": String(self.actionCodeId!)
+            ]
+            
+            Alamofire.request(.POST, "\(TL_HOST)/employees/\(TLEmployee.retreiveActivationCodeFromLocalStorage())/checkins" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                    case .Success:
+                        let returnedCheckIn:NSDictionary = (response.result.value!["result"])!! as! NSDictionary
+
+                        self.id = returnedCheckIn["id"] as? Int
+                        self.email = returnedCheckIn["email"] as? String
+                        self.userId = returnedCheckIn["user_id"] as? Int
+                        self.checkedInAt = returnedCheckIn["check_in_at"] as? NSDate
+                        self.checkedOutAt = returnedCheckIn["check_out_at"] as? NSDate
+                        self.actionCodeId = returnedCheckIn["action_code_id"] as? Int
+                        success();
+                    case .Failure(let error):
+                        NSLog(error.description)
+                        failure(error: error)
+                    }
+            }
+    }
+
+    
+    
 //    class func getAllCheckins(
 //        activation_code: String,
 //        success:() -> (),

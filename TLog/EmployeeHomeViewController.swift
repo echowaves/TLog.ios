@@ -29,13 +29,13 @@ class EmployeeHomeViewController: UIViewController
     }
     
     @IBAction func signOutButtonClicked(sender: AnyObject) {
-        TLUser.clearActivationCodeFromLocalStorage()
+        TLEmployee.clearActivationCodeFromLocalStorage()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activationCode = TLUser.retreiveActivationCodeFromLocalStorage()!
+        self.activationCode = TLEmployee.retreiveActivationCodeFromLocalStorage()!
         navBar.topItem?.title = "tet"
     }
     

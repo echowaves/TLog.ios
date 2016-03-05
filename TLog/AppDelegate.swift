@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             params.setObject(elts[1], forKey: elts[0])
         }
         
-        TLUser.storeActivationCodeLocally(params.valueForKey("activation_code") as! String)
+        TLEmployee.storeActivationCodeLocally(params.valueForKey("activation_code") as! String)
         return true
     }
     

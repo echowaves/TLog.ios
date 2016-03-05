@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if(TLUser.retreiveActivationCodeFromLocalStorage() != nil) {
+        if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
             dispatch_async(dispatch_get_main_queue()){
                 self.performSegueWithIdentifier("employeeHomeSegue", sender: self)
             }

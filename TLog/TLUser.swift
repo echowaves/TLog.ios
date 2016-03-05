@@ -42,20 +42,6 @@ class TLUser: NSObject {
         keychain.delete(TLUser.JTW_KEY)
     }
     
-    class func storeActivationCodeLocally(activationCode:String)  -> () {
-        let keychain = KeychainSwift()
-        keychain.set(activationCode, forKey: TLUser.ACTIVATION_CODE_KEY)
-    }
-    
-    class func retreiveActivationCodeFromLocalStorage()  -> (String!) {
-        let keychain = KeychainSwift()
-        return keychain.get(TLUser.ACTIVATION_CODE_KEY)
-    }
-    
-    class func clearActivationCodeFromLocalStorage()  -> () {
-        let keychain = KeychainSwift()
-        keychain.delete(TLUser.ACTIVATION_CODE_KEY)
-    }
     
     
     
@@ -63,10 +49,13 @@ class TLUser: NSObject {
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
             
+            let headers = [
+                "Content-Type": "application/json"
+            ]
             let parameters = ["email": self.email!,
                 "password": self.password!]
             
-            Alamofire.request(.POST, "\(TL_HOST)/auth" , parameters: parameters, encoding: ParameterEncoding.JSON)
+            Alamofire.request(.POST, "\(TL_HOST)/auth" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     
@@ -89,9 +78,12 @@ class TLUser: NSObject {
     func signUp(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
+            let headers = [
+                "Content-Type": "application/json"
+            ]
             let parameters = ["email": self.email!,
                 "password": self.password!]
-            Alamofire.request(.POST, "\(TL_HOST)/users" , parameters: parameters, encoding: ParameterEncoding.JSON)
+            Alamofire.request(.POST, "\(TL_HOST)/users" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
