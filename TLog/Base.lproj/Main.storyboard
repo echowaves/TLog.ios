@@ -816,18 +816,14 @@
                                                 <action selector="backButtonClicked:" destination="xj1-Wh-m00" id="C8J-F7-IYb"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="next &gt;" id="rAR-SL-cdZ"/>
+                                        <barButtonItem key="rightBarButtonItem" title="next &gt;" id="rAR-SL-cdZ">
+                                            <connections>
+                                                <action selector="nextButtonClicked:" destination="xj1-Wh-m00" id="8Cz-KE-Iyu"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type code number or description" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="GRs-07-5jS">
-                                <rect key="frame" x="16" y="75" width="568" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Irk-JE-Xhe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RnF-3T-fjF">
                                 <rect key="frame" x="16" y="133" width="568" height="447"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -842,6 +838,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type code number or description" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="GRs-07-5jS">
+                                <rect key="frame" x="16" y="75" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Irk-JE-Xhe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.84313725490000002" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -857,6 +861,11 @@
                             <constraint firstItem="GRs-07-5jS" firstAttribute="top" secondItem="tzF-0g-sqM" secondAttribute="bottom" constant="11" id="vPa-qx-ik9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actionCodeTextField" destination="GRs-07-5jS" id="hcq-9V-q4p"/>
+                        <outlet property="nextButton" destination="rAR-SL-cdZ" id="lWl-so-gBx"/>
+                        <outlet property="tableView" destination="RnF-3T-fjF" id="TDm-3q-uU8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d21-e7-Dt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
