@@ -64,6 +64,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         TLEmployee.storeActivationCodeLocally(params.valueForKey("activation_code") as! String)
+        
+        
+        if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let employeeHomeViewController : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("EmployeeHomeViewController") as UIViewController
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = employeeHomeViewController
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
     

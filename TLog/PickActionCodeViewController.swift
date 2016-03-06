@@ -38,7 +38,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         tableView.hidden        =   true
         tableView.delegate      =   self
         tableView.dataSource    =   self
-        checkinButton.enabled      =   false
+        checkinButton.enabled   =   false
     }
     
     override func viewWillAppear(animated: Bool) {
