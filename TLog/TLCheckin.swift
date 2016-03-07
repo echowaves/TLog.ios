@@ -60,26 +60,33 @@ class TLCheckin: NSObject {
 
     
     
-//    class func getAllCheckins(
-//        activation_code: String,
-//        success:() -> (),
-//        failure:(error: NSError) -> ()) -> () {
-//            let headers = [
-//                "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
-//                "Content-Type": "application/json"
-//            ]
-//            let parameters = ["name": name, "email": email]
-//            Alamofire.request(.PUT, "\(TL_HOST)/employees/\(employeeId)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
-//                .validate(statusCode: 200..<300)
-//                .responseJSON { response in
-//                    switch response.result {
-//                    case .Success:
-//                        success();
-//                    case .Failure(let error):
-//                        NSLog(error.description)
-//                        failure(error: error)
-//                    }
-//            }
-//    }
+    class func getAllCheckins(
+        pageNumber: Int,
+        pageSize: Int,
+        success:(employee: TLEmployee, checkins: [TLCheckin]) -> (),
+        failure:(error: NSError) -> ()) -> () {
+            let headers = [
+                "Content-Type": "application/json"
+            ]
+            Alamofire.request(.GET, "\(TL_HOST)/employees/\(TLEmployee.retreiveActivationCodeFromLocalStorage())/checkins?page_number=\(pageNumber)&page_size=\(pageSize)" , encoding: ParameterEncoding.JSON, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                    case .Success:
+                        let jsonEmployee = JSON(data: response.data!)["employee"]
+                        let employee =
+                        TLEmployee(
+                            id: jsonEmployee["id"].intValue,
+                            name: jsonEmployee["name"].stringValue,
+                            email: jsonEmployee["email"].stringValue)
+                        
+                        
+                        success(employee: employee, checkins: [TLCheckin]());
+                    case .Failure(let error):
+                        NSLog(error.description)
+                        failure(error: error)
+                    }
+            }
+    }
 
 }

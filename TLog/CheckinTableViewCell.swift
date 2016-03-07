@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CheckinsTableViewCell: UITableViewCell {
+class CheckinTableViewCell: UITableViewCell {
     @IBOutlet weak var checkinAt: UILabel!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var actionCode: UILabel!

@@ -59,7 +59,6 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
                 let alert = UIAlertController(title: nil, message: "Error loading employees. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
-
         }
     }
     

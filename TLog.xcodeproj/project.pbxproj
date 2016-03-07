@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
-		0A5169AF1C87B3AF00186D39 /* CheckinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinsTableViewCell.swift */; };
+		0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */; };
 		0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */; };
 		0A5169B31C889BD300186D39 /* CheckinDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */; };
 		0A5169B51C88A44400186D39 /* TLActionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B41C88A44400186D39 /* TLActionCode.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
-		0A5169AE1C87B3AF00186D39 /* CheckinsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinsTableViewCell.swift; sourceTree = "<group>"; };
+		0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickActionCodeViewController.swift; sourceTree = "<group>"; };
 		0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinDetailsViewController.swift; sourceTree = "<group>"; };
 		0A5169B41C88A44400186D39 /* TLActionCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLActionCode.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */,
-				0A5169AE1C87B3AF00186D39 /* CheckinsTableViewCell.swift */,
+				0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */,
 				0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */,
 				0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */,
 			);
@@ -139,8 +139,8 @@
 		0AC5FAAD1C721C4700ACD363 /* TLog */ = {
 			isa = PBXGroup;
 			children = (
-				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0AC5FAB21C721C4700ACD363 /* Main.storyboard */,
+				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0A5169B61C8A99BE00186D39 /* Extensions */,
 				0A5228E21C722AC400D64847 /* Controller.user */,
 				0A79B8861C7BEE980050AE57 /* Controller.employee */,
@@ -296,7 +296,7 @@
 			files = (
 				0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */,
 				0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */,
-				0A5169AF1C87B3AF00186D39 /* CheckinsTableViewCell.swift in Sources */,
+				0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */,
 				0A79B8881C7BEEDE0050AE57 /* EmployeeHomeViewController.swift in Sources */,
 				0A5169B31C889BD300186D39 /* CheckinDetailsViewController.swift in Sources */,
 				0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */,

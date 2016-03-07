@@ -471,11 +471,11 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL3-dZ-vyA">
-                                <rect key="frame" x="248" y="73" width="104" height="50"/>
+                                <rect key="frame" x="408" y="73" width="172" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3CK-cY-IAT"/>
-                                    <constraint firstAttribute="width" constant="104" id="mbR-4S-8oq"/>
+                                    <constraint firstAttribute="width" constant="172" id="AVm-e8-Ca1"/>
+                                    <constraint firstAttribute="height" constant="50" id="xiY-RB-KZD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Check In">
@@ -491,23 +491,11 @@
                                     <action selector="checkinButtonClicked:" destination="hfo-OP-A8X" eventType="touchUpInside" id="oil-Sf-FTD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since:  10/20/16 10:00 am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
-                                <rect key="frame" x="360" y="73" width="240" height="37"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 3h 16 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPO-E6-9v3">
-                                <rect key="frame" x="360" y="102" width="240" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pta-nq-wLh">
                                 <rect key="frame" x="20" y="131" width="560" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckinsTableViewCell" id="hWo-bn-Ys1" customClass="CheckinsTableViewCell" customModule="TLog" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckinTableViewCell" id="hWo-bn-Ys1" customClass="CheckinTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWo-bn-Ys1" id="DTh-NN-Tn7">
@@ -564,26 +552,43 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since:  10/20/16 10:00 am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
+                                <rect key="frame" x="20" y="73" width="380" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="QKQ-cG-eqz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 3h 16 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPO-E6-9v3">
+                                <rect key="frame" x="20" y="102" width="380" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="QWO-Sc-yH6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019607845" green="0.84313725490196079" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="RKz-H1-urM" secondAttribute="trailing" constant="-20" id="4s0-UG-IBb"/>
-                            <constraint firstItem="RKz-H1-urM" firstAttribute="leading" secondItem="oL3-dZ-vyA" secondAttribute="trailing" constant="8" id="8lg-9T-3Vh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="-20" id="9Rf-cr-NO1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pO2-Va-pUp" secondAttribute="trailing" constant="-20" id="9xk-sY-gaz"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="RKz-H1-urM" secondAttribute="bottom" constant="21" id="AcP-jU-t54"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="KPO-E6-9v3" secondAttribute="bottom" constant="8" id="C1H-GT-67F"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="centerX" secondItem="mVX-Cx-Laf" secondAttribute="centerX" id="N2o-ix-AF1"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="RKz-H1-urM" secondAttribute="trailing" constant="8" id="CFa-3o-B6f"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="8" id="PkI-z7-SdG"/>
                             <constraint firstItem="pO2-Va-pUp" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" constant="-20" id="USw-M5-bDt"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="trailing" secondItem="mVX-Cx-Laf" secondAttribute="trailingMargin" id="V2p-iH-LGh"/>
                             <constraint firstItem="Pta-nq-wLh" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="XZQ-K3-UVN"/>
                             <constraint firstItem="pO2-Va-pUp" firstAttribute="top" secondItem="upu-6y-OOe" secondAttribute="bottom" id="Zzz-ro-LKD"/>
                             <constraint firstItem="Pta-nq-wLh" firstAttribute="trailing" secondItem="mVX-Cx-Laf" secondAttribute="trailingMargin" id="cDN-py-zF9"/>
-                            <constraint firstItem="KPO-E6-9v3" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="38" id="cJb-ge-Bb5"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="oL3-dZ-vyA" secondAttribute="bottom" constant="8" id="ew7-Wu-pol"/>
-                            <constraint firstItem="RKz-H1-urM" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="k9m-cG-RET"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="tSC-PL-EAu"/>
-                            <constraint firstItem="KPO-E6-9v3" firstAttribute="leading" secondItem="oL3-dZ-vyA" secondAttribute="trailing" constant="8" id="vU2-4F-Ow9"/>
+                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="KPO-E6-9v3" secondAttribute="bottom" constant="8" id="gg3-p6-6Pe"/>
+                            <constraint firstItem="RKz-H1-urM" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="rls-MS-8zh"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="smq-ei-Uyx"/>
+                            <constraint firstItem="RKz-H1-urM" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="tQo-tu-MAs"/>
+                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="oL3-dZ-vyA" secondAttribute="bottom" constant="8" id="vAt-57-Hse"/>
                             <constraint firstItem="4jc-sf-lrS" firstAttribute="top" secondItem="Pta-nq-wLh" secondAttribute="bottom" constant="8" id="wAt-62-Gl5"/>
+                            <constraint firstItem="KPO-E6-9v3" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="xs3-tJ-RjC"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="8" id="y9j-W0-lB4"/>
                         </constraints>
                     </view>
                     <connections>
