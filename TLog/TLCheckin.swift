@@ -16,13 +16,30 @@ class TLCheckin: NSObject {
     var email:String?
     var userId: Int?
     var checkedInAt: NSDate?
-    var checkedOutAt: NSDate?
+    var duration: Int?
     var actionCodeId: Int?
-
+    var actionCode:TLActionCode?
+    
     init(checkedInAt: NSDate, actionCodeId: Int) {
         self.checkedInAt = checkedInAt
         self.actionCodeId = actionCodeId
 
+    }
+
+    init(id: Int,
+        email: String,
+        userId: Int,
+        checkedInAt: NSDate,
+        duration: Int,
+        actionCodeId: Int,
+        actionCode: TLActionCode) {
+            self.id = id
+            self.email = email
+            self.userId = userId
+            self.checkedInAt = checkedInAt
+            self.duration = duration
+            self.actionCodeId = actionCodeId
+            self.actionCode = actionCode
     }
 
     
@@ -48,7 +65,7 @@ class TLCheckin: NSObject {
                         self.email = returnedCheckIn["email"] as? String
                         self.userId = returnedCheckIn["user_id"] as? Int
                         self.checkedInAt = returnedCheckIn["check_in_at"] as? NSDate
-                        self.checkedOutAt = returnedCheckIn["check_out_at"] as? NSDate
+                        self.duration = returnedCheckIn["duration"] as? Int
                         self.actionCodeId = returnedCheckIn["action_code_id"] as? Int
                         success();
                     case .Failure(let error):
@@ -68,6 +85,10 @@ class TLCheckin: NSObject {
             let headers = [
                 "Content-Type": "application/json"
             ]
+            
+            NSLog("\(TL_HOST)/employees/\(TLEmployee.retreiveActivationCodeFromLocalStorage())/checkins")
+            
+
             Alamofire.request(.GET, "\(TL_HOST)/employees/\(TLEmployee.retreiveActivationCodeFromLocalStorage())/checkins?page_number=\(pageNumber)&page_size=\(pageSize)" , encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
@@ -79,9 +100,47 @@ class TLCheckin: NSObject {
                             id: jsonEmployee["id"].intValue,
                             name: jsonEmployee["name"].stringValue,
                             email: jsonEmployee["email"].stringValue)
+
+                        let jsonCheckins = JSON(data: response.data!)["checkins"]
+                        var checkins = [TLCheckin]()
+
                         
                         
-                        success(employee: employee, checkins: [TLCheckin]());
+                        // Set date format
+                        let dateFmt = NSDateFormatter()
+//                        dateFmt.timeZone = NSTimeZone.defaultTimeZone()
+                        dateFmt.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+                        
+                        
+                        
+ 
+                        for (_,jsonCheckin):(String, JSON) in jsonCheckins {
+                            let actionCode =
+                            TLActionCode(
+                                id: jsonCheckin["action_code_id"].intValue,
+                                code: jsonCheckin["code"].stringValue,
+                                descr: jsonCheckin["description"].stringValue)
+                            
+                            let checkin =
+                            TLCheckin(
+                                id: jsonCheckin["id"].intValue,
+                                email: jsonCheckin["email"].stringValue,
+                                userId: jsonCheckin["user_id"].intValue,
+                                checkedInAt:  dateFmt.dateFromString(jsonCheckin["checked_in_at"].stringValue)!,
+                                duration: jsonCheckin["duration"].intValue,
+                                actionCodeId: jsonCheckin["action_code_id"].intValue,
+                                actionCode: actionCode)
+                                
+                                
+                            checkins.append(checkin)
+                            
+                            
+                            
+                        }
+
+                        
+                        success(employee: employee, checkins: checkins);
                     case .Failure(let error):
                         NSLog(error.description)
                         failure(error: error)
