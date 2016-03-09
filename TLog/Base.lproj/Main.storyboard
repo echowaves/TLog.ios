@@ -491,67 +491,6 @@
                                     <action selector="checkinButtonClicked:" destination="hfo-OP-A8X" eventType="touchUpInside" id="oil-Sf-FTD"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pta-nq-wLh">
-                                <rect key="frame" x="20" y="131" width="560" height="461"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckinTableViewCell" id="hWo-bn-Ys1" customClass="CheckinTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWo-bn-Ys1" id="DTh-NN-Tn7">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="checkedin_at:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-XZ-9m7">
-                                                    <rect key="frame" x="8" y="0.0" width="179" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="179" id="Zjb-jR-eJt"/>
-                                                        <constraint firstAttribute="height" constant="21" id="gDI-U5-G26"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-jk-VRw">
-                                                    <rect key="frame" x="8" y="20" width="179" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="179" id="5hz-Fw-JKl"/>
-                                                        <constraint firstAttribute="height" constant="21" id="QHr-ym-7uJ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action_code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnp-g1-NEx">
-                                                    <rect key="frame" x="195" y="3" width="357" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="1Sx-TZ-LyQ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="PRt-jk-VRw" secondAttribute="bottom" constant="-5.5" id="2l4-Sk-rbu"/>
-                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="leading" secondItem="h7B-XZ-9m7" secondAttribute="trailing" constant="8" id="Clb-Ki-jAa"/>
-                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="leading" secondItem="PRt-jk-VRw" secondAttribute="trailing" constant="8" id="DQW-To-akg"/>
-                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="leading" secondItem="PRt-jk-VRw" secondAttribute="trailing" constant="8" id="GKh-DE-msd"/>
-                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="trailing" secondItem="DTh-NN-Tn7" secondAttribute="trailingMargin" id="IDK-XZ-nAO"/>
-                                                <constraint firstItem="PRt-jk-VRw" firstAttribute="leading" secondItem="DTh-NN-Tn7" secondAttribute="leadingMargin" id="SQo-fH-DTd"/>
-                                                <constraint firstItem="h7B-XZ-9m7" firstAttribute="top" secondItem="DTh-NN-Tn7" secondAttribute="topMargin" constant="-8" id="YRL-Qk-Wez"/>
-                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="top" secondItem="DTh-NN-Tn7" secondAttribute="topMargin" constant="-5" id="aqv-mU-ojw"/>
-                                                <constraint firstItem="h7B-XZ-9m7" firstAttribute="leading" secondItem="DTh-NN-Tn7" secondAttribute="leadingMargin" id="sgh-Gk-4sb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="actionCode" destination="gnp-g1-NEx" id="tWJ-Es-NrZ"/>
-                                            <outlet property="checkinAt" destination="h7B-XZ-9m7" id="80e-Gq-UVU"/>
-                                            <outlet property="duration" destination="PRt-jk-VRw" id="5Fp-KQ-TC7"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since:  10/20/16 10:00 am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
                                 <rect key="frame" x="20" y="73" width="380" height="37"/>
                                 <constraints>
@@ -570,6 +509,65 @@
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pta-nq-wLh">
+                                <rect key="frame" x="20" y="131" width="560" height="461"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckinTableViewCell" rowHeight="50" id="hWo-bn-Ys1" customClass="CheckinTableViewCell" customModule="TLog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWo-bn-Ys1" id="DTh-NN-Tn7">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="checkedin_at:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-XZ-9m7">
+                                                    <rect key="frame" x="8" y="0.0" width="427" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="7TN-lM-nLI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action_code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnp-g1-NEx">
+                                                    <rect key="frame" x="8" y="22" width="544" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Z8O-6r-Uud"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-jk-VRw">
+                                                    <rect key="frame" x="443" y="0.0" width="109" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="109" id="LZs-Uc-eUo"/>
+                                                        <constraint firstAttribute="height" constant="21" id="vcy-F2-IAz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PRt-jk-VRw" firstAttribute="leading" secondItem="h7B-XZ-9m7" secondAttribute="trailing" constant="8" id="1P8-cX-f73"/>
+                                                <constraint firstItem="PRt-jk-VRw" firstAttribute="trailing" secondItem="DTh-NN-Tn7" secondAttribute="trailingMargin" id="7vP-tF-kam"/>
+                                                <constraint firstItem="h7B-XZ-9m7" firstAttribute="top" secondItem="DTh-NN-Tn7" secondAttribute="topMargin" constant="-8" id="9Z7-qW-tsc"/>
+                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="top" secondItem="PRt-jk-VRw" secondAttribute="bottom" constant="1" id="CHU-oz-xvQ"/>
+                                                <constraint firstItem="h7B-XZ-9m7" firstAttribute="leading" secondItem="DTh-NN-Tn7" secondAttribute="leadingMargin" id="IAC-7Z-7JR"/>
+                                                <constraint firstItem="PRt-jk-VRw" firstAttribute="top" secondItem="DTh-NN-Tn7" secondAttribute="topMargin" constant="-8" id="ek2-Ec-S9s"/>
+                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="leading" secondItem="DTh-NN-Tn7" secondAttribute="leadingMargin" id="j5Z-7r-iKz"/>
+                                                <constraint firstItem="gnp-g1-NEx" firstAttribute="trailing" secondItem="DTh-NN-Tn7" secondAttribute="trailingMargin" id="qfI-Vk-Yat"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="actionCode" destination="gnp-g1-NEx" id="tWJ-Es-NrZ"/>
+                                            <outlet property="checkinAt" destination="h7B-XZ-9m7" id="80e-Gq-UVU"/>
+                                            <outlet property="duration" destination="PRt-jk-VRw" id="5Fp-KQ-TC7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019607845" green="0.84313725490196079" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

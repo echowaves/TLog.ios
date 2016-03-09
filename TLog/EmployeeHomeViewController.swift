@@ -63,6 +63,8 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     
     func updateViews() {
         navBar.topItem?.title = employee.name
+        self.tableView.reloadData()
+        self.tableView.reloadInputViews()
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +79,15 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
         let checkin = self.checkins[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckinTableViewCell") as? CheckinTableViewCell!
-        cell!.checkinAt?.text = String(checkin.checkedInAt)
+        
+        //format date
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "hh:mm" //format style. Browse online to get a format that fits your needs.
+        let dateString = dateFormatter.stringFromDate((checkin.checkedInAt)!)
+        
+        cell!.checkinAt?.text = dateString
+        cell!.checkinAt?.text = String(checkin.duration!)
+        cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         
         return cell!
         

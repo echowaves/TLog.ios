@@ -135,8 +135,6 @@ class TLCheckin: NSObject {
                                 
                             checkins.append(checkin)
                             
-                            
-                            
                         }
 
                         
