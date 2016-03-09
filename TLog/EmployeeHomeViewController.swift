@@ -82,11 +82,13 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
         //format date
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm" //format style. Browse online to get a format that fits your needs.
+        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        dateFormatter.timeStyle = .ShortStyle
+//        dateFormatter.dateFormat = "hh:mm" //format style. Browse online to get a format that fits your needs.
         let dateString = dateFormatter.stringFromDate((checkin.checkedInAt)!)
         
         cell!.checkinAt?.text = dateString
-        cell!.checkinAt?.text = String(checkin.duration!)
+        cell!.duration?.text = String(checkin.duration!)
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         
         return cell!
