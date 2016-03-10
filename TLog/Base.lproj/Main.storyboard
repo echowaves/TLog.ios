@@ -471,11 +471,11 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL3-dZ-vyA">
-                                <rect key="frame" x="408" y="73" width="172" height="50"/>
+                                <rect key="frame" x="458" y="73" width="122" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="172" id="AVm-e8-Ca1"/>
-                                    <constraint firstAttribute="height" constant="50" id="xiY-RB-KZD"/>
+                                    <constraint firstAttribute="height" constant="50" id="0yP-EU-dyD"/>
+                                    <constraint firstAttribute="width" constant="122" id="RwA-WL-qj4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Check In">
@@ -491,19 +491,10 @@
                                     <action selector="checkinButtonClicked:" destination="hfo-OP-A8X" eventType="touchUpInside" id="oil-Sf-FTD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since:  10/20/16 10:00 am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
-                                <rect key="frame" x="20" y="73" width="380" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since:  date time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-H1-urM">
+                                <rect key="frame" x="20" y="73" width="430" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="QKQ-cG-eqz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 3h 16 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPO-E6-9v3">
-                                <rect key="frame" x="20" y="102" width="380" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="QWO-Sc-yH6"/>
+                                    <constraint firstAttribute="height" constant="37" id="ClV-UC-odh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -569,30 +560,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action_code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTy-yw-uKA">
+                                <rect key="frame" x="20" y="102" width="430" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Zze-ep-xAd"/>
+                                    <constraint firstAttribute="height" constant="21" id="bT0-9P-xPl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019607845" green="0.84313725490196079" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="oL3-dZ-vyA" secondAttribute="bottom" constant="8" id="3Yp-zU-UU9"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="trailing" secondItem="mVX-Cx-Laf" secondAttribute="trailingMargin" id="6JI-TI-4jn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pO2-Va-pUp" secondAttribute="trailing" constant="-20" id="9xk-sY-gaz"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="RKz-H1-urM" secondAttribute="trailing" constant="8" id="CFa-3o-B6f"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="8" id="PkI-z7-SdG"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="yTy-yw-uKA" secondAttribute="trailing" constant="8" id="R7B-k7-THQ"/>
+                            <constraint firstItem="yTy-yw-uKA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="38" id="Shx-qL-v3x"/>
+                            <constraint firstItem="RKz-H1-urM" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="TEZ-dW-oIK"/>
                             <constraint firstItem="pO2-Va-pUp" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" constant="-20" id="USw-M5-bDt"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="trailing" secondItem="mVX-Cx-Laf" secondAttribute="trailingMargin" id="V2p-iH-LGh"/>
                             <constraint firstItem="Pta-nq-wLh" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="XZQ-K3-UVN"/>
+                            <constraint firstItem="RKz-H1-urM" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="YgM-Uw-pdY"/>
                             <constraint firstItem="pO2-Va-pUp" firstAttribute="top" secondItem="upu-6y-OOe" secondAttribute="bottom" id="Zzz-ro-LKD"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="aPq-So-2GZ"/>
                             <constraint firstItem="Pta-nq-wLh" firstAttribute="trailing" secondItem="mVX-Cx-Laf" secondAttribute="trailingMargin" id="cDN-py-zF9"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="KPO-E6-9v3" secondAttribute="bottom" constant="8" id="gg3-p6-6Pe"/>
-                            <constraint firstItem="RKz-H1-urM" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="rls-MS-8zh"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="top" secondItem="pO2-Va-pUp" secondAttribute="bottom" constant="9" id="smq-ei-Uyx"/>
-                            <constraint firstItem="RKz-H1-urM" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="tQo-tu-MAs"/>
-                            <constraint firstItem="Pta-nq-wLh" firstAttribute="top" secondItem="oL3-dZ-vyA" secondAttribute="bottom" constant="8" id="vAt-57-Hse"/>
+                            <constraint firstItem="yTy-yw-uKA" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="eAJ-C7-fg2"/>
+                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="RKz-H1-urM" secondAttribute="trailing" constant="8" id="mVa-Dr-c9K"/>
                             <constraint firstItem="4jc-sf-lrS" firstAttribute="top" secondItem="Pta-nq-wLh" secondAttribute="bottom" constant="8" id="wAt-62-Gl5"/>
-                            <constraint firstItem="KPO-E6-9v3" firstAttribute="leading" secondItem="mVX-Cx-Laf" secondAttribute="leadingMargin" id="xs3-tJ-RjC"/>
-                            <constraint firstItem="oL3-dZ-vyA" firstAttribute="leading" secondItem="KPO-E6-9v3" secondAttribute="trailing" constant="8" id="y9j-W0-lB4"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionCodeLabel" destination="yTy-yw-uKA" id="N82-jw-Qp2"/>
                         <outlet property="checkinButton" destination="oL3-dZ-vyA" id="Ize-hE-QIK"/>
-                        <outlet property="duratonLabel" destination="KPO-E6-9v3" id="12I-HX-aae"/>
                         <outlet property="navBar" destination="pO2-Va-pUp" id="XIZ-9T-GMJ"/>
                         <outlet property="sinceLabel" destination="RKz-H1-urM" id="kue-1M-yJc"/>
                         <outlet property="tableView" destination="Pta-nq-wLh" id="ODN-MC-L7L"/>
