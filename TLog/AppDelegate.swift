@@ -79,6 +79,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+
+func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+    return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+}
+
+
 //http://www.absoluteripple.com/resources/using-ios-storyboard-segues
 //https://start.branch.io  deeplinking
 //http://stackoverflow.com/questions/24825123/get-the-current-view-controller-from-the-app-delegate

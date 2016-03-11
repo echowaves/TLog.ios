@@ -40,8 +40,15 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
                 alert in
                 NSLog("OK Pressed")
                 
-                let elapsedTime = NSDate().timeIntervalSinceDate(self.currentCheckin.checkedInAt!)
-                self.currentCheckin.duration! = Int(elapsedTime)
+                var elapsedTime:Int = Int(NSDate().timeIntervalSinceDate(self.currentCheckin.checkedInAt!))
+                let (h,m,_) = secondsToHoursMinutesSeconds(elapsedTime)
+                NSLog( "elapsed \(h):\(m)")
+                if(h > 8) {
+                    elapsedTime = 8 * 60 * 60;
+                }
+
+                self.currentCheckin.duration! = elapsedTime
+                
                 self.currentCheckin.update({ () -> () in
                     self.loadCheckins()
                     },
@@ -142,14 +149,11 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         let dateString = self.dateFormatter.stringFromDate((checkin.checkedInAt)!)
         
         cell!.checkinAt?.text = dateString
-        cell!.duration?.text = String(checkin.duration!)
+        
+        let (h,m,_) = secondsToHoursMinutesSeconds(checkin.duration!)        
+        cell!.duration?.text = "\(h):\(m)"
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         
-//        if checkin.duration! == 0 {
-//            NSLog("index: \(indexPath.row)")
-//            NSLog("duration: \(checkin.duration!)")
-//            cell!.backgroundColor = UIColor(rgb: 0xe0e0eb)
-//        }
         return cell!
         
         
