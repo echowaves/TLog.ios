@@ -12,6 +12,7 @@ import UIKit
 let TL_HOST = "http://localhost:3000"
 //let TL_HOST = "http://tlog.us:3000"
 
+let defaultDateFormatter = NSDateFormatter()
 
 
 @UIApplicationMain
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        defaultDateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        defaultDateFormatter.timeStyle = .ShortStyle
+
         // Override point for customization after application launch.
         Localytics.autoIntegrate("32d519b62a1d7a231f5e8e2-3de491f8-d3f7-11e5-09e8-00cef1388a40", launchOptions: launchOptions)
         return true

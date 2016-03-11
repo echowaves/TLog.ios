@@ -24,7 +24,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     
     var selectedCheckin: TLCheckin!
     
-    let dateFormatter = NSDateFormatter()
+
     
     
     @IBAction func checkinButtonClicked(sender: AnyObject) {
@@ -48,7 +48,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
                 if(h > 8) {
                     elapsedTime = 8 * 60 * 60;
                 }
-
+                
                 self.currentCheckin.duration! = elapsedTime
                 
                 self.currentCheckin.update({ () -> () in
@@ -76,10 +76,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        dateFormatter.timeStyle = .ShortStyle
+        self.tableView.dataSource = self        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -121,7 +118,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
             self.checkinButton.backgroundColor = UIColor(rgb: 0xFF0000) //red
             self.sinceLabel.hidden = false
             self.actionCodeLabel.hidden = false
-            self.sinceLabel.text = "Since:\n\(self.dateFormatter.stringFromDate((self.currentCheckin.checkedInAt)!))"
+            self.sinceLabel.text = "Since:\n\(defaultDateFormatter.stringFromDate((self.currentCheckin.checkedInAt)!))"
             self.actionCodeLabel.text = "\((self.currentCheckin.actionCode?.code)!):\((self.currentCheckin.actionCode?.descr)!)"
         } else {
             self.checkinButton!.setTitle("Check In", forState: .Normal)
@@ -133,7 +130,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         dispatch_async(dispatch_get_main_queue(),{ ()->() in
             self.tableView.reloadData()
         })
-//        self.tableView.reloadInputViews()
+        //        self.tableView.reloadInputViews()
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,11 +145,11 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
         let checkin = self.checkins[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckinTableViewCell") as? CheckinTableViewCell!
-        let dateString = self.dateFormatter.stringFromDate((checkin.checkedInAt)!)
+        let dateString = defaultDateFormatter.stringFromDate((checkin.checkedInAt)!)
         
         cell!.checkinAt?.text = dateString
         
-        let (h,m,_) = secondsToHoursMinutesSeconds(checkin.duration!)        
+        let (h,m,_) = secondsToHoursMinutesSeconds(checkin.duration!)
         cell!.duration?.text = "\(h):\(m)"
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         
@@ -161,18 +158,18 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-        func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            self.selectedCheckin = self.checkins[indexPath.row]
-    
-    
-            // Let's assume that the segue name is called playerSegue
-            // This will perform the segue and pre-load the variable for you to use
-    
-            dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("checkinDetailsSegue", sender: self)
-            }
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedCheckin = self.checkins[indexPath.row]
+        
+        
+        // Let's assume that the segue name is called playerSegue
+        // This will perform the segue and pre-load the variable for you to use
+        
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("checkinDetailsSegue", sender: self)
         }
+        
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "checkinDetailsSegue") {

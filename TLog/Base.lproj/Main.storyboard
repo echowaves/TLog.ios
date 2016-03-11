@@ -926,28 +926,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-5y-jEn">
-                                <rect key="frame" x="20" y="249" width="560" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="iCB-5F-HIm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="update">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgS-g6-0qZ">
-                                <rect key="frame" x="20" y="346" width="560" height="50"/>
+                                <rect key="frame" x="20" y="530" width="560" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MhC-VG-4kU"/>
+                                    <constraint firstAttribute="height" constant="50" id="2MF-51-ifH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="delete">
@@ -959,30 +942,35 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteButtonClicked:" destination="gRT-GI-8PZ" eventType="touchUpInside" id="H7Q-8F-H39"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.84313725490000002" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="trailing" secondItem="ArI-mU-VhM" secondAttribute="trailingMargin" id="0c1-T3-b7L"/>
+                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" id="2gA-EY-1GV"/>
                             <constraint firstItem="hLU-yB-98J" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="4kV-cD-cRj"/>
-                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="trailing" secondItem="ArI-mU-VhM" secondAttribute="trailingMargin" id="8dn-8L-GZi"/>
-                            <constraint firstItem="1sf-5y-jEn" firstAttribute="trailing" secondItem="ArI-mU-VhM" secondAttribute="trailingMargin" id="BpK-Pf-9Wf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RW8-l2-roV" secondAttribute="trailing" constant="-4" id="JGN-Dm-xAb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hLU-yB-98J" secondAttribute="trailing" constant="-4" id="JcV-A8-JYO"/>
+                            <constraint firstItem="2a2-A7-5to" firstAttribute="top" secondItem="LgS-g6-0qZ" secondAttribute="bottom" constant="20" id="JrL-5X-jgP"/>
                             <constraint firstItem="Fha-Fx-zgD" firstAttribute="top" secondItem="3kj-mx-dNb" secondAttribute="bottom" id="Ovf-C4-kJe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0EY-b4-aW2" secondAttribute="trailing" constant="-4" id="PEo-tP-pyu"/>
                             <constraint firstItem="hLU-yB-98J" firstAttribute="top" secondItem="Fha-Fx-zgD" secondAttribute="bottom" constant="11" id="PIl-Yo-UIj"/>
                             <constraint firstItem="RW8-l2-roV" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="Qai-6R-3S8"/>
-                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="top" secondItem="1sf-5y-jEn" secondAttribute="bottom" constant="47" id="VxL-9g-q7I"/>
                             <constraint firstItem="RW8-l2-roV" firstAttribute="top" secondItem="0EY-b4-aW2" secondAttribute="bottom" constant="8" id="d2x-Fc-keF"/>
                             <constraint firstItem="0EY-b4-aW2" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="dFM-dh-4nE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fha-Fx-zgD" secondAttribute="trailing" constant="-20" id="gVd-02-a4o"/>
-                            <constraint firstItem="1sf-5y-jEn" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" id="gdw-nm-2aX"/>
                             <constraint firstItem="0EY-b4-aW2" firstAttribute="top" secondItem="hLU-yB-98J" secondAttribute="bottom" constant="8" id="kPI-gk-DmV"/>
                             <constraint firstItem="Fha-Fx-zgD" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-20" id="m84-Bx-2Th"/>
-                            <constraint firstItem="1sf-5y-jEn" firstAttribute="top" secondItem="RW8-l2-roV" secondAttribute="bottom" constant="8" id="vYa-td-aCc"/>
-                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" id="vos-AW-u8g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actionCode" destination="RW8-l2-roV" id="22q-ub-9Dt"/>
+                        <outlet property="checkedInAt" destination="hLU-yB-98J" id="fuS-b8-9al"/>
+                        <outlet property="duration" destination="0EY-b4-aW2" id="0MT-rM-KxM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Squ-nb-21k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
