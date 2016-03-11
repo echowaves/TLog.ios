@@ -24,7 +24,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     
     var selectedCheckin: TLCheckin!
     
-
+    
     
     
     @IBAction func checkinButtonClicked(sender: AnyObject) {
@@ -76,7 +76,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
-        self.tableView.dataSource = self        
+        self.tableView.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -162,13 +162,19 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         self.selectedCheckin = self.checkins[indexPath.row]
         
         
-        // Let's assume that the segue name is called playerSegue
-        // This will perform the segue and pre-load the variable for you to use
-        
-        dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("checkinDetailsSegue", sender: self)
+        let elapsedTime:Int = Int(NSDate().timeIntervalSinceDate(self.selectedCheckin.checkedInAt!))
+        if(elapsedTime > 7 * 24 * 60 * 60) {
+            let alert = UIAlertController(title: nil, message: "Can not update checkins older then 7 days.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                alert2 in
+                self.dismissViewControllerAnimated(true, completion: nil)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            dispatch_async(dispatch_get_main_queue()){
+                self.performSegueWithIdentifier("checkinDetailsSegue", sender: self)
+            }
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
