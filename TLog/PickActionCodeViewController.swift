@@ -29,7 +29,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(
             self,
-            selector: "textFieldTextChanged:",
+            selector: #selector(PickActionCodeViewController.textFieldTextChanged(_:)),
             name:UITextFieldTextDidChangeNotification,
             object: actionCodeTextField
         )

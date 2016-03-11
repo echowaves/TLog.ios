@@ -88,7 +88,7 @@ class TLCheckin: NSObject {
                 "Content-Type": "application/json"
             ]
             let parameters = [
-                "checked_in_at": String(self.checkedInAt!),
+                "checked_in_at": self.checkedInAt!.toString(.ISO8601Format(.Extended))!,
                 "action_code_id": String(self.actionCodeId!),
                 "duration": String(self.duration!)
             ]
@@ -154,13 +154,15 @@ class TLCheckin: NSObject {
 
                             let checkinDate = jsonCheckin["checked_in_at"].stringValue.toDate(DateFormat.ISO8601Format(.Extended))!
 
+                            let interval = jsonCheckin["duration"]["hours"].intValue * 60 * 60 + jsonCheckin["duration"]["minutes"].intValue * 60 + jsonCheckin["duration"]["seconds"].intValue
+                            
                             let checkin =
                             TLCheckin(
                                 id: jsonCheckin["id"].intValue,
                                 email: jsonCheckin["email"].stringValue,
                                 userId: jsonCheckin["user_id"].intValue,
                                 checkedInAt:  checkinDate,
-                                duration: jsonCheckin["duration"].intValue,
+                                duration: interval,
                                 actionCodeId: jsonCheckin["action_code_id"].intValue,
                                 actionCode: actionCode)
                                 

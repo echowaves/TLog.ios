@@ -41,22 +41,21 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
                 NSLog("OK Pressed")
                 
                 let elapsedTime = NSDate().timeIntervalSinceDate(self.currentCheckin.checkedInAt!)
-                self.currentCheckin.duration = Int(elapsedTime)
+                self.currentCheckin.duration! = Int(elapsedTime)
                 self.currentCheckin.update({ () -> () in
                     self.loadCheckins()
-                    }, failure: { (error) -> () in
+                    },
+                    failure: { (error) -> () in
+                        self.loadCheckins()
                         let alert = UIAlertController(title: nil, message: "Error checking out. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
-
-                        self.updateViews()
-                })
-                
-                
-                })
+                        
+                    }
+                )
+                }
+            )
             self.presentViewController(alert, animated: true, completion: nil)
-            
-            
         }
     }
     
@@ -85,41 +84,47 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
             self.employee = employee
             self.checkins = checkins
             self.currentCheckin = nil
+            
+            
             //iterate over checkins and find a current checkin that is active (duration == 0)
-            for checkin in self.checkins {
-                if checkin.duration! == 0 {
-                    self.currentCheckin = checkin
-                    break
+            for index in 0 ..< checkins.count {
+                if checkins[index].duration! == 0 {
+                    if self.currentCheckin == nil {
+                        self.currentCheckin = checkins[index]
+                        self.checkins.removeAtIndex(index)
+                    }
                 }
             }
-            
             self.updateViews()
-            }) { (error) -> () in
-                let alert = UIAlertController(title: nil, message: "Error loading checkins. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+            
+        }) { (error) -> () in
+            let alert = UIAlertController(title: nil, message: "Error loading checkins. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            self.updateViews()
         }
-        
-        
     }
     
     func updateViews() {
         navBar.topItem?.title = employee.name
-        self.tableView.reloadData()
-        self.tableView.reloadInputViews()
-        if (currentCheckin != nil) {
-            checkinButton!.setTitle("Check Out", forState: .Normal)
-            checkinButton.backgroundColor = UIColor(rgb: 0xFF0000) //red
-            sinceLabel.hidden = false
-            actionCodeLabel.hidden = false
-            sinceLabel.text = "Since:\n\(dateFormatter.stringFromDate((currentCheckin.checkedInAt)!))"
-            actionCodeLabel.text = "\((currentCheckin.actionCode?.code)!):\((currentCheckin.actionCode?.descr)!)"
+        if (self.currentCheckin != nil) {
+            self.checkinButton!.setTitle("Check Out", forState: .Normal)
+            self.checkinButton.backgroundColor = UIColor(rgb: 0xFF0000) //red
+            self.sinceLabel.hidden = false
+            self.actionCodeLabel.hidden = false
+            self.sinceLabel.text = "Since:\n\(self.dateFormatter.stringFromDate((self.currentCheckin.checkedInAt)!))"
+            self.actionCodeLabel.text = "\((self.currentCheckin.actionCode?.code)!):\((self.currentCheckin.actionCode?.descr)!)"
         } else {
-            checkinButton!.setTitle("Check In", forState: .Normal)
-            checkinButton.backgroundColor = UIColor(rgb: 0x00C333) //green
-            sinceLabel.hidden = true
-            actionCodeLabel.hidden = true
+            self.checkinButton!.setTitle("Check In", forState: .Normal)
+            self.checkinButton.backgroundColor = UIColor(rgb: 0x00C333) //green
+            self.sinceLabel.hidden = true
+            self.actionCodeLabel.hidden = true
         }
+        
+        dispatch_async(dispatch_get_main_queue(),{ ()->() in
+            self.tableView.reloadData()
+        })
+//        self.tableView.reloadInputViews()
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,18 +139,17 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
         let checkin = self.checkins[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckinTableViewCell") as? CheckinTableViewCell!
-        
-        //format date
-        let dateString = dateFormatter.stringFromDate((checkin.checkedInAt)!)
+        let dateString = self.dateFormatter.stringFromDate((checkin.checkedInAt)!)
         
         cell!.checkinAt?.text = dateString
         cell!.duration?.text = String(checkin.duration!)
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         
-        if checkin.duration! == 0 {
-            cell!.backgroundColor = UIColor(rgb: 0xe0e0eb)
-        }
-        
+//        if checkin.duration! == 0 {
+//            NSLog("index: \(indexPath.row)")
+//            NSLog("duration: \(checkin.duration!)")
+//            cell!.backgroundColor = UIColor(rgb: 0xe0e0eb)
+//        }
         return cell!
         
         

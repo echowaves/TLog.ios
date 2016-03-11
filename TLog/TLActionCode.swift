@@ -23,11 +23,11 @@ class TLActionCode: NSObject {
     }
     
     class func autoComplete(
-        var searchText: String,
+        text: String,
         success:(results:[TLActionCode]) -> (),
         failure:(error: NSError!) -> ()
         ) -> () {
-            searchText = searchText.lowercaseString
+            let searchText = text.lowercaseString
             if(searchText == "") {
                 success(results: [TLActionCode]())
             } else {
