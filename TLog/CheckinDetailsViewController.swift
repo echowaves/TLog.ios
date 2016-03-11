@@ -9,7 +9,7 @@
 import Foundation
 
 class CheckinDetailsViewControler: UIViewController {
-    
+    var checkin: TLCheckin!
     
     override func viewDidLoad() {
         super.viewDidLoad()

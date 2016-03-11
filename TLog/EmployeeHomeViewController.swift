@@ -22,6 +22,8 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     var checkins:[TLCheckin] = []
     var currentCheckin: TLCheckin!
     
+    var selectedCheckin: TLCheckin!
+    
     let dateFormatter = NSDateFormatter()
     
     
@@ -159,18 +161,25 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        self.selectedEmployee = self.employees[indexPath.row]
-    //
-    //
-    //        // Let's assume that the segue name is called playerSegue
-    //        // This will perform the segue and pre-load the variable for you to use
-    //
-    //        dispatch_async(dispatch_get_main_queue()){
-    //            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
-    //        }
-    //
-    //    }
+        func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            self.selectedCheckin = self.checkins[indexPath.row]
     
+    
+            // Let's assume that the segue name is called playerSegue
+            // This will perform the segue and pre-load the variable for you to use
+    
+            dispatch_async(dispatch_get_main_queue()){
+                self.performSegueWithIdentifier("checkinDetailsSegue", sender: self)
+            }
+    
+        }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "checkinDetailsSegue") {
+            let destViewController = segue.destinationViewController as! CheckinDetailsViewControler
+            destViewController.checkin = self.selectedCheckin
+            self.selectedCheckin = nil
+        }
+    }
     
 }

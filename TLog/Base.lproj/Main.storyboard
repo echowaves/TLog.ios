@@ -500,7 +500,7 @@
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pta-nq-wLh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pta-nq-wLh">
                                 <rect key="frame" x="20" y="131" width="560" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -910,7 +910,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="checked out at" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="0EY-b4-aW2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="duration" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="0EY-b4-aW2">
                                 <rect key="frame" x="16" y="133" width="568" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DIc-Iy-05P"/>
@@ -928,9 +928,26 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-5y-jEn">
                                 <rect key="frame" x="20" y="249" width="560" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iCB-5F-HIm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="update">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgS-g6-0qZ">
+                                <rect key="frame" x="20" y="346" width="560" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MhC-VG-4kU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="delete">
@@ -947,6 +964,7 @@
                         <color key="backgroundColor" red="0.71372549019999998" green="0.84313725490000002" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hLU-yB-98J" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="4kV-cD-cRj"/>
+                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="trailing" secondItem="ArI-mU-VhM" secondAttribute="trailingMargin" id="8dn-8L-GZi"/>
                             <constraint firstItem="1sf-5y-jEn" firstAttribute="trailing" secondItem="ArI-mU-VhM" secondAttribute="trailingMargin" id="BpK-Pf-9Wf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RW8-l2-roV" secondAttribute="trailing" constant="-4" id="JGN-Dm-xAb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hLU-yB-98J" secondAttribute="trailing" constant="-4" id="JcV-A8-JYO"/>
@@ -954,6 +972,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0EY-b4-aW2" secondAttribute="trailing" constant="-4" id="PEo-tP-pyu"/>
                             <constraint firstItem="hLU-yB-98J" firstAttribute="top" secondItem="Fha-Fx-zgD" secondAttribute="bottom" constant="11" id="PIl-Yo-UIj"/>
                             <constraint firstItem="RW8-l2-roV" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="Qai-6R-3S8"/>
+                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="top" secondItem="1sf-5y-jEn" secondAttribute="bottom" constant="47" id="VxL-9g-q7I"/>
                             <constraint firstItem="RW8-l2-roV" firstAttribute="top" secondItem="0EY-b4-aW2" secondAttribute="bottom" constant="8" id="d2x-Fc-keF"/>
                             <constraint firstItem="0EY-b4-aW2" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="dFM-dh-4nE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fha-Fx-zgD" secondAttribute="trailing" constant="-20" id="gVd-02-a4o"/>
@@ -961,6 +980,7 @@
                             <constraint firstItem="0EY-b4-aW2" firstAttribute="top" secondItem="hLU-yB-98J" secondAttribute="bottom" constant="8" id="kPI-gk-DmV"/>
                             <constraint firstItem="Fha-Fx-zgD" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-20" id="m84-Bx-2Th"/>
                             <constraint firstItem="1sf-5y-jEn" firstAttribute="top" secondItem="RW8-l2-roV" secondAttribute="bottom" constant="8" id="vYa-td-aCc"/>
+                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" id="vos-AW-u8g"/>
                         </constraints>
                     </view>
                 </viewController>
