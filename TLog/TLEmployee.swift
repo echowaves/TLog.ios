@@ -54,8 +54,8 @@ class TLEmployee: NSObject {
                 .responseJSON { response in
                     switch response.result {
                     case .Success:
-                        self.id = response.result.value!["id"] as? Int
-                        success(employeeId: response.result.value!["id"] as! Int);
+                        self.id = response.result.value!["employee"]!!["id"] as? Int
+                        success(employeeId: self.id!);
                     case .Failure(let error):
                         NSLog(error.description)
                         failure(error: error)
