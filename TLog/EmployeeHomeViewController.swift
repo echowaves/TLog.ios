@@ -107,7 +107,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
             let alert = UIAlertController(title: nil, message: "Error loading checkins. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-            self.updateViews()
+//            self.updateViews()
         }
     }
     
