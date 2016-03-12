@@ -64,7 +64,7 @@ class TLCheckin: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    let returnedCheckIn:NSDictionary = (response.result.value!["result"])!! as! NSDictionary
+                    let returnedCheckIn:NSDictionary = (response.result.value!["checkin"])!! as! NSDictionary
                     
                     self.id = returnedCheckIn["id"] as? Int
                     self.email = returnedCheckIn["email"] as? String
