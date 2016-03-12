@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769851C94C95000B4ACB2 /* TLReport.swift */; };
 		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
 		0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */; };
 		0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2769851C94C95000B4ACB2 /* TLReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLReport.swift; sourceTree = "<group>"; };
 		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
 		0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickActionCodeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				0A51A3B41C72560300E83052 /* TLUser.swift */,
+				0A2769851C94C95000B4ACB2 /* TLReport.swift */,
 				0A79B8821C7960900050AE57 /* TLEmployee.swift */,
 				0A5169AC1C87597300186D39 /* TLCheckin.swift */,
 				0A5169B41C88A44400186D39 /* TLActionCode.swift */,
@@ -305,6 +308,7 @@
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
 				0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */,
+				0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */,
 				0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */,
 				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,

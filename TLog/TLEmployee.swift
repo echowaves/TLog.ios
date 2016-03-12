@@ -162,7 +162,7 @@ class TLEmployee: NSObject {
                     switch response.result {
                     case .Success:
                         
-                        let json = JSON(data: response.data!)["results"]
+                        let json = JSON(data: response.data!)["employees"]
                         
                         var activeEmployees: [TLEmployee] = [TLEmployee]()
                         var inactiveEmployees: [TLEmployee] = [TLEmployee]()
@@ -179,8 +179,6 @@ class TLEmployee: NSObject {
                             } else {
                                 inactiveEmployees.append(employee)
                             }
-                            
-                            
                         }
                         
                         success(activeEmployees: activeEmployees, inactiveEmployees: inactiveEmployees);

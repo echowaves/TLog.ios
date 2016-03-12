@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    @IBOutlet weak var navBar: UINavigationBar!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+            
+        
     }
     
     @IBAction func employeesButtonClicked(sender: AnyObject) {

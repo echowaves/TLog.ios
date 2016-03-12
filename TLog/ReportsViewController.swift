@@ -8,7 +8,13 @@
 
 import Foundation
 
-class ReportsViewController: UIViewController {
+class ReportsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var years:[String] = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

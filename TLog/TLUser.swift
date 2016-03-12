@@ -48,63 +48,86 @@ class TLUser: NSObject {
     func signIn(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
-            
-            let headers = [
-                "Content-Type": "application/json"
-            ]
-            let parameters = ["email": self.email!,
-                "password": self.password!]
-            
-            Alamofire.request(.POST, "\(TL_HOST)/auth" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
-                .validate(statusCode: 200..<300)
-                .responseJSON { response in
-                    
-                    switch response.result {
-                    case .Success:
-                        if let JSON = response.result.value {
-                            //                            print("jwtToken:")
-                            //                            print(JSON.valueForKey("token") as! String)
-                            TLUser.storeJwtLocally(JSON.valueForKey("token") as! String)
-                        }
-                        success();
-                    case .Failure(let error):
-                        NSLog(error.description)
-                        failure(error: error)
+        
+        let headers = [
+            "Content-Type": "application/json"
+        ]
+        let parameters = ["email": self.email!,
+                          "password": self.password!]
+        
+        Alamofire.request(.POST, "\(TL_HOST)/auth" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                
+                switch response.result {
+                case .Success:
+                    if let JSON = response.result.value {
+                        //                            print("jwtToken:")
+                        //                            print(JSON.valueForKey("token") as! String)
+                        TLUser.storeJwtLocally(JSON.valueForKey("token") as! String)
                     }
-            }
+                    success();
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
     }
     
     
     func signUp(
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
-            let headers = [
-                "Content-Type": "application/json"
-            ]
-            let parameters = ["email": self.email!,
-                "password": self.password!]
-            Alamofire.request(.POST, "\(TL_HOST)/users" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
-                .validate(statusCode: 200..<300)
-                .responseJSON { response in
-                    switch response.result {
-                    case .Success:
-                        self.id = response.result.value!["id"] as? Int
-                        
-                        self.signIn(
-                            { () -> () in
-                                NSLog("authenticated")
-                                
-                                success();
-                                
-                            }) { (error) -> () in
-                                NSLog("failed to authenticate")
-                                failure(error: error)
-                        }
-                        
-                    case .Failure(let error):
-                        NSLog(error.description)
+        let headers = [
+            "Content-Type": "application/json"
+        ]
+        let parameters = ["email": self.email!,
+                          "password": self.password!]
+        Alamofire.request(.POST, "\(TL_HOST)/users" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    self.id = response.result.value!["id"] as? Int
+                    
+                    self.signIn(
+                        { () -> () in
+                            NSLog("authenticated")
+                            
+                            success();
+                            
+                    }) { (error) -> () in
+                        NSLog("failed to authenticate")
                         failure(error: error)
                     }
-            }
+                    
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
     }
+    
+//    func currentUser(
+//        success:() -> (),
+//        failure:(error: NSError) -> ()) -> () {
+//        let headers = [
+//            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+//            "Content-Type": "application/json"
+//        ]
+//        Alamofire.request(.GET, "\(TL_HOST)/users", encoding: ParameterEncoding.JSON, headers: headers)
+//            .validate(statusCode: 200..<300)
+//            .responseJSON { response in
+//                switch response.result {
+//                case .Success:
+//                    self.id = response.result.value!["id"] as? Int
+//                    success();
+//                case .Failure(let error):
+//                    NSLog(error.description)
+//                    failure(error: error)
+//                }
+//        }
+//    }
+    
+    
 }
