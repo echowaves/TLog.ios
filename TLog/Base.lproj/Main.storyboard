@@ -633,23 +633,23 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-iD-vsC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-iD-vsC">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="eKK-3r-DrY">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YearButtonTableViewCell" rowHeight="66" id="eKK-3r-DrY" customClass="YearButtonTableViewCell" customModule="TLog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eKK-3r-DrY" id="Xdn-Mh-gmo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ae-Ec-idu">
-                                                    <rect key="frame" x="20" y="-3" width="560" height="50"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ae-Ec-idu">
+                                                    <rect key="frame" x="20" y="8" width="560" height="50"/>
                                                     <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="Y5w-0O-OGL"/>
+                                                        <constraint firstAttribute="height" constant="50" id="vPL-RK-Lk7"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                     <state key="normal" title="year">
@@ -664,8 +664,16 @@
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="7ae-Ec-idu" firstAttribute="leading" secondItem="Xdn-Mh-gmo" secondAttribute="leadingMargin" constant="12" id="1FS-Jm-MrN"/>
+                                                <constraint firstItem="7ae-Ec-idu" firstAttribute="top" secondItem="Xdn-Mh-gmo" secondAttribute="topMargin" id="CCv-z5-mpq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7ae-Ec-idu" secondAttribute="trailing" constant="12" id="wgI-2u-wV6"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="yearButton" destination="7ae-Ec-idu" id="5vT-bm-nut"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -681,10 +689,13 @@
                             <constraint firstItem="Es7-b8-pJC" firstAttribute="top" secondItem="iKs-Fy-W57" secondAttribute="bottom" id="jQP-5h-Hfa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="U2p-iD-vsC" id="o9W-h7-I9Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wj7-Kr-X4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2607" y="1142"/>
+            <point key="canvasLocation" x="2607" y="1170"/>
         </scene>
         <!--Employee Details View Controller-->
         <scene sceneID="pCh-68-1JW">

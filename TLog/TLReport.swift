@@ -15,7 +15,7 @@ class TLReport: NSObject {
     
     
     
-    func yearsForUser(
+    class func yearsForUser(
         success:(years:[String]) -> (),
         failure:(error: NSError) -> ()) -> () {
         let headers = [
@@ -27,26 +27,13 @@ class TLReport: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
+                    
                     let json = JSON(data: response.data!)["years"]
-                    
+                    var years = [String]()
                     for (_,jsonYear):(String, JSON) in json {
-                        let year =
-                            TLEmployee(
-                                id: jsonEmployee["id"].intValue,
-                                name: jsonEmployee["name"].stringValue,
-                                email: jsonEmployee["email"].stringValue)
-                        if(jsonEmployee["activation_code"] != nil) {
-                            employee.activationCode = jsonEmployee["activation_code"].stringValue
-                            activeEmployees.append(employee)
-                        } else {
-                            inactiveEmployees.append(employee)
-                        }
-                        
-                        
+                        years.append(jsonYear["date_part"].stringValue)                        
                     }
-
-                    
-                    success();
+                    success(years: years)
                 case .Failure(let error):
                     NSLog(error.description)
                     failure(error: error)
