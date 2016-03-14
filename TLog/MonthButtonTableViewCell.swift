@@ -10,5 +10,8 @@ import Foundation
 
 
 class MonthButtonTableViewCell: UITableViewCell {
-    @IBOutlet weak var monthButton: UIButton!
+
+    @IBOutlet weak var monthLabel: UILabel!
+    
+    
 }

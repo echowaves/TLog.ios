@@ -70,7 +70,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func addNewEmployeeButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
+            self.performSegueWithIdentifier("EmployeeDetailsViewController", sender: self)
         }
     }
     
@@ -103,13 +103,13 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         // This will perform the segue and pre-load the variable for you to use
 
         dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
+            self.performSegueWithIdentifier("EmployeeDetailsViewController", sender: self)
         }
         
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "employeeDetailsSegue") {
+        if (segue.identifier == "EmployeeDetailsViewController") {
             let destViewController = segue.destinationViewController as! EmployeeDetailsViewController
             destViewController.employee = self.selectedEmployee
             self.selectedEmployee = nil

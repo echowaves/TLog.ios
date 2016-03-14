@@ -26,7 +26,7 @@ class MenuViewController: UIViewController {
     
     @IBAction func employeesButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("employeesSegue", sender: self)
+            self.performSegueWithIdentifier("EmployeesViewController", sender: self)
         }
     }
     

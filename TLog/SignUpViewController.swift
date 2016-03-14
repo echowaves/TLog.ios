@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
             TLUser(id: nil, email: emailTextField.text!, password: passwordTextField.text!).signUp(
                 { () -> () in
                     dispatch_async(dispatch_get_main_queue()){
-                        self.performSegueWithIdentifier("menuSegue", sender: self)
+                        self.performSegueWithIdentifier("MenuViewController", sender: self)
                     }
                     
                 }, failure: { (error) -> () in

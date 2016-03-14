@@ -33,7 +33,7 @@ class SignInViewController: UIViewController {
             //auto sign in
             if(TLUser.retreiveJwtFromLocalStorage() != nil) {
                 dispatch_async(dispatch_get_main_queue()){
-                    self.performSegueWithIdentifier("menuSegue", sender: self)
+                    self.performSegueWithIdentifier("MenuViewController", sender: self)
                 }
             }
         }
@@ -42,7 +42,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func signUpButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("signUpSegue", sender: self)
+            self.performSegueWithIdentifier("SignUpViewController", sender: self)
         }
     }
     
@@ -54,7 +54,7 @@ class SignInViewController: UIViewController {
                 
                 
                 dispatch_async(dispatch_get_main_queue()){
-                    self.performSegueWithIdentifier("menuSegue", sender: self)
+                    self.performSegueWithIdentifier("MenuViewController", sender: self)
                 }
                 
                 

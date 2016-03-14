@@ -73,7 +73,7 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
         let months = dateFormatter.monthSymbols
         let monthSymbol = months[Int(month)!-1]
         
-        cell!.monthButton?.setTitle(monthSymbol, forState: .Normal)
+        cell!.monthLabel.text = monthSymbol
         return cell!
         
     }

@@ -11,6 +11,8 @@
 		0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */; };
 		0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */; };
 		0A27698D1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27698C1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift */; };
+		0A27698F1C97756700B4ACB2 /* ActionCodesReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27698E1C97756700B4ACB2 /* ActionCodesReportViewController.swift */; };
+		0A2769911C97758400B4ACB2 /* EmployeesReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769901C97758400B4ACB2 /* EmployeesReportViewController.swift */; };
 		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
 		0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */; };
 		0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */; };
@@ -40,6 +42,8 @@
 		0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearButtonTableViewCell.swift; sourceTree = "<group>"; };
 		0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPickerViewController.swift; sourceTree = "<group>"; };
 		0A27698C1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthButtonTableViewCell.swift; sourceTree = "<group>"; };
+		0A27698E1C97756700B4ACB2 /* ActionCodesReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCodesReportViewController.swift; sourceTree = "<group>"; };
+		0A2769901C97758400B4ACB2 /* EmployeesReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesReportViewController.swift; sourceTree = "<group>"; };
 		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
 		0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickActionCodeViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */,
 				0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */,
 				0A27698C1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift */,
+				0A27698E1C97756700B4ACB2 /* ActionCodesReportViewController.swift */,
+				0A2769901C97758400B4ACB2 /* EmployeesReportViewController.swift */,
 			);
 			name = reports;
 			sourceTree = "<group>";
@@ -327,6 +333,8 @@
 				0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */,
 				0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */,
 				0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */,
+				0A27698F1C97756700B4ACB2 /* ActionCodesReportViewController.swift in Sources */,
+				0A2769911C97758400B4ACB2 /* EmployeesReportViewController.swift in Sources */,
 				0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */,
 				0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */,
 				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
