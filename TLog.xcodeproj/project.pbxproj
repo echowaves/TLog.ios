@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769851C94C95000B4ACB2 /* TLReport.swift */; };
 		0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */; };
+		0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */; };
 		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
 		0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */; };
 		0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */; };
@@ -24,7 +25,7 @@
 		0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */; };
 		0A79B8881C7BEEDE0050AE57 /* EmployeeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */; };
 		0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */; };
-		0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */; };
+		0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */; };
 		0AA9EF1F1C741EC600B53281 /* EmployeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */; };
 		0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */; };
 		0AC5FAB41C721C4700ACD363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB21C721C4700ACD363 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		0A2769851C94C95000B4ACB2 /* TLReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLReport.swift; sourceTree = "<group>"; };
 		0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearButtonTableViewCell.swift; sourceTree = "<group>"; };
+		0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPickerViewController.swift; sourceTree = "<group>"; };
 		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
 		0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickActionCodeViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 		0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeHomeViewController.swift; sourceTree = "<group>"; };
 		0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
-		0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
+		0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerViewController.swift; sourceTree = "<group>"; };
 		0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsViewController.swift; sourceTree = "<group>"; };
 		0AC5FAAB1C721C4700ACD363 /* TLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2769891C96477A00B4ACB2 /* reports */ = {
+			isa = PBXGroup;
+			children = (
+				0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */,
+				0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */,
+				0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */,
+			);
+			name = reports;
+			sourceTree = "<group>";
+		};
 		0A5169B61C8A99BE00186D39 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,14 +112,13 @@
 		0A5228E21C722AC400D64847 /* Controller.user */ = {
 			isa = PBXGroup;
 			children = (
+				0A2769891C96477A00B4ACB2 /* reports */,
 				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
 				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
 				0A51A3B21C72379600E83052 /* MenuViewController.swift */,
 				0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */,
 				0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */,
 				0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */,
-				0A9B88EE1C73A82D007AB7A1 /* ReportsViewController.swift */,
-				0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */,
 			);
 			name = Controller.user;
 			sourceTree = "<group>";
@@ -310,9 +321,10 @@
 				0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
-				0A9B88EF1C73A82D007AB7A1 /* ReportsViewController.swift in Sources */,
+				0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */,
 				0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */,
 				0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */,
+				0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */,
 				0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */,
 				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,

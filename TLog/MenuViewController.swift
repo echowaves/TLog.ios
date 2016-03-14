@@ -32,7 +32,7 @@ class MenuViewController: UIViewController {
     
     @IBAction func reportsButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("reportsSegue", sender: self)
+            self.performSegueWithIdentifier("YearPickerViewController", sender: self)
         }
     }
 

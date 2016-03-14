@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ReportsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class YearPickerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
