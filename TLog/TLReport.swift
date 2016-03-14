@@ -40,6 +40,32 @@ class TLReport: NSObject {
                 }
         }
     }
-    
+
+    class func monthsForUserAndYear(year:String,
+        success:(years:[String]) -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.GET, "\(TL_HOST)/reports/months/\(year)", encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    let json = JSON(data: response.data!)["months"]
+                    var months = [String]()
+                    for (_,jsonMonth):(String, JSON) in json {
+                        months.append(jsonMonth["date_part"].stringValue)
+                    }
+                    success(years: months)
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
     
 }

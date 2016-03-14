@@ -13,25 +13,24 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
     var year:String!
     
     @IBOutlet weak var navBar: UINavigationBar!
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     
-    var years:[String] = []
-    var selectedYear:String!
+    var months:[String] = []
+    var selectedMonth:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.loadMonths()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navBar.topItem?.title = year
-
-        self.loadYears()
-        
     }
     
     
@@ -39,15 +38,17 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func loadYears() {
-        TLReport.yearsForUser({ (years) in
-            self.years = years
-            self.tableView.reloadData()
+    func loadMonths() {
+        TLReport.monthsForUserAndYear(
+            self.year,
+            success: { (months) in
+                self.months = months
+                self.tableView.reloadData()
             },
-                              failure: { (error) in
-                                let alert = UIAlertController(title: nil, message: "Error loading years. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
+            failure: { (error) in
+                let alert = UIAlertController(title: nil, message: "Error loading months. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
             
         )
@@ -59,20 +60,20 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
     ////////////////////////////////////////////////////////////////////////////////////////////
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return years.count
+        return months.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let year = self.years[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("YearButtonTableViewCell") as? YearButtonTableViewCell!
-        cell!.yearButton?.setTitle(year, forState: .Normal)
+        let month = self.months[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("MonthButtonTableViewCell") as? MonthButtonTableViewCell!
+        cell!.monthButton?.setTitle(month, forState: .Normal)
         return cell!
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedYear = self.years[indexPath.row]
+        self.selectedMonth = self.months[indexPath.row]
         
         
         // Let's assume that the segue name is called playerSegue

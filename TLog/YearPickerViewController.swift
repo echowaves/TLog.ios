@@ -19,11 +19,11 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.loadYears()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadYears()
         
     }
     
@@ -59,22 +59,29 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let year = self.years[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("YearButtonTableViewCell") as? YearButtonTableViewCell!
+        
         cell!.yearButton?.setTitle(year, forState: .Normal)
+        cell!.yearButton?.tag = indexPath.row
+        cell!.yearButton?.addTarget(self, action: #selector(YearPickerViewController.yearButtonPushed), forControlEvents: .TouchUpInside)
+        
         return cell!
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedYear = self.years[indexPath.row]
-        
-        
-        // Let's assume that the segue name is called playerSegue
-        // This will perform the segue and pre-load the variable for you to use
-        
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    ////        self.selectedYear = self.years[indexPath.row]
+    //
+    //        // Let's assume that the segue name is called playerSegue
+    //        // This will perform the segue and pre-load the variable for you to use
+    //
+    //
+    //    }
+    
+    func yearButtonPushed(sender:UIButton) {
+        self.selectedYear = self.years[sender.tag]
         dispatch_async(dispatch_get_main_queue()){
             self.performSegueWithIdentifier("MonthPickerViewController", sender: self)
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -84,6 +91,6 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
             self.selectedYear = nil
         }
     }
-
+    
     
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 
-class YearButtonTableViewCell: UITableViewCell {    
+class YearButtonTableViewCell: UITableViewCell {
+    var year:String!
     @IBOutlet weak var yearButton: UIButton!
 }
