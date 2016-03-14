@@ -71,18 +71,18 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
         // Let's assume that the segue name is called playerSegue
         // This will perform the segue and pre-load the variable for you to use
         
-//        dispatch_async(dispatch_get_main_queue()){
-//            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
-//        }
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("MonthPickerViewController", sender: self)
+        }
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        if (segue.identifier == "employeeDetailsSegue") {
-//            let destViewController = segue.destinationViewController as! EmployeeDetailsViewController
-//            destViewController.employee = self.selectedEmployee
-//            self.selectedEmployee = nil
-//        }
+        if (segue.identifier == "MonthPickerViewController") {
+            let destViewController = segue.destinationViewController as! MonthPickerViewController
+            destViewController.year = self.selectedYear
+            self.selectedYear = nil
+        }
     }
 
     

@@ -645,7 +645,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ae-Ec-idu">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ae-Ec-idu">
                                                     <rect key="frame" x="20" y="8" width="560" height="50"/>
                                                     <color key="backgroundColor" red="0.0" green="0.76470588240000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1037,7 +1037,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="year" id="h0h-m2-iue">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt; years" id="z84-eO-uyN"/>
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; years" id="z84-eO-uyN">
+                                            <connections>
+                                                <action selector="yearButtonClicked:" destination="j3w-nK-wI1" id="VBk-nA-bQH"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1098,6 +1102,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navBar" destination="0wh-Vp-isD" id="ceJ-VC-QHq"/>
                         <outlet property="tableView" destination="TnK-bu-rar" id="ceF-l9-HHx"/>
                     </connections>
                 </viewController>

@@ -10,7 +10,12 @@ import Foundation
 
 class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var year:String!
+    
+    @IBOutlet weak var navBar: UINavigationBar!
+
     @IBOutlet weak var tableView: UITableView!
+    
     
     var years:[String] = []
     var selectedYear:String!
@@ -23,12 +28,14 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        navBar.topItem?.title = year
+
         self.loadYears()
         
     }
     
     
-    @IBAction func menuButtonClicked(sender: AnyObject) {
+    @IBAction func yearButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
