@@ -67,7 +67,13 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
         
         let month = self.months[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("MonthButtonTableViewCell") as? MonthButtonTableViewCell!
-        cell!.monthButton?.setTitle(month, forState: .Normal)
+        
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        
+        let months = dateFormatter.monthSymbols
+        let monthSymbol = months[Int(month)!-1]
+        
+        cell!.monthButton?.setTitle(monthSymbol, forState: .Normal)
         return cell!
         
     }
