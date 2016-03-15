@@ -13,7 +13,7 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
     var year:String!
     var month:String!
     
-    var employees:[(String, String)] = [(String, String)]()
+    var employees:[(String, Int)] = [(String, Int)]()
     
     @IBOutlet weak var navBar: UINavigationBar!
     
@@ -79,7 +79,8 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeesReportTableViewCell") as? EmployeesReportTableViewCell!
         
         cell!.nameLabel?.text = employee.0
-        if(employee.1 != "") {
+//        NSLog("\(employee.1)")
+        if(employee.1 != 0) {
             cell!.durationLabel?.text = "\(employee.1) hours"
         } else {
             cell!.durationLabel?.text = "--"

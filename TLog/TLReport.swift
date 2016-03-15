@@ -72,7 +72,7 @@ class TLReport: NSObject {
     
     class func employeeDurationsByYearMonthForUser(year:String,
                                                    month:String,
-                                                   success:(employees:[(String, String)]) -> (),
+                                                   success:(employees:[(String, Int)]) -> (),
                                                    failure:(error: NSError) -> ()) -> () {
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
@@ -85,12 +85,12 @@ class TLReport: NSObject {
                 case .Success:
                     
                     let json = JSON(data: response.data!)["employees"]
-                    var employees = [(String, String)]()
+                    var employees = [(String, Int)]()
                     for (_,jsonEmployee):(String, JSON) in json {
                         employees.append(
                             (
                                 jsonEmployee["name"].stringValue,
-                                jsonEmployee["sum"]["hours"].stringValue
+                                jsonEmployee["sum"].intValue
                             )
                         )
                     }
