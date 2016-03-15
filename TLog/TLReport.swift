@@ -31,7 +31,7 @@ class TLReport: NSObject {
                     let json = JSON(data: response.data!)["years"]
                     var years = [String]()
                     for (_,jsonYear):(String, JSON) in json {
-                        years.append(jsonYear["date_part"].stringValue)                        
+                        years.append(jsonYear["date_part"].stringValue)
                     }
                     success(years: years)
                 case .Failure(let error):
@@ -40,10 +40,10 @@ class TLReport: NSObject {
                 }
         }
     }
-
+    
     class func monthsForUserAndYear(year:String,
-        success:(years:[String]) -> (),
-        failure:(error: NSError) -> ()) -> () {
+                                    success:(years:[String]) -> (),
+                                    failure:(error: NSError) -> ()) -> () {
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
@@ -66,6 +66,42 @@ class TLReport: NSObject {
                 }
         }
     }
-
+    
+    
+    
+    
+    class func employeeDurationsByYearMonthForUser(year:String,
+                                                   month:String,
+                                                   success:(employees:[(String, String)]) -> (),
+                                                   failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.GET, "\(TL_HOST)/reports/employees/\(year)/\(month)", encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    let json = JSON(data: response.data!)["employees"]
+                    var employees = [(String, String)]()
+                    for (_,jsonEmployee):(String, JSON) in json {
+                        employees.append(
+                            (
+                                jsonEmployee["name"].stringValue,
+                                jsonEmployee["sum"]["hours"].stringValue
+                            )
+                        )
+                    }
+                    success(employees: employees)
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+    
+    
     
 }

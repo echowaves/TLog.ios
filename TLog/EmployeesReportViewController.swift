@@ -13,6 +13,8 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
     var year:String!
     var month:String!
     
+    var employees:[(String, String)] = [(String, String)]()
+    
     @IBOutlet weak var navBar: UINavigationBar!
     
     @IBOutlet weak var yearButton: UIBarButtonItem!
@@ -32,7 +34,7 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
         yearButton.title = "< \(year)"
         
         
-        //        self.loadYears()
+        loadEmployees()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,19 +47,22 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //    func loadYears() {
-    //        TLReport.yearsForUser({ (years) in
-    //            self.years = years
-    //            self.tableView.reloadData()
-    //            },
-    //                              failure: { (error) in
-    //                                let alert = UIAlertController(title: nil, message: "Error loading years. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-    //                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-    //                                self.presentViewController(alert, animated: true, completion: nil)
-    //            }
-    //
-    //        )
-    //    }
+    func loadEmployees() {
+        TLReport.employeeDurationsByYearMonthForUser(
+            year,
+            month: month,
+            success: { (employees) in
+                self.employees = employees
+                self.tableView.reloadData()
+            },
+            failure: { (error) in
+                let alert = UIAlertController(title: nil, message: "Error loading employees stats. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+        )
+    }
     
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,19 +70,22 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
     ////////////////////////////////////////////////////////////////////////////////////////////
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return years.count
-        return 0
+        return employees.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //        let year = self.years[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("YearButtonTableViewCell") as? YearButtonTableViewCell!
-        //
-        //        cell!.yearButton?.setTitle(year, forState: .Normal)
-        //        cell!.yearButton?.tag = indexPath.row
-        //        cell!.yearButton?.addTarget(self, action: #selector(YearPickerViewController.yearButtonPushed), forControlEvents: .TouchUpInside)
-        //
+        let employee = self.employees[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("EmployeesReportTableViewCell") as? EmployeesReportTableViewCell!
+        
+        cell!.nameLabel?.text = employee.0
+        if(employee.1 != "") {
+            cell!.durationLabel?.text = "\(employee.1) hours"
+        } else {
+            cell!.durationLabel?.text = "--"
+        }
+        
+        
         return cell!
         
     }
