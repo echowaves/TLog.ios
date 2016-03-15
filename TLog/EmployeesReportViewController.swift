@@ -48,7 +48,7 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func loadEmployees() {
-        TLReport.employeeDurationsByYearMonthForUser(
+        TLReport.employeesDurationsByYearMonthForUser(
             year,
             month: month,
             success: { (employees) in

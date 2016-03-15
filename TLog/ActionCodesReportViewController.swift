@@ -9,14 +9,15 @@
 import Foundation
 
 class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     var year:String!
     var month:String!
-
+    
+    var actionCodes:[(String, Int)] = [(String, Int)]()
+    
     @IBOutlet weak var navBar: UINavigationBar!
-
+    
     @IBOutlet weak var yearButton: UIBarButtonItem!
-        
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -31,8 +32,8 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
         navBar.topItem?.title = months[Int(month)!-1]
         yearButton.title = "< \(year)"
         
-
-//        self.loadYears()
+        
+        loadActionCodes()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,19 +46,22 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    func loadYears() {
-//        TLReport.yearsForUser({ (years) in
-//            self.years = years
-//            self.tableView.reloadData()
-//            },
-//                              failure: { (error) in
-//                                let alert = UIAlertController(title: nil, message: "Error loading years. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-//                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-//                                self.presentViewController(alert, animated: true, completion: nil)
-//            }
-//            
-//        )
-//    }
+    func loadActionCodes() {
+        TLReport.actionCodesDurationsByYearMonthForUser(
+            year,
+            month: month,
+            success: { (actionCodes) in
+                self.actionCodes = actionCodes
+                self.tableView.reloadData()
+            },
+            failure: { (error) in
+                let alert = UIAlertController(title: nil, message: "Error loading action codes stats. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+        )
+    }
     
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,21 +69,25 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
     ////////////////////////////////////////////////////////////////////////////////////////////
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return years.count
-        return 0
+        return actionCodes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        let year = self.years[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("YearButtonTableViewCell") as? YearButtonTableViewCell!
-//
-//        cell!.yearButton?.setTitle(year, forState: .Normal)
-//        cell!.yearButton?.tag = indexPath.row
-//        cell!.yearButton?.addTarget(self, action: #selector(YearPickerViewController.yearButtonPushed), forControlEvents: .TouchUpInside)
-//        
+        let actionCode = self.actionCodes[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("ActionCodesReportTableViewCell") as? ActionCodesReportTableViewCell!
+        
+        cell!.nameLabel?.text = actionCode.0
+        //        NSLog("\(actionCode.1)")
+        if(actionCode.1 != 0) {
+            cell!.durationLabel?.text = "\(actionCode.1) hours"
+        } else {
+            cell!.durationLabel?.text = "--"
+        }
+        
+        
         return cell!
-
+        
     }
     
     //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

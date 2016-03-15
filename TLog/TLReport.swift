@@ -68,9 +68,42 @@ class TLReport: NSObject {
     }
     
     
+    class func actionCodesDurationsByYearMonthForUser(year:String,
+                                                   month:String,
+                                                   success:(actionCodes:[(String, Int)]) -> (),
+                                                   failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.GET, "\(TL_HOST)/reports/action_codes/\(year)/\(month)", encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    let json = JSON(data: response.data!)["action_codes"]
+                    var actionCodes = [(String, Int)]()
+                    for (_,jsonActionCode):(String, JSON) in json {
+                        actionCodes.append(
+                            (
+                                "\(jsonActionCode["code"].stringValue):\(jsonActionCode["description"].stringValue)",
+                                jsonActionCode["sum"].intValue
+                            )
+                        )
+                    }
+                    success(actionCodes: actionCodes)
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+    
+
     
     
-    class func employeeDurationsByYearMonthForUser(year:String,
+    class func employeesDurationsByYearMonthForUser(year:String,
                                                    month:String,
                                                    success:(employees:[(String, Int)]) -> (),
                                                    failure:(error: NSError) -> ()) -> () {
