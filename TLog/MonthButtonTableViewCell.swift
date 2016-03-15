@@ -11,6 +11,8 @@ import Foundation
 
 class MonthButtonTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var employeesButton: UIButton!
+    @IBOutlet weak var actionCodesButton: UIButton!
     @IBOutlet weak var monthLabel: UILabel!
     
     

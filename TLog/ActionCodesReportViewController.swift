@@ -10,16 +10,29 @@ import Foundation
 
 class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var year:String!
+    var month:String!
+
+    @IBOutlet weak var navBar: UINavigationBar!
+
+    @IBOutlet weak var yearButton: UIBarButtonItem!
+        
     @IBOutlet weak var tableView: UITableView!
     
-    var years:[String] = []
-    var selectedYear:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.loadYears()
+        
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let months = dateFormatter.monthSymbols
+        
+        navBar.topItem?.title = months[Int(month)!-1]
+        yearButton.title = "< \(year)"
+        
+
+//        self.loadYears()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -28,23 +41,23 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
     }
     
     
-    @IBAction func menuButtonClicked(sender: AnyObject) {
+    @IBAction func yearButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func loadYears() {
-        TLReport.yearsForUser({ (years) in
-            self.years = years
-            self.tableView.reloadData()
-            },
-                              failure: { (error) in
-                                let alert = UIAlertController(title: nil, message: "Error loading years. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
-            }
-            
-        )
-    }
+//    func loadYears() {
+//        TLReport.yearsForUser({ (years) in
+//            self.years = years
+//            self.tableView.reloadData()
+//            },
+//                              failure: { (error) in
+//                                let alert = UIAlertController(title: nil, message: "Error loading years. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+//                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+//                                self.presentViewController(alert, animated: true, completion: nil)
+//            }
+//            
+//        )
+//    }
     
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,20 +65,21 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
     ////////////////////////////////////////////////////////////////////////////////////////////
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return years.count
+//        return years.count
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let year = self.years[indexPath.row]
+//        let year = self.years[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("YearButtonTableViewCell") as? YearButtonTableViewCell!
-        
-        cell!.yearButton?.setTitle(year, forState: .Normal)
-        cell!.yearButton?.tag = indexPath.row
-        cell!.yearButton?.addTarget(self, action: #selector(YearPickerViewController.yearButtonPushed), forControlEvents: .TouchUpInside)
-        
+//
+//        cell!.yearButton?.setTitle(year, forState: .Normal)
+//        cell!.yearButton?.tag = indexPath.row
+//        cell!.yearButton?.addTarget(self, action: #selector(YearPickerViewController.yearButtonPushed), forControlEvents: .TouchUpInside)
+//        
         return cell!
-        
+
     }
     
     //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -77,20 +91,6 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
     //
     //    }
     
-    func yearButtonPushed(sender:UIButton) {
-        self.selectedYear = self.years[sender.tag]
-        dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("MonthPickerViewController", sender: self)
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "MonthPickerViewController") {
-            let destViewController = segue.destinationViewController as! MonthPickerViewController
-            destViewController.year = self.selectedYear
-            self.selectedYear = nil
-        }
-    }
     
     
 }

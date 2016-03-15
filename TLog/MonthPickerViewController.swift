@@ -24,13 +24,14 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+
+        navBar.topItem?.title = year
+
         self.loadMonths()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navBar.topItem?.title = year
     }
     
     
@@ -74,30 +75,53 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
         let monthSymbol = months[Int(month)!-1]
         
         cell!.monthLabel.text = monthSymbol
+        
+        cell!.actionCodesButton?.tag = indexPath.row
+        cell!.actionCodesButton?.addTarget(self, action: #selector(MonthPickerViewController.actionCodesButtonPushed), forControlEvents: .TouchUpInside)
+        cell!.employeesButton?.tag = indexPath.row
+        cell!.employeesButton?.addTarget(self, action: #selector(MonthPickerViewController.employeesButtonPushed), forControlEvents: .TouchUpInside)
+
         return cell!
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedMonth = self.months[indexPath.row]
-        
-        
-        // Let's assume that the segue name is called playerSegue
-        // This will perform the segue and pre-load the variable for you to use
-        
-        //        dispatch_async(dispatch_get_main_queue()){
-        //            self.performSegueWithIdentifier("employeeDetailsSegue", sender: self)
-        //        }
-        
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//    }
+    
+    
+    
+    func actionCodesButtonPushed(sender:UIButton) {
+        self.selectedMonth = self.months[sender.tag]
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("ActionCodesReportViewController", sender: self)
+        }
+    }
+
+    
+    func employeesButtonPushed(sender:UIButton) {
+        self.selectedMonth = self.months[sender.tag]
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("EmployeesReportViewController", sender: self)
+        }
     }
     
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        //        if (segue.identifier == "employeeDetailsSegue") {
-        //            let destViewController = segue.destinationViewController as! EmployeeDetailsViewController
-        //            destViewController.employee = self.selectedEmployee
-        //            self.selectedEmployee = nil
-        //        }
+        if (segue.identifier == "ActionCodesReportViewController") {
+            let destViewController = segue.destinationViewController as! ActionCodesReportViewController
+            destViewController.year = self.year
+            destViewController.month = self.selectedMonth
+            self.selectedMonth = nil
+        }
+        if (segue.identifier == "EmployeesReportViewController") {
+            let destViewController = segue.destinationViewController as! EmployeesReportViewController
+            destViewController.year = self.year
+            destViewController.month = self.selectedMonth
+            self.selectedMonth = nil
+        }
+
     }
-    
+
     
 }
