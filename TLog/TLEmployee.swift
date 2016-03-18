@@ -16,12 +16,14 @@ class TLEmployee: NSObject {
     var id: Int?
     var name:String?
     var email:String?
+    var isSubcontractor:Bool
     var activationCode:String?
     
-    init(id: Int!, name:String!, email:String!) {
+    init(id: Int!, name:String!, email:String!, isSubcontractor:Bool) {
         self.id = id
         self.name = name
         self.email = email
+        self.isSubcontractor = isSubcontractor
     }
     
     class func storeActivationCodeLocally(activationCode:String)  -> () {
@@ -48,7 +50,7 @@ class TLEmployee: NSObject {
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            let parameters = ["name": self.name!, "email": self.email!]
+            let parameters = ["name": self.name!, "email": self.email!, "is_subcontractor": self.isSubcontractor.description]
             Alamofire.request(.POST, "\(TL_HOST)/employees" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
@@ -70,7 +72,7 @@ class TLEmployee: NSObject {
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            let parameters = ["name": self.name!, "email": self.email!]
+            let parameters = ["name": self.name!, "email": self.email!, "is_subcontractor": self.isSubcontractor.description]
             Alamofire.request(.PUT, "\(TL_HOST)/employees/\(self.id!)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
@@ -172,7 +174,9 @@ class TLEmployee: NSObject {
                             TLEmployee(
                                 id: jsonEmployee["id"].intValue,
                                 name: jsonEmployee["name"].stringValue,
-                                email: jsonEmployee["email"].stringValue)
+                                email: jsonEmployee["email"].stringValue,
+                                isSubcontractor: jsonEmployee["is_subcontractor"].boolValue)
+                            
                             if(jsonEmployee["activation_code"] != nil) {
                                 employee.activationCode = jsonEmployee["activation_code"].stringValue
                                 activeEmployees.append(employee)

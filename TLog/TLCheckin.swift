@@ -138,7 +138,9 @@ class TLCheckin: NSObject {
                         TLEmployee(
                             id: jsonEmployee["id"].intValue,
                             name: jsonEmployee["name"].stringValue,
-                            email: jsonEmployee["email"].stringValue)
+                            email: jsonEmployee["email"].stringValue,
+                            isSubcontractor: jsonEmployee["is_subcontractor"].boolValue
+                    )
                     
                     let jsonCheckins = JSON(data: response.data!)["checkins"]
                     var checkins = [TLCheckin]()

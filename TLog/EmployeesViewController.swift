@@ -89,6 +89,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCellIdentifier") as? EmployeeTableViewCell!
         cell!.nameLabel?.text = employee.name
         cell!.emailLabel?.text = employee.email
+        cell!.isSubcontractorLabel?.hidden = !employee.isSubcontractor
         
         return cell!
         

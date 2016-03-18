@@ -18,21 +18,40 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     
     @IBOutlet weak var emailTextField: UITextField!
     
-    @IBOutlet weak var activateButton: UIButton!
+    @IBOutlet weak var isSubcontractor: UISwitch!
     
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var subcontractorDisclaimer: UILabel!
+    
+    @IBOutlet weak var activateButton: UIButton!
+    @IBOutlet weak var subLabel: UILabel!
+    
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.becomeFirstResponder()
+        subcontractorDisclaimer.hidden = !self.isSubcontractor.on
+        subLabel.hidden = !self.isSubcontractor.on
         if(self.employee != nil) { // if employee is passed into this controller
             self.nameTextField.text = employee?.name
             self.emailTextField.text = employee?.email
+            self.isSubcontractor.on = (employee?.isSubcontractor)!
         } else {
             // otherwise create a default one
-            self.employee = TLEmployee(id: nil ,name: self.nameTextField.text!, email: self.emailTextField.text!)
+            self.employee = TLEmployee(id: nil ,name: self.nameTextField.text!, email: self.emailTextField.text!, isSubcontractor: self.isSubcontractor.on)
         }
+        
+        if(isSubcontractor.on) {
+            self.subcontractorDisclaimer.hidden = false
+            self.subLabel.hidden = false
+
+        } else {
+            self.subcontractorDisclaimer.hidden = true
+            self.subLabel.hidden = true
+
+        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -40,10 +59,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
 
         if(employee?.id == nil) {
             activateButton.hidden = true
-            deleteButton.hidden = true
+            deleteButton.enabled = false
         } else {
             activateButton.hidden = false
-            deleteButton.hidden = false
+            deleteButton.enabled = true
             if(employee?.activationCode == nil) {
                 self.activateButton.setTitle("activate", forState: UIControlState.Normal)
             } else {
@@ -84,9 +103,9 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                 employee!.create(
                     { (employeeId: Int) -> () in
                         self.activateButton.hidden = false
-                        self.deleteButton.hidden = false
+                        self.deleteButton.enabled = true
                         
-                        self.employee = TLEmployee(id: employeeId,name: self.nameTextField.text!, email: self.emailTextField.text!)
+                        self.employee = TLEmployee(id: employeeId,name: self.nameTextField.text!, email: self.emailTextField.text!, isSubcontractor: self.isSubcontractor.on)
                         
                         let alert = UIAlertController(title: nil, message: "Employee successfully created.", preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -101,6 +120,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             } else { //saving existing employee
                 employee?.name = nameTextField.text!
                 employee?.email = emailTextField.text!
+                employee?.isSubcontractor = isSubcontractor.on
                 employee!.update(
                     { () -> () in
                         let alert = UIAlertController(title: nil, message: "Employee successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -210,6 +230,17 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             
         })
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func isSubcontractorSwitched(sender: AnyObject) {
+        if(isSubcontractor.on) {
+            self.subcontractorDisclaimer.hidden = false
+            self.subLabel.hidden = false
+        } else {
+            self.subcontractorDisclaimer.hidden = true
+            self.subLabel.hidden = true
+        }
+        saveButtonClicked(self)
     }
     
     // MailComposerDelegate requirement
