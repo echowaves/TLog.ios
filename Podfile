@@ -10,5 +10,6 @@ target 'TLog' do
     pod 'SwiftValidators', '~> 2.0.4'
     pod 'SwiftyJSON', '~> 2.3.2'
     pod 'SwiftDate', '~> 3.0.6'
+    pod 'FontAwesome', '~> 4.5.0'
 end
 

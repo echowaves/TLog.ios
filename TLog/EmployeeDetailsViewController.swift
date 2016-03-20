@@ -25,6 +25,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     @IBOutlet weak var activateButton: UIButton!
     @IBOutlet weak var subLabel: UILabel!
     
+    @IBOutlet weak var actionCodesButton: UIButton!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     
@@ -59,9 +60,11 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
 
         if(employee?.id == nil) {
             activateButton.hidden = true
+            actionCodesButton.hidden = true
             deleteButton.enabled = false
         } else {
             activateButton.hidden = false
+            actionCodesButton.hidden = false
             deleteButton.enabled = true
             if(employee?.activationCode == nil) {
                 self.activateButton.setTitle("activate", forState: UIControlState.Normal)
@@ -103,6 +106,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                 employee!.create(
                     { (employeeId: Int) -> () in
                         self.activateButton.hidden = false
+                        self.actionCodesButton.hidden = false
                         self.deleteButton.enabled = true
                         
                         self.employee = TLEmployee(id: employeeId,name: self.nameTextField.text!, email: self.emailTextField.text!, isSubcontractor: self.isSubcontractor.on)
@@ -247,4 +251,20 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func actionCodesClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("EmployeeActionCodesViewController", sender: self)
+        }
+
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "EmployeeActionCodesViewController") {
+            let destViewController = segue.destinationViewController as! EmployeeActionCodesViewController
+            destViewController.employee = self.employee
+        }
+    }
+
 }

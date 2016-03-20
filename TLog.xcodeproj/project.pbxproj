@@ -36,6 +36,10 @@
 		0AC5FAB41C721C4700ACD363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB21C721C4700ACD363 /* Main.storyboard */; };
 		0AC5FAB61C721C4700ACD363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB51C721C4700ACD363 /* Assets.xcassets */; };
 		0AC5FAB91C721C4700ACD363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB71C721C4700ACD363 /* LaunchScreen.storyboard */; };
+		0AEA5A5F1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5A5E1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift */; };
+		0AEA5A611C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5A601C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift */; };
+		0AEA5A631C9EFB1B00803EC4 /* EmployeeActionCodesPopoverTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5A621C9EFB1B00803EC4 /* EmployeeActionCodesPopoverTableCell.swift */; };
+		0AEA5A651C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5A641C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift */; };
 		4F5D051C5133502257E025A8 /* Pods_TLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4908DC965C2C90C91AE8AEA5 /* Pods_TLog.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,10 @@
 		0AC5FAB51C721C4700ACD363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AC5FAB81C721C4700ACD363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AC5FABA1C721C4700ACD363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AEA5A5E1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeActionCodesViewController.swift; sourceTree = "<group>"; };
+		0AEA5A601C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeActionCodesPopoverViewController.swift; sourceTree = "<group>"; };
+		0AEA5A621C9EFB1B00803EC4 /* EmployeeActionCodesPopoverTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeActionCodesPopoverTableCell.swift; sourceTree = "<group>"; };
+		0AEA5A641C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeActionCodesTableCell.swift; sourceTree = "<group>"; };
 		4908DC965C2C90C91AE8AEA5 /* Pods_TLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		856410C9BA8850E8EF169EB8 /* Pods-TLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLog/Pods-TLog.release.xcconfig"; sourceTree = "<group>"; };
 		E4D32B02234A0E449E3948AA /* Pods-TLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLog/Pods-TLog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +142,10 @@
 				0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */,
 				0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */,
 				0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */,
+				0AEA5A5E1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift */,
+				0AEA5A641C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift */,
+				0AEA5A601C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift */,
+				0AEA5A621C9EFB1B00803EC4 /* EmployeeActionCodesPopoverTableCell.swift */,
 			);
 			name = Controller.User;
 			sourceTree = "<group>";
@@ -326,7 +338,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEA5A631C9EFB1B00803EC4 /* EmployeeActionCodesPopoverTableCell.swift in Sources */,
 				0A2769971C985A2C00B4ACB2 /* ActionCodesReportTableViewCell.swift in Sources */,
+				0AEA5A5F1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift in Sources */,
 				0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */,
 				0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */,
 				0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */,
@@ -337,6 +351,7 @@
 				0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
+				0AEA5A611C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift in Sources */,
 				0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */,
 				0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */,
 				0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */,
@@ -348,6 +363,7 @@
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,
 				0A2769951C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift in Sources */,
 				0A27698D1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift in Sources */,
+				0AEA5A651C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift in Sources */,
 				0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */,
 				0AA9EF1F1C741EC600B53281 /* EmployeeDetailsViewController.swift in Sources */,
 				0A5169B81C8A99E100186D39 /* ColorExtensions.swift in Sources */,
