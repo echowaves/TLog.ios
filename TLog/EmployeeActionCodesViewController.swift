@@ -13,6 +13,8 @@ import Foundation
 class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, UITableViewDelegate,UITableViewDataSource, UIPopoverPresentationControllerDelegate
 {
     
+    var popoverVC:EmployeeActionCodesPopoverViewController!
+    
     var employee:TLEmployee?// this is used as a parameter to be passed from the other controllers
     
     @IBOutlet weak var actionCodeTextField: UITextField!
@@ -39,7 +41,7 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         tableView.hidden        =   true
         tableView.delegate      =   self
         tableView.dataSource    =   self
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,17 +52,17 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    @IBAction func checkinButtonClicked(sender: AnyObject) {
-//        let checkin = TLCheckin(checkedInAt: checkinTime, actionCodeId: (selectedActionCode?.id)!)
-//        checkin.create({ () -> () in
-//            self.dismissViewControllerAnimated(true, completion: nil)
-//        }) { (error) -> () in
-//            let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//            self.presentViewController(alert, animated: true, completion: nil)
-//        }
-//        
-//    }
+    //    @IBAction func checkinButtonClicked(sender: AnyObject) {
+    //        let checkin = TLCheckin(checkedInAt: checkinTime, actionCodeId: (selectedActionCode?.id)!)
+    //        checkin.create({ () -> () in
+    //            self.dismissViewControllerAnimated(true, completion: nil)
+    //        }) { (error) -> () in
+    //            let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+    //            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    //            self.presentViewController(alert, animated: true, completion: nil)
+    //        }
+    //
+    //    }
     
     
     
@@ -79,24 +81,34 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         
         selectedActionCode  = nil
         
-        NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
-        TLActionCode.autoComplete(actionCodeTextField.text!,
-                                  success: { (results) -> () in
-
-                                    let popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("EmployeeActionCodesPopoverViewController") as! EmployeeActionCodesPopoverViewController
-                                    popoverVC.modalPresentationStyle = .Popover
-                                    popoverVC.preferredContentSize = CGSizeMake(400, 400)
-                                    
-                                    
-                                    let popoverPresentationViewController = popoverVC.popoverPresentationController
-                                    popoverPresentationViewController?.permittedArrowDirections = UIPopoverArrowDirection.Any
-                                    popoverPresentationViewController?.delegate = self
-                                    popoverPresentationViewController?.sourceView =             self.actionCodeTextField
-                                    popoverPresentationViewController?.sourceRect =             self.actionCodeTextField.bounds
-                                    self.presentViewController(popoverVC, animated: true, completion: nil)
-                                    
-        }) { (error) -> () in
-            NSLog("error autocompleting")
+        if(actionCodeTextField.text!.characters.count > 0) {
+            
+            NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
+            TLActionCode.autoComplete(actionCodeTextField.text!,
+                                      success: { (results) -> () in
+                                        if( self.popoverVC == nil) {
+                                            self.popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("EmployeeActionCodesPopoverViewController") as! EmployeeActionCodesPopoverViewController
+                                            self.popoverVC.modalPresentationStyle = .Popover
+                                            self.popoverVC.preferredContentSize = CGSizeMake(400, 400)
+                                            
+                                            
+                                            let popoverPresentationViewController = self.popoverVC.popoverPresentationController
+                                            popoverPresentationViewController?.permittedArrowDirections = UIPopoverArrowDirection.Any
+                                            popoverPresentationViewController?.delegate = self
+                                            popoverPresentationViewController?.sourceView =             self.actionCodeTextField
+                                            popoverPresentationViewController?.sourceRect =             self.actionCodeTextField.bounds
+                                            self.presentViewController(self.popoverVC, animated: true, completion: nil)
+                                        }
+                                        
+            }) { (error) -> () in
+                NSLog("error autocompleting")
+            }
+        } else {
+            if( self.popoverVC != nil) {
+                self.popoverVC.dismissViewControllerAnimated(true, completion: {
+                    self.popoverVC = nil
+                })
+            }
         }
     }
     
