@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Font_Awesome_Swift
+
 
 class EmployeeActionCodesPopoverViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
@@ -36,6 +38,8 @@ class EmployeeActionCodesPopoverViewController: UIViewController, UITableViewDel
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeActionCodesPopoverTableCell") as! EmployeeActionCodesPopoverTableCell!
         
         cell.actionCodeLabel!.text! = self.actionCodes[indexPath.row].code! + ":" + self.actionCodes[indexPath.row].descr!
+        cell.addLabel.FAIcon = FAType.FAPlus
+
         
         return cell
         
@@ -45,10 +49,35 @@ class EmployeeActionCodesPopoverViewController: UIViewController, UITableViewDel
 //        add to employee action codes
 //         self.actionCodes[indexPath.row]
         
-        self.dismissViewControllerAnimated(true, completion: {
-            self.parentController.popoverVC = nil
-            self.parentController.actionCodeTextField.text = ""
+        parentController.employee?.addActionCode(self.actionCodes[indexPath.row],
+                                                 success: {
+                                                    self.dismissViewControllerAnimated(true, completion: {
+                                                        self.parentController.popoverVC = nil
+                                                        self.parentController.actionCodeTextField.text = ""
+                                                        self.parentController.updateActionCodes()
+                                                    })
+
+                                                    
+            },
+                                                 failure: { (error) in
+                                                    NSLog(error.description)
+                                                    let alert = UIAlertController(title: nil, message: "Unable to add action code for employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                                                    alert.addAction(UIAlertAction(
+                                                        title: "OK", style: UIAlertActionStyle.Default,
+                                                        handler: { (UIAlertAction) in
+                                                            self.presentViewController(alert, animated: true, completion: nil)
+                                                            
+                                                            self.parentController.popoverVC = nil
+                                                            self.parentController.actionCodeTextField.text = ""
+                                                            self.parentController.updateActionCodes()
+   
+                                                        })
+                                                    )
+                                                        
+
         })
+        
+        
 
     }
 

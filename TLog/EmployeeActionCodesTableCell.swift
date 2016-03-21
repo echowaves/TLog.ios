@@ -13,13 +13,8 @@ import Foundation
 
 class EmployeeActionCodesTableCell: UITableViewCell {
     
-    @IBOutlet weak var actionCodeLabel: UIView!
+    @IBOutlet weak var actionCodeLabel: UILabel!
     
     @IBOutlet weak var deleteLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        deleteLabel.text = "\u{f1f8}" // trash image
-    }
-    
+        
 }

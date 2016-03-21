@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Font_Awesome_Swift
 
 
 
@@ -20,7 +21,7 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     @IBOutlet weak var actionCodeTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
-    var completions = [TLActionCode]()
+    var actionCodes = [TLActionCode]()
     var checkinTime = NSDate()
     
     override func viewDidLoad() {
@@ -37,7 +38,6 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         )
         
         
-        tableView.hidden        =   true
         tableView.delegate      =   self
         tableView.dataSource    =   self
         
@@ -45,6 +45,7 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        updateActionCodes()
     }
     
     @IBAction func backButtonClicked(sender: AnyObject) {
@@ -63,7 +64,23 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     //
     //    }
     
-    
+    func updateActionCodes() {
+        TLActionCode.allActionCodesForEmployee(employee!,
+                                               success: { (results) in
+                                                self.actionCodes = results
+                                                self.tableView.reloadData()
+                                                self.tableView.reloadInputViews()
+        }) { (error) in
+            NSLog(error.description)
+            let alert = UIAlertController(title: nil, message: "Unable to load action codes for employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(
+                title: "OK", style: UIAlertActionStyle.Default,
+                handler: { (UIAlertAction) in
+                    self.presentViewController(alert, animated: true, completion: nil)
+            })
+            )
+        }
+    }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
                    replacementString string: String) -> Bool
@@ -115,25 +132,22 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.completions.count
+        return self.actionCodes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeActionCodesTableCell") as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeActionCodesTableCell") as! EmployeeActionCodesTableCell!
         
-        cell.textLabel?.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
-        cell.textLabel?.textColor = UIColor(rgb: 0x0033cc)
+        cell.actionCodeLabel.text = self.actionCodes[indexPath.row].code! + ":" + self.actionCodes[indexPath.row].descr!
+        cell.deleteLabel.FAIcon = FAType.FATrash
         
         return cell
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        tableView.hidden = true
-        NSLog("You selected cell #\(self.completions[indexPath.row])")
-        actionCodeTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {        
+        NSLog("You selected cell #\(self.actionCodes[indexPath.row])")
         // delete employee action code
         
     }

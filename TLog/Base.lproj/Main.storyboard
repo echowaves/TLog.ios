@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="FontAwesome.ttf">
             <string>FontAwesome</string>
+            <string>FontAwesome</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1444,36 +1445,35 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ld0-N7-MWr">
-                                                    <rect key="frame" x="8" y="9" width="496" height="25"/>
+                                                    <rect key="frame" x="8" y="9" width="515" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="0uk-la-QNZ"/>
+                                                        <constraint firstAttribute="height" constant="25" id="CBs-TH-8gV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="delete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxm-CB-YIS">
-                                                    <rect key="frame" x="512" y="11" width="48" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxm-CB-YIS">
+                                                    <rect key="frame" x="531" y="0.0" width="29" height="36"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="48" id="BZ7-tL-QiH"/>
-                                                        <constraint firstAttribute="height" constant="21" id="Gu1-VM-AxQ"/>
+                                                        <constraint firstAttribute="width" constant="29" id="QcW-wQ-B42"/>
+                                                        <constraint firstAttribute="height" constant="36" id="pW3-KC-Wpg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mxm-CB-YIS" firstAttribute="leading" secondItem="Ld0-N7-MWr" secondAttribute="trailing" constant="8" id="8vp-If-OiS"/>
-                                                <constraint firstItem="mxm-CB-YIS" firstAttribute="trailing" secondItem="oyh-KT-Mrv" secondAttribute="trailingMargin" id="D1d-qR-LF2"/>
-                                                <constraint firstItem="Ld0-N7-MWr" firstAttribute="leading" secondItem="oyh-KT-Mrv" secondAttribute="leadingMargin" id="QXf-nm-I6y"/>
-                                                <constraint firstItem="Ld0-N7-MWr" firstAttribute="top" secondItem="oyh-KT-Mrv" secondAttribute="topMargin" constant="1" id="RQe-hg-xCC"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="mxm-CB-YIS" secondAttribute="bottom" constant="4" id="aoS-Vr-7cY"/>
-                                                <constraint firstItem="mxm-CB-YIS" firstAttribute="top" secondItem="oyh-KT-Mrv" secondAttribute="topMargin" constant="3" id="hk0-ya-YrP"/>
+                                                <constraint firstItem="mxm-CB-YIS" firstAttribute="leading" secondItem="Ld0-N7-MWr" secondAttribute="trailing" constant="8" id="1C4-uN-H5B"/>
+                                                <constraint firstItem="Ld0-N7-MWr" firstAttribute="top" secondItem="oyh-KT-Mrv" secondAttribute="topMargin" constant="1" id="5pt-T4-UsD"/>
+                                                <constraint firstItem="mxm-CB-YIS" firstAttribute="top" secondItem="oyh-KT-Mrv" secondAttribute="topMargin" constant="-8" id="WLb-Os-6RT"/>
+                                                <constraint firstItem="Ld0-N7-MWr" firstAttribute="leading" secondItem="oyh-KT-Mrv" secondAttribute="leadingMargin" id="rAZ-Gm-XZJ"/>
+                                                <constraint firstItem="mxm-CB-YIS" firstAttribute="trailing" secondItem="oyh-KT-Mrv" secondAttribute="trailingMargin" id="s6l-R0-YPH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="actionCodeLabel" destination="Ld0-N7-MWr" id="8Bh-aB-KNZ"/>
+                                            <outlet property="actionCodeLabel" destination="Ld0-N7-MWr" id="LWh-oK-3kI"/>
                                             <outlet property="deleteLabel" destination="mxm-CB-YIS" id="5dr-6i-bGC"/>
                                         </connections>
                                     </tableViewCell>
@@ -1535,24 +1535,36 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq3-eV-4zG">
-                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="545" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="uAD-rO-kEz"/>
+                                                        <constraint firstAttribute="height" constant="21" id="DlG-2u-CAv"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6S-0S-e7Y">
+                                                    <rect key="frame" x="561" y="4" width="29" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="6Ro-ZV-SPH"/>
+                                                        <constraint firstAttribute="width" constant="29" id="S0R-UD-ZeQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="22"/>
+                                                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hq3-eV-4zG" secondAttribute="bottom" constant="3.5" id="jsH-Q7-fTe"/>
-                                                <constraint firstItem="hq3-eV-4zG" firstAttribute="trailing" secondItem="vAl-bH-1jl" secondAttribute="trailingMargin" id="lHO-S8-4da"/>
-                                                <constraint firstItem="hq3-eV-4zG" firstAttribute="leading" secondItem="vAl-bH-1jl" secondAttribute="leadingMargin" id="sLU-Qf-cEM"/>
-                                                <constraint firstItem="hq3-eV-4zG" firstAttribute="top" secondItem="vAl-bH-1jl" secondAttribute="topMargin" constant="3" id="vtN-uB-dJh"/>
+                                                <constraint firstItem="hq3-eV-4zG" firstAttribute="leading" secondItem="vAl-bH-1jl" secondAttribute="leadingMargin" id="6b8-CH-uxh"/>
+                                                <constraint firstItem="E6S-0S-e7Y" firstAttribute="leading" secondItem="hq3-eV-4zG" secondAttribute="trailing" constant="8" id="NbY-bl-1n2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="E6S-0S-e7Y" secondAttribute="trailing" constant="2" id="XAX-A9-NjO"/>
+                                                <constraint firstItem="E6S-0S-e7Y" firstAttribute="top" secondItem="vAl-bH-1jl" secondAttribute="topMargin" constant="-4" id="rG2-Ti-Q7d"/>
+                                                <constraint firstItem="hq3-eV-4zG" firstAttribute="top" secondItem="vAl-bH-1jl" secondAttribute="topMargin" constant="3" id="z5l-3W-Bjv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="actionCodeLabel" destination="hq3-eV-4zG" id="Aou-9r-Dcz"/>
+                                            <outlet property="addLabel" destination="E6S-0S-e7Y" id="r7O-Ln-XLK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

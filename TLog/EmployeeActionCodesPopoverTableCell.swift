@@ -12,5 +12,6 @@ class EmployeeActionCodesPopoverTableCell: UITableViewCell {
 
     @IBOutlet weak var actionCodeLabel: UILabel!
     
+    @IBOutlet weak var addLabel: UILabel!
     
 }
