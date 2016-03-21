@@ -214,4 +214,25 @@ class TLEmployee: NSObject {
         }
     }
 
+    
+    func deleteActionCode(actionCode:TLActionCode,
+                       success:() -> (),
+                       failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.DELETE, "\(TL_HOST)/employees/\(self.id!)/actioncodes/\(actionCode.id!)" , encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    success();
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
 }

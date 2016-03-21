@@ -52,17 +52,6 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //    @IBAction func checkinButtonClicked(sender: AnyObject) {
-    //        let checkin = TLCheckin(checkedInAt: checkinTime, actionCodeId: (selectedActionCode?.id)!)
-    //        checkin.create({ () -> () in
-    //            self.dismissViewControllerAnimated(true, completion: nil)
-    //        }) { (error) -> () in
-    //            let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-    //            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-    //            self.presentViewController(alert, animated: true, completion: nil)
-    //        }
-    //
-    //    }
     
     func updateActionCodes() {
         TLActionCode.allActionCodesForEmployee(employee!,
@@ -146,10 +135,27 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell #\(self.actionCodes[indexPath.row])")
         // delete employee action code
         
+        self.employee?.deleteActionCode(self.actionCodes[indexPath.row],
+                                        success: {
+                                            self.updateActionCodes()
+            },
+                                        failure: { (error) in
+                                            NSLog(error.description)
+                                            let alert = UIAlertController(title: nil, message: "Unable to delete action code for employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                                            alert.addAction(UIAlertAction(
+                                                title: "OK", style: UIAlertActionStyle.Default,
+                                                handler: { (UIAlertAction) in
+                                                    self.presentViewController(alert, animated: true, completion: nil)
+                                                    
+                                                    self.updateActionCodes()
+                                                    
+                                            })
+                                            )
+        })
     }
     
     //delegate method to make popovers to work on ipad
