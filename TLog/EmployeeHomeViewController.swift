@@ -31,7 +31,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         
         if(currentCheckin == nil) {
             dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("pickActionCodeSegue", sender: self)
+                self.performSegueWithIdentifier("PickActionCodeViewController", sender: self)
             }
         } else {
             //checkout here
@@ -172,17 +172,23 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("checkinDetailsSegue", sender: self)
+                self.performSegueWithIdentifier("CheckinDetailsViewControler", sender: self)
             }
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "checkinDetailsSegue") {
+        if (segue.identifier == "CheckinDetailsViewControler") {
             let destViewController = segue.destinationViewController as! CheckinDetailsViewControler
             destViewController.checkin = self.selectedCheckin
             self.selectedCheckin = nil
+        } else
+        if (segue.identifier == "PickActionCodeViewController") {
+            let destViewController = segue.destinationViewController as! PickActionCodeViewController
+            destViewController.employee = self.employee
         }
+ 
+        
     }
     
 }

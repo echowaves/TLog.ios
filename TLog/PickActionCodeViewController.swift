@@ -17,6 +17,8 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     @IBOutlet weak var actionCodeTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
+    var employee:TLEmployee!
+    var employeesActionCodes = [TLActionCode]()
     var completions = [TLActionCode]()
     var selectedActionCode:TLActionCode?
     var checkinTime = NSDate()
@@ -25,7 +27,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         super.viewDidLoad()
         actionCodeTextField.becomeFirstResponder()
         actionCodeTextField.delegate = self
-
+        
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(
             self,
@@ -35,10 +37,20 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         )
         
         
-        tableView.hidden        =   true
         tableView.delegate      =   self
         tableView.dataSource    =   self
         checkinButton.enabled   =   false
+        
+        TLActionCode.allActionCodesForEmployee( employee,
+                                                success: { (results) in
+                                                    self.employeesActionCodes = results
+                                                    self.completions = results
+                                                    self.tableView.reloadData()
+                                                    self.tableView.reloadInputViews()
+        }) { (error) in
+            NSLog(error.description)
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,28 +60,28 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     @IBAction func backButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     @IBAction func checkinButtonClicked(sender: AnyObject) {
         let checkin = TLCheckin(checkedInAt: checkinTime, actionCodeId: (selectedActionCode?.id)!)
         checkin.create({ () -> () in
-               self.dismissViewControllerAnimated(true, completion: nil)
-            }) { (error) -> () in
-                let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }) { (error) -> () in
+            let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-
+        
     }
     
     
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
-        replacementString string: String) -> Bool
+                   replacementString string: String) -> Bool
     {
         let maxLength = 500
         let currentString: NSString = actionCodeTextField.text!
         let newString: NSString =
-        currentString.stringByReplacingCharactersInRange(range, withString: string)
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
         return newString.length <= maxLength
     }
     
@@ -77,24 +89,28 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     func textFieldTextChanged(sender : AnyObject) {
         if(checkinButton.enabled) {
             actionCodeTextField.text = ""
+            completions = employeesActionCodes
+            tableView.reloadData()
+            tableView.reloadInputViews()
         }
         checkinButton.enabled      =   false
         selectedActionCode  = nil
         
-        NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
-        TLActionCode.autoComplete(actionCodeTextField.text!,
-            success: { (results) -> () in
-            
-            self.tableView.hidden = false
-            self.completions = results
-            self.tableView.reloadData()
-            self.tableView.reloadInputViews()
-            
+        if(actionCodeTextField.text!.characters.count > 0) {
+            NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
+            TLActionCode.autoComplete(actionCodeTextField.text!,
+                                      success: { (results) -> () in
+                                        
+                                        self.completions = results
+                                        self.tableView.reloadData()
+                                        self.tableView.reloadInputViews()
+                                        
             }) { (error) -> () in
                 NSLog("error autocompleting")
+            }
         }
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.completions.count
     }
@@ -112,13 +128,16 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         checkinButton.enabled      =   true
-
-        tableView.hidden = true
+        
+//        completions = employeesActionCodes
+//        tableView.reloadData()
+//        tableView.reloadInputViews()
+        
         NSLog("You selected cell #\(self.completions[indexPath.row])")
         actionCodeTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
         selectedActionCode = self.completions[indexPath.row]
     }
     
-
+    
     
 }

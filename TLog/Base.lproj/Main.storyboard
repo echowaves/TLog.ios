@@ -606,8 +606,8 @@
                         <outlet property="navBar" destination="pO2-Va-pUp" id="XIZ-9T-GMJ"/>
                         <outlet property="sinceLabel" destination="RKz-H1-urM" id="kue-1M-yJc"/>
                         <outlet property="tableView" destination="Pta-nq-wLh" id="ODN-MC-L7L"/>
-                        <segue destination="xj1-Wh-m00" kind="show" identifier="pickActionCodeSegue" id="uXT-pK-fEf"/>
-                        <segue destination="gRT-GI-8PZ" kind="show" identifier="checkinDetailsSegue" id="bLW-7j-TWW"/>
+                        <segue destination="xj1-Wh-m00" kind="show" identifier="PickActionCodeViewController" id="uXT-pK-fEf"/>
+                        <segue destination="gRT-GI-8PZ" kind="show" identifier="CheckinDetailsViewControler" id="bLW-7j-TWW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DwG-XK-ImI" userLabel="First Responder" sceneMemberID="firstResponder"/>
