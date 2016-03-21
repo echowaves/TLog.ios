@@ -10,6 +10,8 @@ import Foundation
 
 class EmployeeActionCodesPopoverViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
+    var parentController:EmployeeActionCodesViewController!
+    
     var actionCodes:[TLActionCode] = [TLActionCode]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,15 +35,21 @@ class EmployeeActionCodesPopoverViewController: UIViewController, UITableViewDel
         
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeActionCodesPopoverTableCell") as! EmployeeActionCodesPopoverTableCell!
         
-        cell.textLabel?.text = self.actionCodes[indexPath.row].code! + ":" + self.actionCodes[indexPath.row].descr!
+        cell.actionCodeLabel!.text! = self.actionCodes[indexPath.row].code! + ":" + self.actionCodes[indexPath.row].descr!
         
         return cell
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        delete
+//        add to employee action codes
 //         self.actionCodes[indexPath.row]
+        
+        self.dismissViewControllerAnimated(true, completion: {
+            self.parentController.popoverVC = nil
+            self.parentController.actionCodeTextField.text = ""
+        })
+
     }
 
     

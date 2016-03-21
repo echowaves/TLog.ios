@@ -1552,7 +1552,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="actionCodeLabel" destination="vAl-bH-1jl" id="kUR-ri-O8G"/>
+                                            <outlet property="actionCodeLabel" destination="hq3-eV-4zG" id="Aou-9r-Dcz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

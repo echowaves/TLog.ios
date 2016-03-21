@@ -21,7 +21,6 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     
     @IBOutlet weak var tableView: UITableView!
     var completions = [TLActionCode]()
-    var selectedActionCode:TLActionCode?
     var checkinTime = NSDate()
     
     override func viewDidLoad() {
@@ -79,8 +78,6 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     
     func textFieldTextChanged(sender : AnyObject) {
         
-        selectedActionCode  = nil
-        
         if(actionCodeTextField.text!.characters.count > 0) {
             
             NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
@@ -88,6 +85,7 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
                                       success: { (results) -> () in
                                         if( self.popoverVC == nil) {
                                             self.popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("EmployeeActionCodesPopoverViewController") as! EmployeeActionCodesPopoverViewController
+                                            self.popoverVC.parentController = self
                                             self.popoverVC.modalPresentationStyle = .Popover
                                             self.popoverVC.preferredContentSize = CGSizeMake(400, 400)
                                             
@@ -99,6 +97,10 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
                                             popoverPresentationViewController?.sourceRect =             self.actionCodeTextField.bounds
                                             self.presentViewController(self.popoverVC, animated: true, completion: nil)
                                         }
+                                        
+                                        self.popoverVC.actionCodes = results
+                                        self.popoverVC.tableView.reloadData()
+                                        self.popoverVC.tableView.reloadInputViews()
                                         
             }) { (error) -> () in
                 NSLog("error autocompleting")
@@ -132,7 +134,8 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         tableView.hidden = true
         NSLog("You selected cell #\(self.completions[indexPath.row])")
         actionCodeTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
-        selectedActionCode = self.completions[indexPath.row]
+        // delete employee action code
+        
     }
     
     //delegate method to make popovers to work on ipad

@@ -10,6 +10,7 @@ import Foundation
 
 class EmployeeActionCodesPopoverTableCell: UITableViewCell {
 
-    @IBOutlet weak var actionCodeLabel: UIView!
+    @IBOutlet weak var actionCodeLabel: UILabel!
+    
     
 }
