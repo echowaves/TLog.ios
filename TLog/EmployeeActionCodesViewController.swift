@@ -14,6 +14,8 @@ import Font_Awesome_Swift
 class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, UITableViewDelegate,UITableViewDataSource, UIPopoverPresentationControllerDelegate
 {
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     var popoverVC:EmployeeActionCodesPopoverViewController!
     
     var employee:TLEmployee?// this is used as a parameter to be passed from the other controllers
@@ -26,6 +28,8 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBar.title = employee?.name
+        
         actionCodeTextField.becomeFirstResponder()
         actionCodeTextField.delegate = self
         

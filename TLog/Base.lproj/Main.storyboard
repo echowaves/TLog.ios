@@ -1504,6 +1504,7 @@
                     </view>
                     <connections>
                         <outlet property="actionCodeTextField" destination="MOr-Ek-WyO" id="cGd-Tg-aSk"/>
+                        <outlet property="navBar" destination="fyO-pa-dvq" id="uU5-mC-GJV"/>
                         <outlet property="tableView" destination="sQd-KD-KmM" id="HhD-nD-qVo"/>
                     </connections>
                 </viewController>
