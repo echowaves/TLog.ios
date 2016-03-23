@@ -47,6 +47,11 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
                                                     self.completions = results
                                                     self.tableView.reloadData()
                                                     self.tableView.reloadInputViews()
+                                                    
+                                                    if(self.employeesActionCodes.count > 0) {
+                                                        self.actionCodeTextField.enabled = false
+                                                    }
+                                                    
         }) { (error) in
             NSLog(error.description)
         }
