@@ -24,22 +24,22 @@ class TLUser: NSObject {
     
     
     
-    static let JTW_KEY:String = "TTLogJWT";
+    static let JWT_KEY:String = "TTLogJWT";
     static let ACTIVATION_CODE_KEY:String = "TTLogActivationCode";
     
     class func storeJwtLocally(jwt:String)  -> () {
         let keychain = KeychainSwift()
-        keychain.set(jwt, forKey: TLUser.JTW_KEY)
+        keychain.set(jwt, forKey: TLUser.JWT_KEY)
     }
     
     class func retreiveJwtFromLocalStorage()  -> (String!) {
         let keychain = KeychainSwift()
-        return keychain.get(TLUser.JTW_KEY)
+        return keychain.get(TLUser.JWT_KEY)
     }
     
     class func clearJwtFromLocalStorage()  -> () {
         let keychain = KeychainSwift()
-        keychain.delete(TLUser.JTW_KEY)
+        keychain.delete(TLUser.JWT_KEY)
     }
     
     
