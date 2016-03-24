@@ -20,10 +20,13 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         switch activeInactiveSegmentedControl.selectedSegmentIndex
         {
         case 0:
-            self.employees = self.activeEmployees
+            self.employees = self.allEmployees
         case 1:
+            self.employees = self.activeEmployees
+        case 2:
             self.employees = self.inactiveEmployees
         default:
+            self.employees = self.allEmployees
             break;
         }
         self.tableView.reloadData()
@@ -33,6 +36,8 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var employees:[TLEmployee] = []
+    
+    var allEmployees:[TLEmployee] = []
     var activeEmployees:[TLEmployee] = []
     var inactiveEmployees:[TLEmployee] = []
 
@@ -51,7 +56,8 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func loadEmployees() {
-        TLEmployee.loadAll({ (activeEmployees, inactiveEmployees) -> () in
+        TLEmployee.loadAll({ (allEmployees, activeEmployees, inactiveEmployees) -> () in
+            self.allEmployees = allEmployees
                 self.activeEmployees = activeEmployees
                 self.inactiveEmployees = inactiveEmployees
                 self.filterActiveInactive()

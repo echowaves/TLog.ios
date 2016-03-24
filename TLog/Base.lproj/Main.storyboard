@@ -416,12 +416,12 @@
                                 </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6cA-jq-7rX">
-                                <rect key="frame" x="239" y="71" width="123" height="29"/>
+                                <rect key="frame" x="20" y="71" width="560" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="U12-dO-APH"/>
-                                    <constraint firstAttribute="width" constant="123" id="zXI-sh-f6k"/>
+                                    <constraint firstAttribute="height" constant="28" id="8Vn-cv-a5N"/>
                                 </constraints>
                                 <segments>
+                                    <segment title="all"/>
                                     <segment title="active"/>
                                     <segment title="inactive"/>
                                 </segments>
@@ -432,15 +432,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6cA-jq-7rX" firstAttribute="top" secondItem="anL-Ik-Bew" secondAttribute="bottom" constant="7" id="8IC-8O-2tT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QkR-zp-tTj" secondAttribute="trailing" constant="-20" id="Gq0-LJ-cH5"/>
-                            <constraint firstItem="QkR-zp-tTj" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="TsJ-TU-OSP"/>
+                            <constraint firstItem="6cA-jq-7rX" firstAttribute="top" secondItem="anL-Ik-Bew" secondAttribute="bottom" constant="7" id="58P-lh-W3o"/>
+                            <constraint firstItem="6cA-jq-7rX" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" id="CU2-31-ql5"/>
+                            <constraint firstItem="QkR-zp-tTj" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="DFl-aL-eGF"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="top" secondItem="P0Y-Od-ZER" secondAttribute="bottom" id="beg-JO-si2"/>
-                            <constraint firstItem="bVj-WH-fyj" firstAttribute="top" secondItem="QkR-zp-tTj" secondAttribute="bottom" id="blg-rO-Kc7"/>
+                            <constraint firstItem="bVj-WH-fyj" firstAttribute="top" secondItem="QkR-zp-tTj" secondAttribute="bottom" id="fQy-1C-aaw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="anL-Ik-Bew" secondAttribute="trailing" constant="-20" id="hWe-Fr-aZi"/>
-                            <constraint firstItem="6cA-jq-7rX" firstAttribute="centerX" secondItem="yXY-9v-A3Y" secondAttribute="centerX" id="koo-s2-rJd"/>
+                            <constraint firstItem="6cA-jq-7rX" firstAttribute="trailing" secondItem="yXY-9v-A3Y" secondAttribute="trailingMargin" id="pZt-Zy-Vmo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QkR-zp-tTj" secondAttribute="trailing" constant="-20" id="pfn-HB-P0I"/>
+                            <constraint firstItem="QkR-zp-tTj" firstAttribute="top" secondItem="6cA-jq-7rX" secondAttribute="bottom" constant="8" id="wnf-8u-8yD"/>
                             <constraint firstItem="anL-Ik-Bew" firstAttribute="leading" secondItem="yXY-9v-A3Y" secondAttribute="leadingMargin" constant="-20" id="xMz-O6-6pH"/>
-                            <constraint firstItem="QkR-zp-tTj" firstAttribute="top" secondItem="6cA-jq-7rX" secondAttribute="bottom" constant="8" id="xfi-Oh-OKb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1588,6 +1589,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fi9-HA-xET"/>
+        <segue reference="Iql-i7-L29"/>
     </inferredMetricsTieBreakers>
 </document>
