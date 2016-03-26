@@ -21,10 +21,10 @@ class SignUpViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
-
+    
     
     @IBAction func signUpButtonClicked(sender: AnyObject) {
-
+        
         var validationErrors:[String] = []
         if(!Validator.required(emailTextField.text!)) {
             validationErrors += ["Email is required."]
@@ -48,15 +48,23 @@ class SignUpViewController: UIViewController {
         if( !Validator.maxLength(100)(emailTextField.text!)) {
             validationErrors += ["Email can't be longer than 100."]
         }
-
+        
         
         if(validationErrors.count == 0) { // no validation errors, proceed
-            TLUser(id: nil, email: emailTextField.text!, password: passwordTextField.text!).signUp(
+            let user = TLUser(id: nil, email: emailTextField.text!, password: passwordTextField.text!)
+            user.signUp(
                 { () -> () in
-                    dispatch_async(dispatch_get_main_queue()){
-                        self.performSegueWithIdentifier("MenuViewController", sender: self)
-                    }
+                    // sign up successfull, time to sign in now
                     
+                    user.signIn({
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.performSegueWithIdentifier("MenuViewController", sender: self)
+                        }
+                        }, failure: { (error) in
+                            let alert = UIAlertController(title: nil, message: "Unable to sign in.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                    })
                 }, failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Unable to sign up, perhaps user with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -77,7 +85,7 @@ class SignUpViewController: UIViewController {
         
         
     }
-
+    
     @IBAction func backButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
