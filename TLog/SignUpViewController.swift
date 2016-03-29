@@ -32,7 +32,6 @@ class SignUpViewController: UIViewController {
         if(!Validator.required(passwordTextField.text!)) {
             validationErrors += ["Password is required."]
         }
-        
         if(!Validator.isEmail(emailTextField.text!)) {
             validationErrors += ["Wrong email format."]
         }

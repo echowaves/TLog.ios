@@ -7,9 +7,10 @@ target 'TLog' do
     pod 'Localytics', '~> 3.7'
     pod 'KeychainSwift', '~> 3.0.11'
     pod 'Alamofire', '~> 3.2.1'
-    pod 'SwiftValidators', '~> 2.0.4'
     pod 'SwiftyJSON', '~> 2.3.2'
     pod 'SwiftDate', '~> 3.0.6'
     pod 'Font-Awesome-Swift', '~> 1.4.5'
+    pod 'SwiftValidators', '~> 2.0.4'
+    #    pod 'SwiftValidator', '3.0.1'
 end
 
