@@ -9,6 +9,7 @@
         <mutableArray key="FontAwesome.ttf">
             <string>FontAwesome</string>
             <string>FontAwesome</string>
+            <string>FontAwesome</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -360,29 +361,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUU-zd-TmQ">
-                                                    <rect key="frame" x="8" y="0.0" width="547" height="25"/>
+                                                    <rect key="frame" x="8" y="0.0" width="523" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="68o-b1-vRg"/>
+                                                        <constraint firstAttribute="height" constant="25" id="i3Q-g2-wU7"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtQ-04-6Ss">
-                                                    <rect key="frame" x="8" y="22" width="547" height="21"/>
+                                                    <rect key="frame" x="8" y="22" width="523" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="LO9-p2-syn"/>
+                                                        <constraint firstAttribute="height" constant="21" id="KRI-W3-3fn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZe-RS-Kno">
-                                                    <rect key="frame" x="563" y="11" width="29" height="21"/>
+                                                    <rect key="frame" x="539" y="15" width="29" height="21"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="29" id="N2d-hG-53s"/>
-                                                        <constraint firstAttribute="height" constant="21" id="cUk-pH-Ahy"/>
+                                                        <constraint firstAttribute="width" constant="29" id="RWu-23-PV0"/>
+                                                        <constraint firstAttribute="height" constant="21" id="bfL-5M-rsh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -394,20 +395,32 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4G-sv-QbI">
+                                                    <rect key="frame" x="576" y="7.5" width="24" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="1wm-k9-fMm"/>
+                                                        <constraint firstAttribute="width" constant="24" id="use-ml-hCc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
+                                                    <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="1ZA-dv-bo4"/>
-                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="leading" secondItem="PtQ-04-6Ss" secondAttribute="trailing" constant="8" id="Adb-wk-aMW"/>
-                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="D9E-fo-gJq"/>
-                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="leading" secondItem="RUU-zd-TmQ" secondAttribute="trailing" constant="8" id="PHr-B0-qM6"/>
-                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="trailing" secondItem="oqT-21-SoH" secondAttribute="trailingMargin" id="bRS-pT-Wci"/>
-                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="-8" id="f8h-97-K0C"/>
-                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="14" id="hpe-bJ-pF7"/>
-                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="leading" secondItem="PtQ-04-6Ss" secondAttribute="trailing" constant="8" id="jdh-hu-2uC"/>
-                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="3" id="qqZ-q1-E7p"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="2u0-E2-lKJ"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="14" id="M1I-DP-oq3"/>
+                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="leading" secondItem="PtQ-04-6Ss" secondAttribute="trailing" constant="8" id="eBJ-WL-7Ay"/>
+                                                <constraint firstItem="f4G-sv-QbI" firstAttribute="leading" secondItem="cZe-RS-Kno" secondAttribute="trailing" constant="8" id="f9g-n4-4vb"/>
+                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="7" id="ghy-7j-lOg"/>
+                                                <constraint firstItem="cZe-RS-Kno" firstAttribute="leading" secondItem="RUU-zd-TmQ" secondAttribute="trailing" constant="8" id="lYZ-Zy-PYG"/>
+                                                <constraint firstItem="RUU-zd-TmQ" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="-8" id="lgq-Ma-kbB"/>
+                                                <constraint firstItem="f4G-sv-QbI" firstAttribute="top" secondItem="oqT-21-SoH" secondAttribute="topMargin" constant="-0.5" id="npy-3c-pIB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="f4G-sv-QbI" secondAttribute="trailing" constant="-8" id="u94-4B-fWz"/>
+                                                <constraint firstItem="PtQ-04-6Ss" firstAttribute="leading" secondItem="oqT-21-SoH" secondAttribute="leadingMargin" id="xpw-L4-iSR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="chevronLabel" destination="f4G-sv-QbI" id="qNf-i4-5yx"/>
                                             <outlet property="emailLabel" destination="PtQ-04-6Ss" id="Wkc-0i-Bs7"/>
                                             <outlet property="isSubcontractorLabel" destination="cZe-RS-Kno" id="vmc-Xq-ery"/>
                                             <outlet property="nameLabel" destination="RUU-zd-TmQ" id="wBu-Dm-LIH"/>

@@ -14,4 +14,7 @@ class EmployeeTableViewCell: UITableViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var isSubcontractorLabel: UILabel!
+    
+    @IBOutlet weak var chevronLabel: UILabel!
+    
 }

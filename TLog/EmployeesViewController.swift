@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import Font_Awesome_Swift
 
-class EmployeesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
+class EmployeesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {    
     
     @IBOutlet weak var activeInactiveSegmentedControl: UISegmentedControl!
     @IBAction func activeInactiveChanged(sender: UISegmentedControl) {
@@ -46,7 +47,8 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.tableView.dataSource = self                
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -96,6 +98,8 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.nameLabel?.text = employee.name
         cell!.emailLabel?.text = employee.email
         cell!.isSubcontractorLabel?.hidden = !employee.isSubcontractor
+        cell!.chevronLabel.FAIcon = FAType.FAChevronRight
+
         
         return cell!
         
