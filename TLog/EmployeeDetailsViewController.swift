@@ -22,7 +22,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     
     @IBOutlet weak var subcontractorDisclaimer: UILabel!
     
-    @IBOutlet weak var activateButton: UIButton!
+    @IBOutlet weak var isActive: UISwitch!
+    @IBOutlet weak var isActiveLabel: UILabel!
+    @IBOutlet weak var isActiveDisclamer: UILabel!
+    
     @IBOutlet weak var subLabel: UILabel!
     
     @IBOutlet weak var actionCodesButton: UIButton!
@@ -34,49 +37,40 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         nameTextField.becomeFirstResponder()
         subcontractorDisclaimer.hidden = !self.isSubcontractor.on
         subLabel.hidden = !self.isSubcontractor.on
-        if(self.employee != nil) { // if employee is passed into this controller
-            self.nameTextField.text = employee?.name
-            self.emailTextField.text = employee?.email
-            self.isSubcontractor.on = (employee?.isSubcontractor)!
-        } else {
-            // otherwise create a default one
-            self.employee = TLEmployee(id: nil ,name: self.nameTextField.text!, email: self.emailTextField.text!, isSubcontractor: self.isSubcontractor.on)
-        }
+        
+        self.nameTextField.text = employee?.name
+        self.emailTextField.text = employee?.email
+        self.isSubcontractor?.on = (employee?.isSubcontractor)!
         
         if(isSubcontractor.on) {
             self.subcontractorDisclaimer.hidden = false
             self.subLabel.hidden = false
-
+            
         } else {
             self.subcontractorDisclaimer.hidden = true
             self.subLabel.hidden = true
-
+            
         }
-
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-        if(employee?.id == nil) {
-            activateButton.hidden = true
-            actionCodesButton.hidden = true
-            deleteButton.enabled = false
+        
+        
+        if(employee?.activationCode == nil) {
+            self.isActive.on = false
         } else {
-            activateButton.hidden = false
-            actionCodesButton.hidden = false
-            deleteButton.enabled = true
-            if(employee?.activationCode == nil) {
-                self.activateButton.setTitle("activate", forState: UIControlState.Normal)
-            } else {
-                self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
-            }
+            self.isActive.on = true
         }
     }
     
     
-    @IBAction func menuButtonClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButtonClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("unwindToEmployees", sender: self)
+        }
     }
     
     @IBAction func saveButtonClicked(sender: AnyObject) {
@@ -99,46 +93,22 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         }
         
         if(validationErrors.count == 0) { // no validation errors, proceed
-            // have to create a new one
-            if(employee?.id == nil) {
-                employee?.name = nameTextField.text!
-                employee?.email = emailTextField.text!
-                employee!.create(
-                    { (employeeId: Int) -> () in
-                        self.activateButton.hidden = false
-                        self.actionCodesButton.hidden = false
-                        self.deleteButton.enabled = true
-                        
-                        self.employee = TLEmployee(id: employeeId,name: self.nameTextField.text!, email: self.emailTextField.text!, isSubcontractor: self.isSubcontractor.on)
-                        
-                        let alert = UIAlertController(title: nil, message: "Employee successfully created.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
- 
-                    }, failure: { (error) -> () in
-                        let alert = UIAlertController(title: nil, message: "Unable to create an employee, perhaps an employee with this email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                })
-                
-            } else { //saving existing employee
-                employee?.name = nameTextField.text!
-                employee?.email = emailTextField.text!
-                employee?.isSubcontractor = isSubcontractor.on
-                employee!.update(
-                    { () -> () in
-                        let alert = UIAlertController(title: nil, message: "Employee successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-
-                        
-                    }, failure: { (error) -> () in
-                        let alert = UIAlertController(title: nil, message: "Error, perhaps an employee with the same email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                })
-
-            }
+            employee?.name = nameTextField.text!
+            employee?.email = emailTextField.text!
+            employee?.isSubcontractor = isSubcontractor.on
+            employee!.update(
+                { () -> () in
+                    let alert = UIAlertController(title: nil, message: "Employee successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    
+                }, failure: { (error) -> () in
+                    let alert = UIAlertController(title: nil, message: "Error, perhaps an employee with the same email already exists.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+            })
+            
             
         } else { //there are validation errors, let's output them
             var errorString = ""
@@ -151,14 +121,14 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-
     
-    @IBAction func activateButtonClicked(sender: AnyObject) {
-        if(self.employee?.activationCode == nil) {
-           self.employee!.activate(
+    
+    @IBAction func isActiveSwitched(sender: AnyObject) {
+        if isActive.on {
+            
+            self.employee!.activate(
                 { (activationCode:String) -> () in
                     
-                    self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
                     self.employee?.activationCode = activationCode
                     NSLog("new activation code: \(activationCode)")
                     NSLog("activation link: \(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)")
@@ -166,7 +136,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                     // Create email message
                     let emailController = MFMailComposeViewController()
                     emailController.mailComposeDelegate = self
-
+                    
                     if MFMailComposeViewController.canSendMail() {
                         emailController.setToRecipients(["\(self.emailTextField.text!)"])
                         emailController.setSubject("TLog actvation code")
@@ -181,15 +151,12 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             })
             
             
-            self.activateButton.setTitle("activate", forState: UIControlState.Normal)
         } else {
-            
             self.employee!.deactivate(
                 { () -> () in
                     let alert = UIAlertController(title: nil, message: "Employee successfuly deactivated.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                         alert2 in
-                        self.activateButton.setTitle("activate", forState: UIControlState.Normal)
                         self.employee?.activationCode = nil
                         })
                     self.presentViewController(alert, animated: true, completion: nil)
@@ -200,12 +167,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                     self.presentViewController(alert, animated: true, completion: nil)
                     
             })
-
-            
-            self.activateButton.setTitle("deactivate", forState: UIControlState.Normal)
         }
+        
     }
-
+    
     
     @IBAction func deleteButtonClicked(sender: AnyObject) {
         let alert = UIAlertController(title: nil, message: "Are you sure want to delete the employee?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -220,19 +185,19 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                         alert2 in
                         self.dismissViewControllerAnimated(true, completion: nil)
-                    })
+                        })
                     self.presentViewController(alert, animated: true, completion: nil)
-
+                    
                     
                 },
                 failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Error deleting employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
-
+                    
             })
             
-        })
+            })
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
@@ -256,7 +221,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         dispatch_async(dispatch_get_main_queue()){
             self.performSegueWithIdentifier("EmployeeActionCodesViewController", sender: self)
         }
-
+        
     }
     
     
@@ -266,5 +231,5 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             destViewController.employee = self.employee
         }
     }
-
+    
 }

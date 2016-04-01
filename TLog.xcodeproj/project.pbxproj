@@ -31,6 +31,7 @@
 		0A79B8881C7BEEDE0050AE57 /* EmployeeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */; };
 		0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */; };
 		0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */; };
+		0AA555181CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */; };
 		0AA9EF1F1C741EC600B53281 /* EmployeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */; };
 		0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */; };
 		0AC5FAB41C721C4700ACD363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC5FAB21C721C4700ACD363 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeHomeViewController.swift; sourceTree = "<group>"; };
 		0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
 		0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerViewController.swift; sourceTree = "<group>"; };
+		0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCreateViewController.swift; sourceTree = "<group>"; };
 		0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsViewController.swift; sourceTree = "<group>"; };
 		0AC5FAAB1C721C4700ACD363 /* TLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */,
 				0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */,
+				0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */,
 				0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */,
 				0AEA5A5E1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift */,
 				0AEA5A641C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift */,
@@ -362,6 +365,7 @@
 				0AEA5A611C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift in Sources */,
 				0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */,
 				0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */,
+				0AA555181CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift in Sources */,
 				0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */,
 				0A27698F1C97756700B4ACB2 /* ActionCodesReportViewController.swift in Sources */,
 				0A2769911C97758400B4ACB2 /* EmployeesReportViewController.swift in Sources */,

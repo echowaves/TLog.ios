@@ -78,7 +78,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func addNewEmployeeButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("EmployeeDetailsViewController", sender: self)
+            self.performSegueWithIdentifier("EmployeeCreateViewController", sender: self)
         }
     }
     
@@ -132,5 +132,11 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLayoutSubviews()
 //        self.tableView.contentInset = UIEdgeInsetsMake(0,100,0,0)
     }
+    
+    // this method is the entry point for unwinding to the beginning
+    @IBAction func unwindToEmployees(segue: UIStoryboardSegue) {
+    }
+    
+
     
 }
