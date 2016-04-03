@@ -803,23 +803,6 @@
                                     <action selector="isSubcontractorSwitched:" destination="lxf-Rd-VB5" eventType="valueChanged" id="oVU-aM-ihY"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdK-rq-X2J">
-                                <rect key="frame" x="551" y="196" width="29" height="21"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="ggU-05-gEj"/>
-                                    <constraint firstAttribute="width" constant="29" id="sMP-6J-W2f"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nD5-f8-GEH">
                                 <rect key="frame" x="20" y="333" width="557" height="30"/>
                                 <constraints>
@@ -867,7 +850,7 @@
                                     <constraint firstAttribute="height" constant="50" id="aTD-DM-iPc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="save">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -887,7 +870,6 @@
                             <constraint firstItem="6oj-Jn-05b" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="5gI-8m-95w"/>
                             <constraint firstItem="qFv-yh-NOR" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="27" id="9f0-p1-bhw"/>
                             <constraint firstItem="qFv-yh-NOR" firstAttribute="leading" secondItem="osF-He-lZZ" secondAttribute="trailing" constant="8" id="Beb-H9-8KY"/>
-                            <constraint firstItem="EdK-rq-X2J" firstAttribute="trailing" secondItem="GbS-Df-wEj" secondAttribute="trailingMargin" id="JtP-ZU-meG"/>
                             <constraint firstItem="1uo-ju-uAS" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="8" id="O2e-BE-IWf"/>
                             <constraint firstItem="wIe-UC-xYN" firstAttribute="top" secondItem="BUE-Yg-fEe" secondAttribute="bottom" constant="8" id="Rrq-Yv-3IC"/>
                             <constraint firstItem="osF-He-lZZ" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="8" id="YUb-dk-uJW"/>
@@ -899,7 +881,6 @@
                             <constraint firstItem="6oj-Jn-05b" firstAttribute="top" secondItem="wIe-UC-xYN" secondAttribute="bottom" constant="8" id="e6x-iA-879"/>
                             <constraint firstItem="nD5-f8-GEH" firstAttribute="top" secondItem="VYg-Ng-dzK" secondAttribute="bottom" constant="8" id="f6P-tG-zoX"/>
                             <constraint firstItem="UjI-kj-lPD" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="fgb-MS-XCu"/>
-                            <constraint firstItem="EdK-rq-X2J" firstAttribute="top" secondItem="6oj-Jn-05b" secondAttribute="bottom" constant="16" id="fwX-TM-66F"/>
                             <constraint firstItem="slX-TM-7RI" firstAttribute="top" secondItem="qFv-yh-NOR" secondAttribute="bottom" constant="27" id="hVC-0v-VHA"/>
                             <constraint firstItem="wIe-UC-xYN" firstAttribute="leading" secondItem="GbS-Df-wEj" secondAttribute="leadingMargin" id="ihY-Y5-i7X"/>
                             <constraint firstItem="UjI-kj-lPD" firstAttribute="top" secondItem="osF-He-lZZ" secondAttribute="bottom" constant="8" id="kwr-et-gaV"/>
@@ -924,7 +905,6 @@
                         <outlet property="isActiveLabel" destination="OGI-nt-4zQ" id="6SH-fA-PIO"/>
                         <outlet property="isSubcontractor" destination="osF-He-lZZ" id="aaz-5c-rhm"/>
                         <outlet property="nameTextField" destination="wIe-UC-xYN" id="6P9-8y-TET"/>
-                        <outlet property="subLabel" destination="EdK-rq-X2J" id="Gti-xe-eF9"/>
                         <outlet property="subcontractorDisclaimer" destination="qFv-yh-NOR" id="5G7-4d-FNQ"/>
                         <segue destination="Hl9-HZ-rcP" kind="show" identifier="EmployeeActionCodesViewController" id="gyd-j7-Qom"/>
                     </connections>
@@ -1675,7 +1655,7 @@
                                     <constraint firstAttribute="height" constant="50" id="YmF-hb-qJG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="create">
+                                <state key="normal" title="Create">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

@@ -26,8 +26,6 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     @IBOutlet weak var isActiveLabel: UILabel!
     @IBOutlet weak var isActiveDisclamer: UILabel!
     
-    @IBOutlet weak var subLabel: UILabel!
-    
     @IBOutlet weak var actionCodesButton: UIButton!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
@@ -35,22 +33,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.becomeFirstResponder()
-        subcontractorDisclaimer.hidden = !self.isSubcontractor.on
-        subLabel.hidden = !self.isSubcontractor.on
         
         self.nameTextField.text = employee?.name
         self.emailTextField.text = employee?.email
         self.isSubcontractor?.on = (employee?.isSubcontractor)!
-        
-        if(isSubcontractor.on) {
-            self.subcontractorDisclaimer.hidden = false
-            self.subLabel.hidden = false
-            
-        } else {
-            self.subcontractorDisclaimer.hidden = true
-            self.subLabel.hidden = true
-            
-        }
         
         
     }
@@ -202,13 +188,6 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     }
     
     @IBAction func isSubcontractorSwitched(sender: AnyObject) {
-        if(isSubcontractor.on) {
-            self.subcontractorDisclaimer.hidden = false
-            self.subLabel.hidden = false
-        } else {
-            self.subcontractorDisclaimer.hidden = true
-            self.subLabel.hidden = true
-        }
         saveButtonClicked(self)
     }
     
