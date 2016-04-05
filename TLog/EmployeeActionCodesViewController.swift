@@ -24,7 +24,6 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     
     @IBOutlet weak var tableView: UITableView!
     var actionCodes = [TLActionCode]()
-    var checkinTime = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
