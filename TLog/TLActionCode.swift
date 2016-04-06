@@ -42,7 +42,7 @@ class TLActionCode: NSObject {
                         
                         var actionCodes:[TLActionCode] = [TLActionCode]()
                         
-                        let returnedCodes:NSArray = (response.result.value!["results"])!! as! NSArray
+                        let returnedCodes:NSArray = (response.result.value!["actionCodes"])!! as! NSArray
                         
                         for returnedCode in returnedCodes {
                             actionCodes.append(TLActionCode(
