@@ -125,8 +125,8 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                     
                     if MFMailComposeViewController.canSendMail() {
                         emailController.setToRecipients(["\(self.emailTextField.text!)"])
-                        emailController.setSubject("TLog actvation code")
-                        emailController.setMessageBody("On your mobile device click the following link to be able to access your personal Trade Log: \(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)", isHTML: false) // or true, if you prefer
+                        emailController.setSubject("TLog actvation")
+                        emailController.setMessageBody("Install TLog appliction and <a href='\(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)' style='background-color:#00C333;border:1px solid #00C333;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;line-height:44px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;'>Sign In</a> on your mobile device.", isHTML: true) // or true, if you prefer
                         self.presentViewController(emailController, animated: true, completion: nil)
                     }
                 },
