@@ -120,15 +120,11 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                     NSLog("activation link: \(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)")
                     
                     // Create email message
-                    let emailController = MFMailComposeViewController()
-                    emailController.mailComposeDelegate = self
                     
-                    if MFMailComposeViewController.canSendMail() {
-                        emailController.setToRecipients(["\(self.emailTextField.text!)"])
-                        emailController.setSubject("TLog actvation")
-                        emailController.setMessageBody("Install TLog appliction and <a href='\(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)' style='background-color:#00C333;border:1px solid #00C333;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;line-height:44px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;'>Sign In</a> on your mobile device.", isHTML: true) // or true, if you prefer
-                        self.presentViewController(emailController, animated: true, completion: nil)
-                    }
+                    let alert = UIAlertController(title: nil, message: "Employee successfuly activated, activation email is sent.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+
                 },
                 failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Error activating employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)

@@ -10,8 +10,8 @@ import UIKit
 
 
 let TL_HOST = "http://localhost:3000"
-//let TL_HOST = "http://172.20.10.2:3000"
 //let TL_HOST = "http://192.168.1.145:3000"
+//let TL_HOST = "http://172.20.10.2:3000"
 //let TL_HOST = "http://tlog.us:3000"
 
 let defaultDateFormatter = NSDateFormatter()
