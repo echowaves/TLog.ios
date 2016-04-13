@@ -99,7 +99,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A2769891C96477A00B4ACB2 /* reports */ = {
+		0A2769891C96477A00B4ACB2 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
 				0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */,
@@ -111,14 +111,14 @@
 				0A2769901C97758400B4ACB2 /* EmployeesReportViewController.swift */,
 				0A2769941C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift */,
 			);
-			name = reports;
+			name = Reports;
 			sourceTree = "<group>";
 		};
 		0A3077A71CBDE74A006D6781 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				0A4018AA1CAACAEF002B5E70 /* Employee */,
-				0A2769891C96477A00B4ACB2 /* reports */,
+				0A2769891C96477A00B4ACB2 /* Reports */,
 				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
 				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
 				0A51A3B21C72379600E83052 /* MenuViewController.swift */,
@@ -175,8 +175,8 @@
 		0A5228E21C722AC400D64847 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0A3077A71CBDE74A006D6781 /* User */,
 				0A3077A81CBDE76B006D6781 /* Employee */,
+				0A3077A71CBDE74A006D6781 /* User */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

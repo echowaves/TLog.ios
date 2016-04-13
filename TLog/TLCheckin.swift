@@ -21,13 +21,11 @@ class TLCheckin: NSObject {
     var userId: Int?
     var checkedInAt: NSDate?
     var duration: Int?
-    var actionCodeId: Int?
     var actionCode:TLActionCode?
     
-    init(checkedInAt: NSDate, actionCodeId: Int) {
+    init(checkedInAt: NSDate, actionCode: TLActionCode) {
         self.checkedInAt = checkedInAt
-        self.actionCodeId = actionCodeId
-        
+        self.actionCode = actionCode
     }
     
     init(id: Int,
@@ -35,14 +33,12 @@ class TLCheckin: NSObject {
          userId: Int,
          checkedInAt: NSDate,
          duration: Int,
-         actionCodeId: Int,
          actionCode: TLActionCode) {
         self.id = id
         self.email = email
         self.userId = userId
         self.checkedInAt = checkedInAt
         self.duration = duration
-        self.actionCodeId = actionCodeId
         self.actionCode = actionCode
         
     }
@@ -56,7 +52,7 @@ class TLCheckin: NSObject {
         ]
         let parameters = [
             "checked_in_at": self.checkedInAt!.toString(.ISO8601Format(.Extended))!,
-            "action_code_id": String(self.actionCodeId!)
+            "action_code_id": String((self.actionCode?.id)!)
         ]
         
         Alamofire.request(.POST, "\(TL_HOST)/employees/\(TLEmployee.retreiveActivationCodeFromLocalStorage())/checkins" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
@@ -71,7 +67,7 @@ class TLCheckin: NSObject {
                     self.userId = returnedCheckIn["user_id"] as? Int
                     //                        self.checkedInAt = self.dateFmt.dateFromString((returnedCheckIn["checked_in_at"] as? String)!)
                     //                        self.duration = returnedCheckIn["duration"] as? Int
-                    self.actionCodeId = returnedCheckIn["action_code_id"] as? Int
+//                    self.actionCodeId = returnedCheckIn["action_code_id"] as? Int
                     success();
                 case .Failure(let error):
                     NSLog(error.description)
@@ -89,7 +85,7 @@ class TLCheckin: NSObject {
         ]
         let parameters = [
             "checked_in_at": self.checkedInAt!.toString(.ISO8601Format(.Extended))!,
-            "action_code_id": String(self.actionCodeId!),
+            "action_code_id": String((self.actionCode?.id)!),
             "duration": String(self.duration!)
         ]
         
@@ -165,7 +161,6 @@ class TLCheckin: NSObject {
                                 userId: jsonCheckin["user_id"].intValue,
                                 checkedInAt:  checkinDate,
                                 duration: interval,
-                                actionCodeId: jsonCheckin["action_code_id"].intValue,
                                 actionCode: actionCode)
                         
                         

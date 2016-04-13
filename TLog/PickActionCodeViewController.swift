@@ -67,7 +67,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     @IBAction func checkinButtonClicked(sender: AnyObject) {
-        let checkin = TLCheckin(checkedInAt: checkinTime, actionCodeId: (selectedActionCode?.id)!)
+        let checkin = TLCheckin(checkedInAt: checkinTime, actionCode: selectedActionCode!)
         checkin.create({ () -> () in
             self.dismissViewControllerAnimated(true, completion: nil)
         }) { (error) -> () in
