@@ -114,6 +114,29 @@
 			name = reports;
 			sourceTree = "<group>";
 		};
+		0A3077A71CBDE74A006D6781 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0A4018AA1CAACAEF002B5E70 /* Employee */,
+				0A2769891C96477A00B4ACB2 /* reports */,
+				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
+				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
+				0A51A3B21C72379600E83052 /* MenuViewController.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		0A3077A81CBDE76B006D6781 /* Employee */ = {
+			isa = PBXGroup;
+			children = (
+				0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */,
+				0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */,
+				0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */,
+				0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */,
+			);
+			name = Employee;
+			sourceTree = "<group>";
+		};
 		0A4018AA1CAACAEF002B5E70 /* Employee */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,27 +172,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		0A5228E21C722AC400D64847 /* Controller.User */ = {
+		0A5228E21C722AC400D64847 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0A4018AA1CAACAEF002B5E70 /* Employee */,
-				0A2769891C96477A00B4ACB2 /* reports */,
-				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
-				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
-				0A51A3B21C72379600E83052 /* MenuViewController.swift */,
+				0A3077A71CBDE74A006D6781 /* User */,
+				0A3077A81CBDE76B006D6781 /* Employee */,
 			);
-			name = Controller.User;
-			sourceTree = "<group>";
-		};
-		0A79B8861C7BEE980050AE57 /* Controller.Employee */ = {
-			isa = PBXGroup;
-			children = (
-				0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */,
-				0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */,
-				0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */,
-				0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */,
-			);
-			name = Controller.Employee;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		0AC5FAA21C721C4700ACD363 = {
@@ -197,8 +206,7 @@
 				0AC5FAB21C721C4700ACD363 /* Main.storyboard */,
 				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0A5169B61C8A99BE00186D39 /* Extensions */,
-				0A5228E21C722AC400D64847 /* Controller.User */,
-				0A79B8861C7BEE980050AE57 /* Controller.Employee */,
+				0A5228E21C722AC400D64847 /* Controller */,
 				0A5228E11C722ABA00D64847 /* Model */,
 				0AC5FAB51C721C4700ACD363 /* Assets.xcassets */,
 				0AC5FAB71C721C4700ACD363 /* LaunchScreen.storyboard */,

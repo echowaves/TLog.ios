@@ -23,14 +23,12 @@ class SignInViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        //auto sign in
         if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
             dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("employeeHomeSegue", sender: self)
+                self.performSegueWithIdentifier("EmployeeHomeViewController", sender: self)
             }
-            
         } else {
-            
-            //auto sign in
             if(TLUser.retreiveJwtFromLocalStorage() != nil) {
                 dispatch_async(dispatch_get_main_queue()){
                     self.performSegueWithIdentifier("MenuViewController", sender: self)
