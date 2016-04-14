@@ -18,8 +18,8 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var actionCodeLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
-    var employee:TLEmployee!
-    var checkins:[TLCheckin] = []
+    var currentEmployee:TLEmployee!
+    var currentCheckins:[TLCheckin] = []
     var currentCheckin: TLCheckin!
     
     var selectedCheckin: TLCheckin!
@@ -87,8 +87,8 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     
     func loadCheckins() {
         TLCheckin.getAllCheckins(0, pageSize: 100, success: { (employee, checkins) -> () in
-            self.employee = employee
-            self.checkins = checkins
+            self.currentEmployee = employee
+            self.currentCheckins = checkins
             self.currentCheckin = nil
             
             
@@ -97,7 +97,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
                 if checkins[index].duration! == 0 {
                     if self.currentCheckin == nil {
                         self.currentCheckin = checkins[index]
-                        self.checkins.removeAtIndex(index)
+                        self.currentCheckins.removeAtIndex(index)
                     }
                 }
             }
@@ -112,7 +112,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func updateViews() {
-        navBar.topItem?.title = employee.name
+        navBar.topItem?.title = currentEmployee.name
         if (self.currentCheckin != nil) {
             self.checkinButton!.setTitle("Check Out", forState: .Normal)
             self.checkinButton.backgroundColor = UIColor(rgb: 0xFF0000) //red
@@ -138,12 +138,12 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     ////////////////////////////////////////////////////////////////////////////////////////////
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return checkins.count
+        return currentCheckins.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let checkin = self.checkins[indexPath.row]
+        let checkin = self.currentCheckins[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("CheckinTableViewCell") as? CheckinTableViewCell!
         let dateString = defaultDateFormatter.stringFromDate((checkin.checkedInAt)!)
         
@@ -159,7 +159,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedCheckin = self.checkins[indexPath.row]
+        self.selectedCheckin = self.currentCheckins[indexPath.row]
         
         
         let elapsedTime:Int = Int(NSDate().timeIntervalSinceDate(self.selectedCheckin.checkedInAt!))
@@ -185,7 +185,7 @@ class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITable
         } else
         if (segue.identifier == "PickActionCodeViewController") {
             let destViewController = segue.destinationViewController as! PickActionCodeViewController
-            destViewController.employee = self.employee
+            destViewController.employee = self.currentEmployee
         }
  
         

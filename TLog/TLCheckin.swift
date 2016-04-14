@@ -142,7 +142,6 @@ class TLCheckin: NSObject {
                     var checkins = [TLCheckin]()
                     
                     
-                    
                     for (_,jsonCheckin):(String, JSON) in jsonCheckins {
                         let actionCode =
                             TLActionCode(
