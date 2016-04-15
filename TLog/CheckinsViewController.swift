@@ -1,5 +1,5 @@
 //
-//  EmployeeHomeViewController.swift
+//  CheckinsViewController.swift
 //  TLog
 //
 //  Created by D on 2/22/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EmployeeHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class CheckinsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var navBar: UINavigationBar!
     

@@ -74,9 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let employeeHomeViewController : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("EmployeeHomeViewController") as UIViewController
+            let checkinsViewController : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("CheckinsViewController") as UIViewController
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            self.window?.rootViewController = employeeHomeViewController
+            self.window?.rootViewController = checkinsViewController
             self.window?.makeKeyAndVisible()
         }
         

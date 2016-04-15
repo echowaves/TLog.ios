@@ -28,7 +28,7 @@
 		0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E51C7230AF00D64847 /* SignUpViewController.swift */; };
 		0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8821C7960900050AE57 /* TLEmployee.swift */; };
 		0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */; };
-		0A79B8881C7BEEDE0050AE57 /* EmployeeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */; };
+		0A79B8881C7BEEDE0050AE57 /* CheckinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8871C7BEEDE0050AE57 /* CheckinsViewController.swift */; };
 		0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */; };
 		0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */; };
 		0AA555181CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */; };
@@ -67,7 +67,7 @@
 		0A5228E51C7230AF00D64847 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A79B8821C7960900050AE57 /* TLEmployee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLEmployee.swift; sourceTree = "<group>"; };
 		0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
-		0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeHomeViewController.swift; sourceTree = "<group>"; };
+		0A79B8871C7BEEDE0050AE57 /* CheckinsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinsViewController.swift; sourceTree = "<group>"; };
 		0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
 		0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerViewController.swift; sourceTree = "<group>"; };
 		0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCreateViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		0A3077A81CBDE76B006D6781 /* Employee */ = {
 			isa = PBXGroup;
 			children = (
-				0A79B8871C7BEEDE0050AE57 /* EmployeeHomeViewController.swift */,
+				0A79B8871C7BEEDE0050AE57 /* CheckinsViewController.swift */,
 				0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */,
 				0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */,
 				0A5169B21C889BD300186D39 /* CheckinDetailsViewController.swift */,
@@ -363,7 +363,7 @@
 				0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */,
 				0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */,
 				0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */,
-				0A79B8881C7BEEDE0050AE57 /* EmployeeHomeViewController.swift in Sources */,
+				0A79B8881C7BEEDE0050AE57 /* CheckinsViewController.swift in Sources */,
 				0A5169B31C889BD300186D39 /* CheckinDetailsViewController.swift in Sources */,
 				0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */,
 				0A5169B51C88A44400186D39 /* TLActionCode.swift in Sources */,

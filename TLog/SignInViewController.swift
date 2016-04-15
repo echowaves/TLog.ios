@@ -26,7 +26,7 @@ class SignInViewController: UIViewController {
         //auto sign in
         if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
             dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("EmployeeHomeViewController", sender: self)
+                self.performSegueWithIdentifier("CheckinsViewController", sender: self)
             }
         } else {
             if(TLUser.retreiveJwtFromLocalStorage() != nil) {

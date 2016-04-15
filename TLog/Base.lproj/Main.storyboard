@@ -309,7 +309,7 @@
                         <outlet property="passwordTextField" destination="3Cl-32-jRU" id="zfT-4W-k8U"/>
                         <segue destination="PaN-TY-Dqp" kind="showDetail" identifier="SignUpViewController" action="showViewController:sender:" id="cDQ-FW-MOt"/>
                         <segue destination="1q4-GU-2Ou" kind="showDetail" identifier="MenuViewController" action="showViewController:sender:" id="Fi9-HA-xET"/>
-                        <segue destination="hfo-OP-A8X" kind="show" identifier="EmployeeHomeViewController" id="s7N-6Y-9No"/>
+                        <segue destination="hfo-OP-A8X" kind="show" identifier="CheckinsViewController" id="s7N-6Y-9No"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNE-sA-Mbt" sceneMemberID="firstResponder"/>
@@ -461,10 +461,10 @@
             </objects>
             <point key="canvasLocation" x="2607" y="374"/>
         </scene>
-        <!--Employee Home View Controller-->
+        <!--Checkins View Controller-->
         <scene sceneID="xai-A4-nq1">
             <objects>
-                <viewController storyboardIdentifier="EmployeeHomeViewController" id="hfo-OP-A8X" customClass="EmployeeHomeViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckinsViewController" id="hfo-OP-A8X" customClass="CheckinsViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="upu-6y-OOe"/>
                         <viewControllerLayoutGuide type="bottom" id="4jc-sf-lrS"/>
