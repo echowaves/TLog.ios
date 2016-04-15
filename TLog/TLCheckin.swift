@@ -43,6 +43,13 @@ class TLCheckin: NSObject {
         
     }
     
+    func durationText() -> String {
+        return "\(duration!/3600):\((duration!%3600)/60)";
+    }
+    
+    func durationExtendedText() -> String {
+        return "\(duration!/3600) hour :\((duration!%3600)/60) minutes";
+    }
     
     func create(
         success:() -> (),

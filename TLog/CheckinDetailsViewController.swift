@@ -26,8 +26,7 @@ class CheckinDetailsViewControler: UIViewController {
         
         checkedInAt.text = defaultDateFormatter.stringFromDate((checkin.checkedInAt)!)
         
-        let (h,m,_) = secondsToHoursMinutesSeconds(checkin.duration!)
-        duration.text = "\(h) hour : \(m) minutes"
+        duration.text = checkin.durationExtendedText()
         actionCode.text = "\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)"
     }
     

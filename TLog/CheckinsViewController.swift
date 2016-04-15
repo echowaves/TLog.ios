@@ -43,9 +43,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
                 NSLog("OK Pressed")
                 
                 var elapsedTime:Int = Int(NSDate().timeIntervalSinceDate(self.currentCheckin.checkedInAt!))
-                let (h,m,_) = secondsToHoursMinutesSeconds(elapsedTime)
-                NSLog( "elapsed \(h):\(m)")
-                if(h > 8) {
+                if( elapsedTime > 8 * 60 * 60) { // greater then 8 hours
                     elapsedTime = 8 * 60 * 60;
                 }
                 
@@ -149,8 +147,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell!.checkinAt?.text = dateString
         
-        let (h,m,_) = secondsToHoursMinutesSeconds(checkin.duration!)
-        cell!.duration?.text = "\(h):\(m)"
+        cell!.duration?.text = checkin.durationText()
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         
         return cell!
