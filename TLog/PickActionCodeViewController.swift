@@ -50,6 +50,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
                                                     
                                                     if(self.employeesActionCodes.count > 0) {
                                                         self.actionCodeTextField.enabled = false
+                                                        self.actionCodeTextField.placeholder = "pick from the list"
                                                     }
                                                     
         }) { (error) in
