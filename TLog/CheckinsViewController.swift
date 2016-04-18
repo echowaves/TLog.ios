@@ -161,7 +161,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let elapsedTime:Int = Int(NSDate().timeIntervalSinceDate(self.selectedCheckin.checkedInAt!))
         if(elapsedTime > 7 * 24 * 60 * 60) {
-            let alert = UIAlertController(title: nil, message: "Can not update checkins older then 7 days.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: nil, message: "Can not update checkins older than 7 days.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                 alert2 in
                 self.dismissViewControllerAnimated(true, completion: nil)
