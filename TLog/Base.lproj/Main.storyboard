@@ -1010,6 +1010,11 @@
                                                 <action selector="backButtonClicked:" destination="gRT-GI-8PZ" id="CHQ-Zy-lNU"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="BS8-0g-8ds">
+                                            <connections>
+                                                <action selector="deleteButtonClicked:" destination="gRT-GI-8PZ" id="td1-ly-S4U"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1029,26 +1034,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgS-g6-0qZ">
-                                <rect key="frame" x="20" y="530" width="560" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2MF-51-ifH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="delete">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteButtonClicked:" destination="gRT-GI-8PZ" eventType="touchUpInside" id="H7Q-8F-H39"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="action code" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="RW8-l2-roV">
                                 <rect key="frame" x="16" y="191" width="568" height="50"/>
                                 <constraints>
@@ -1060,12 +1045,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.84313725490000002" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="trailing" secondItem="ArI-mU-VhM" secondAttribute="trailingMargin" id="0c1-T3-b7L"/>
-                            <constraint firstItem="LgS-g6-0qZ" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" id="2gA-EY-1GV"/>
                             <constraint firstItem="hLU-yB-98J" firstAttribute="leading" secondItem="ArI-mU-VhM" secondAttribute="leadingMargin" constant="-4" id="4kV-cD-cRj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RW8-l2-roV" secondAttribute="trailing" constant="-4" id="JGN-Dm-xAb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hLU-yB-98J" secondAttribute="trailing" constant="-4" id="JcV-A8-JYO"/>
-                            <constraint firstItem="2a2-A7-5to" firstAttribute="top" secondItem="LgS-g6-0qZ" secondAttribute="bottom" constant="20" id="JrL-5X-jgP"/>
                             <constraint firstItem="Fha-Fx-zgD" firstAttribute="top" secondItem="3kj-mx-dNb" secondAttribute="bottom" id="Ovf-C4-kJe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0EY-b4-aW2" secondAttribute="trailing" constant="-4" id="PEo-tP-pyu"/>
                             <constraint firstItem="hLU-yB-98J" firstAttribute="top" secondItem="Fha-Fx-zgD" secondAttribute="bottom" constant="11" id="PIl-Yo-UIj"/>
