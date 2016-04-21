@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Font_Awesome_Swift
 
 class CheckinsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -149,7 +150,8 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell!.duration?.text = checkin.durationText()
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
-        
+        cell!.chevronLabel.FAIcon = FAType.FAChevronRight
+
         return cell!
         
         

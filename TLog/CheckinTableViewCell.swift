@@ -13,4 +13,6 @@ class CheckinTableViewCell: UITableViewCell {
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var actionCode: UILabel!
 
+    @IBOutlet weak var chevronLabel: UILabel!
+
 }
