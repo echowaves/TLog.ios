@@ -69,8 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             params.setObject(elts[1], forKey: elts[0])
         }
         
+        TLUser.setUserLogin()
         TLEmployee.storeActivationCodeLocally(params.valueForKey("activation_code") as! String)
-        
+        TLUser.setEmployeeLogin()
         
         if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

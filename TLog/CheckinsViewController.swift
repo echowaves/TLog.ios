@@ -13,6 +13,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
 {
     @IBOutlet weak var navBar: UINavigationBar!
     
+    @IBOutlet weak var signOutButton: UIBarButtonItem!
     
     @IBOutlet weak var checkinButton: UIButton!
     @IBOutlet weak var sinceLabel: UILabel!
@@ -69,13 +70,23 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func signOutButtonClicked(sender: AnyObject) {
         TLEmployee.clearActivationCodeFromLocalStorage()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if(TLUser.isUserLogin() == false) {
+            //            presentViewController(SignInViewController, animated: true, completion: nil)
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        if(TLUser.isUserLogin() == true) {
+            self.signOutButton.title = "< back"
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -106,7 +117,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
             let alert = UIAlertController(title: nil, message: "Error loading checkins. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-//            self.updateViews()
+            //            self.updateViews()
         }
     }
     
@@ -151,7 +162,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
         cell!.duration?.text = checkin.durationText()
         cell!.actionCode?.text = String("\((checkin.actionCode?.code)!):\((checkin.actionCode?.descr)!)")
         cell!.chevronLabel.FAIcon = FAType.FAChevronRight
-
+        
         return cell!
         
         
@@ -164,10 +175,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
         let elapsedTime:Int = Int(NSDate().timeIntervalSinceDate(self.selectedCheckin.checkedInAt!))
         if(elapsedTime > 7 * 24 * 60 * 60) {
             let alert = UIAlertController(title: nil, message: "Can not update checkins older than 7 days.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-                alert2 in
-                self.dismissViewControllerAnimated(true, completion: nil)
-                })
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             dispatch_async(dispatch_get_main_queue()){
@@ -182,11 +190,11 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
             destViewController.checkin = self.selectedCheckin
             self.selectedCheckin = nil
         } else
-        if (segue.identifier == "PickActionCodeViewController") {
-            let destViewController = segue.destinationViewController as! PickActionCodeViewController
-            destViewController.employee = self.currentEmployee
+            if (segue.identifier == "PickActionCodeViewController") {
+                let destViewController = segue.destinationViewController as! PickActionCodeViewController
+                destViewController.employee = self.currentEmployee
         }
- 
+        
         
     }
     

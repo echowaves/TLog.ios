@@ -26,6 +26,27 @@ class TLUser: NSObject {
     
     static let JWT_KEY:String = "TTLogJWT";
     static let ACTIVATION_CODE_KEY:String = "TTLogActivationCode";
+    static let LOGIN_TYPE = "LOGIN_TYPE"; // potential type values "user|employee"
+    
+    
+    class func isUserLogin()  -> (Bool) {
+        let keychain = KeychainSwift()
+        var loginType = keychain.get(TLUser.LOGIN_TYPE)
+        if loginType == nil {
+            loginType = "user"
+        }
+        return loginType == "user" ? true: false
+    }
+    class func setUserLogin()  -> () {
+        let keychain = KeychainSwift()
+        keychain.set("user", forKey: TLUser.LOGIN_TYPE)
+    }
+    class func setEmployeeLogin()  -> () {
+        let keychain = KeychainSwift()
+        keychain.set("employee", forKey: TLUser.LOGIN_TYPE)
+    }
+    
+    
     
     class func storeJwtLocally(jwt:String)  -> () {
         let keychain = KeychainSwift()

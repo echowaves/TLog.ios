@@ -29,10 +29,11 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     @IBOutlet weak var actionCodesButton: UIButton!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
+    @IBOutlet weak var checkinsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.becomeFirstResponder()
+//        nameTextField.becomeFirstResponder()
         
         self.nameTextField.text = employee?.name
         self.emailTextField.text = employee?.email
@@ -47,8 +48,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         
         if(employee?.activationCode == nil) {
             self.isActive.on = false
+            self.checkinsButton.hidden = true
         } else {
             self.isActive.on = true
+            self.checkinsButton.hidden = false
         }
     }
     
@@ -60,6 +63,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     }
     
     @IBAction func saveButtonClicked(sender: AnyObject) {
+        self.view.endEditing(true)
         var validationErrors:[String] = []
         if(!Validator.required(emailTextField.text!)) {
             validationErrors += ["Email is required."]
@@ -110,6 +114,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     
     
     @IBAction func isActiveSwitched(sender: AnyObject) {
+        self.view.endEditing(true)
         if isActive.on {
             
             self.employee!.activate(
@@ -124,6 +129,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                     let alert = UIAlertController(title: nil, message: "Employee successfuly activated, activation email is sent.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
+                    self.checkinsButton.hidden = false
 
                 },
                 failure: { (error) -> () in
@@ -142,6 +148,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
                         self.employee?.activationCode = nil
                         })
                     self.presentViewController(alert, animated: true, completion: nil)
+                    self.checkinsButton.hidden = true
                 },
                 failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Error deactivating employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -155,6 +162,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     
     
     @IBAction func deleteButtonClicked(sender: AnyObject) {
+        self.view.endEditing(true)
         let alert = UIAlertController(title: nil, message: "Are you sure want to delete the employee?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
@@ -199,12 +207,26 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         
     }
     
+    @IBAction func checkinsClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("CheckinsViewController", sender: self)
+        }
+        
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "EmployeeActionCodesViewController") {
             let destViewController = segue.destinationViewController as! EmployeeActionCodesViewController
             destViewController.employee = self.employee
         }
+        
+        if (segue.identifier == "CheckinsViewController") {
+            _ = segue.destinationViewController as! CheckinsViewController
+            TLUser.setUserLogin()
+            TLEmployee.storeActivationCodeLocally((employee?.activationCode)!)
+        }
+
     }
     
 }
