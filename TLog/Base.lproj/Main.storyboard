@@ -1709,10 +1709,43 @@
             </objects>
             <point key="canvasLocation" x="3338" y="-382"/>
         </scene>
+        <!--Outdated Version View Controller-->
+        <scene sceneID="Dx3-ba-Hfv">
+            <objects>
+                <viewController storyboardIdentifier="OutdatedVersionViewController" id="A2P-Hd-GxS" customClass="OutdatedVersionViewController" customModule="TLog" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HJH-9G-Fbd"/>
+                        <viewControllerLayoutGuide type="bottom" id="umx-iR-ssG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O1f-77-pib">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are running an outdated version of the TLog app. Upgrade in the app strore and try again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5Q-hI-fIB">
+                                <rect key="frame" x="20" y="20" width="560" height="560"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="W5Q-hI-fIB" firstAttribute="top" secondItem="HJH-9G-Fbd" secondAttribute="bottom" id="3mI-eC-8zn"/>
+                            <constraint firstItem="umx-iR-ssG" firstAttribute="top" secondItem="W5Q-hI-fIB" secondAttribute="bottom" constant="20" id="TuK-J2-2r8"/>
+                            <constraint firstItem="W5Q-hI-fIB" firstAttribute="leading" secondItem="O1f-77-pib" secondAttribute="leadingMargin" id="sRS-kX-Js5"/>
+                            <constraint firstItem="W5Q-hI-fIB" firstAttribute="trailing" secondItem="O1f-77-pib" secondAttribute="trailingMargin" id="xPB-PV-7Bj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NGU-Xf-4ka"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5N-UF-ZCa" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="-428"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Iql-i7-L29"/>
+        <segue reference="Fi9-HA-xET"/>
+        <segue reference="s7N-6Y-9No"/>
         <segue reference="odX-B7-YAH"/>
-        <segue reference="8xp-zc-a6J"/>
     </inferredMetricsTieBreakers>
 </document>

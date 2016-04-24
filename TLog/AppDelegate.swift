@@ -8,6 +8,7 @@
 
 import UIKit
 
+let API_VERSION = "1.0.0"
 
 let TL_HOST = "http://localhost:3000"
 //let TL_HOST = "http://192.168.1.145:3000"
@@ -29,6 +30,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         Localytics.autoIntegrate("32d519b62a1d7a231f5e8e2-3de491f8-d3f7-11e5-09e8-00cef1388a40", launchOptions: launchOptions)
+        
+        
+        //check app version
+        TLUser.checkApiVersion({ (version) in
+            if version != API_VERSION {
+                let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initViewController : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("OutdatedVersionViewController") as UIViewController
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                self.window?.rootViewController = initViewController
+                self.window?.makeKeyAndVisible()
+            }
+            }) { (error) in
+                NSLog("API error")
+        }
+
+        
+        
         return true
     }
     

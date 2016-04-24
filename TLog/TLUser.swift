@@ -129,6 +129,28 @@ class TLUser: NSObject {
         }
     }
     
+    class func checkApiVersion(
+        success:(version:String) -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.GET, "\(TL_HOST)/api_version/ios", encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    let version = response.result.value!["version"] as? String
+                    success(version: version!)
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
+    
 //    func currentUser(
 //        success:() -> (),
 //        failure:(error: NSError) -> ()) -> () {

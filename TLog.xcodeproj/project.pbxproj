@@ -29,6 +29,7 @@
 		0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8821C7960900050AE57 /* TLEmployee.swift */; };
 		0A79B8851C7AB5100050AE57 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */; };
 		0A79B8881C7BEEDE0050AE57 /* CheckinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8871C7BEEDE0050AE57 /* CheckinsViewController.swift */; };
+		0A7FD2C61CCC4ADF0058ED05 /* OutdatedVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FD2C51CCC4ADF0058ED05 /* OutdatedVersionViewController.swift */; };
 		0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */; };
 		0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */; };
 		0AA555181CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */; };
@@ -68,6 +69,7 @@
 		0A79B8821C7960900050AE57 /* TLEmployee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLEmployee.swift; sourceTree = "<group>"; };
 		0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		0A79B8871C7BEEDE0050AE57 /* CheckinsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinsViewController.swift; sourceTree = "<group>"; };
+		0A7FD2C51CCC4ADF0058ED05 /* OutdatedVersionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutdatedVersionViewController.swift; sourceTree = "<group>"; };
 		0A9B88EC1C73A81F007AB7A1 /* EmployeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
 		0A9B88EE1C73A82D007AB7A1 /* YearPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerViewController.swift; sourceTree = "<group>"; };
 		0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCreateViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
 				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
 				0A51A3B21C72379600E83052 /* MenuViewController.swift */,
+				0A7FD2C51CCC4ADF0058ED05 /* OutdatedVersionViewController.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */,
 				0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */,
 				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
+				0A7FD2C61CCC4ADF0058ED05 /* OutdatedVersionViewController.swift in Sources */,
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,
 				0A2769951C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift in Sources */,
 				0A27698D1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift in Sources */,
