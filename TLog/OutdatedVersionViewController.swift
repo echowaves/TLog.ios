@@ -16,6 +16,8 @@ class OutdatedVersionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("OutdatedVersionViewController")
+
     }
     
     override func viewWillAppear(animated: Bool) {

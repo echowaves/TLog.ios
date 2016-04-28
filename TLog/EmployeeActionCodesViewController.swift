@@ -27,6 +27,8 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("EmployeeActionCodesViewController")
+
         navBar.title = employee?.name
         
         actionCodeTextField.becomeFirstResponder()

@@ -22,6 +22,8 @@ class MonthPickerViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("MonthPickerViewController")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
 

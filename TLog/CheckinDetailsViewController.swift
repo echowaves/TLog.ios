@@ -18,6 +18,8 @@ class CheckinDetailsViewControler: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("CheckinDetailsViewController")
+
         
     }
     

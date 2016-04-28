@@ -20,6 +20,8 @@ class EmployeeActionCodesPopoverViewController: UIViewController, UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("EmployeeActionCodesPopoverViewController")
+
         tableView.delegate      =   self
         tableView.dataSource    =   self
 

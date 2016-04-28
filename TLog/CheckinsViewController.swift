@@ -81,6 +81,8 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("CheckinsViewController")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -91,6 +93,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
         loadCheckins()
     }
     

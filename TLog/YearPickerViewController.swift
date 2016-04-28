@@ -17,6 +17,8 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("YearPickerViewController")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.loadYears()

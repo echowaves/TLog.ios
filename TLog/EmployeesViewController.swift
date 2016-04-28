@@ -46,6 +46,8 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("EmployeesViewController")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self                
 

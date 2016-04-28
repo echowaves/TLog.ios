@@ -21,7 +21,10 @@ class SignUpViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        Localytics.tagEvent("SignUpViewController")
+    }
     
     @IBAction func signUpButtonClicked(sender: AnyObject) {
         

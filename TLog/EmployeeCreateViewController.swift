@@ -20,6 +20,8 @@ class EmployeeCreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("EmployeeCreateViewController")
+
         nameTextField.becomeFirstResponder()
     }
     

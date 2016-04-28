@@ -24,6 +24,8 @@ class EmployeesReportViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("EmployeesReportViewController")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         

@@ -16,6 +16,8 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("MenuViewController")
+
     }
     
     override func viewWillAppear(animated: Bool) {

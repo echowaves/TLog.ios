@@ -33,6 +33,8 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("EmployeeDetailsViewController")
+
 //        nameTextField.becomeFirstResponder()
         
         self.nameTextField.text = employee?.name

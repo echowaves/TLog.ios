@@ -18,6 +18,8 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("SignInViewController")
+
         emailTextField.becomeFirstResponder()
     }
     

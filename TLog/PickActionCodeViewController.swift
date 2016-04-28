@@ -25,6 +25,8 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("PickActionCodeViewController")
+
         actionCodeTextField.becomeFirstResponder()
         actionCodeTextField.delegate = self
         

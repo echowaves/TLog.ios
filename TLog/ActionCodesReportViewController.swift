@@ -23,6 +23,8 @@ class ActionCodesReportViewController: UIViewController, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localytics.tagEvent("ActionCodesReportViewController")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
