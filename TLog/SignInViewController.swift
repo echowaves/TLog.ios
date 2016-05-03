@@ -26,15 +26,16 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //auto sign in
+        if(TLUser.retreiveJwtFromLocalStorage() != nil) {
+            TLEmployee.clearActivationCodeFromLocalStorage()
+            dispatch_async(dispatch_get_main_queue()){
+                self.performSegueWithIdentifier("MenuViewController", sender: self)
+            }
+        }
+
         if(TLEmployee.retreiveActivationCodeFromLocalStorage() != nil) {
             dispatch_async(dispatch_get_main_queue()){
                 self.performSegueWithIdentifier("CheckinsViewController", sender: self)
-            }
-        } else {
-            if(TLUser.retreiveJwtFromLocalStorage() != nil) {
-                dispatch_async(dispatch_get_main_queue()){
-                    self.performSegueWithIdentifier("MenuViewController", sender: self)
-                }
             }
         }
     }
