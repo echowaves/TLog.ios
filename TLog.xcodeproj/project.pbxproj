@@ -15,6 +15,7 @@
 		0A2769911C97758400B4ACB2 /* EmployeesReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769901C97758400B4ACB2 /* EmployeesReportViewController.swift */; };
 		0A2769951C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769941C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift */; };
 		0A2769971C985A2C00B4ACB2 /* ActionCodesReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769961C985A2C00B4ACB2 /* ActionCodesReportTableViewCell.swift */; };
+		0A3C7F091CDA312600EBFDAA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3C7F081CDA312600EBFDAA /* Launch Screen.storyboard */; };
 		0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AC1C87597300186D39 /* TLCheckin.swift */; };
 		0A5169AF1C87B3AF00186D39 /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */; };
 		0A5169B11C87BB5600186D39 /* PickActionCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */; };
@@ -23,7 +24,6 @@
 		0A5169B81C8A99E100186D39 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5169B71C8A99E100186D39 /* ColorExtensions.swift */; };
 		0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51A3B21C72379600E83052 /* MenuViewController.swift */; };
 		0A51A3B51C72560300E83052 /* TLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51A3B41C72560300E83052 /* TLUser.swift */; };
-		0A51A3B71C72796400E83052 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A51A3B61C72796400E83052 /* Default-568h@2x.png */; };
 		0A5228E41C722AF300D64847 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E31C722AF300D64847 /* SignInViewController.swift */; };
 		0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5228E51C7230AF00D64847 /* SignUpViewController.swift */; };
 		0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B8821C7960900050AE57 /* TLEmployee.swift */; };
@@ -54,6 +54,7 @@
 		0A2769901C97758400B4ACB2 /* EmployeesReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesReportViewController.swift; sourceTree = "<group>"; };
 		0A2769941C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesReportTableViewCell.swift; sourceTree = "<group>"; };
 		0A2769961C985A2C00B4ACB2 /* ActionCodesReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCodesReportTableViewCell.swift; sourceTree = "<group>"; };
+		0A3C7F081CDA312600EBFDAA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0A5169AC1C87597300186D39 /* TLCheckin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCheckin.swift; sourceTree = "<group>"; };
 		0A5169AE1C87B3AF00186D39 /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		0A5169B01C87BB5600186D39 /* PickActionCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickActionCodeViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		0A5169B71C8A99E100186D39 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		0A51A3B21C72379600E83052 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0A51A3B41C72560300E83052 /* TLUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLUser.swift; sourceTree = "<group>"; };
-		0A51A3B61C72796400E83052 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0A5228E01C72248C00D64847 /* TLog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLog-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A5228E31C722AF300D64847 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0A5228E51C7230AF00D64847 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +187,6 @@
 		0AC5FAA21C721C4700ACD363 = {
 			isa = PBXGroup;
 			children = (
-				0A51A3B61C72796400E83052 /* Default-568h@2x.png */,
 				0AC5FAAD1C721C4700ACD363 /* TLog */,
 				0AC5FAAC1C721C4700ACD363 /* Products */,
 				C4321B7BD19B588697CEFD2B /* Pods */,
@@ -207,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC5FAB21C721C4700ACD363 /* Main.storyboard */,
+				0A3C7F081CDA312600EBFDAA /* Launch Screen.storyboard */,
 				0AC5FAAE1C721C4700ACD363 /* AppDelegate.swift */,
 				0A5169B61C8A99BE00186D39 /* Extensions */,
 				0A5228E21C722AC400D64847 /* Controller */,
@@ -299,8 +299,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AC5FAB91C721C4700ACD363 /* LaunchScreen.storyboard in Resources */,
-				0A51A3B71C72796400E83052 /* Default-568h@2x.png in Resources */,
 				0AC5FAB61C721C4700ACD363 /* Assets.xcassets in Resources */,
+				0A3C7F091CDA312600EBFDAA /* Launch Screen.storyboard in Resources */,
 				0AC5FAB41C721C4700ACD363 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
