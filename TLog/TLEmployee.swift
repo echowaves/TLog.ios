@@ -121,7 +121,9 @@ class TLEmployee: NSObject {
                 .responseJSON { response in
                     switch response.result {
                     case .Success:
-                        success(activationCode: response.result.value!["activation_code"] as! String);
+                        let activationCode = response.result.value!["activation_code"] as! String
+                        self.activationCode = activationCode
+                        success(activationCode: activationCode)
                     case .Failure(let error):
                         NSLog(error.description)
                         failure(error: error)

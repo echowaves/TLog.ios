@@ -527,7 +527,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWo-bn-Ys1" id="DTh-NN-Tn7">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-jk-VRw">
@@ -1571,7 +1571,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hKO-zK-ylQ" id="vAl-bH-1jl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq3-eV-4zG">
@@ -1751,8 +1751,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="odX-B7-YAH"/>
         <segue reference="Iql-i7-L29"/>
-        <segue reference="s7N-6Y-9No"/>
+        <segue reference="odX-B7-YAH"/>
+        <segue reference="8xp-zc-a6J"/>
     </inferredMetricsTieBreakers>
 </document>
