@@ -122,7 +122,7 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
             self.employee!.activate(
                 { (activationCode:String) -> () in
                     
-                    self.employee?.activationCode = activationCode
+                    self.employee?.activationCode = activationCode // this is a bit redundunt, since it's happening inside the model.
                     NSLog("new activation code: \(activationCode)")
                     NSLog("activation link: \(TL_HOST)/public/mobile_employee.html?activation_code=\(activationCode)")
                     
