@@ -18,7 +18,7 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         Localytics.tagEvent("YearPickerViewController")
-
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.loadYears()
@@ -38,6 +38,14 @@ class YearPickerViewController: UIViewController, UITableViewDelegate, UITableVi
         TLReport.yearsForUser({ (years) in
             self.years = years
             self.tableView.reloadData()
+            
+            if(years.count == 0) {
+                let alert = UIAlertController(title: nil, message: "No any reports yet? Have your employees start checking in and checking out every day -- then you will be able to see the beautiful reports here.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+            
             },
                               failure: { (error) in
                                 let alert = UIAlertController(title: nil, message: "Error loading years. Try again.", preferredStyle: UIAlertControllerStyle.Alert)

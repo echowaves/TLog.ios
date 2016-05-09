@@ -10,13 +10,13 @@ import Foundation
 import Font_Awesome_Swift
 
 
-class EmployeesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {    
+class EmployeesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var activeInactiveSegmentedControl: UISegmentedControl!
     @IBAction func activeInactiveChanged(sender: UISegmentedControl) {
-            self.filterActiveInactive()
+        self.filterActiveInactive()
     }
-
+    
     func filterActiveInactive() {
         switch activeInactiveSegmentedControl.selectedSegmentIndex
         {
@@ -41,16 +41,16 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     var allEmployees:[TLEmployee] = []
     var activeEmployees:[TLEmployee] = []
     var inactiveEmployees:[TLEmployee] = []
-
+    
     var selectedEmployee: TLEmployee!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Localytics.tagEvent("EmployeesViewController")
-
+        
         self.tableView.delegate = self
-        self.tableView.dataSource = self                
-
+        self.tableView.dataSource = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,13 +62,20 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     func loadEmployees() {
         TLEmployee.loadAll({ (allEmployees, activeEmployees, inactiveEmployees) -> () in
             self.allEmployees = allEmployees
-                self.activeEmployees = activeEmployees
-                self.inactiveEmployees = inactiveEmployees
-                self.filterActiveInactive()
-            }) { (error) -> () in
-                let alert = UIAlertController(title: nil, message: "Error loading employees. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            self.activeEmployees = activeEmployees
+            self.inactiveEmployees = inactiveEmployees
+            self.filterActiveInactive()
+    
+            if(allEmployees.count == 0) {
+                let alert = UIAlertController(title: nil, message: "No employees yet? Start adding employees before you can see something here.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+        }) { (error) -> () in
+            let alert = UIAlertController(title: nil, message: "Error loading employees. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
@@ -101,11 +108,11 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.emailLabel?.text = employee.email
         cell!.isSubcontractorLabel?.hidden = !employee.isSubcontractor
         cell!.chevronLabel.FAIcon = FAType.FAChevronRight
-
+        
         
         return cell!
         
-
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -114,13 +121,13 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Let's assume that the segue name is called playerSegue
         // This will perform the segue and pre-load the variable for you to use
-
+        
         dispatch_async(dispatch_get_main_queue()){
             self.performSegueWithIdentifier("EmployeeDetailsViewController", sender: self)
         }
         
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "EmployeeDetailsViewController") {
             let destViewController = segue.destinationViewController as! EmployeeDetailsViewController
@@ -132,13 +139,13 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        self.tableView.contentInset = UIEdgeInsetsMake(0,100,0,0)
+        //        self.tableView.contentInset = UIEdgeInsetsMake(0,100,0,0)
     }
     
     // this method is the entry point for unwinding to the beginning
     @IBAction func unwindToEmployees(segue: UIStoryboardSegue) {
     }
     
-
+    
     
 }
