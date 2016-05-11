@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2332151CE0E5C400A53ADA /* SubcontractorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2332141CE0E5C400A53ADA /* SubcontractorsViewController.swift */; };
+		0A2332171CE0E8FE00A53ADA /* SubcontractorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2332161CE0E8FE00A53ADA /* SubcontractorTableViewCell.swift */; };
+		0A2332191CE0F1E300A53ADA /* SubcontractorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2332181CE0F1E300A53ADA /* SubcontractorDetailsViewController.swift */; };
+		0A23321B1CE0F54300A53ADA /* SubcontractorCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A23321A1CE0F54300A53ADA /* SubcontractorCreateViewController.swift */; };
+		0A23321D1CE128D100A53ADA /* TLSubcontractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A23321C1CE128D100A53ADA /* TLSubcontractor.swift */; };
 		0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769851C94C95000B4ACB2 /* TLReport.swift */; };
 		0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */; };
 		0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */; };
@@ -46,6 +51,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2332141CE0E5C400A53ADA /* SubcontractorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcontractorsViewController.swift; sourceTree = "<group>"; };
+		0A2332161CE0E8FE00A53ADA /* SubcontractorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcontractorTableViewCell.swift; sourceTree = "<group>"; };
+		0A2332181CE0F1E300A53ADA /* SubcontractorDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcontractorDetailsViewController.swift; sourceTree = "<group>"; };
+		0A23321A1CE0F54300A53ADA /* SubcontractorCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcontractorCreateViewController.swift; sourceTree = "<group>"; };
+		0A23321C1CE128D100A53ADA /* TLSubcontractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLSubcontractor.swift; sourceTree = "<group>"; };
 		0A2769851C94C95000B4ACB2 /* TLReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLReport.swift; sourceTree = "<group>"; };
 		0A2769871C9502F600B4ACB2 /* YearButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearButtonTableViewCell.swift; sourceTree = "<group>"; };
 		0A27698A1C96486000B4ACB2 /* MonthPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPickerViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +111,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2332131CE0E4C000A53ADA /* Subcontractor */ = {
+			isa = PBXGroup;
+			children = (
+				0A2332141CE0E5C400A53ADA /* SubcontractorsViewController.swift */,
+				0A2332161CE0E8FE00A53ADA /* SubcontractorTableViewCell.swift */,
+				0A23321A1CE0F54300A53ADA /* SubcontractorCreateViewController.swift */,
+				0A2332181CE0F1E300A53ADA /* SubcontractorDetailsViewController.swift */,
+			);
+			name = Subcontractor;
+			sourceTree = "<group>";
+		};
 		0A2769891C96477A00B4ACB2 /* Report */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				0A4018AA1CAACAEF002B5E70 /* Employee */,
+				0A2332131CE0E4C000A53ADA /* Subcontractor */,
 				0A2769891C96477A00B4ACB2 /* Report */,
 				0A5228E31C722AF300D64847 /* SignInViewController.swift */,
 				0A5228E51C7230AF00D64847 /* SignUpViewController.swift */,
@@ -169,6 +191,7 @@
 				0A51A3B41C72560300E83052 /* TLUser.swift */,
 				0A2769851C94C95000B4ACB2 /* TLReport.swift */,
 				0A79B8821C7960900050AE57 /* TLEmployee.swift */,
+				0A23321C1CE128D100A53ADA /* TLSubcontractor.swift */,
 				0A5169AC1C87597300186D39 /* TLCheckin.swift */,
 				0A5169B41C88A44400186D39 /* TLActionCode.swift */,
 			);
@@ -370,11 +393,14 @@
 				0A5169B31C889BD300186D39 /* CheckinDetailsViewController.swift in Sources */,
 				0A79B8831C7960900050AE57 /* TLEmployee.swift in Sources */,
 				0A5169B51C88A44400186D39 /* TLActionCode.swift in Sources */,
+				0A23321B1CE0F54300A53ADA /* SubcontractorCreateViewController.swift in Sources */,
+				0A2332171CE0E8FE00A53ADA /* SubcontractorTableViewCell.swift in Sources */,
 				0A51A3B31C72379600E83052 /* MenuViewController.swift in Sources */,
 				0AC5FAAF1C721C4700ACD363 /* AppDelegate.swift in Sources */,
 				0A5228E61C7230AF00D64847 /* SignUpViewController.swift in Sources */,
 				0AEA5A611C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift in Sources */,
 				0A9B88EF1C73A82D007AB7A1 /* YearPickerViewController.swift in Sources */,
+				0A23321D1CE128D100A53ADA /* TLSubcontractor.swift in Sources */,
 				0A2769861C94C95000B4ACB2 /* TLReport.swift in Sources */,
 				0AA555181CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift in Sources */,
 				0A2769881C9502F600B4ACB2 /* YearButtonTableViewCell.swift in Sources */,
@@ -382,8 +408,10 @@
 				0A2769911C97758400B4ACB2 /* EmployeesReportViewController.swift in Sources */,
 				0A27698B1C96486000B4ACB2 /* MonthPickerViewController.swift in Sources */,
 				0A5169AD1C87597300186D39 /* TLCheckin.swift in Sources */,
+				0A2332191CE0F1E300A53ADA /* SubcontractorDetailsViewController.swift in Sources */,
 				0A9B88ED1C73A81F007AB7A1 /* EmployeesViewController.swift in Sources */,
 				0A7FD2C61CCC4ADF0058ED05 /* OutdatedVersionViewController.swift in Sources */,
+				0A2332151CE0E5C400A53ADA /* SubcontractorsViewController.swift in Sources */,
 				0A51A3B51C72560300E83052 /* TLUser.swift in Sources */,
 				0A2769951C979AD700B4ACB2 /* EmployeesReportTableViewCell.swift in Sources */,
 				0A27698D1C964BBC00B4ACB2 /* MonthButtonTableViewCell.swift in Sources */,

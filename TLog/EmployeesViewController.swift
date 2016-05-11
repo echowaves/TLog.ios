@@ -103,7 +103,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let employee = self.employees[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCellIdentifier") as? EmployeeTableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCell") as? EmployeeTableViewCell!
         cell!.nameLabel?.text = employee.name
         cell!.emailLabel?.text = employee.email
         cell!.isSubcontractorLabel?.hidden = !employee.isSubcontractor

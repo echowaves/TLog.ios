@@ -28,7 +28,6 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    
     @IBAction func checkinButtonClicked(sender: AnyObject) {
         
         if(currentCheckin == nil) {
@@ -79,6 +78,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Localytics.tagEvent("CheckinsViewController")
@@ -90,6 +90,7 @@ class CheckinsViewController: UIViewController, UITableViewDelegate, UITableView
             self.signOutButton.title = "< back"
         }
     }
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

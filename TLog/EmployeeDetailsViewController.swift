@@ -10,7 +10,7 @@ import Foundation
 import SwiftValidators
 import MessageUI
 
-class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class EmployeeDetailsViewController: UIViewController {
     var employee:TLEmployee?// this is used as a parameter to be passed from the other controllers
     
     
@@ -197,10 +197,10 @@ class EmployeeDetailsViewController: UIViewController, MFMailComposeViewControll
         saveButtonClicked(self)
     }
     
-    // MailComposerDelegate requirement
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+//    // MailComposerDelegate requirement
+//    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
     
     @IBAction func actionCodesClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){

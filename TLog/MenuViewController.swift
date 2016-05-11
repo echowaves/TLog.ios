@@ -31,7 +31,13 @@ class MenuViewController: UIViewController {
             self.performSegueWithIdentifier("EmployeesViewController", sender: self)
         }
     }
-    
+
+    @IBAction func subcontractorsButtonClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("SubcontractorsViewController", sender: self)
+        }
+    }
+
     @IBAction func reportsButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
             self.performSegueWithIdentifier("YearPickerViewController", sender: self)
