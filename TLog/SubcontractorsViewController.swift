@@ -43,6 +43,9 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
                 self.presentViewController(alert, animated: true, completion: nil)
             }
             
+            self.tableView.reloadData()
+            self.tableView.reloadInputViews()
+
         }) { (error) -> () in
             let alert = UIAlertController(title: nil, message: "Error loading Subcontractors. Try again.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -77,7 +80,13 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
         let subcontractor = self.subcontractors[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("SubcontractorTableViewCell") as? SubcontractorTableViewCell!
         cell!.nameLabel?.text = subcontractor.name
-        cell!.coiExpiresAtLabel?.text = defaultDateFormatter.stringFromDate((subcontractor.coi_expires_at)!)
+        if(subcontractor.coi_expires_at != nil) {
+            cell!.coiExpiresAtLabel?.text = defaultDateFormatter.stringFromDate((subcontractor.coi_expires_at)!)
+        } else {
+            cell!.coiExpiresAtLabel?.text = "COI is invalid"
+            cell!.coiExpiresAtLabel?.backgroundColor = UIColor.redColor()
+            cell!.coiExpiresAtLabel?.textColor = UIColor.blackColor()
+        }
         cell!.chevronLabel.FAIcon = FAType.FAChevronRight
         
         return cell!
