@@ -9,15 +9,20 @@
 import Foundation
 import SwiftValidators
 import MessageUI
+import Font_Awesome_Swift
+
 
 class SubcontractorDetailsViewController: UIViewController {
     var subcontractor:TLSubcontractor?// this is used as a parameter to be passed from the other controllers
     
     
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var coiExpiresAtField: UITextField!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var downloadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +31,13 @@ class SubcontractorDetailsViewController: UIViewController {
         //        nameTextField.becomeFirstResponder()
         
         self.nameTextField.text = subcontractor?.name
-        self.coiExpiresAtField.text = defaultDateFormatter.stringFromDate((self.subcontractor?.coi_expires_at)!)
+        if(self.subcontractor?.coi_expires_at != nil) {
+            self.coiExpiresAtField.text = defaultDateFormatter.stringFromDate((self.subcontractor?.coi_expires_at)!)
+        }
+
+        updateButton.setFAIcon(FAType.FACamera, forState: .Normal)
+        downloadButton.setFAIcon(FAType.FADownload, forState: .Normal)
+        
     }
     
     

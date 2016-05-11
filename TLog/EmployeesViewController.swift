@@ -136,12 +136,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //        self.tableView.contentInset = UIEdgeInsetsMake(0,100,0,0)
-    }
-    
+        
     // this method is the entry point for unwinding to the beginning
     @IBAction func unwindToEmployees(segue: UIStoryboardSegue) {
     }

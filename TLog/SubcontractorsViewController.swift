@@ -82,6 +82,8 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
         cell!.nameLabel?.text = subcontractor.name
         if(subcontractor.coi_expires_at != nil) {
             cell!.coiExpiresAtLabel?.text = defaultDateFormatter.stringFromDate((subcontractor.coi_expires_at)!)
+            cell!.coiExpiresAtLabel?.backgroundColor = UIColor.whiteColor()
+            cell!.coiExpiresAtLabel?.textColor = UIColor(rgb: 0x666666);
         } else {
             cell!.coiExpiresAtLabel?.text = "COI is invalid"
             cell!.coiExpiresAtLabel?.backgroundColor = UIColor.redColor()
@@ -112,12 +114,7 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //        self.tableView.contentInset = UIEdgeInsetsMake(0,100,0,0)
-    }
-    
+        
     
     // this method is the entry point for unwinding to the beginning
     @IBAction func unwindToSubcontractors(segue: UIStoryboardSegue) {

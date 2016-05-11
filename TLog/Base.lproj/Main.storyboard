@@ -1892,7 +1892,7 @@
         <!--Subcontractor Details View Controller-->
         <scene sceneID="F1O-T8-D2l">
             <objects>
-                <viewController storyboardIdentifier="SubcontractorDetailsViewController" id="ErW-98-92y" customClass="SubcontractorDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubcontractorDetailsViewController" id="ErW-98-92y" customClass="SubcontractorDetailsViewController" customModule="TLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TU3-CJ-P3X"/>
                         <viewControllerLayoutGuide type="bottom" id="o2M-yo-f1U"/>
@@ -1914,6 +1914,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="&lt; back" id="Vtk-8T-Di6">
                                             <connections>
                                                 <action selector="backButtonClicked:" destination="ErW-98-92y" id="Mof-xU-dJI"/>
+                                                <segue destination="A9G-fv-dyH" kind="unwind" unwindAction="unwindToSubcontractors:" id="VxV-cB-I7P"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="VeI-Cc-1ga">
@@ -2032,11 +2033,14 @@
                     </view>
                     <connections>
                         <outlet property="coiExpiresAtField" destination="Xdf-uy-buW" id="of4-n3-R1T"/>
-                        <outlet property="deleteButton" destination="VeI-Cc-1ga" id="bln-fe-dAg"/>
+                        <outlet property="downloadButton" destination="LVg-1b-fgE" id="57i-e6-hLG"/>
+                        <outlet property="imageView" destination="NW7-eq-3DH" id="NdJ-Lb-u0Y"/>
                         <outlet property="nameTextField" destination="IEO-TG-0XS" id="TfV-2t-Va4"/>
+                        <outlet property="updateButton" destination="0oA-1B-Wz5" id="8bZ-c6-FIz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmf-Fs-zLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="A9G-fv-dyH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3338" y="-1335"/>
         </scene>
