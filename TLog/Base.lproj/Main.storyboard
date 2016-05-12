@@ -416,7 +416,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4G-sv-QbI">
-                                                    <rect key="frame" x="576" y="7.5" width="24" height="36"/>
+                                                    <rect key="frame" x="576" y="8" width="24" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="1wm-k9-fMm"/>
                                                         <constraint firstAttribute="width" constant="24" id="use-ml-hCc"/>
@@ -1938,8 +1938,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Obe-dm-c9y"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="coiExpiresAtClicked:" destination="ErW-98-92y" eventType="editingDidBegin" id="3hj-dz-ebP"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRu-G5-fkO">
                                 <rect key="frame" x="20" y="130" width="560" height="50"/>
@@ -1970,7 +1973,7 @@
                                     <constraint firstAttribute="width" constant="80" id="Rp5-u6-PW7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
-                                <state key="normal" title="update">
+                                <state key="normal" title="photo">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1980,7 +1983,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="saveButtonClicked:" destination="ErW-98-92y" eventType="touchUpInside" id="Jbx-d2-hfp"/>
+                                    <action selector="takePhotoButtonCliecked:" destination="ErW-98-92y" eventType="touchUpInside" id="gx4-DT-3oH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVg-1b-fgE">
@@ -2032,11 +2035,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="Vtk-8T-Di6" id="FUQ-O0-BZE"/>
                         <outlet property="coiExpiresAtField" destination="Xdf-uy-buW" id="of4-n3-R1T"/>
                         <outlet property="downloadButton" destination="LVg-1b-fgE" id="57i-e6-hLG"/>
                         <outlet property="imageView" destination="NW7-eq-3DH" id="NdJ-Lb-u0Y"/>
                         <outlet property="nameTextField" destination="IEO-TG-0XS" id="TfV-2t-Va4"/>
-                        <outlet property="updateButton" destination="0oA-1B-Wz5" id="8bZ-c6-FIz"/>
+                        <outlet property="takePhotoButton" destination="0oA-1B-Wz5" id="HSx-4B-dMj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmf-Fs-zLv" userLabel="First Responder" sceneMemberID="firstResponder"/>

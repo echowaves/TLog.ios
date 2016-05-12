@@ -12,16 +12,19 @@ import MessageUI
 import Font_Awesome_Swift
 
 
-class SubcontractorDetailsViewController: UIViewController {
+class SubcontractorDetailsViewController: UIViewController, UIImagePickerControllerDelegate {
+    var firstTimeLoaded = true
     var subcontractor:TLSubcontractor?// this is used as a parameter to be passed from the other controllers
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var coiExpiresAtField: UITextField!
     
     @IBOutlet weak var imageView: UIImageView!
+    let imagePicker: UIImagePickerController! = UIImagePickerController()
     
-    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
     
     override func viewDidLoad() {
@@ -32,17 +35,27 @@ class SubcontractorDetailsViewController: UIViewController {
         
         self.nameTextField.text = subcontractor?.name
         if(self.subcontractor?.coi_expires_at != nil) {
-            self.coiExpiresAtField.text = defaultDateFormatter.stringFromDate((self.subcontractor?.coi_expires_at)!)
+            self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate((self.subcontractor?.coi_expires_at)!)
         }
 
-        updateButton.setFAIcon(FAType.FACamera, forState: .Normal)
+        takePhotoButton.setFAIcon(FAType.FACamera, forState: .Normal)
         downloadButton.setFAIcon(FAType.FADownload, forState: .Normal)
-        
+
+        firstTimeLoaded = true
     }
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+//        if(firstTimeLoaded == true) {
+//            if(subcontractor?.coi_expires_at == nil) {
+//                takePhotoButtonCliecked(takePhotoButton)
+//            }
+//        } else {
+//            if(subcontractor?.coi_expires_at == nil) {
+//               backButtonClicked(backButton)
+//            }
+//        }
     }
     
     
@@ -65,7 +78,7 @@ class SubcontractorDetailsViewController: UIViewController {
         
         if(validationErrors.count == 0) { // no validation errors, proceed
             subcontractor?.name = nameTextField.text!
-            subcontractor?.coi_expires_at = NSDate() // TODO: replace
+//            subcontractor?.coi_expires_at = NSDate() // TODO: replace
             subcontractor!.update(
                 { () -> () in
                     let alert = UIAlertController(title: nil, message: "Subcontractor successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -110,14 +123,11 @@ class SubcontractorDetailsViewController: UIViewController {
                         self.dismissViewControllerAnimated(true, completion: nil)
                         })
                     self.presentViewController(alert, animated: true, completion: nil)
-                    
-                    
                 },
                 failure: { (error) -> () in
                     let alert = UIAlertController(title: nil, message: "Error deleting Subcontractor, try again.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
-                    
             })
             
             })
@@ -125,18 +135,134 @@ class SubcontractorDetailsViewController: UIViewController {
     }
             
     
-    @IBAction func actionCodesClicked(sender: AnyObject) {
-        dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("SubcontractorActionCodesViewController", sender: self)
+
+    @IBAction func takePhotoButtonCliecked(sender: UIButton) {
+        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = .Camera
+                imagePicker.cameraCaptureMode = .Photo
+                presentViewController(imagePicker, animated: true, completion: {})
+            } else {
+                let alert = UIAlertController(title: nil, message: "Rear camera doesn't exist.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                    alert2 in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    })
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: nil, message: "Camera inaccessable.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                alert2 in
+                self.dismissViewControllerAnimated(true, completion: nil)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+
         }
-        
     }
     
-    @IBAction func checkinsClicked(sender: AnyObject) {
-        dispatch_async(dispatch_get_main_queue()){
-            self.performSegueWithIdentifier("CheckinsViewController", sender: self)
-        }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        print("Got an image")
+//        if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
+//            let selectorToCall = Selector("imageWasSavedSuccessfully:didFinishSavingWithError:context:")
+//            UIImageWriteToSavedPhotosAlbum(pickedImage, self, selectorToCall, nil)
+//        }
+        self.firstTimeLoaded = false
+
+        imagePicker.dismissViewControllerAnimated(true, completion: {
+            // Anything you want to happen when the user saves an image
+        })
     }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        print("User canceled image")
+        self.firstTimeLoaded = false
+        dismissViewControllerAnimated(true, completion: {
+            // Anything you want to happen when the user selects cancel
+            
+        })
+    }
+    
+    let datePickerView:UIDatePicker = UIDatePicker()
+    let toolBar = UIToolbar()
+    
+    @IBAction func coiExpiresAtClicked(sender: UITextField) {
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.maximumDate = 10.years.fromNow
+        datePickerView.minimumDate = NSDate()
+        sender.inputView = datePickerView
+        
+        if(subcontractor?.coi_expires_at == nil) {
+            subcontractor?.coi_expires_at = 1.years.fromNow
+        }
+        
+        datePickerView.setDate((subcontractor?.coi_expires_at!)!, animated: false)
+        datePickerView.addTarget(self, action: #selector(SubcontractorDetailsViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+
+//        let doneButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 50, 0, 50, 50))
+//        doneButton.setFAIcon(FAType.FAClose, forState: .Normal)
+//        doneButton.setFAIcon(FAType.FAClose, forState: .Highlighted)
+//        
+//        doneButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+//        doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+//        doneButton.addTarget(self, action: #selector(SubcontractorDetailsViewController.doneButton(_:)), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
+//        datePickerView.addSubview(doneButton)
+        
+        
+        // Creates the toolbar
+        toolBar.barStyle = .Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        
+        // Adds the buttons
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(SubcontractorDetailsViewController.doneClick))
+        doneButton.setFAIcon(FAType.FAClose, iconSize: 20)
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        
+        // Adds the toolbar to the view
+        coiExpiresAtField.inputView = datePickerView
+        coiExpiresAtField.inputAccessoryView = toolBar
+
+    }
+    
+    func doneClick()
+    {
+//        print("done.................")
+        datePickerView.removeFromSuperview()
+        toolBar.removeFromSuperview()
+        
+        nameTextField.becomeFirstResponder()
+        nameTextField.resignFirstResponder() // To resign the inputView on clicking done.
+    }
+
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        let originalDate = self.subcontractor?.coi_expires_at!
+        self.subcontractor?.coi_expires_at = sender.date
+        
+        self.subcontractor!.update({ () -> () in
+            
+            self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate(sender.date)
+            
+            
+            },
+                            failure: { (error) -> () in
+                                let alert = UIAlertController(title: nil, message: "Unable to update date.", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                                self.presentViewController(alert, animated: true, completion: nil)
+                                self.subcontractor?.coi_expires_at = originalDate
+            }
+        )
+        //        self.view.endEditing(true)
+    }
+    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

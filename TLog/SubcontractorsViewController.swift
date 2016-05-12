@@ -81,7 +81,7 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("SubcontractorTableViewCell") as? SubcontractorTableViewCell!
         cell!.nameLabel?.text = subcontractor.name
         if(subcontractor.coi_expires_at != nil) {
-            cell!.coiExpiresAtLabel?.text = defaultDateFormatter.stringFromDate((subcontractor.coi_expires_at)!)
+            cell!.coiExpiresAtLabel?.text = dateOnlyDateFormatter.stringFromDate((subcontractor.coi_expires_at)!)
             cell!.coiExpiresAtLabel?.backgroundColor = UIColor.whiteColor()
             cell!.coiExpiresAtLabel?.textColor = UIColor(rgb: 0x666666);
         } else {
