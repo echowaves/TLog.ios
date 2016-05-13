@@ -12,7 +12,7 @@ import MessageUI
 import Font_Awesome_Swift
 
 
-class SubcontractorDetailsViewController: UIViewController, UIImagePickerControllerDelegate {
+class SubcontractorDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var firstTimeLoaded = true
     var subcontractor:TLSubcontractor?// this is used as a parameter to be passed from the other controllers
     
@@ -42,6 +42,8 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         downloadButton.setFAIcon(FAType.FADownload, forState: .Normal)
 
         firstTimeLoaded = true
+        
+        imagePicker.delegate = self
     }
     
     
@@ -139,10 +141,12 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     @IBAction func takePhotoButtonCliecked(sender: UIButton) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
-                imagePicker.allowsEditing = false
-                imagePicker.sourceType = .Camera
-                imagePicker.cameraCaptureMode = .Photo
-                presentViewController(imagePicker, animated: true, completion: {})
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.imagePicker.allowsEditing = false
+                    self.imagePicker.sourceType = .Camera
+                    self.imagePicker.cameraCaptureMode = .Photo
+                    self.presentViewController(self.imagePicker, animated: true, completion: {})
+                })
             } else {
                 let alert = UIAlertController(title: nil, message: "Rear camera doesn't exist.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
@@ -164,15 +168,14 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print("Got an image")
-//        if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
-//            let selectorToCall = Selector("imageWasSavedSuccessfully:didFinishSavingWithError:context:")
-//            UIImageWriteToSavedPhotosAlbum(pickedImage, self, selectorToCall, nil)
-//        }
-        self.firstTimeLoaded = false
 
         imagePicker.dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user saves an image
+            dispatch_async(dispatch_get_main_queue(), {
+                let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+                self.imageView.contentMode = .ScaleAspectFit //3
+                self.imageView.image = chosenImage //4//        self.firstTimeLoaded = false
+            })
         })
     }
     
@@ -200,16 +203,6 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         
         datePickerView.setDate((subcontractor?.coi_expires_at!)!, animated: false)
         datePickerView.addTarget(self, action: #selector(SubcontractorDetailsViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
-
-//        let doneButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 50, 0, 50, 50))
-//        doneButton.setFAIcon(FAType.FAClose, forState: .Normal)
-//        doneButton.setFAIcon(FAType.FAClose, forState: .Highlighted)
-//        
-//        doneButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-//        doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-//        doneButton.addTarget(self, action: #selector(SubcontractorDetailsViewController.doneButton(_:)), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
-//        datePickerView.addSubview(doneButton)
-        
         
         // Creates the toolbar
         toolBar.barStyle = .Default
@@ -217,9 +210,8 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
         toolBar.sizeToFit()
         
-        
         // Adds the buttons
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(SubcontractorDetailsViewController.doneClick))
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(SubcontractorDetailsViewController.doneClicked))
         doneButton.setFAIcon(FAType.FAClose, iconSize: 20)
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
@@ -229,10 +221,10 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         // Adds the toolbar to the view
         coiExpiresAtField.inputView = datePickerView
         coiExpiresAtField.inputAccessoryView = toolBar
-
     }
     
-    func doneClick()
+    
+    func doneClicked()
     {
 //        print("done.................")
         datePickerView.removeFromSuperview()
@@ -248,10 +240,7 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         self.subcontractor?.coi_expires_at = sender.date
         
         self.subcontractor!.update({ () -> () in
-            
             self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate(sender.date)
-            
-            
             },
                             failure: { (error) -> () in
                                 let alert = UIAlertController(title: nil, message: "Unable to update date.", preferredStyle: UIAlertControllerStyle.Alert)
