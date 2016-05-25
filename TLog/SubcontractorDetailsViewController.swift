@@ -51,7 +51,7 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         super.viewWillAppear(animated)
 //        if(firstTimeLoaded == true) {
 //            if(subcontractor?.coi_expires_at == nil) {
-//                takePhotoButtonCliecked(takePhotoButton)
+//                takePhotoButtonClicked(takePhotoButton)
 //            }
 //        } else {
 //            if(subcontractor?.coi_expires_at == nil) {
@@ -138,7 +138,7 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
             
     
 
-    @IBAction func takePhotoButtonCliecked(sender: UIButton) {
+    @IBAction func takePhotoButtonClicked(sender: UIButton) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -156,13 +156,23 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: nil, message: "Camera inaccessable.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-                alert2 in
-                self.dismissViewControllerAnimated(true, completion: nil)
-                })
-            self.presentViewController(alert, animated: true, completion: nil)
+//            let alert = UIAlertController(title: nil, message: "Camera inaccessable.", preferredStyle: UIAlertControllerStyle.Alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+//                alert2 in
+////                self.dismissViewControllerAnimated(true, completion: nil)
+//                })
+//            self.presentViewController(alert, animated: true, completion: nil)
 
+            
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.imagePicker.allowsEditing = false
+                    self.imagePicker.sourceType = .PhotoLibrary
+//                    self.imagePicker.cameraCaptureMode = .Photo
+                    self.presentViewController(self.imagePicker, animated: true, completion: {
+                    })
+                })
+
+            
         }
     }
     
@@ -175,6 +185,14 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                 let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
                 self.imageView.contentMode = .ScaleAspectFit //3
                 self.imageView.image = chosenImage //4//        self.firstTimeLoaded = false
+                
+                
+                self.subcontractor?.uploadCOI(chosenImage,
+                    success: {
+                        NSLog(".........................................success uploading")
+                    }, failure: { (error) in
+                        NSLog(".........................................error uploading")
+                })
             })
         })
     }

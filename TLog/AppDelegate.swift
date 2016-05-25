@@ -14,8 +14,8 @@ let API_VERSION = "1.0.0"
 
 //let TL_HOST = "http://172.20.10.2:3000"
 //let TL_HOST = "http://app.tlog.us"
-let TL_HOST = "http://192.168.1.145:3000"
-//let TL_HOST = "http://localhost:3000"
+//let TL_HOST = "http://192.168.1.145:3000"
+let TL_HOST = "http://localhost:3000"
 
 let defaultDateFormatter = NSDateFormatter()
 let dateOnlyDateFormatter = NSDateFormatter()
@@ -115,3 +115,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //http://www.absoluteripple.com/resources/using-ios-storyboard-segues
 //https://start.branch.io  deeplinking
 //http://stackoverflow.com/questions/24825123/get-the-current-view-controller-from-the-app-delegate
+//picking image from library or cam http://www.codingexplorer.com/choosing-images-with-uiimagepickercontroller-in-swift/   

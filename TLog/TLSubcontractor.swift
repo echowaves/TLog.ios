@@ -143,4 +143,41 @@ class TLSubcontractor: NSObject {
     }
     
     
+    func uploadCOI(image: UIImage,
+                   success:() -> (),
+                   failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        
+        
+        Alamofire.upload(.POST,
+                         "\(TL_HOST)/subcontractors/\(self.id!)/coi",
+                         headers: headers,
+                         multipartFormData: {
+                            multipartFormData in
+                            if let imageData = UIImagePNGRepresentation(image) {
+                                multipartFormData.appendBodyPart(data: imageData, name: "coi", fileName: "\(self.id!).png", mimeType: "image/png")
+                            }
+                            
+//                            multipartFormData.appendBodyPart(data: expiresAt.toString()!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "coi_expires_at")
+                            
+            }, encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        success()
+                    }
+                case .Failure(let error):
+                    print(error)
+                    failure(error: NSError(domain: "encoding", code: 0, userInfo: ["error":"error"]))
+                }
+            }
+        )
+    }
+    
+    
+    
 }
