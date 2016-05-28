@@ -58,6 +58,13 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
 //               backButtonClicked(backButton)
 //            }
 //        }
+        
+        subcontractor?.downloadCOI({ (image) in
+            self.imageView.image = image
+            self.imageView.contentMode = .ScaleAspectFit
+            }, failure: { (error) in
+                print(error)
+        })
     }
     
     
@@ -177,6 +184,25 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     }
     
     
+    @IBAction func downloadButtonClicked(sender: AnyObject) {
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(SubcontractorDetailsViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        if error == nil {
+            let ac = UIAlertController(title: "Saved!", message: "Image has been saved to your photos.", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+        } else {
+            let ac = UIAlertController(title: "Save error", message: error?.localizedDescription, preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 
         imagePicker.dismissViewControllerAnimated(true, completion: {
@@ -190,12 +216,21 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                 self.subcontractor?.uploadCOI(chosenImage,
                     success: {
                         NSLog(".........................................success uploading")
+//                        sleep(1)
+//                        self.subcontractor?.downloadCOI({ (image) in
+//                            self.imageView.image = image
+//                            self.imageView.contentMode = .ScaleAspectFit
+//                            }, failure: { (error) in
+//                                print(error)
+//                        })
+
                     }, failure: { (error) in
                         NSLog(".........................................error uploading")
                 })
             })
         })
     }
+
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         print("User canceled image")

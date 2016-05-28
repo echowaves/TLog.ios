@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 import SwiftDate
 
@@ -151,7 +152,6 @@ class TLSubcontractor: NSObject {
             "Content-Type": "application/json"
         ]
         
-        
         Alamofire.upload(.POST,
                          "\(TL_HOST)/subcontractors/\(self.id!)/coi",
                          headers: headers,
@@ -179,5 +179,31 @@ class TLSubcontractor: NSObject {
     }
     
     
+    func downloadCOI(
+        success:(image: UIImage) -> (),
+                   failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "image/png"
+        ]
+//        Request.addAcceptableImageContentTypes(["image/png"])
+
+        Alamofire.request(.GET,
+            "\(TL_HOST)/subcontractors/\(self.id!)/coi" , encoding: ParameterEncoding.JSON, headers: headers)
+            .responseImage { response in
+                debugPrint(response)
+                
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                
+                if let image = response.result.value {
+                    print("image downloaded: \(image)")
+                    success(image: image)
+                } else {
+                    failure(error: NSError(domain: "image", code: 0, userInfo: ["download":"error"]))
+                }
+        }
+    }
     
 }

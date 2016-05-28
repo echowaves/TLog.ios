@@ -2004,7 +2004,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="saveButtonClicked:" destination="ErW-98-92y" eventType="touchUpInside" id="5DR-eg-vrn"/>
+                                    <action selector="downloadButtonClicked:" destination="ErW-98-92y" eventType="touchUpInside" id="MQ9-m6-clJ"/>
                                 </connections>
                             </button>
                         </subviews>
