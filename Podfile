@@ -13,5 +13,7 @@ target 'TLog' do
     pod 'Font-Awesome-Swift', '~> 1.4.6'
     pod 'SwiftValidators', '~> 2.0.4'
     #    pod 'SwiftValidator', '3.0.1'
+    pod 'EZLoadingActivity', '~> 0.8'
+
 end
 

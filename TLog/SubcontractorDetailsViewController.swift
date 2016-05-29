@@ -10,6 +10,7 @@ import Foundation
 import SwiftValidators
 import MessageUI
 import Font_Awesome_Swift
+import EZLoadingActivity
 
 
 class SubcontractorDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -37,36 +38,46 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         if(self.subcontractor?.coi_expires_at != nil) {
             self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate((self.subcontractor?.coi_expires_at)!)
         }
-
+        
         takePhotoButton.setFAIcon(FAType.FACamera, forState: .Normal)
         downloadButton.setFAIcon(FAType.FADownload, forState: .Normal)
-
+        
         firstTimeLoaded = true
         
         imagePicker.delegate = self
+        
+        
+        EZLoadingActivity.show("Loading...", disableUI: false)
+        subcontractor?.downloadCOI({ (image) in
+            self.imageView.image = image
+            self.imageView.contentMode = .ScaleAspectFit
+            EZLoadingActivity.hide(success: true, animated: true)
+            }, failure: { (error) in
+                print(error)
+                EZLoadingActivity.hide(success: false, animated: true)
+        })
+
+        
     }
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        if(firstTimeLoaded == true) {
-//            if(subcontractor?.coi_expires_at == nil) {
-//                takePhotoButtonClicked(takePhotoButton)
-//            }
-//        } else {
-//            if(subcontractor?.coi_expires_at == nil) {
-//               backButtonClicked(backButton)
-//            }
-//        }
+        //        if(firstTimeLoaded == true) {
+        //            if(subcontractor?.coi_expires_at == nil) {
+        //                takePhotoButtonClicked(takePhotoButton)
+        //            }
+        //        } else {
+        //            if(subcontractor?.coi_expires_at == nil) {
+        //               backButtonClicked(backButton)
+        //            }
+        //        }
         
-        subcontractor?.downloadCOI({ (image) in
-            self.imageView.image = image
-            self.imageView.contentMode = .ScaleAspectFit
-            }, failure: { (error) in
-                print(error)
-        })
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     @IBAction func backButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
@@ -87,7 +98,7 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         
         if(validationErrors.count == 0) { // no validation errors, proceed
             subcontractor?.name = nameTextField.text!
-//            subcontractor?.coi_expires_at = NSDate() // TODO: replace
+            //            subcontractor?.coi_expires_at = NSDate() // TODO: replace
             subcontractor!.update(
                 { () -> () in
                     let alert = UIAlertController(title: nil, message: "Subcontractor successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -142,9 +153,9 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
             })
         self.presentViewController(alert, animated: true, completion: nil)
     }
-            
     
-
+    
+    
     @IBAction func takePhotoButtonClicked(sender: UIButton) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
@@ -163,31 +174,30 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         } else {
-//            let alert = UIAlertController(title: nil, message: "Camera inaccessable.", preferredStyle: UIAlertControllerStyle.Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-//                alert2 in
-////                self.dismissViewControllerAnimated(true, completion: nil)
-//                })
-//            self.presentViewController(alert, animated: true, completion: nil)
-
+            //            let alert = UIAlertController(title: nil, message: "Camera inaccessable.", preferredStyle: UIAlertControllerStyle.Alert)
+            //            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+            //                alert2 in
+            ////                self.dismissViewControllerAnimated(true, completion: nil)
+            //                })
+            //            self.presentViewController(alert, animated: true, completion: nil)
             
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.imagePicker.allowsEditing = false
-                    self.imagePicker.sourceType = .PhotoLibrary
-//                    self.imagePicker.cameraCaptureMode = .Photo
-                    self.presentViewController(self.imagePicker, animated: true, completion: {
-                    })
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .PhotoLibrary
+                //                    self.imagePicker.cameraCaptureMode = .Photo
+                self.presentViewController(self.imagePicker, animated: true, completion: {
                 })
-
+            })
+            
             
         }
     }
     
-    
     @IBAction func downloadButtonClicked(sender: AnyObject) {
         UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(SubcontractorDetailsViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-
+    
     
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
@@ -204,33 +214,38 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-
         imagePicker.dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user saves an image
             dispatch_async(dispatch_get_main_queue(), {
                 let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
                 self.imageView.contentMode = .ScaleAspectFit //3
+                
                 self.imageView.image = chosenImage //4//        self.firstTimeLoaded = false
                 
+                EZLoadingActivity.show("Uploading...", disableUI: false)
                 
                 self.subcontractor?.uploadCOI(chosenImage,
                     success: {
+                        EZLoadingActivity.hide(success: true, animated: false)
+                        
                         NSLog(".........................................success uploading")
-//                        sleep(1)
+//                        sleep(2)
 //                        self.subcontractor?.downloadCOI({ (image) in
 //                            self.imageView.image = image
 //                            self.imageView.contentMode = .ScaleAspectFit
 //                            }, failure: { (error) in
 //                                print(error)
 //                        })
-
+                        
                     }, failure: { (error) in
+                        EZLoadingActivity.hide(success: false, animated: true)
+                        
                         NSLog(".........................................error uploading")
                 })
             })
         })
     }
-
+    
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         print("User canceled image")
@@ -279,14 +294,14 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     
     func doneClicked()
     {
-//        print("done.................")
+        //        print("done.................")
         datePickerView.removeFromSuperview()
         toolBar.removeFromSuperview()
         
         nameTextField.becomeFirstResponder()
         nameTextField.resignFirstResponder() // To resign the inputView on clicking done.
     }
-
+    
     
     func datePickerValueChanged(sender:UIDatePicker) {
         let originalDate = self.subcontractor?.coi_expires_at!
@@ -295,11 +310,11 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         self.subcontractor!.update({ () -> () in
             self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate(sender.date)
             },
-                            failure: { (error) -> () in
-                                let alert = UIAlertController(title: nil, message: "Unable to update date.", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
-                                self.subcontractor?.coi_expires_at = originalDate
+                                   failure: { (error) -> () in
+                                    let alert = UIAlertController(title: nil, message: "Unable to update date.", preferredStyle: UIAlertControllerStyle.Alert)
+                                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                                    self.presentViewController(alert, animated: true, completion: nil)
+                                    self.subcontractor?.coi_expires_at = originalDate
             }
         )
         //        self.view.endEditing(true)
@@ -308,16 +323,16 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        if (segue.identifier == "SubcontractorActionCodesViewController") {
-//            let destViewController = segue.destinationViewController as! SubcontractorActionCodesViewController
-//            destViewController.Subcontractor = self.Subcontractor
-//        }
-//        
-//        if (segue.identifier == "CheckinsViewController") {
-//            _ = segue.destinationViewController as! CheckinsViewController
-//            TLUser.setUserLogin()
-//            TLSubcontractor.storeActivationCodeLocally((Subcontractor?.activationCode)!)
-//        }
+        //        if (segue.identifier == "SubcontractorActionCodesViewController") {
+        //            let destViewController = segue.destinationViewController as! SubcontractorActionCodesViewController
+        //            destViewController.Subcontractor = self.Subcontractor
+        //        }
+        //        
+        //        if (segue.identifier == "CheckinsViewController") {
+        //            _ = segue.destinationViewController as! CheckinsViewController
+        //            TLUser.setUserLogin()
+        //            TLSubcontractor.storeActivationCodeLocally((Subcontractor?.activationCode)!)
+        //        }
         
     }
     

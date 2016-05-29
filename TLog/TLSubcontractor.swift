@@ -157,17 +157,17 @@ class TLSubcontractor: NSObject {
                          headers: headers,
                          multipartFormData: {
                             multipartFormData in
-                            if let imageData = UIImagePNGRepresentation(image) {
+                            if let imageData = UIImagePNGRepresentation(TLSubcontractor.fixOrientation(image)) {
                                 multipartFormData.appendBodyPart(data: imageData, name: "coi", fileName: "\(self.id!).png", mimeType: "image/png")
                             }
                             
-//                            multipartFormData.appendBodyPart(data: expiresAt.toString()!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "coi_expires_at")
+                            //                            multipartFormData.appendBodyPart(data: expiresAt.toString()!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "coi_expires_at")
                             
             }, encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .Success(let upload, _, _):
                     upload.responseJSON { response in
-                        debugPrint(response)
+                        //                        debugPrint(response)
                         success()
                     }
                 case .Failure(let error):
@@ -181,24 +181,24 @@ class TLSubcontractor: NSObject {
     
     func downloadCOI(
         success:(image: UIImage) -> (),
-                   failure:(error: NSError) -> ()) -> () {
+        failure:(error: NSError) -> ()) -> () {
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "image/png"
         ]
-//        Request.addAcceptableImageContentTypes(["image/png"])
-
+        //        Request.addAcceptableImageContentTypes(["image/png"])
+        
         Alamofire.request(.GET,
             "\(TL_HOST)/subcontractors/\(self.id!)/coi" , encoding: ParameterEncoding.JSON, headers: headers)
             .responseImage { response in
-                debugPrint(response)
+                //                debugPrint(response)
                 
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
+                //                print(response.request)
+                //                print(response.response)
+                //                debugPrint(response.result)
                 
                 if let image = response.result.value {
-                    print("image downloaded: \(image)")
+                    //                    print("image downloaded: \(image)")
                     success(image: image)
                 } else {
                     failure(error: NSError(domain: "image", code: 0, userInfo: ["download":"error"]))
@@ -206,4 +206,20 @@ class TLSubcontractor: NSObject {
         }
     }
     
+    
+    class func fixOrientation(img:UIImage) -> UIImage {
+        
+        if (img.imageOrientation == UIImageOrientation.Up) {
+            return img;
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale);
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.drawInRect(rect)
+        
+        let normalizedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        return normalizedImage;
+        
+    }
 }
