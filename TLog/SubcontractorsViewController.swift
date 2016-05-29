@@ -85,11 +85,20 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
             cell!.coiExpiresAtLabel?.backgroundColor = UIColor.whiteColor()
             cell!.coiExpiresAtLabel?.textColor = UIColor(rgb: 0x666666);
         } else {
-            cell!.coiExpiresAtLabel?.text = "COI is invalid"
+            cell!.coiExpiresAtLabel?.text = "COI expiration date is invalid"
             cell!.coiExpiresAtLabel?.backgroundColor = UIColor.redColor()
             cell!.coiExpiresAtLabel?.textColor = UIColor.blackColor()
         }
         cell!.chevronLabel.FAIcon = FAType.FAChevronRight
+        
+        subcontractor.hasCOI({
+                print("has COI uploaded")
+            }) { (error) in
+                print("COI is missing")
+                cell!.coiExpiresAtLabel?.text = "COI is missing"
+                cell!.coiExpiresAtLabel?.backgroundColor = UIColor.redColor()
+                cell!.coiExpiresAtLabel?.textColor = UIColor.blackColor()
+        }
         
         return cell!
     }

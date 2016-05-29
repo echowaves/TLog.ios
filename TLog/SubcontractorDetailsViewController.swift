@@ -47,11 +47,13 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         imagePicker.delegate = self
         
         
-        EZLoadingActivity.show("Loading...", disableUI: false)
+        EZLoadingActivity.show("Loading COI...", disableUI: false)
+        EZLoadingActivity.Settings.FailText = "COI is missing"
+
         subcontractor?.downloadCOI({ (image) in
             self.imageView.image = image
             self.imageView.contentMode = .ScaleAspectFit
-            EZLoadingActivity.hide(success: true, animated: true)
+            EZLoadingActivity.hide()
             }, failure: { (error) in
                 print(error)
                 EZLoadingActivity.hide(success: false, animated: true)
@@ -222,11 +224,12 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                 
                 self.imageView.image = chosenImage //4//        self.firstTimeLoaded = false
                 
-                EZLoadingActivity.show("Uploading...", disableUI: false)
+                EZLoadingActivity.show("Uploading COI...", disableUI: false)
+                EZLoadingActivity.Settings.FailText = "upload failed"
                 
                 self.subcontractor?.uploadCOI(chosenImage,
                     success: {
-                        EZLoadingActivity.hide(success: true, animated: false)
+                        EZLoadingActivity.hide()
                         
                         NSLog(".........................................success uploading")
 //                        sleep(2)
@@ -238,6 +241,7 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
 //                        })
                         
                     }, failure: { (error) in
+                        
                         EZLoadingActivity.hide(success: false, animated: true)
                         
                         NSLog(".........................................error uploading")

@@ -61,6 +61,12 @@ class TLSubcontractor: NSObject {
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
         ]
+        
+        if(self.coi_expires_at == nil) {
+            self.coi_expires_at = 1.days.ago
+        }
+        
+        
         let parameters =
             ["name": self.name!,
              "coi_expires_at": self.coi_expires_at!.toString(.ISO8601Format(.Extended))!]
@@ -219,7 +225,7 @@ class TLSubcontractor: NSObject {
         failure:(error: NSError) -> ()) -> () {
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
-            "Content-Type": "image/png"
+            "Content-Type": "application/json"
         ]
         Alamofire.request(.DELETE,
             "\(TL_HOST)/subcontractors/\(self.id!)/coi" , encoding: ParameterEncoding.JSON, headers: headers)
@@ -237,11 +243,11 @@ class TLSubcontractor: NSObject {
     
     
     func hasCOI(
-        success:(hasCIO: Bool) -> (),
+        success:() -> (),
         failure:(error: NSError) -> ()) -> () {
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
-            "Content-Type": "image/png"
+            "Content-Type": "application/json"
         ]
         //        Request.addAcceptableImageContentTypes(["image/png"])
         
@@ -251,15 +257,12 @@ class TLSubcontractor: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    let json = JSON(data: response.data!)["value"].boolValue
-                    success(hasCIO: json)
+                    success()
                 case .Failure(let error):
                     failure(error: error)
                 }
         }
     }
-    
-    
     
     
     
