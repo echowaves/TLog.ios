@@ -86,6 +86,13 @@ class TLSubcontractor: NSObject {
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
         ]
+        
+        self.deleteCOI({
+            print("+++++++++++++++ deleted COI")
+            }, failure: { (error) in
+                print("+++++++++++++++ error deleting COI")
+        })
+
         Alamofire.request(.DELETE, "\(TL_HOST)/subcontractors/\(self.id!)" , encoding: ParameterEncoding.JSON, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
@@ -205,6 +212,55 @@ class TLSubcontractor: NSObject {
                 }
         }
     }
+    
+    
+    func deleteCOI(
+        success:() -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "image/png"
+        ]
+        Alamofire.request(.DELETE,
+            "\(TL_HOST)/subcontractors/\(self.id!)/coi" , encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    success()
+                case .Failure(let error):
+                    failure(error: error)
+                }
+        }
+    }
+    
+    
+    
+    func hasCOI(
+        success:(hasCIO: Bool) -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "image/png"
+        ]
+        //        Request.addAcceptableImageContentTypes(["image/png"])
+        
+        Alamofire.request(.GET,
+            "\(TL_HOST)/subcontractors/\(self.id!)/coi_exists" , encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    let json = JSON(data: response.data!)["value"].boolValue
+                    success(hasCIO: json)
+                case .Failure(let error):
+                    failure(error: error)
+                }
+        }
+    }
+    
+    
+    
     
     
     class func fixOrientation(img:UIImage) -> UIImage {
