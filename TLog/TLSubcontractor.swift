@@ -257,8 +257,10 @@ class TLSubcontractor: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
+                    print("~~~~~~~~~~~~~~~~~~~~ success \(response.response?.statusCode)")
                     success()
                 case .Failure(let error):
+                    print("~~~~~~~~~~~~~~~~~~~~ failure \(response.response?.statusCode)")
                     failure(error: error)
                 }
         }

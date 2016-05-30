@@ -1966,11 +1966,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oA-1B-Wz5">
-                                <rect key="frame" x="20" y="542" width="80" height="50"/>
+                                <rect key="frame" x="500" y="542" width="80" height="50"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="KfZ-B5-EJt"/>
-                                    <constraint firstAttribute="width" constant="80" id="Rp5-u6-PW7"/>
+                                    <constraint firstAttribute="width" constant="80" id="Nll-fV-lg5"/>
+                                    <constraint firstAttribute="height" constant="50" id="XS0-PE-beA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
                                 <state key="normal" title="photo">
@@ -1987,11 +1987,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVg-1b-fgE">
-                                <rect key="frame" x="500" y="542" width="80" height="50"/>
+                                <rect key="frame" x="20" y="542" width="80" height="50"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="2MZ-oi-BO3"/>
-                                    <constraint firstAttribute="height" constant="50" id="FxK-xe-cJp"/>
+                                    <constraint firstAttribute="height" constant="50" id="OC6-bF-21I"/>
+                                    <constraint firstAttribute="width" constant="80" id="nQO-8I-Z1S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
                                 <state key="normal" title="download">
@@ -2018,20 +2018,20 @@
                             <constraint firstItem="NW7-eq-3DH" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" id="NjN-L8-CVD"/>
                             <constraint firstItem="nRu-G5-fkO" firstAttribute="trailing" secondItem="Mda-tK-sQL" secondAttribute="trailingMargin" id="OfO-Rh-FXj"/>
                             <constraint firstItem="IEO-TG-0XS" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" id="Pea-34-WsM"/>
+                            <constraint firstItem="0oA-1B-Wz5" firstAttribute="trailing" secondItem="Mda-tK-sQL" secondAttribute="trailingMargin" id="Shf-2l-upK"/>
                             <constraint firstItem="nRu-G5-fkO" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" id="Svh-g9-zQx"/>
                             <constraint firstItem="IEO-TG-0XS" firstAttribute="trailing" secondItem="Mda-tK-sQL" secondAttribute="trailingMargin" id="U1X-pN-se5"/>
                             <constraint firstItem="nRu-G5-fkO" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" id="UfY-29-NXB"/>
-                            <constraint firstItem="o2M-yo-f1U" firstAttribute="top" secondItem="LVg-1b-fgE" secondAttribute="bottom" constant="8" id="Un3-dO-vE8"/>
                             <constraint firstItem="Xdf-uy-buW" firstAttribute="trailing" secondItem="Mda-tK-sQL" secondAttribute="trailingMargin" id="Xyr-bi-Qyr"/>
-                            <constraint firstItem="0oA-1B-Wz5" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" id="gyD-DV-ye5"/>
+                            <constraint firstItem="LVg-1b-fgE" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" id="Zpd-xW-pjG"/>
                             <constraint firstItem="o2M-yo-f1U" firstAttribute="top" secondItem="NW7-eq-3DH" secondAttribute="bottom" constant="8" id="h7v-jd-msi"/>
                             <constraint firstItem="nRu-G5-fkO" firstAttribute="top" secondItem="IEO-TG-0XS" secondAttribute="bottom" constant="8" id="mdl-N1-ge8"/>
                             <constraint firstItem="nRu-G5-fkO" firstAttribute="trailing" secondItem="Mda-tK-sQL" secondAttribute="trailingMargin" id="t6X-5D-5aR"/>
+                            <constraint firstItem="o2M-yo-f1U" firstAttribute="top" secondItem="LVg-1b-fgE" secondAttribute="bottom" constant="8" id="uxW-dt-VzK"/>
                             <constraint firstItem="pN5-Y3-OPp" firstAttribute="leading" secondItem="Mda-tK-sQL" secondAttribute="leadingMargin" constant="-20" id="vqT-FW-EUb"/>
                             <constraint firstItem="pN5-Y3-OPp" firstAttribute="top" secondItem="TU3-CJ-P3X" secondAttribute="bottom" id="w90-3R-27L"/>
-                            <constraint firstItem="o2M-yo-f1U" firstAttribute="top" secondItem="0oA-1B-Wz5" secondAttribute="bottom" constant="8" id="xDH-h0-h78"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pN5-Y3-OPp" secondAttribute="trailing" constant="-20" id="xO6-U6-USS"/>
-                            <constraint firstItem="LVg-1b-fgE" firstAttribute="trailing" secondItem="Mda-tK-sQL" secondAttribute="trailingMargin" id="y4H-WX-L9y"/>
+                            <constraint firstItem="o2M-yo-f1U" firstAttribute="top" secondItem="0oA-1B-Wz5" secondAttribute="bottom" constant="8" id="zeJ-os-AKA"/>
                         </constraints>
                     </view>
                     <connections>

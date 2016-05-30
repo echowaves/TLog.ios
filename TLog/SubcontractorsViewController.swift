@@ -82,11 +82,11 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
         cell!.nameLabel?.text = subcontractor.name
         if(subcontractor.coi_expires_at != nil) {
             cell!.coiExpiresAtLabel?.text = dateOnlyDateFormatter.stringFromDate((subcontractor.coi_expires_at)!)
-            cell!.coiExpiresAtLabel?.backgroundColor = UIColor.whiteColor()
+            cell!.backgroundColor = UIColor.whiteColor()
             cell!.coiExpiresAtLabel?.textColor = UIColor(rgb: 0x666666);
         } else {
             cell!.coiExpiresAtLabel?.text = "COI expiration date is invalid"
-            cell!.coiExpiresAtLabel?.backgroundColor = UIColor.redColor()
+            cell!.backgroundColor = UIColor.redColor()
             cell!.coiExpiresAtLabel?.textColor = UIColor.blackColor()
         }
         cell!.chevronLabel.FAIcon = FAType.FAChevronRight
@@ -96,7 +96,7 @@ class SubcontractorsViewController: UIViewController, UITableViewDelegate, UITab
             }) { (error) in
                 print("COI is missing")
                 cell!.coiExpiresAtLabel?.text = "COI is missing"
-                cell!.coiExpiresAtLabel?.backgroundColor = UIColor.redColor()
+                cell!.backgroundColor = UIColor.redColor()
                 cell!.coiExpiresAtLabel?.textColor = UIColor.blackColor()
         }
         

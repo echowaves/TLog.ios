@@ -75,6 +75,13 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         //            }
         //        }
         
+        subcontractor?.hasCOI({
+            self.downloadButton.hidden = false
+            },
+                              failure: { (error) in
+                                self.downloadButton.hidden = true
+        })
+        
     }
     
     override func viewDidAppear(animated: Bool) {
