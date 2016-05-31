@@ -1,57 +1,57 @@
 //
-//  PickActionCodeViewController.swift
+//  PickSubcontractorViewController.swift
 //  TLog
 //
-//  Created by D on 3/2/16.
+//  Created by D on 5/30/16.
 //  Copyright © 2016 EchoWaves. All rights reserved.
 //
 
 import Foundation
+import Font_Awesome_Swift
 
 
-
-class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
+class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     
-    @IBOutlet weak var checkinButton: UIBarButtonItem!
-    @IBOutlet weak var actionCodeTextField: UITextField!
+    @IBOutlet weak var pickButton: UIBarButtonItem!
+    @IBOutlet weak var subcontractorTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     var employee:TLEmployee!
-    var employeesActionCodes = [TLActionCode]()
-    var completions = [TLActionCode]()
-    var selectedActionCode:TLActionCode?
-    var checkinTime = NSDate()
+    var usersSubcontractor = [TLSubcontractor]()
+    var completions = [TLSubcontractor]()
+    var selectedSubcontractor:TLSubcontractor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Localytics.tagEvent("PickActionCodeViewController")
-
-        actionCodeTextField.becomeFirstResponder()
-        actionCodeTextField.delegate = self
+        Localytics.tagEvent("PickSubcontractorViewController")
+        
+        subcontractorTextField.becomeFirstResponder()
+        subcontractorTextField.delegate = self
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(
             self,
             selector: #selector(PickActionCodeViewController.textFieldTextChanged(_:)),
             name:UITextFieldTextDidChangeNotification,
-            object: actionCodeTextField
+            object: subcontractorTextField
         )
         
         
         tableView.delegate      =   self
         tableView.dataSource    =   self
-        checkinButton.enabled   =   false
+        pickButton.enabled   =   false
         
         TLActionCode.allActionCodesForEmployee( employee,
                                                 success: { (results) in
-                                                    self.employeesActionCodes = results
+                                                    self.usersSubcontractor = results
                                                     self.completions = results
                                                     self.tableView.reloadData()
                                                     self.tableView.reloadInputViews()
                                                     
-                                                    if(self.employeesActionCodes.count > 0) {
-                                                        self.actionCodeTextField.enabled = false                                                        
+                                                    if(self.usersSubcontractor.count > 0) {
+                                                        self.subcontractorTextField.enabled = false
+                                                        self.subcontractorTextField.placeholder = "pick from the list"
                                                     }
                                                     
         }) { (error) in
@@ -64,12 +64,13 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         super.viewWillAppear(animated)
     }
     
+    
     @IBAction func backButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func checkinButtonClicked(sender: AnyObject) {
-        let checkin = TLCheckin(checkedInAt: checkinTime, actionCode: selectedActionCode!)
+    @IBAction func pickButtonClicked(sender: AnyObject) {
+        let checkin = TLCheckin(checkedInAt: checkinTime, actionCode: selectedSubcontractor!)
         checkin.create({ () -> () in
             self.dismissViewControllerAnimated(true, completion: nil)
         }) { (error) -> () in
@@ -80,13 +81,15 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
         
     }
     
+    @IBAction func subcontractorsButtonClicked(sender: AnyObject) {
+    }
     
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
                    replacementString string: String) -> Bool
     {
         let maxLength = 500
-        let currentString: NSString = actionCodeTextField.text!
+        let currentString: NSString = subcontractorTextField.text!
         let newString: NSString =
             currentString.stringByReplacingCharactersInRange(range, withString: string)
         return newString.length <= maxLength
@@ -94,18 +97,18 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     
     func textFieldTextChanged(sender : AnyObject) {
-        if(checkinButton.enabled) {
-            actionCodeTextField.text = ""
-            completions = employeesActionCodes
+        if(pickButton.enabled) {
+            subcontractorTextField.text = ""
+            completions = usersSubcontractor
             tableView.reloadData()
             tableView.reloadInputViews()
         }
-        checkinButton.enabled      =   false
-        selectedActionCode  = nil
+        pickButton.enabled      =   false
+        selectedSubcontractor  = nil
         
-        if(actionCodeTextField.text!.characters.count > 0) {
-            NSLog("searching for text: " + actionCodeTextField.text!); //the textView parameter is the textView where text was changed
-            TLActionCode.autoComplete(actionCodeTextField.text!,
+        if(subcontractorTextField.text!.characters.count > 0) {
+            NSLog("searching for text: " + subcontractorTextField.text!); //the textView parameter is the textView where text was changed
+            TLActionCode.autoComplete(subcontractorTextField.text!,
                                       success: { (results) -> () in
                                         
                                         self.completions = results
@@ -134,15 +137,15 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        checkinButton.enabled      =   true
+        pickButton.enabled      =   true
         
-//        completions = employeesActionCodes
-//        tableView.reloadData()
-//        tableView.reloadInputViews()
+        //        completions = usersSubcontractor
+        //        tableView.reloadData()
+        //        tableView.reloadInputViews()
         
         NSLog("You selected cell #\(self.completions[indexPath.row])")
-        actionCodeTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
-        selectedActionCode = self.completions[indexPath.row]
+        subcontractorTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
+        selectedSubcontractor = self.completions[indexPath.row]
     }
     
     
