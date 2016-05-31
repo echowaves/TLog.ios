@@ -15,10 +15,10 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
     
     @IBOutlet weak var pickButton: UIBarButtonItem!
     @IBOutlet weak var subcontractorTextField: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
+    
     var employee:TLEmployee!
-    var usersSubcontractor = [TLSubcontractor]()
+    var usersSubcontractors = [TLSubcontractor]()
     var completions = [TLSubcontractor]()
     var selectedSubcontractor:TLSubcontractor?
     
@@ -42,20 +42,19 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
         tableView.dataSource    =   self
         pickButton.enabled   =   false
         
-        TLActionCode.allActionCodesForEmployee( employee,
-                                                success: { (results) in
-                                                    self.usersSubcontractor = results
-                                                    self.completions = results
-                                                    self.tableView.reloadData()
-                                                    self.tableView.reloadInputViews()
-                                                    
-                                                    if(self.usersSubcontractor.count > 0) {
-                                                        self.subcontractorTextField.enabled = false
-                                                        self.subcontractorTextField.placeholder = "pick from the list"
-                                                    }
-                                                    
-        }) { (error) in
-            NSLog(error.description)
+        TLSubcontractor.loadAll({ (allSubcontractors) in
+            self.usersSubcontractors = allSubcontractors
+            self.completions = allSubcontractors
+            self.tableView.reloadData()
+            self.tableView.reloadInputViews()
+            
+            if(self.usersSubcontractors.count > 0) {
+                self.subcontractorTextField.enabled = false
+                self.subcontractorTextField.placeholder = "pick from the list"
+            }
+
+            }) { (error) in
+                NSLog(error.description)
         }
         
     }
@@ -69,17 +68,18 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
     @IBAction func pickButtonClicked(sender: AnyObject) {
-        let checkin = TLCheckin(checkedInAt: checkinTime, actionCode: selectedSubcontractor!)
-        checkin.create({ () -> () in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }) { (error) -> () in
-            let alert = UIAlertController(title: nil, message: "Unable to check in, Try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        employee.addToSubcontractor(selectedSubcontractor!,
+                                    success: {
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+        }) { (error) in
+            let alert = UIAlertController(title: nil, message: "Unable to add employee to subcontractor.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        
     }
+    
     
     @IBAction func subcontractorsButtonClicked(sender: AnyObject) {
     }
@@ -99,7 +99,7 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
     func textFieldTextChanged(sender : AnyObject) {
         if(pickButton.enabled) {
             subcontractorTextField.text = ""
-            completions = usersSubcontractor
+            completions = usersSubcontractors
             tableView.reloadData()
             tableView.reloadInputViews()
         }
@@ -108,33 +108,34 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
         
         if(subcontractorTextField.text!.characters.count > 0) {
             NSLog("searching for text: " + subcontractorTextField.text!); //the textView parameter is the textView where text was changed
-            TLActionCode.autoComplete(subcontractorTextField.text!,
-                                      success: { (results) -> () in
-                                        
-                                        self.completions = results
-                                        self.tableView.reloadData()
-                                        self.tableView.reloadInputViews()
-                                        
-            }) { (error) -> () in
-                NSLog("error autocompleting")
-            }
+
+            
+            
+            self.completions =
+                self.usersSubcontractors.filter({$0.name!.rangeOfString(subcontractorTextField.text!) != nil})
+            self.tableView.reloadData()
+            self.tableView.reloadInputViews()
+            
         }
     }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.completions.count
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("pickSubcontractorCell") as UITableViewCell!
         
-        cell.textLabel?.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
+        cell.textLabel?.text = self.completions[indexPath.row].name!
         cell.textLabel?.textColor = UIColor(rgb: 0x0033cc)
         
         return cell
         
     }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         pickButton.enabled      =   true
@@ -144,10 +145,9 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
         //        tableView.reloadInputViews()
         
         NSLog("You selected cell #\(self.completions[indexPath.row])")
-        subcontractorTextField.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
+        subcontractorTextField.text = self.completions[indexPath.row].name!
         selectedSubcontractor = self.completions[indexPath.row]
     }
-    
     
     
 }

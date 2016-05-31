@@ -72,7 +72,7 @@ class TLEmployee: NSObject {
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            let parameters = ["name": self.name!, "email": self.email!, "is_subcontractor": self.isSubcontractor.description]
+            let parameters = ["name": self.name!, "email": self.email!]
             Alamofire.request(.PUT, "\(TL_HOST)/employees/\(self.id!)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
@@ -85,6 +85,50 @@ class TLEmployee: NSObject {
                     }
             }
     }
+
+    
+    func addToSubcontractor(subcontractor:TLSubcontractor,
+        success:() -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        
+        Alamofire.request(.POST, "\(TL_HOST)/employees/\(self.id!)/subcontractor/\(subcontractor.id!)", encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    success();
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
+
+    func deleteFromSubcontractor(
+                            success:() -> (),
+                            failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.DELETE, "\(TL_HOST)/employees/\(self.id!)/subcontractor" , encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    success();
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
     
     
     func delete(

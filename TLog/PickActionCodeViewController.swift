@@ -124,7 +124,7 @@ class PickActionCodeViewController: UIViewController,UITextFieldDelegate, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("pickActionCodeCell") as UITableViewCell!
         
         cell.textLabel?.text = self.completions[indexPath.row].code! + ":" + self.completions[indexPath.row].descr!
         cell.textLabel?.textColor = UIColor(rgb: 0x0033cc)
