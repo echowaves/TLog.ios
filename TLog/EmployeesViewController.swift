@@ -106,7 +106,7 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("EmployeeTableViewCell") as? EmployeeTableViewCell!
         cell!.nameLabel?.text = employee.name
         cell!.emailLabel?.text = employee.email
-        cell!.isSubcontractorLabel?.hidden = !employee.isSubcontractor
+        cell!.isSubcontractorLabel?.hidden = employee.subcontractor == nil
         cell!.chevronLabel.FAIcon = FAType.FAChevronRight
         
         

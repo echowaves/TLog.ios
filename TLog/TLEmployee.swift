@@ -16,14 +16,13 @@ class TLEmployee: NSObject {
     var id: Int?
     var name:String?
     var email:String?
-    var isSubcontractor:Bool
     var activationCode:String?
+    var subcontractor:TLSubcontractor?
     
-    init(id: Int!, name:String!, email:String!, isSubcontractor:Bool) {
+    init(id: Int!, name:String!, email:String!) {
         self.id = id
         self.name = name
         self.email = email
-        self.isSubcontractor = isSubcontractor
     }
     
     class func storeActivationCodeLocally(activationCode:String)  -> () {
@@ -50,7 +49,7 @@ class TLEmployee: NSObject {
                 "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
                 "Content-Type": "application/json"
             ]
-            let parameters = ["name": self.name!, "email": self.email!, "is_subcontractor": self.isSubcontractor.description]
+            let parameters = ["name": self.name!, "email": self.email!]
             Alamofire.request(.POST, "\(TL_HOST)/employees" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
@@ -90,6 +89,7 @@ class TLEmployee: NSObject {
     func addToSubcontractor(subcontractor:TLSubcontractor,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
+        self.subcontractor = subcontractor
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
@@ -121,6 +121,7 @@ class TLEmployee: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
+                    self.subcontractor = nil
                     success();
                 case .Failure(let error):
                     NSLog(error.description)
@@ -218,11 +219,22 @@ class TLEmployee: NSObject {
                         
                         for (_,jsonEmployee):(String, JSON) in json {
                             let employee =
-                            TLEmployee(
-                                id: jsonEmployee["id"].intValue,
-                                name: jsonEmployee["name"].stringValue,
-                                email: jsonEmployee["email"].stringValue,
-                                isSubcontractor: jsonEmployee["is_subcontractor"].boolValue)
+                                TLEmployee(
+                                    id: jsonEmployee["id"].intValue,
+                                    name: jsonEmployee["name"].stringValue,
+                                    email: jsonEmployee["email"].stringValue)
+                            
+                            if(jsonEmployee["subcontractor_id"] != nil) {
+                                let subcontructor:TLSubcontractor = TLSubcontractor(id: jsonEmployee["subcontractor_id"].intValue)
+//                                n+1 query here, but ok to start with
+                                subcontructor.load({ (SubcontractorId) in
+                                    employee.subcontractor = subcontructor
+                                    }, failure: { (error) in
+                                        NSLog("error", error)
+                                })
+                                
+                            }
+                            
                             
                             allEmployees.append(employee)
                             

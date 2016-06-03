@@ -17,7 +17,10 @@ class TLSubcontractor: NSObject {
     var id: Int?
     var name:String?
     var coi_expires_at:NSDate?
-    
+
+    init(id: Int!) {
+        self.id = id
+    }
     init(id: Int!, name:String!) {
         self.id = id
         self.name = name
@@ -28,7 +31,33 @@ class TLSubcontractor: NSObject {
         self.coi_expires_at = coi_expires_at
     }
     
-    
+
+    func load(
+        success:() -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        let parameters =
+            ["id": self.id!]
+        
+        Alamofire.request(.GET, "\(TL_HOST)/subcontractors/\(self.id!)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    self.id = response.result.value!["subcontractor"]!!["id"] as? Int
+                    self.name = response.result.value!["subcontractor"]!!["name"] as? String
+                    self.coi_expires_at = response.result.value!["subcontractor"]!!["coi_expires_at"]!!.stringValue.toDate(DateFormat.ISO8601Format(.Extended))!                    
+                    success()
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
     
     func create(
         success:(SubcontractorId: Int) -> (),

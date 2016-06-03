@@ -57,8 +57,7 @@ class EmployeeCreateViewController: UIViewController {
             // have to create a new one
             employee = TLEmployee(id: nil,
                                   name: nameTextField.text!,
-                                  email: emailTextField.text!,
-                                  isSubcontractor: false)
+                                  email: emailTextField.text!)
             employee!.create(
                 { (employeeId: Int) -> () in
                     

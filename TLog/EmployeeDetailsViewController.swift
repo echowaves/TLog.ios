@@ -15,20 +15,15 @@ class EmployeeDetailsViewController: UIViewController {
     
     
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var isSubcontractor: UISwitch!
-    
+    @IBOutlet weak var subcontracgtorNameButton: UIButton!
     @IBOutlet weak var subcontractorDisclaimer: UILabel!
-    
     @IBOutlet weak var isActive: UISwitch!
     @IBOutlet weak var isActiveLabel: UILabel!
     @IBOutlet weak var isActiveDisclamer: UILabel!
-    
     @IBOutlet weak var actionCodesButton: UIButton!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-    
     @IBOutlet weak var checkinsButton: UIButton!
     
     override func viewDidLoad() {
@@ -39,8 +34,6 @@ class EmployeeDetailsViewController: UIViewController {
         
         self.nameTextField.text = employee?.name
         self.emailTextField.text = employee?.email
-        self.isSubcontractor?.on = (employee?.isSubcontractor)!
-        
         
     }
     
@@ -55,6 +48,16 @@ class EmployeeDetailsViewController: UIViewController {
             self.isActive.on = true
             self.checkinsButton.hidden = false
         }
+     
+        if(employee?.subcontractor == nil) {
+            isSubcontractor.on = false
+            subcontracgtorNameButton.hidden = true
+        } else {
+            isSubcontractor.on = true
+            subcontracgtorNameButton.hidden = false
+            subcontracgtorNameButton.titleLabel?.text = self.employee?.subcontractor?.name
+        }
+        
     }
     
     
@@ -87,7 +90,6 @@ class EmployeeDetailsViewController: UIViewController {
         if(validationErrors.count == 0) { // no validation errors, proceed
             employee?.name = nameTextField.text!
             employee?.email = emailTextField.text!
-            employee?.isSubcontractor = isSubcontractor.on
             employee!.update(
                 { () -> () in
                     let alert = UIAlertController(title: nil, message: "Employee successfully updated.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -192,15 +194,42 @@ class EmployeeDetailsViewController: UIViewController {
             })
         self.presentViewController(alert, animated: true, completion: nil)
     }
+
     
     @IBAction func isSubcontractorSwitched(sender: AnyObject) {
-        saveButtonClicked(self)
+        if(employee?.subcontractor != nil) {
+            let alert = UIAlertController(title: nil, message: "Are you sure want to delete the employee from subcontractor?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                alert1 in
+                NSLog("OK Pressed")
+                
+                self.employee?.deleteFromSubcontractor({
+                    self.isSubcontractor.on = false
+                    }, failure: { (error) in
+                        NSLog("error deleeting employee from subcontractor", error)
+                        self.isSubcontractor.on = true
+                })
+                
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        } else {
+            dispatch_async(dispatch_get_main_queue()){
+                self.performSegueWithIdentifier("PickSubcontractorViewController", sender: self)
+            }            
+        }
     }
     
 //    // MailComposerDelegate requirement
 //    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
 //        dismissViewControllerAnimated(true, completion: nil)
 //    }
+    
+    
+    
+    @IBAction func subcontractorNameClicked(sender: AnyObject) {
+    }
     
     @IBAction func actionCodesClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){

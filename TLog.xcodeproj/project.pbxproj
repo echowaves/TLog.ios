@@ -120,7 +120,6 @@
 				0A2332161CE0E8FE00A53ADA /* SubcontractorTableViewCell.swift */,
 				0A23321A1CE0F54300A53ADA /* SubcontractorCreateViewController.swift */,
 				0A2332181CE0F1E300A53ADA /* SubcontractorDetailsViewController.swift */,
-				0A5060891CFD13FB0050B45F /* PickSubcontractorViewController.swift */,
 			);
 			name = Subcontractor;
 			sourceTree = "<group>";
@@ -172,6 +171,7 @@
 				0A79B8841C7AB5100050AE57 /* EmployeeTableViewCell.swift */,
 				0AA555171CAEE9DA0011A4F6 /* EmployeeCreateViewController.swift */,
 				0AA9EF1E1C741EC600B53281 /* EmployeeDetailsViewController.swift */,
+				0A5060891CFD13FB0050B45F /* PickSubcontractorViewController.swift */,
 				0AEA5A5E1C9CCBCD00803EC4 /* EmployeeActionCodesViewController.swift */,
 				0AEA5A641C9EFD4900803EC4 /* EmployeeActionCodesTableCell.swift */,
 				0AEA5A601C9EE96600803EC4 /* EmployeeActionCodesPopoverViewController.swift */,

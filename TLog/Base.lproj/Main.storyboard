@@ -919,6 +919,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="subcontractor name"/>
+                                <connections>
+                                    <action selector="subcontractorNameClicked:" destination="lxf-Rd-VB5" eventType="touchUpInside" id="ck7-A4-oft"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -974,6 +977,7 @@
                         <outlet property="isActiveLabel" destination="OGI-nt-4zQ" id="6SH-fA-PIO"/>
                         <outlet property="isSubcontractor" destination="osF-He-lZZ" id="aaz-5c-rhm"/>
                         <outlet property="nameTextField" destination="wIe-UC-xYN" id="6P9-8y-TET"/>
+                        <outlet property="subcontracgtorNameButton" destination="Qq5-1E-K6h" id="mHc-cX-BPF"/>
                         <outlet property="subcontractorDisclaimer" destination="qFv-yh-NOR" id="5G7-4d-FNQ"/>
                         <segue destination="Hl9-HZ-rcP" kind="show" identifier="EmployeeActionCodesViewController" id="gyd-j7-Qom"/>
                         <segue destination="hfo-OP-A8X" kind="show" identifier="CheckinsViewController" id="8xp-zc-a6J"/>

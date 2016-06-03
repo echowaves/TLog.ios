@@ -141,9 +141,17 @@ class TLCheckin: NSObject {
                         TLEmployee(
                             id: jsonEmployee["id"].intValue,
                             name: jsonEmployee["name"].stringValue,
-                            email: jsonEmployee["email"].stringValue,
-                            isSubcontractor: jsonEmployee["is_subcontractor"].boolValue
-                    )
+                            email: jsonEmployee["email"].stringValue)
+                    
+                    if( jsonEmployee["subcontractor_id"] != nil ) {
+                        let subcontractor = TLSubcontractor(id: jsonEmployee["subcontractor_id"].intValue)
+                        subcontractor.load({
+                            employee.subcontractor = subcontractor
+                            }, failure: { (error) in
+                                NSLog("error loading subcontractor", error)
+                        })
+                    }
+                    
                     
                     let jsonCheckins = JSON(data: response.data!)["checkins"]
                     var checkins = [TLCheckin]()
