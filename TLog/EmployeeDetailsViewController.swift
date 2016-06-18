@@ -252,10 +252,16 @@ class EmployeeDetailsViewController: UIViewController {
             destViewController.employee = self.employee
         }
         
+        
+        
         if (segue.identifier == "CheckinsViewController") {
             _ = segue.destinationViewController as! CheckinsViewController
             TLUser.setUserLogin()
             TLEmployee.storeActivationCodeLocally((employee?.activationCode)!)
+        }
+        if (segue.identifier == "PickSubcontractorViewController") {
+            let pickSubcontractorViewController = segue.destinationViewController as! PickSubcontractorViewController
+            pickSubcontractorViewController.employee = self.employee
         }
 
     }

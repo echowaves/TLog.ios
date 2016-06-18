@@ -226,12 +226,14 @@ class TLEmployee: NSObject {
                             
                             if(jsonEmployee["subcontractor_id"] != nil) {
                                 let subcontructor:TLSubcontractor = TLSubcontractor(id: jsonEmployee["subcontractor_id"].intValue)
-//                                n+1 query here, but ok to start with
-                                subcontructor.load({ (SubcontractorId) in
+                                //                                n+1 query here, but ok to start with
+                                subcontructor.load({
                                     employee.subcontractor = subcontructor
                                     }, failure: { (error) in
                                         NSLog("error", error)
+                                        
                                 })
+                                
                                 
                             }
                             

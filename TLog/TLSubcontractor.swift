@@ -42,14 +42,17 @@ class TLSubcontractor: NSObject {
         let parameters =
             ["id": self.id!]
         
-        Alamofire.request(.GET, "\(TL_HOST)/subcontractors/\(self.id!)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
+        Alamofire.request(.GET, "\(TL_HOST)/subcontractors/\(self.id!)" , parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    self.id = response.result.value!["subcontractor"]!!["id"] as? Int
-                    self.name = response.result.value!["subcontractor"]!!["name"] as? String
-                    self.coi_expires_at = response.result.value!["subcontractor"]!!["coi_expires_at"]!!.stringValue.toDate(DateFormat.ISO8601Format(.Extended))!                    
+                    let subcontractor = response.result.value!["subcontractor"]!!
+                    self.id = subcontractor["id"] as? Int
+                    self.name = subcontractor["name"] as? String
+                    if(subcontractor["coi_expires_at"] as? String != nil) {
+                        self.coi_expires_at = subcontractor["coi_expires_at"]!!.stringValue.toDate(DateFormat.ISO8601Format(.Extended))!
+                    }
                     success()
                 case .Failure(let error):
                     NSLog(error.description)
@@ -286,10 +289,10 @@ class TLSubcontractor: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    print("~~~~~~~~~~~~~~~~~~~~ success \(response.response?.statusCode)")
+                    print("~~~~~~~~~~~~~~~~~~~~ success \(response.response!.statusCode)")
                     success()
                 case .Failure(let error):
-                    print("~~~~~~~~~~~~~~~~~~~~ failure \(response.response?.statusCode)")
+                    print("~~~~~~~~~~~~~~~~~~~~ failure \(response.response!.statusCode)")
                     failure(error: error)
                 }
         }
