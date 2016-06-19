@@ -51,7 +51,7 @@ class TLSubcontractor: NSObject {
                     self.id = subcontractor["id"] as? Int
                     self.name = subcontractor["name"] as? String
                     if(subcontractor["coi_expires_at"] as? String != nil) {
-                        self.coi_expires_at = subcontractor["coi_expires_at"]!!.stringValue.toDate(DateFormat.ISO8601Format(.Extended))!
+                        self.coi_expires_at = (subcontractor["coi_expires_at"] as? String)!.toDate(DateFormat.ISO8601Format(.Extended))!
                     }
                     success()
                 case .Failure(let error):

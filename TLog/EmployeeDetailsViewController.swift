@@ -40,7 +40,6 @@ class EmployeeDetailsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        
         if(employee?.activationCode == nil) {
             self.isActive.on = false
             self.checkinsButton.hidden = true
@@ -57,7 +56,6 @@ class EmployeeDetailsViewController: UIViewController {
             subcontracgtorNameButton.hidden = false
             subcontracgtorNameButton.titleLabel?.text = self.employee?.subcontractor?.name
         }
-        
     }
     
     
