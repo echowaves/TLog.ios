@@ -982,6 +982,7 @@
                         <segue destination="Hl9-HZ-rcP" kind="show" identifier="EmployeeActionCodesViewController" id="gyd-j7-Qom"/>
                         <segue destination="hfo-OP-A8X" kind="show" identifier="CheckinsViewController" id="8xp-zc-a6J"/>
                         <segue destination="uSp-7E-1F0" kind="show" identifier="PickSubcontractorViewController" id="9uv-SM-NjW"/>
+                        <segue destination="ErW-98-92y" kind="show" identifier="SubcontractorDetailsViewController" id="pao-Jl-e0O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wco-Op-cuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1931,7 +1932,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="&lt; back" id="Vtk-8T-Di6">
                                             <connections>
                                                 <action selector="backButtonClicked:" destination="ErW-98-92y" id="Mof-xU-dJI"/>
-                                                <segue destination="A9G-fv-dyH" kind="unwind" unwindAction="unwindToSubcontractors:" id="VxV-cB-I7P"/>
+                                                <segue destination="A9G-fv-dyH" kind="unwind" unwindAction="unwindSubcontractor:" id="07g-v3-w2v"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="VeI-Cc-1ga">
@@ -2063,7 +2064,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmf-Fs-zLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="A9G-fv-dyH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6054" y="-2123"/>
+            <point key="canvasLocation" x="6054" y="-2053"/>
         </scene>
         <!--Subcontractor Create View Controller-->
         <scene sceneID="cJH-PH-YOS">
@@ -2252,7 +2253,7 @@
         <segue reference="8xp-zc-a6J"/>
         <segue reference="GzP-jV-REG"/>
         <segue reference="Iql-i7-L29"/>
+        <segue reference="pao-Jl-e0O"/>
         <segue reference="wpJ-rI-0vU"/>
-        <segue reference="XjG-Aj-v3y"/>
     </inferredMetricsTieBreakers>
 </document>

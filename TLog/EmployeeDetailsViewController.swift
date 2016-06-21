@@ -54,7 +54,9 @@ class EmployeeDetailsViewController: UIViewController {
         } else {
             isSubcontractor.on = true
             subcontracgtorNameButton.hidden = false
-            subcontracgtorNameButton.titleLabel?.text = self.employee?.subcontractor?.name
+            dispatch_async(dispatch_get_main_queue()){
+                self.subcontracgtorNameButton.titleLabel?.text = self.employee?.subcontractor?.name
+            }
         }
     }
     
@@ -227,6 +229,9 @@ class EmployeeDetailsViewController: UIViewController {
     
     
     @IBAction func subcontractorNameClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("SubcontractorDetailsViewController", sender: self)
+        }
     }
     
     @IBAction func actionCodesClicked(sender: AnyObject) {
@@ -261,7 +266,15 @@ class EmployeeDetailsViewController: UIViewController {
             let pickSubcontractorViewController = segue.destinationViewController as! PickSubcontractorViewController
             pickSubcontractorViewController.employee = self.employee
         }
-
+        if (segue.identifier == "SubcontractorDetailsViewController") {
+            let subcontractorDetailsViewController = segue.destinationViewController as! SubcontractorDetailsViewController
+            subcontractorDetailsViewController.subcontractor = self.employee?.subcontractor
+        }
+        
     }
-    
+
+    // this method is the entry point for unwinding to the beginning
+    @IBAction func unwindSubcontractor(segue: UIStoryboardSegue) {
+    }
+
 }
