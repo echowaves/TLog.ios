@@ -12,7 +12,7 @@ import MessageUI
 
 class EmployeeDetailsViewController: UIViewController {
     var employee:TLEmployee?// this is used as a parameter to be passed from the other controllers
-    
+    var subcontractor:TLSubcontractor?// this is loaded based on employee
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -35,6 +35,20 @@ class EmployeeDetailsViewController: UIViewController {
         self.nameTextField.text = employee?.name
         self.emailTextField.text = employee?.email
         
+//        if(jsonEmployee["subcontractor_id"] != nil) {
+//            let subcontructor:TLSubcontractor = TLSubcontractor(id: jsonEmployee["subcontractor_id"].intValue)
+//            //                                n+1 query here, but ok to start with
+//            subcontructor.load({
+//                employee.subcontractor = subcontructor
+//                }, failure: { (error) in
+//                    NSLog("error", error)
+//                    
+//            })
+//            
+//            
+//        }
+
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,15 +62,23 @@ class EmployeeDetailsViewController: UIViewController {
             self.checkinsButton.hidden = false
         }
      
-        if(employee?.subcontractor == nil) {
+        if(employee?.subcontractor_id == nil) {
             isSubcontractor.on = false
             subcontracgtorNameButton.hidden = true
         } else {
             isSubcontractor.on = true
             subcontracgtorNameButton.hidden = false
-            dispatch_async(dispatch_get_main_queue()){
-                self.subcontracgtorNameButton.titleLabel?.text = self.employee?.subcontractor?.name
-            }
+//            dispatch_async(dispatch_get_main_queue()){
+            
+            self.subcontractor = TLSubcontractor(id: employee!.subcontractor_id)
+            subcontractor?.load({
+                self.subcontracgtorNameButton.titleLabel?.text = self.subcontractor?.name
+                }, failure: { (error) in
+                    NSLog("error loading subcontractor", error)
+            })
+            
+            
+//            }
         }
     }
     
@@ -197,7 +219,7 @@ class EmployeeDetailsViewController: UIViewController {
 
     
     @IBAction func isSubcontractorSwitched(sender: AnyObject) {
-        if(employee?.subcontractor != nil) {
+        if(employee?.subcontractor_id != nil) {
             let alert = UIAlertController(title: nil, message: "Are you sure want to delete the employee from subcontractor?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
@@ -206,6 +228,7 @@ class EmployeeDetailsViewController: UIViewController {
                 
                 self.employee?.deleteFromSubcontractor({
                     self.isSubcontractor.on = false
+                    self.subcontracgtorNameButton.titleLabel?.text = ""
                     }, failure: { (error) in
                         NSLog("error deleeting employee from subcontractor", error)
                         self.isSubcontractor.on = true
@@ -268,7 +291,7 @@ class EmployeeDetailsViewController: UIViewController {
         }
         if (segue.identifier == "SubcontractorDetailsViewController") {
             let subcontractorDetailsViewController = segue.destinationViewController as! SubcontractorDetailsViewController
-            subcontractorDetailsViewController.subcontractor = self.employee?.subcontractor
+            subcontractorDetailsViewController.subcontractor = self.subcontractor
         }
         
     }

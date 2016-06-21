@@ -2143,7 +2143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prX-M9-mN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6054" y="-2945"/>
+            <point key="canvasLocation" x="6062" y="-2825"/>
         </scene>
         <!--Pick Subcontractor View Controller-->
         <scene sceneID="YkS-U5-hxT">
@@ -2205,7 +2205,7 @@
                                     <constraint firstAttribute="height" constant="50" id="cGX-uz-ZAO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="create or edit subcontractors">
+                                <state key="normal" title="create new subcontractor">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2242,18 +2242,20 @@
                         <outlet property="subcontractorTextField" destination="Wrm-It-Cxv" id="Lyh-Fx-gEv"/>
                         <outlet property="tableView" destination="sJz-l2-gsS" id="itc-Bg-Ncj"/>
                         <segue destination="hBC-EY-OWJ" kind="show" identifier="SubcontractorsViewController" id="wpJ-rI-0vU"/>
+                        <segue destination="33r-54-HZc" kind="show" identifier="SubcontractorCreateViewController" id="dV1-lr-UKx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSf-EE-Zyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4311" y="30"/>
+            <point key="canvasLocation" x="4311" y="-1002"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="8xp-zc-a6J"/>
         <segue reference="GzP-jV-REG"/>
         <segue reference="Iql-i7-L29"/>
-        <segue reference="pao-Jl-e0O"/>
+        <segue reference="dV1-lr-UKx"/>
         <segue reference="wpJ-rI-0vU"/>
+        <segue reference="XjG-Aj-v3y"/>
     </inferredMetricsTieBreakers>
 </document>

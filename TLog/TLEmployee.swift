@@ -17,7 +17,7 @@ class TLEmployee: NSObject {
     var name:String?
     var email:String?
     var activationCode:String?
-    var subcontractor:TLSubcontractor?
+    var subcontractor_id:Int?
     
     init(id: Int!, name:String!, email:String!) {
         self.id = id
@@ -89,13 +89,13 @@ class TLEmployee: NSObject {
     func addToSubcontractor(subcontractor:TLSubcontractor,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
-        self.subcontractor = subcontractor
+        self.subcontractor_id = subcontractor.id
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
         ]
         
-        Alamofire.request(.POST, "\(TL_HOST)/employees/\(self.id!)/subcontractor/\(subcontractor.id!)", encoding: ParameterEncoding.JSON, headers: headers)
+        Alamofire.request(.POST, "\(TL_HOST)/employees/\(self.id!)/subcontractor/\(subcontractor_id!)", encoding: ParameterEncoding.JSON, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
@@ -121,7 +121,7 @@ class TLEmployee: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    self.subcontractor = nil
+                    self.subcontractor_id = nil
                     success();
                 case .Failure(let error):
                     NSLog(error.description)
@@ -225,16 +225,7 @@ class TLEmployee: NSObject {
                                     email: jsonEmployee["email"].stringValue)
                             
                             if(jsonEmployee["subcontractor_id"] != nil) {
-                                let subcontructor:TLSubcontractor = TLSubcontractor(id: jsonEmployee["subcontractor_id"].intValue)
-                                //                                n+1 query here, but ok to start with
-                                subcontructor.load({
-                                    employee.subcontractor = subcontructor
-                                    }, failure: { (error) in
-                                        NSLog("error", error)
-                                        
-                                })
-                                
-                                
+                                    employee.subcontractor_id = jsonEmployee["subcontractor_id"].intValue
                             }
                             
                             

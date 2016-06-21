@@ -42,6 +42,11 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
         tableView.dataSource    =   self
         pickButton.enabled   =   false
         
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         TLSubcontractor.loadAll({ (allSubcontractors) in
             self.usersSubcontractors = allSubcontractors
             self.completions = allSubcontractors
@@ -52,15 +57,10 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
                 self.subcontractorTextField.enabled = false
                 self.subcontractorTextField.placeholder = "pick from the list"
             }
-
-            }) { (error) in
-                NSLog(error.description)
+            
+        }) { (error) in
+            NSLog(error.description)
         }
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     
@@ -82,6 +82,9 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
     
     
     @IBAction func subcontractorsButtonClicked(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("SubcontractorCreateViewController", sender: self)
+        }
     }
     
     
@@ -148,6 +151,9 @@ class PickSubcontractorViewController: UIViewController,UITextFieldDelegate, UIT
         subcontractorTextField.text = self.completions[indexPath.row].name!
         selectedSubcontractor = self.completions[indexPath.row]
     }
-    
+    // this method is the entry point for unwinding to the beginning
+    @IBAction func unwindSubcontractor(segue: UIStoryboardSegue) {
+    }
+
     
 }
