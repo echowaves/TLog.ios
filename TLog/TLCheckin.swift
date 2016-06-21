@@ -146,7 +146,7 @@ class TLCheckin: NSObject {
                     if( jsonEmployee["subcontractor_id"] != nil ) {
                         let subcontractor = TLSubcontractor(id: jsonEmployee["subcontractor_id"].intValue)
                         subcontractor.load({
-                            employee.subcontractor = subcontractor
+                            employee.subcontractor_id = subcontractor.id
                             }, failure: { (error) in
                                 NSLog("error loading subcontractor", error)
                         })

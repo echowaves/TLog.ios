@@ -138,29 +138,51 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     
     @IBAction func deleteButtonClicked(sender: AnyObject) {
         self.view.endEditing(true)
-        let alert = UIAlertController(title: nil, message: "Are you sure want to delete the Subcontractor?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-            alert1 in
-            NSLog("OK Pressed")
+        
+        subcontractor?.loadEmployees({ (employees) in
+            if(employees.count > 0) {
+                let alert = UIAlertController(title: nil, message: "Unable to delete Subcontractor, first make sure to unassign this subcontractor from all employees, then try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else {
+
+                let alert = UIAlertController(title: nil, message: "Are you sure want to delete the Subcontractor?", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                    alert1 in
+                    NSLog("OK Pressed")
+                    
+                    self.subcontractor!.delete(
+                        { () -> () in
+                            let alert = UIAlertController(title: nil, message: "Subcontractor successfuly deleted.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                                alert2 in
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                                })
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        },
+                        failure: { (error) -> () in
+                            let alert = UIAlertController(title: nil, message: "Error deleting Subcontractor, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                    })
+                    
+                    })
+                self.presentViewController(alert, animated: true, completion: nil)
+
+                
+                
+            }// else
             
-            self.subcontractor!.delete(
-                { () -> () in
-                    let alert = UIAlertController(title: nil, message: "Subcontractor successfuly deleted.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-                        alert2 in
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        })
-                    self.presentViewController(alert, animated: true, completion: nil)
-                },
-                failure: { (error) -> () in
-                    let alert = UIAlertController(title: nil, message: "Error deleting Subcontractor, try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-            })
             
-            })
-        self.presentViewController(alert, animated: true, completion: nil)
+            
+            }, failure: { (error) in
+                let alert = UIAlertController(title: nil, message: "Unable to delete Subcontractor, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+        })
+        
+        
     }
     
     

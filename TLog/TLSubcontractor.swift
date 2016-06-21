@@ -189,6 +189,47 @@ class TLSubcontractor: NSObject {
     }
     
     
+    func loadEmployees(
+        success:(employees: [TLEmployee]) -> (),
+        failure:(error: NSError) -> ()) -> () {
+        let headers = [
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
+            "Content-Type": "application/json"
+        ]
+        Alamofire.request(.GET, "\(TL_HOST)/subcontractors/\(self.id!)/employees" , encoding: ParameterEncoding.JSON, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    let json = JSON(data: response.data!)["employees"]
+                    
+                    var allEmployees: [TLEmployee] = [TLEmployee]()
+                    
+                    for (_,jsonEmployee):(String, JSON) in json {
+                        let employee =
+                            TLEmployee(
+                                id: jsonEmployee["id"].intValue,
+                                name: jsonEmployee["name"].stringValue,
+                                email: jsonEmployee["email"].stringValue)
+                        
+                        if(jsonEmployee["subcontractor_id"] != nil) {
+                            employee.subcontractor_id = jsonEmployee["subcontractor_id"].intValue
+                        }
+                        
+                        
+                        allEmployees.append(employee)
+                        
+                    }
+                    success(employees: allEmployees);
+                case .Failure(let error):
+                    NSLog(error.description)
+                    failure(error: error)
+                }
+        }
+    }
+
+        
     func uploadCOI(image: UIImage,
                    success:() -> (),
                    failure:(error: NSError) -> ()) -> () {
