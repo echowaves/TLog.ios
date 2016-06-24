@@ -16,7 +16,7 @@ import SwiftDate
 class TLSubcontractor: NSObject {
     var id: Int?
     var name:String?
-    var coi_expires_at:NSDate?
+    var coiExpiresAt:NSDate?
 
     init(id: Int!) {
         self.id = id
@@ -28,7 +28,7 @@ class TLSubcontractor: NSObject {
     init(id: Int!, name:String!, coi_expires_at:NSDate!) {
         self.id = id
         self.name = name
-        self.coi_expires_at = coi_expires_at
+        self.coiExpiresAt = coi_expires_at
     }
     
 
@@ -51,7 +51,7 @@ class TLSubcontractor: NSObject {
                     self.id = subcontractor["id"] as? Int
                     self.name = subcontractor["name"] as? String
                     if(subcontractor["coi_expires_at"] as? String != nil) {
-                        self.coi_expires_at = (subcontractor["coi_expires_at"] as? String)!.toDate(DateFormat.ISO8601Format(.Extended))!
+                        self.coiExpiresAt = (subcontractor["coi_expires_at"] as? String)!.toDate(DateFormat.ISO8601Format(.Extended))!
                     }
                     success()
                 case .Failure(let error):
@@ -94,14 +94,14 @@ class TLSubcontractor: NSObject {
             "Content-Type": "application/json"
         ]
         
-        if(self.coi_expires_at == nil) {
-            self.coi_expires_at = 1.days.ago
+        if(self.coiExpiresAt == nil) {
+            self.coiExpiresAt = 1.days.ago
         }
         
         
         let parameters =
             ["name": self.name!,
-             "coi_expires_at": self.coi_expires_at!.toString(.ISO8601Format(.Extended))!]
+             "coi_expires_at": self.coiExpiresAt!.toString(.ISO8601Format(.Extended))!]
         
         Alamofire.request(.PUT, "\(TL_HOST)/subcontractors/\(self.id!)" , parameters: parameters, encoding: ParameterEncoding.JSON, headers: headers)
             .validate(statusCode: 200..<300)
@@ -173,7 +173,7 @@ class TLSubcontractor: NSObject {
                         let coi_expires_at = jsonSubcontractor["coi_expires_at"].stringValue.toDate(DateFormat.ISO8601Format(.Extended))
                         
                         if(coi_expires_at != nil) {
-                            subcontractor.coi_expires_at = coi_expires_at
+                            subcontractor.coiExpiresAt = coi_expires_at
                         }
                         
                         allSubcontractors.append(subcontractor)
@@ -214,7 +214,7 @@ class TLSubcontractor: NSObject {
                                 email: jsonEmployee["email"].stringValue)
                         
                         if(jsonEmployee["subcontractor_id"] != nil) {
-                            employee.subcontractor_id = jsonEmployee["subcontractor_id"].intValue
+                            employee.subcontractorId = jsonEmployee["subcontractor_id"].intValue
                         }
                         
                         

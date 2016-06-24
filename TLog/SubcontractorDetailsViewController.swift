@@ -35,8 +35,8 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         //        nameTextField.becomeFirstResponder()
         
         self.nameTextField.text = subcontractor?.name
-        if(self.subcontractor?.coi_expires_at != nil) {
-            self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate((self.subcontractor?.coi_expires_at)!)
+        if(self.subcontractor?.coiExpiresAt != nil) {
+            self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate((self.subcontractor?.coiExpiresAt)!)
         }
         
         takePhotoButton.setFAIcon(FAType.FACamera, forState: .Normal)
@@ -298,11 +298,11 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
         datePickerView.minimumDate = NSDate()
         sender.inputView = datePickerView
         
-        if(subcontractor?.coi_expires_at == nil) {
-            subcontractor?.coi_expires_at = 1.years.fromNow
+        if(subcontractor?.coiExpiresAt == nil) {
+            subcontractor?.coiExpiresAt = 1.years.fromNow
         }
         
-        datePickerView.setDate((subcontractor?.coi_expires_at!)!, animated: false)
+        datePickerView.setDate((subcontractor?.coiExpiresAt!)!, animated: false)
         datePickerView.addTarget(self, action: #selector(SubcontractorDetailsViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
         
         // Creates the toolbar
@@ -337,8 +337,8 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
     
     
     func datePickerValueChanged(sender:UIDatePicker) {
-        let originalDate = self.subcontractor?.coi_expires_at!
-        self.subcontractor?.coi_expires_at = sender.date
+        let originalDate = self.subcontractor?.coiExpiresAt!
+        self.subcontractor?.coiExpiresAt = sender.date
         
         self.subcontractor!.update({ () -> () in
             self.coiExpiresAtField.text = dateOnlyDateFormatter.stringFromDate(sender.date)
@@ -347,7 +347,7 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                                     let alert = UIAlertController(title: nil, message: "Unable to update date.", preferredStyle: UIAlertControllerStyle.Alert)
                                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                                     self.presentViewController(alert, animated: true, completion: nil)
-                                    self.subcontractor?.coi_expires_at = originalDate
+                                    self.subcontractor?.coiExpiresAt = originalDate
             }
         )
         //        self.view.endEditing(true)

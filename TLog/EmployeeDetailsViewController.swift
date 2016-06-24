@@ -62,7 +62,7 @@ class EmployeeDetailsViewController: UIViewController {
             self.checkinsButton.hidden = false
         }
      
-        if(employee?.subcontractor_id == nil) {
+        if(employee?.subcontractorId == nil) {
             isSubcontractor.on = false
             subcontracgtorNameButton.hidden = true
         } else {
@@ -70,7 +70,7 @@ class EmployeeDetailsViewController: UIViewController {
             subcontracgtorNameButton.hidden = false
 //            dispatch_async(dispatch_get_main_queue()){
             
-            self.subcontractor = TLSubcontractor(id: employee!.subcontractor_id)
+            self.subcontractor = TLSubcontractor(id: employee!.subcontractorId)
             subcontractor?.load({
                 self.subcontracgtorNameButton.titleLabel?.text = self.subcontractor?.name
                 }, failure: { (error) in
@@ -219,7 +219,7 @@ class EmployeeDetailsViewController: UIViewController {
 
     
     @IBAction func isSubcontractorSwitched(sender: AnyObject) {
-        if(employee?.subcontractor_id != nil) {
+        if(employee?.subcontractorId != nil) {
             let alert = UIAlertController(title: nil, message: "Are you sure want to delete the employee from subcontractor?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {

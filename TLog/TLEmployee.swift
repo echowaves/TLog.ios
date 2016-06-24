@@ -17,7 +17,7 @@ class TLEmployee: NSObject {
     var name:String?
     var email:String?
     var activationCode:String?
-    var subcontractor_id:Int?
+    var subcontractorId:Int?
     
     init(id: Int!, name:String!, email:String!) {
         self.id = id
@@ -89,13 +89,13 @@ class TLEmployee: NSObject {
     func addToSubcontractor(subcontractor:TLSubcontractor,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
-        self.subcontractor_id = subcontractor.id
+        self.subcontractorId = subcontractor.id
         let headers = [
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
         ]
         
-        Alamofire.request(.POST, "\(TL_HOST)/employees/\(self.id!)/subcontractor/\(subcontractor_id!)", encoding: ParameterEncoding.JSON, headers: headers)
+        Alamofire.request(.POST, "\(TL_HOST)/employees/\(self.id!)/subcontractor/\(subcontractorId!)", encoding: ParameterEncoding.JSON, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
@@ -121,7 +121,7 @@ class TLEmployee: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    self.subcontractor_id = nil
+                    self.subcontractorId = nil
                     success();
                 case .Failure(let error):
                     NSLog(error.description)
@@ -225,7 +225,7 @@ class TLEmployee: NSObject {
                                     email: jsonEmployee["email"].stringValue)
                             
                             if(jsonEmployee["subcontractor_id"] != nil) {
-                                    employee.subcontractor_id = jsonEmployee["subcontractor_id"].intValue
+                                    employee.subcontractorId = jsonEmployee["subcontractor_id"].intValue
                             }
                             
                             
