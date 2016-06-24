@@ -39,10 +39,8 @@ class TLSubcontractor: NSObject {
             "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
             "Content-Type": "application/json"
         ]
-        let parameters =
-            ["id": self.id!]
         
-        Alamofire.request(.GET, "\(TL_HOST)/subcontractors/\(self.id!)" , parameters: parameters, headers: headers)
+        Alamofire.request(.GET, "\(TL_HOST)/subcontractors/\(self.id!)", headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
