@@ -61,7 +61,7 @@ class SubcontractorCreateViewController: UIViewController {
                     
                     
                 }, failure: { (error) -> () in
-                    let alert = UIAlertController(title: nil, message: "Unable to create an Subcontractor. Try again", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: nil, message: "Unable to create a Subcontractor. Try again", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
             })
