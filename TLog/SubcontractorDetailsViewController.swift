@@ -273,6 +273,11 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                         
                         EZLoadingActivity.hide(success: false, animated: true)
                         
+                        let ac = UIAlertController(title: "Error!", message: "Failed to upload COI.", preferredStyle: .Alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self.presentViewController(ac, animated: true, completion: nil)
+
+                        
                         NSLog(".........................................error uploading")
                 })
             })
