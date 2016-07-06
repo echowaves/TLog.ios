@@ -232,12 +232,13 @@ class TLSubcontractor: NSObject {
                    success:() -> (),
                    failure:(error: NSError) -> ()) -> () {
         let headers = [
-            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())",
-            "Content-Type": "application/json"
+            "Authorization": "Bearer \(TLUser.retreiveJwtFromLocalStorage())"
+//            ,
+//            "Content-Type": "application/json"
         ]
         
         Alamofire.upload(.POST,
-                         "\(TL_HOST)/subcontractors/\(self.id!)/coi",
+                         "\(TL_HOST)/subcontractors/\(self.id!)/coi_ios",
                          headers: headers,
                          multipartFormData: {
                             multipartFormData in
@@ -245,7 +246,7 @@ class TLSubcontractor: NSObject {
                                 multipartFormData.appendBodyPart(data: imageData, name: "coi", fileName: "\(self.id!).png", mimeType: "image/png")
                             }
                             
-                            //                            multipartFormData.appendBodyPart(data: expiresAt.toString()!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "coi_expires_at")
+//                            multipartFormData.appendBodyPart(data: self.coiExpiresAt!.toString()!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "coi_expires_at")
                             
             }, encodingCompletion: { encodingResult in
                 switch encodingResult {
@@ -260,7 +261,34 @@ class TLSubcontractor: NSObject {
                 }
             }
         )
+
+        
+        
+//        let imageData = UIImagePNGRepresentation(TLSubcontractor.fixOrientation(image))!
+//        
+////        let filename = getDocumentsDirectory().stringByAppendingPathComponent("\(self.id!).png")
+////        imageData!.writeToFile(filename, atomically: true)
+////        let url  = NSURL(fileURLWithPath: filename)
+////        let imageStream = NSInputStream(URL: url)!
+//
+//        Alamofire.upload(.POST,
+//                         "\(TL_HOST)/subcontractors/\(self.id!)/coi",
+//                         headers: headers,
+//                         data: imageData)
+//            .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+//                print("\(bytesWritten):\(totalBytesWritten)")
+//            }
+//            .response { (response) in
+//                print("response")
+//                print(response)
+//        }
     }
+    
+//    func getDocumentsDirectory() -> NSString {
+//        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//        let documentsDirectory = paths[0]
+//        return documentsDirectory
+//    }
     
     
     func downloadCOI(
