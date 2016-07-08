@@ -238,7 +238,7 @@ class TLSubcontractor: NSObject {
         ]
         
         Alamofire.upload(.POST,
-                         "\(TL_HOST)/subcontractors/\(self.id!)/coi_ios",
+                         "\(TL_HOST)/subcontractors/\(self.id!)/coi",
                          headers: headers,
                          multipartFormData: {
                             multipartFormData in
