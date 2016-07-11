@@ -68,17 +68,14 @@ class EmployeeDetailsViewController: UIViewController {
         } else {
             isSubcontractor.on = true
             subcontracgtorNameButton.hidden = false
-//            dispatch_async(dispatch_get_main_queue()){
             
-            self.subcontractor = TLSubcontractor(id: employee!.subcontractorId)
-            subcontractor?.load({
-                self.subcontracgtorNameButton.titleLabel?.text = self.subcontractor?.name
+            self.subcontractor = TLSubcontractor(id: self.employee!.subcontractorId)
+            self.subcontractor?.load({
+                    self.subcontracgtorNameButton.setTitle(self.subcontractor?.name, forState: UIControlState.Normal)
                 }, failure: { (error) in
                     NSLog("error loading subcontractor", error)
             })
-            
-            
-//            }
+                        
         }
     }
     
