@@ -123,11 +123,6 @@ class TLSubcontractor: NSObject {
             "Content-Type": "application/json"
         ]
         
-        self.deleteCOI({
-            print("+++++++++++++++ deleted COI")
-            }, failure: { (error) in
-                print("+++++++++++++++ error deleting COI")
-        })
 
         Alamofire.request(.DELETE, "\(TL_HOST)/subcontractors/\(self.id!)" , encoding: ParameterEncoding.JSON, headers: headers)
             .validate(statusCode: 200..<300)

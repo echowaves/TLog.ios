@@ -151,6 +151,12 @@ class SubcontractorDetailsViewController: UIViewController, UIImagePickerControl
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                     alert1 in
                     NSLog("OK Pressed")
+                   
+                     self.subcontractor!.deleteCOI({
+                        NSLog("deleted COI")
+                        }, failure: { (error) in
+                            NSLog("COI deleting failed")
+                     })
                     
                     self.subcontractor!.delete(
                         { () -> () in
