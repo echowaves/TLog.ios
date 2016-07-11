@@ -224,12 +224,6 @@ class TLEmployee: NSObject {
                                     name: jsonEmployee["name"].stringValue,
                                     email: jsonEmployee["email"].stringValue)
                             
-                            if(jsonEmployee["subcontractor_id"] != nil) {
-                                    employee.subcontractorId = jsonEmployee["subcontractor_id"].intValue
-                            }
-                            
-                            
-                            allEmployees.append(employee)
                             
                             if(jsonEmployee["activation_code"] != nil) {
                                 employee.activationCode = jsonEmployee["activation_code"].stringValue
@@ -237,6 +231,13 @@ class TLEmployee: NSObject {
                             } else {
                                 inactiveEmployees.append(employee)
                             }
+
+                            if(jsonEmployee["subcontractor_id"] != nil) {
+                                employee.subcontractorId = jsonEmployee["subcontractor_id"].intValue
+                            }
+                            
+                            allEmployees.append(employee)
+
                         }
                         
                         success(allEmployees: allEmployees, activeEmployees: activeEmployees, inactiveEmployees: inactiveEmployees);

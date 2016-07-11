@@ -75,7 +75,7 @@ class EmployeeDetailsViewController: UIViewController {
                 }, failure: { (error) in
                     NSLog("error loading subcontractor", error)
             })
-                        
+            
         }
     }
     
