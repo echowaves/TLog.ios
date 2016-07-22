@@ -13,9 +13,10 @@ let API_VERSION = "1.0.0"
 
 
 //let TL_HOST = "http://172.20.10.2:3000"
-//let TL_HOST = "http://app.tlog.us"
-//let TL_HOST = "http://192.168.1.145:3000"
-let TL_HOST = "http://localhost:3000"
+let TL_HOST = "http://app.tlog.us"
+//let TL_HOST = "http://192.168.254.18:3000"
+//let TL_HOST = "http://localhost:3000"
+//let TL_HOST = "http://104.169.20.251:3000"
 
 let defaultDateFormatter = NSDateFormatter()
 let dateOnlyDateFormatter = NSDateFormatter()
