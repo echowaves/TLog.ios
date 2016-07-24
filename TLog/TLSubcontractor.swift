@@ -368,7 +368,7 @@ class TLSubcontractor: NSObject {
             return img;
         }
         
-        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale);
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale/2);
         let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
         img.drawInRect(rect)
         
