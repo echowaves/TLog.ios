@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fAH-4O-vGs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fAH-4O-vGs">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1508,9 +1508,14 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="action codes for employee" id="fyO-pa-dvq">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="n1F-YC-Tdn">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="mL3-dn-MHK">
                                             <connections>
-                                                <action selector="backButtonClicked:" destination="Hl9-HZ-rcP" id="BN9-Mf-fuF"/>
+                                                <action selector="backButtonClicked:" destination="Hl9-HZ-rcP" id="XJh-zk-XbF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="done" id="AHQ-h7-iPN">
+                                            <connections>
+                                                <action selector="backButtonClicked:" destination="Hl9-HZ-rcP" id="ud0-Sy-Jkx"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

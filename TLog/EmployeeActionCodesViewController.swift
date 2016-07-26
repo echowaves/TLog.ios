@@ -28,7 +28,7 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         Localytics.tagEvent("EmployeeActionCodesViewController")
-
+        
         navBar.title = employee?.name
         
         actionCodeTextField.becomeFirstResponder()
@@ -144,23 +144,35 @@ class EmployeeActionCodesViewController: UIViewController,UITextFieldDelegate, U
         NSLog("You selected cell #\(self.actionCodes[indexPath.row])")
         // delete employee action code
         
-        self.employee?.deleteActionCode(self.actionCodes[indexPath.row],
-                                        success: {
-                                            self.updateActionCodes()
-            },
-                                        failure: { (error) in
-                                            NSLog(error.description)
-                                            let alert = UIAlertController(title: nil, message: "Unable to delete action code for employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                                            alert.addAction(UIAlertAction(
-                                                title: "OK", style: UIAlertActionStyle.Default,
-                                                handler: { (UIAlertAction) in
-                                                    self.presentViewController(alert, animated: true, completion: nil)
-                                                    
-                                                    self.updateActionCodes()
-                                                    
-                                            })
-                                            )
-        })
+        
+        
+        let alert = UIAlertController(title: nil, message: "Sure want to delete the employee action code?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+            alert1 in
+            NSLog("OK Pressed")
+            
+            self.employee?.deleteActionCode(self.actionCodes[indexPath.row],
+                success: {
+                    self.updateActionCodes()
+                },
+                failure: { (error) in
+                    NSLog(error.description)
+                    let alert = UIAlertController(title: nil, message: "Unable to delete action code for employee, try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(
+                        title: "OK", style: UIAlertActionStyle.Default,
+                        handler: { (UIAlertAction) in
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            
+                            self.updateActionCodes()
+                            
+                    })
+                    )
+            })
+            
+            })
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
     //delegate method to make popovers to work on ipad
