@@ -1513,11 +1513,6 @@
                                                 <action selector="backButtonClicked:" destination="Hl9-HZ-rcP" id="XJh-zk-XbF"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="done" id="AHQ-h7-iPN">
-                                            <connections>
-                                                <action selector="backButtonClicked:" destination="Hl9-HZ-rcP" id="ud0-Sy-Jkx"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
